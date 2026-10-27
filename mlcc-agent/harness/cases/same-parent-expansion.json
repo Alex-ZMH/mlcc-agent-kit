@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "same-parent-expansion",
+  "stages": [
+    "P9"
+  ],
+  "kind": "numerical",
+  "prompt": "将已掺杂 ABACUS 父模型扩为 LAMMPS 大胞，并比较 exact 与重新随机占位。",
+  "expected": [
+    "原子数/计量按正整数超胞体积倍数对应",
+    "父原子和 image_index 到子原子的可回读映射",
+    "exact 周期掺杂相关性明确",
+    "重随机模型单独版本/种子/补偿",
+    "真空 slab 面内扩胞不制造周期空腔",
+    "没有合格势时不声称可运行目标界面"
+  ],
+  "execution_status": "not_run"
+}

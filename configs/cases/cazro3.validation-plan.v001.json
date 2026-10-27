@@ -1,0 +1,214 @@
+{
+  "status": "planning_example_not_active",
+  "study_id": "cazro3_validation_v001",
+  "stage_plan": "plans/stages.json",
+  "reference_candidates": [
+    "CaZrO3",
+    "BaTiO3"
+  ],
+  "model": {
+    "model_id": null,
+    "version": "v001",
+    "material": "CaZrO3",
+    "phase": "Pnma",
+    "source_structure": null,
+    "dopants": [],
+    "spatial_mode": null,
+    "random_seed": null
+  },
+  "backends": {
+    "bootstrap_dft": "VASP",
+    "production_dft": "ABACUS",
+    "active_dft": null,
+    "phonons": "Phonopy",
+    "lattice_transport": "Phono3py_when_required",
+    "electronic_transport": "BoltzTraP2_with_project_ABACUS_adapter",
+    "md": "LAMMPS",
+    "continuum": null,
+    "circuit_solver": null
+  },
+  "execution": {
+    "site_configuration": "configs/site.v100.example.json",
+    "runner": "slurm",
+    "runner_status": "consult_active_site_and_execution_evidence",
+    "automatic_retry": false,
+    "automatic_engine_fallback": false,
+    "scheduler_status": "consult_active_site_and_execution_evidence"
+  },
+  "electronic_transport": {
+    "temperature_K": [],
+    "chemical_potential_eV": [],
+    "scattering_time_s": null
+  },
+  "replication": {
+    "parent_structure": "P4_ABACUS_relaxed_structure",
+    "mode": "exact",
+    "repeat_matrix": null,
+    "potential": null
+  },
+  "device": {
+    "ceramic_thickness_range_um": [],
+    "thickness_state": null,
+    "active_gap_count": null,
+    "overlap_area_m2": null,
+    "electrode": null,
+    "polymer_branch": null,
+    "prediction_scope": "parameter_handoff_and_conditional_analytical_estimates",
+    "loss_and_parasitic_parameters": null
+  },
+  "case_role": "scientific_validation",
+  "case_id": "cazro3_pnma_undoped",
+  "purpose_options": [
+    "normal",
+    "comparison",
+    "conformance",
+    "diagnosis"
+  ],
+  "selected_purposes": [
+    "normal"
+  ],
+  "scenario_options": [
+    "nominal",
+    "operating_boundary",
+    "diagnostic"
+  ],
+  "selected_scenarios": [
+    "nominal"
+  ],
+  "selected_required_tasks": [
+    "CZO-P4-RELAX-001",
+    "CZO-P4-BASE-002"
+  ],
+  "design_requirements_ref": null,
+  "design_requirements_template": "configs/design-targets.example.json",
+  "requirements_document": "docs/design-requirements.md",
+  "system_capability_acceptance_is_separate": true,
+  "available_microscopic_routes": [
+    "ferroelectric",
+    "magnetism",
+    "phonons",
+    "thermoelectric_transport"
+  ],
+  "selected_microscopic_routes": [],
+  "public_DFT_work_packages": [
+    "structure_electronic_elastic_baseline",
+    "defect_thermodynamics_when_requested",
+    "NEB_migration_when_requested",
+    "interface_reference_when_requested"
+  ],
+  "implementation_status": "planning_contract_not_runtime_feature",
+  "scientific_work_packages_document": "docs/ferroelectric-and-defect-work-packages.md",
+  "ferroelectric_branch": {
+    "material_state": null,
+    "allowed_material_states": [
+      "ferroelectric",
+      "paraelectric",
+      "nonferroelectric",
+      "undetermined"
+    ],
+    "phase_conditions_and_history_ref": null,
+    "state_evidence_ref": null,
+    "selected_observables": [],
+    "polarization_model_ref": null,
+    "field_protocol_ref": null,
+    "electrical_boundary_ref": null,
+    "qualification_ref": null
+  },
+  "defect_thermodynamics": {
+    "selected_tasks": [],
+    "host_model_ref": null,
+    "defect_set_ref": null,
+    "charge_states": [],
+    "chemical_potential_domain_ref": null,
+    "selected_chemical_potential_points": [],
+    "fermi_level_reference": "VBM_of_same_method_bulk",
+    "fermi_level_grid_eV": [],
+    "charged_supercell_method_ref": null,
+    "dielectric_tensor_ref": null,
+    "charge_correction_method_ref": null,
+    "charge_neutrality_or_reservoir_model_ref": null,
+    "validation_ref": null
+  },
+  "detailed_plan_document": "docs/MLCC系统详细执行计划书-CaZrO3-BaTiO3-v001.md",
+  "task_index": "plans/mlcc-detailed-execution-v001.json",
+  "execution_authorized_by_this_file": false,
+  "conditions": {
+    "temperature_K": [
+      330,
+      400
+    ],
+    "external_pressure_Pa": 101325,
+    "oxygen_partial_pressure_Pa": null,
+    "electric_field_V_m": null,
+    "mechanical_boundary": null
+  },
+  "process_history": {
+    "composition_A_to_B_ratio": null,
+    "ratio_basis": null,
+    "powder_size_distribution_ref": null,
+    "temperature_time_history_ref": null,
+    "oxygen_partial_pressure_history_ref": null,
+    "cooling_reoxidation_ref": null,
+    "stress_free_reference_temperature_K": null,
+    "source_refs": []
+  },
+  "as_processed_state": {
+    "grain_size_orientation_statistics_ref": null,
+    "porosity_statistics_ref": null,
+    "defect_statistics_ref": null,
+    "fired_layer_thickness_m": null,
+    "thickness_state": null,
+    "electrode_continuity_ref": null,
+    "microstructure_core_shell_ref": null,
+    "source_refs": []
+  },
+  "potential_core_shell_ref": null,
+  "confirmed_inputs": [
+    "material",
+    "Pnma",
+    "undoped",
+    "330_K",
+    "400_K",
+    "1_atm_external_pressure"
+  ],
+  "proposed_not_confirmed": {
+    "phase_options": [],
+    "undoped_baseline": false,
+    "intrinsic_defect_candidates": [
+      "oxygen_vacancy",
+      "cation_vacancy",
+      "antisite_or_interstitial_if_selected"
+    ],
+    "defect_charge_states": null,
+    "defect_complex": null,
+    "interface": null,
+    "potential": null,
+    "field_protocol": null,
+    "oxygen_vacancy_charge_candidates": [
+      0,
+      1,
+      2
+    ],
+    "binding_validation_candidate": "A_site_vacancy_oxygen_vacancy_pair_with_explicit_composition_and_charge_conservation"
+  },
+  "planned_extended_task_groups": [
+    "CZO-P4-ELASTIC-003",
+    "CZO-P5-DIELECTRIC-004",
+    "CZO-P7-PHONON-005",
+    "CZO-P7-KL-006",
+    "CZO-P8-TRANSPORT-007",
+    "CZO-P4-DEFSET-010",
+    "CZO-P4-DEFREF-011",
+    "CZO-P4-CHEMPOT-012",
+    "CZO-P4-CHARGED-013",
+    "CZO-P4-FORM-014",
+    "CZO-P4-BIND-015",
+    "CZO-P4-EQ-016",
+    "CZO-P4-NEB-017",
+    "CZO-P9-POT-020",
+    "CZO-P10-MD-021",
+    "CZO-P10-DIAG-022",
+    "CZO-P11-INT-023"
+  ],
+  "selection_scope": "first_scientific_slice_only; extended tasks remain planned and are selected by actual observable and scientific qualification"
+}

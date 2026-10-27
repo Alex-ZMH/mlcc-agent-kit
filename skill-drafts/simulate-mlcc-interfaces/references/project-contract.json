@@ -1,0 +1,71 @@
+{
+  "status": "historical_scientific_background_current_execution_in_root_PLAN",
+  "planning_date": "2026-10-19",
+  "updated_date": "2026-10-20",
+  "timezone": "Asia/Shanghai",
+  "confirmed_by_user": {
+    "engines": ["VASP_bootstrap_only", "ABACUS_production", "LAMMPS_atomistic_MD"],
+    "primary_observables": ["interface_mismatch", "residual_stress", "cracking", "delamination"],
+    "additional_requested_routes": ["material_and_phase_selection", "dopant_ensembles", "dielectric", "ferroelectric", "magnetism", "phonons_and_thermal", "thermoelectric_transport", "device_capacitance_voltage_impedance"],
+    "phase_and_dopant_selection_required_before_model_generation": true,
+    "execution_parts": ["pymatgen_ASE_microscopic_four_property_chains", "same_model_LAMMPS_expansion_microstructure_device"],
+    "development_policy": "direct_domain_code_no_defensive_programming_no_checksum_verification",
+    "polymer_roles_to_compare": ["retained_interlayer", "temporary_binder"]
+  },
+  "proposed_reference_case": {
+    "ceramic": "BaTiO3",
+    "metal": "Ni",
+    "retained_polymer_candidate": "PMDA-ODA polyimide",
+    "temporary_binder_candidate": "PVB with composition and plasticizer to be specified",
+    "retained_layer_process_assumption": "post-sintering low-temperature assembly",
+    "polymer_selection_status": "not_confirmed"
+  },
+  "software_candidates": {
+    "bootstrap_dft": "VASP",
+    "dft": "ABACUS",
+    "conversion": "dpdata",
+    "potential": "DeePMD-kit",
+    "exploration": "LAMMPS",
+    "active_learning": "DP-GEN",
+    "property_comparison": "APEX",
+    "continuum": null,
+    "future_continuum_candidate_not_in_current_scope": "MOOSE",
+    "runtime_compatibility_status": "not_executed",
+    "inspected_source_revisions": {
+      "deepmodeling/abacus-develop": "7be5df9759e8b76db724297492044ef644833f28",
+      "deepmodeling/dpgen": "0b9acec837474d2a93fa010598472feb8f69f82a"
+    },
+    "installed_versions": null
+  },
+  "parameter_record_template": {
+    "name": null,
+    "value": null,
+    "unit": null,
+    "material_region_or_interface": null,
+    "physical_definition": null,
+    "temperature_K": null,
+    "rate_and_history": null,
+    "orientation_and_surface_state": null,
+    "source_calculation_ids": [],
+    "software_and_resource_versions_paths": null,
+    "uncertainty": null,
+    "validity_envelope": null,
+    "status": "awaiting_calculation_or_experiment"
+  },
+  "evidence_needed_for_device_prediction": [
+    "actual ceramic composition, dopants, grain structure, layer dimensions",
+    "metal surface state and interface imaging",
+    "polymer chemistry, sequence, molecular weight, plasticizer and processing",
+    "thermal and mechanical histories including stress relaxation",
+    "TGA/DSC/DMA, shrinkage, porosity, residual carbon and fracture data as applicable",
+    "CPU/GPU and installed software environment"
+  ],
+  "execution_status": {
+    "inputs_generated_for_production": false,
+    "dft_jobs_submitted": false,
+    "md_jobs_submitted": false,
+    "potential_validated_for_material": false,
+    "phase_field_calibrated": false,
+    "skill_installed_globally": false
+  }
+}

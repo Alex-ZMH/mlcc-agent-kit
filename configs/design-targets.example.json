@@ -1,0 +1,74 @@
+{
+  "record_kind": "optional_study_design_requirements_template",
+  "version": "v001",
+  "status": "template_not_active_product_specification",
+  "scope": "per_study_not_system_acceptance",
+  "study_id": null,
+  "case_id": null,
+  "material_model_ref": null,
+  "requirements_source": null,
+  "requirements_version": null,
+  "conditions": {
+    "temperature_K": [],
+    "mechanical_pressure_Pa": null,
+    "oxygen_partial_pressure_Pa": null,
+    "dc_bias_V": null,
+    "local_field_V_per_m": null,
+    "frequency_Hz": [],
+    "ac_amplitude_V": null,
+    "load_definition": null,
+    "duration_s": null,
+    "history": null
+  },
+  "selected_required_tasks": [],
+  "requirements": [],
+  "requirement_entry_template": {
+    "requirement_id": null,
+    "observable_id": null,
+    "definition": null,
+    "object_level": null,
+    "unit": null,
+    "comparison": null,
+    "target": null,
+    "tolerance": null,
+    "lower_bound": null,
+    "upper_bound": null,
+    "required": null,
+    "conditions_ref": null,
+    "conditions": {},
+    "uncertainty_rule": null,
+    "evidence_source": null,
+    "design_assessment": "not_assessed"
+  },
+  "allowed_comparisons": [
+    "upper_bound",
+    "lower_bound",
+    "interval",
+    "target_with_tolerance"
+  ],
+  "allowed_design_assessments": [
+    "met",
+    "not_met",
+    "insufficient_evidence",
+    "not_assessed",
+    "not_applicable"
+  ],
+  "policy": {
+    "missing_product_targets_block_system_development": false,
+    "missing_product_targets_block_independent_calculations": false,
+    "missing_targets_design_assessment": "not_assessed",
+    "invalid_calculation_proves_material_failure": false,
+    "no_damage_observed_proves_design_conformance": false,
+    "case_not_applicable_proves_system_capability": false,
+    "universal_material_thresholds": false
+  },
+  "implementation_status": "scalar_runtime_comparison_v080_exact_units_and_conditions_no_product_targets_active",
+  "runtime_contract": {
+    "entry": "assess-design",
+    "required_input_lists": ["requirements", "observables"],
+    "qualified_status": "qualified",
+    "uncertainty_rules": ["nominal", "whole_interval"],
+    "upstream_qualification_required": true,
+    "template_null_fields_must_be_filled_before_comparison": true
+  }
+}

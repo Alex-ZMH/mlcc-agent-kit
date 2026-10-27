@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "abacus-migration",
+  "stages": [
+    "P4"
+  ],
+  "kind": "real_integration",
+  "prompt": "迁移已完成 VASP 接线的模型到 ABACUS，后续禁止自动回退。",
+  "expected": [
+    "同几何单点加独立弛豫",
+    "对照结构/相对能/力/应力，不比跨赝势绝对总能",
+    "显式不同 MPI 和实际版本功能表",
+    "生产 DFT 切换有记录",
+    "标签按引擎和方法集分区",
+    "缺功能报告缺口而非悄悄调用 VASP"
+  ],
+  "execution_status": "not_run"
+}

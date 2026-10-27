@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "phase-and-dopants",
+  "stages": [
+    "P2"
+  ],
+  "kind": "behavioral_and_numerical",
+  "prompt": "用户只选了 BaTiO3 和 Y，尚未选相和占位。规划 1% 掺杂与随机/分散对照。",
+  "expected": [
+    "保留相与来源结构选择",
+    "区分 Y_Ba 和 Y_Ti 及补偿",
+    "给出整数子晶格浓度和真实超胞成本",
+    "随机/最大分散/SQS 分开，多个种子和周期统计",
+    "未选相不生成已确认生产模型"
+  ],
+  "execution_status": "not_run"
+}

@@ -1,0 +1,4299 @@
+{
+  "core_parallel_development_20261025": {
+    "contract": "docs/core-parallel-development-20261025.md",
+    "human_authorization_turn": "01a1731e-b2ef-78d2-9629-807a2ba88190",
+    "state": "engineering_paths_accepted_release_047_enabled_scientific_gaps_preserved",
+    "controller_owner": "supervision_chat",
+    "p4_owner": "root",
+    "p4_scope": "reuse_existing_alignment_FNV_formation_and_Study_consumers_on_489_490_496",
+    "p4_new_public_adapter_required": false,
+    "p4_handoff": "workspace/reports/charged-potential-native-v001/source-consumer-handoff-v001.md",
+    "p4_batch": "workspace/reports/charged-potential-native-v001/consume-existing-p4-chain.sbatch",
+    "normal_response_owner": "root",
+    "electrical_response_owner": "root",
+    "shared_CLI_delivery_owner": "root",
+    "normal_handoff": "workspace/reports/interface-normal-relax-v001/handoff.md",
+    "electrical_handoff": "workspace/reports/interface-electrical-v001/handoff.md",
+    "public_integration_handoff": "workspace/reports/interface-electrical-v001/public-integration.md",
+    "joint_new_path_checks": "workspace/reports/interface-electrical-v001/verify-public-integration.sbatch",
+    "standalone_normal_check_script_superseded": true,
+    "native_clamped_minimization_path_accepted": true,
+    "native_interface_electrostatic_source_available": false,
+    "recovery_order": [
+      "query_actual_job523_terminal",
+      "consume_sealed_v047_followup_without_repeating_checks",
+      "new_path_joint_checks_and_saved_P4_consumption"
+    ],
+    "new_numerical_jobs_submitted": true,
+    "new_paths_accepted": true,
+    "v047_followup_snapshot_unchanged": true,
+    "controller_restored_at": "2026-10-25T21:40:38+08:00",
+    "bto_saved_consumption": {
+      "schema": "mlcc.bto-native-response-acceptance.v1",
+      "candidate_version": "0.47.0",
+      "enabled_version_at_acceptance": "0.46.0",
+      "status": "engineering_consumption_passed",
+      "job_id": "524",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "start_time": "2026-10-25T21:42:37+08:00",
+      "end_time": "2026-10-25T21:42:45+08:00",
+      "elapsed_seconds": 8,
+      "requeue": 0,
+      "restarts": 0,
+      "requested_resources": {
+        "cpus": 1,
+        "memory_GiB": 4,
+        "walltime": "00:10:00",
+        "gpus": 0
+      },
+      "scheduler_evidence": "scheduler-524.txt",
+      "receipt": "response-524/receipt.json",
+      "delivery": "response-524/delivery.json",
+      "reused_checks_job": "523",
+      "reused_checks_count": 6,
+      "repeated_checks": [],
+      "changed_path_verified": "Path-to-str conversion in saved Gamma source reference; remaining public response consumption",
+      "products": {
+        "electronic": "complete",
+        "born": "reviewed_branch_tensor",
+        "gamma": "unresolved",
+        "ionic": "unresolved",
+        "dielectric": "unresolved"
+      },
+      "epsilon_infinity_diagonal": [
+        6.370452,
+        6.370452,
+        5.945032
+      ],
+      "ionic_delta_epsilon": null,
+      "epsilon_static": null,
+      "unresolved_reason": "projected_optical_space_not_positive_definite",
+      "source_study_id": "batio3_firing_validation_v002",
+      "source_mode": "native_source_bound",
+      "source_checks": "receipt preserves electronic tensor and unresolved Gamma reasons into same-Study delivery",
+      "new_DFT_PYATB_Gamma_kernel_MD_training": false,
+      "scientific_qualification": false,
+      "production_qualification": false,
+      "candidate_installed_or_enabled": false,
+      "reviewer": "root"
+    },
+    "p4_saved_consumption": {
+      "schema": "mlcc.p4-native-source-review.v1",
+      "status": "engineering_consumption_passed_missing_scientific_inputs_preserved",
+      "consumer_job_id": "525",
+      "scheduler_terminal_verified": true,
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "elapsed_seconds": 8,
+      "requeue": 0,
+      "restarts": 0,
+      "scheduler_evidence": "scheduler-p4-consume-terminal-525.txt",
+      "runtime_checks": "run-525/acceptance.json",
+      "installed_version": "0.46.0",
+      "public_commands": 6,
+      "native_parsers_or_engines_run": false,
+      "native_jobs": {
+        "host": "490",
+        "defect": "489",
+        "prior_consumer": "496"
+      },
+      "confirmed": [
+        "same_recorded_comparison_fields",
+        "host_q0_defect_q2",
+        "native_job_binding",
+        "host_VBM_present",
+        "same_defect_Study_deliveries",
+        "missing_inputs_propagated_without_fabrication"
+      ],
+      "scientific_inputs_still_missing": [
+        "alignment_selection",
+        "scalar_FNV_parameters_with_dielectric_source",
+        "chemical_reference_and_potential",
+        "ef_grid_eV"
+      ],
+      "alignment_status": "missing_inputs",
+      "correction_status": "missing",
+      "formation_status": "missing",
+      "scientific_qualification": false,
+      "production_qualification": false,
+      "reviewer": "root"
+    },
+    "joint_new_checks_acceptance": {
+      "schema": "mlcc.interface-core-acceptance.v1",
+      "recorded_at": "2026-10-25T21:49:29.237012+08:00",
+      "status": "passed_new_software_checks_and_saved_missing_source_delivery",
+      "scheduler_job_id": "526",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "runtime": "00:00:04",
+      "requeue": 0,
+      "restarts": 0,
+      "requested_resources": {
+        "cpus": 1,
+        "tasks": 1,
+        "cpus_per_task": 1,
+        "memory": "2G",
+        "time": "00:05:00"
+      },
+      "observed_scheduler_allocation": {
+        "NumCPUs": 2,
+        "NumTasks": 1,
+        "CPUs/Task": 1,
+        "AllocTRES": "cpu=2,mem=2G,node=1,billing=2"
+      },
+      "checks": {
+        "passed": 49,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "normal_new_checks": 10,
+        "electrical_public_new_checks": 7
+      },
+      "public_commands": [
+        {
+          "action": "interface-electrical",
+          "exit_code": 0,
+          "product": "ni-bto-electrical-product.json"
+        },
+        {
+          "action": "deliver-properties --interface-electrical",
+          "exit_code": 0,
+          "product": "ni-bto-electrical-delivery.json"
+        }
+      ],
+      "study_id": "ni-batio3-layered-interface-v001",
+      "response": null,
+      "response_status": "unresolved",
+      "missing_evidence": [
+        "native_interface_electrostatic_potential_product"
+      ],
+      "preserved": [
+        "Study/model/interface identity",
+        "request_path",
+        "study_path",
+        "source_refs",
+        "analysis_scheduler_job_id"
+      ],
+      "native_interface_potential_observed": false,
+      "native_clamped_minimize_executed": false,
+      "physical_convergence": "not_applicable_to_software_and_saved_missing_source_checks",
+      "remaining_normal_native_path": "explicit clamped minimize/raw-force dump/Prism consumption not executed in job526",
+      "remote_candidate_root": "/home/v100/projects/mlcc/reports/interface-electrical-v001/candidate-core-v047",
+      "remote_package_root": "/home/v100/projects/mlcc/reports/interface-electrical-v001/candidate-core-v047/mlcc-agent",
+      "remote_archive": "/home/v100/projects/mlcc/reports/interface-electrical-v001/candidate-core-v047.tar.gz",
+      "remote_evidence_root": "/home/v100/projects/mlcc/reports/interface-electrical-v001/run-core-v047",
+      "local_archive": "D:\\project\\mlcc\\workspace\\reports\\interface-electrical-v001\\candidate-core-v047.tar.gz",
+      "evidence": [
+        "scheduler-526-completed.txt",
+        "new-checks-526.xml",
+        "new-checks.stdout",
+        "new-checks.stderr",
+        "commands-526.trace",
+        "interface-electrical.stdout",
+        "interface-electrical.stderr",
+        "deliver-properties.stdout",
+        "deliver-properties.stderr",
+        "check-result.json",
+        "ni-bto-electrical-product.json",
+        "ni-bto-electrical-delivery.json",
+        "control-query-status.json"
+      ],
+      "evidence_review": "primary review plus Luna read-only saved XML/JSON/log review",
+      "source_changed_during_execution": false,
+      "submission_count": 1,
+      "release_changed": false,
+      "enabled_release": "0.46",
+      "rollback_release": "0.45",
+      "sealed_followup_modified": false,
+      "new_DFT_MD_PYATB_Gamma_training": false,
+      "ownership": "returned_to_main_integration_thread"
+    },
+    "native_clamped_acceptance": {
+      "schema": "mlcc.interface-normal-relax-native-acceptance.v1",
+      "status": "engineering_native_path_passed",
+      "candidate_version": "0.47.0",
+      "source_check_job": "526",
+      "prepare_job": "527",
+      "native_job": "529",
+      "consumer_job": "530",
+      "scheduler_states": {
+        "527": "COMPLETED/0:0",
+        "529": "COMPLETED/0:0",
+        "530": "COMPLETED/0:0"
+      },
+      "terminal_evidence": [
+        "scheduler-527.txt",
+        "scheduler-529.txt",
+        "scheduler-530.txt"
+      ],
+      "runtime_check": "native-relax-check.json",
+      "model": "existing prepare-442 Ni/Ni eight-atom engineering fixture",
+      "potential": "existing Ni_u3 EAM; same CPU LAMMPS 22 Jul 2025 Update 4",
+      "kind": "fixed_cell_clamped_internal_relaxation",
+      "groups": {
+        "fixed": [
+          0,
+          3
+        ],
+        "moving": [
+          4,
+          7
+        ],
+        "free": [
+          1,
+          2,
+          5,
+          6
+        ]
+      },
+      "native_stopping_criteria": [
+        "force tolerance",
+        "force tolerance",
+        "force tolerance"
+      ],
+      "native_relaxation_status": "converged",
+      "points": [
+        "reference",
+        "load",
+        "return"
+      ],
+      "verified_path": [
+        "public create-lammps",
+        "public SiteRunner prepare/transfer/submit/query",
+        "real native independent Slurm job",
+        "parse-lammps",
+        "raw post-minimize run0 forces and unwrapped coordinates",
+        "interface-normal",
+        "same-Study deliver-properties"
+      ],
+      "local_actions": "editing, source inspection, input transfer, public scheduler control, evidence viewing only",
+      "control_adaptation": "Existing Windows v100 alias used by the public runner; only local_workdir rebased in a control copy. Native scheduler states written by actual runner query, not inferred from process exit.",
+      "no_new_model_or_potential": true,
+      "no_DFT_MD_time_integration_training_or_old_checks": true,
+      "normalization": "double-periodic-cell net response, area once; no single-interface traction claim",
+      "scientific_qualification": false,
+      "production_qualification": false,
+      "reviewer": "root"
+    },
+    "release_acceptance": "workspace/reports/core-integration-v047-v001/release-acceptance.json"
+  },
+  "native_strain_addendum": {
+    "accepted": true,
+    "date": "2026-10-23",
+    "scope": "actual_yy_strain_gdir1_GPU_SCF_Berry_saved_response_and_parent_Study",
+    "native_jobs": [
+      "221",
+      "222",
+      "225",
+      "226"
+    ],
+    "parse_consumer_Study_jobs": [
+      "227",
+      "228",
+      "229"
+    ],
+    "evidence": "workspace/reports/berry-strain-native-v001/acceptance.json",
+    "response_status": "unresolved",
+    "product_code_changed": false,
+    "scientific_qualification": false
+  },
+  "status_vocabulary": [
+    "implemented_verified",
+    "implemented_awaiting_verification",
+    "in_development",
+    "unimplemented"
+  ],
+  "goal": "reusable_mlcc_system_not_completion_of_temperature_grid",
+  "release_status": "0.57 accepted enabled frozen; 0.56 rollback; current J1-J6 domain-JSON stage complete; scientific gaps retained",
+  "scientific_qualification": false,
+  "numerical_execution_policy": "v100_Slurm_only_local_edit_control_view",
+  "capabilities": [
+    {
+      "capability": "bundle_non_desktop_MCP",
+      "status": "implemented_verified",
+      "stage": "P0/P1",
+      "scope": "0.26 enabled;0.25 rollback; installed acceptance and original MatterAI host passed",
+      "evidence": [
+        "workspace/reports/system-v080/matterai-headless-session.json",
+        "workspace/reports/system-v090/matterai-headless-session.json",
+        "workspace/reports/system-v090/mcp-probe.json",
+        "workspace/reports/system-v090/acceptance.json",
+        "workspace/reports/system-v0100/matterai-headless-session-v0100.json",
+        "workspace/reports/system-v0100/mcp-installed-v0100.json",
+        "workspace/reports/system-v0110/acceptance.json",
+        "workspace/reports/system-v0130/acceptance.json",
+        "workspace/reports/system-v0140/acceptance.json"
+      ]
+    },
+    {
+      "capability": "slurm_lifecycle_and_dependencies",
+      "status": "implemented_verified",
+      "stage": "P1/B02",
+      "scope": "LAN prepare/transfer/submit/query/cancel/collect；显式依赖；无自动重提",
+      "evidence": [
+        "workspace/reports/system-v041/unit-tests.txt",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "study_conditions_and_saved_DFT_delivery",
+      "status": "implemented_verified",
+      "stage": "B01/P12_slice",
+      "scope": "任务/Study归属、原生来源、静态温压与占据一致性；非完整性质交付",
+      "evidence": [
+        "workspace/reports/system-v080/installed-contracts/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "task_continuation",
+      "status": "implemented_verified",
+      "stage": "B02",
+      "scope": "只读建议；32/33/34真实谱系；提交未知必须核对",
+      "evidence": "workspace/reports/system-v041/installed/ni-chain.json"
+    },
+    {
+      "capability": "Ni_model_and_VASP_bootstrap",
+      "status": "implemented_verified",
+      "stage": "P2/P3",
+      "scope": "Ni工程模型与VASP单四卡/弛豫SCF回传",
+      "evidence": "workspace/reports/h0/acceptance.json"
+    },
+    {
+      "capability": "ABACUS_Ni_PW_fixed_cell",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "3.10.1工程32/33/34；100/120Ry对照35，不含生产资格",
+      "evidence": "workspace/reports/h1/ni-cutoff100-120-v002.json"
+    },
+    {
+      "capability": "general_production_model_and_ABACUS_method",
+      "status": "in_development",
+      "stage": "P2/P4",
+      "scope": "显式 PW SCF/固定胞 relax；原生UPF/中性非SOC方法输入门通过；CZO job40兼容性通过，生产精度、完整方法资格与生产引擎切换未完成",
+      "evidence": [
+        "workspace/reports/system-v080/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "general_ABACUS_method_input_qualification",
+      "status": "implemented_verified",
+      "stage": "P4/B04",
+      "scope": "3.10.1 PW/PBE/NC；原生UPF/价电子/非SOC资格；中性及受限nspin1 fixed偶数目标带电SCF；75/76/77/80真实带电输入/电子数通过；SOC未实现",
+      "evidence": [
+        "workspace/reports/system-v080/installed-contracts/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "Ca_UPF_non_SOC_native_compatibility",
+      "status": "implemented_verified",
+      "stage": "P4/B04",
+      "scope": "保留Ca FR-NC，显式j平均；真实单SCF job40通过；不代表生产精度或温度矩阵",
+      "evidence": [
+        "workspace/reports/system-v080/ca-native-regression.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "public_electronic_and_Gaussian_DOS",
+      "status": "implemented_verified",
+      "stage": "P4/B04_slice",
+      "scope": "真实jobs37/40；nspin1/2，完整零偏移Gamma网格、能级/占据/EF、fixed采样KS gap与显式DOS；非PDOS/路径能带/精度资格；0.10原生带电电子数和打印k网格区间解析通过86，DOS受影响回归复用原生证据",
+      "evidence": [
+        "workspace/reports/system-v080/installed-public/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "elastic_strain_planning_and_analysis_gate",
+      "status": "implemented_verified",
+      "stage": "P4/B04_slice",
+      "scope": "六工程Voigt分量、25-task计划、来源/几何/原生应力一致性、功共轭/符号/单位/斜率分析；无新弹性数值作业",
+      "evidence": [
+        "workspace/reports/system-v080/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "qualified_full_elastic_tensor",
+      "status": "implemented_awaiting_verification",
+      "stage": "P4/B04",
+      "scope": "25-task完整张量软件门与分析合同已实现；真实25个原生任务证据、剪切标定和科学资格仍缺，现有Ni rank-one数据阻断合格Cij，生产资格保持false",
+      "evidence": [
+        "workspace/reports/system-v080/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "defect_thermodynamics_software",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "化学势/形成结合能数学层及原生中性后处理；真实host50/defect121和123/127已绑定；缺μ保持形成能null，完整形成能/材料资格未完成",
+      "evidence": [
+        "workspace/reports/system-v080/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json",
+        "workspace/reports/neutral-energy-v013-v001/acceptance.json"
+      ]
+    },
+    {
+      "capability": "charged_defect_corrections_NEB_and_interfaces",
+      "status": "unimplemented",
+      "stage": "P4/P5/P7",
+      "scope": "电子0.19/静电势0.20/化学参考0.21/显式区域势差诊断与Study0.22已接通；原生缺陷网格、物理选区、元素/竞争相/μ、介电模型电荷及FNV/eFNV、NEB/界面带阶仍未完成",
+      "evidence": null
+    },
+    {
+      "capability": "P5_berry_version_audit",
+      "status": "implemented_verified",
+      "stage": "P5",
+      "scope": "Fixed3.10.1 tag capability audit; recipe identity distinct. PrivateGPU160 native167/180-185 completed,168 numeric failure retained. Raw response188 and branch-review192; full Born/dielectric candidate0.17, native complete inputs absent.",
+      "evidence": [
+        "docs/abacus-3101-p5-capability-audit.md",
+        "workspace/reports/system-v090/acceptance.json",
+        "workspace/reports/berry-v001/focused-65/entrypoints/acceptance.json",
+        "docs/berry-gpu-issue-53.md",
+        "docs/p5-native-response-capability-20261022.md"
+      ],
+      "implementation_version": "0.10.0",
+      "installed": true,
+      "verification_level": "installed_software_with_prior_source_evidence_science_separate",
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P7_phonopy_software_bridge",
+      "status": "implemented_verified",
+      "stage": "P7",
+      "scope": "显式正负位移、独立子模型/Study、固定胞静态SCF任务和力结果门的软件桥已远端验证；完整真实力集与声子科学资格仍缺",
+      "evidence": [
+        "docs/system-contracts-v090.md",
+        "workspace/reports/system-v090/remote-43/phonons-summary.txt",
+        "workspace/reports/system-v090/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P9_lammps_engineering_bridge",
+      "status": "implemented_verified",
+      "stage": "P9",
+      "scope": "LAMMPS势协议、导出/解析和job41 run0工程评估桥已验证；不代表势训练、真实MD采样或科学/生产资格",
+      "evidence": [
+        "docs/lammps-integration-request-20261022.md",
+        "workspace/tasks/p9-ni-lammps-run0-v001",
+        "workspace/reports/system-v090/remote-43/lammps-entrypoints-summary.txt",
+        "workspace/reports/system-v090/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P10_lammps_protocol_software",
+      "status": "implemented_verified",
+      "stage": "P10",
+      "scope": "0.9显式NVE/NVT输入已验收；job45 Ni NVE100原生完成，job47通过23检查；仅工程链，材料势/生产采样未合格",
+      "evidence": [
+        "docs/lammps-integration-request-20261022.md",
+        "workspace/reports/system-v090/remote-43/lammps-entrypoints-summary.txt",
+        "workspace/reports/system-v090/acceptance.json",
+        "workspace/reports/lammps-md-system-v001/reports-v002/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "four_property_executors",
+      "status": "in_development",
+      "stage": "P5-P8",
+      "scope": "P7软件桥缺完整真实力集；P5候选Berry输入/原生解析已在0.10安装副本通过，GPU故障已定位未修复；极化/响应、介电/P6/P8专用链未完成",
+      "evidence": [
+        "docs/system-contracts-v090.md",
+        "docs/abacus-3101-p5-capability-audit.md",
+        "workspace/reports/system-v090/remote-43/phonons-summary.txt",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "replication_potential_training_qualification",
+      "status": "in_development",
+      "stage": "P9",
+      "scope": "job63/66/67/73提供静态张量、同几何对照与科学用途门；真实MACE ASE/CUDA84及三构型筛查87已完成，87应力误差超限且ABACUS参考精度未资格；MACE为公开候选/对照，ABACUS→DeePMD-kit→LAMMPS为专用训练主线；DeePMD 3.2.0/PT/CUDA、C++/LAMMPS插件及MLCC TaskRecord/SiteRunner工程接口、训练与跨接口验收已通过；独立材料验证和生产资格未完成",
+      "evidence": [
+        "docs/lammps-integration-request-20261022.md",
+        "workspace/reports/lammps-system-v001/acceptance.json",
+        "workspace/reports/system-v090/remote-43/lammps-entrypoints-summary.txt",
+        "workspace/reports/system-v090/acceptance.json",
+        "workspace/reports/potential-qualification-v001/execution-ledger.md",
+        "workspace/reports/potential-qualification-v002/execution-ledger.md",
+        "workspace/reports/potential-workflow-v001/execution-ledger.md",
+        "docs/material-potential-routes-20261022.md",
+        "workspace/reports/mace-czo-static-v001/acceptance.json",
+        "workspace/reports/mace-czo-static-v001/screening.json",
+        "docs/abacus-deepmd-lammps-execution-20261022.md",
+        "standalone/deepmd_bridge/README.md",
+        "workspace/reports/deepmd-bridge-v001/acceptance.json",
+        "workspace/reports/ceramic-data-v001/training-chain-v001/acceptance.json",
+        "workspace/reports/ceramic-public-v001/acceptance.json",
+        "workspace/reports/system-v0150/installed-175/acceptance.json"
+      ]
+    },
+    {
+      "capability": "bulk_interface_polymer_MD",
+      "status": "in_development",
+      "stage": "P10/P11",
+      "scope": "Ni NVE100 job45与job47只证明工程运行/解析；通用MD统计和聚合物列函数级移植清单；体相/界面势、生产协议及科学资格仍缺",
+      "evidence": [
+        "docs/lammps-integration-request-20261022.md",
+        "workspace/reports/system-v090/remote-43/lammps-entrypoints-summary.txt",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "property_design_delivery",
+      "status": "implemented_verified",
+      "stage": "P12",
+      "scope": "源绑定标量观测量交付、条件/方法/不确定度与显式设计目标比较的软件切片；无产品指标时design_assessment=not_assessed，完整性质/MD科学资格仍待完成",
+      "evidence": [
+        "workspace/reports/system-v080/acceptance.json",
+        "workspace/reports/system-v090/acceptance.json"
+      ]
+    },
+    {
+      "capability": "isotropic_strain_stress_comparison",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "固定分数坐标与同方法三点比较链路经jobs38/37/39验证；粗参数科学应力标定未通过，不代表Cij或生产精度",
+      "evidence": "workspace/reports/h1/strain-quick-v004/acceptance.json",
+      "scientific_stress_sign_qualification": false
+    },
+    {
+      "capability": "local_crystal_import_and_source_lineage",
+      "status": "implemented_verified",
+      "stage": "P2/B04_prerequisite",
+      "scope": "本地 CIF/POSCAR/extxyz、显式块/帧、原始文件与 source/working atom_id、等价设置变换；不含掺杂/扩胞/弛豫/高温资格",
+      "evidence": "workspace/reports/system-v061/model-import/acceptance.json"
+    },
+    {
+      "capability": "exact_model_derivatives_and_defect_lineage",
+      "status": "implemented_verified",
+      "stage": "P2/P9",
+      "scope": "精确整数扩胞和显式vacancy/substitution/interstitial模型；父模型、atom_id谱系、composition_delta和生产资格状态可追溯；非零电荷结构保存不等于可执行ABACUS任务",
+      "evidence": "workspace/reports/system-v080/acceptance.json"
+    },
+    {
+      "capability": "neutral_defect_task_pair_candidate",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "0.10候选create-neutral-defect-pair CLI通过同胞、计量、化学势方法/能量定义检查；job64只生成未提交输入，非真实形成能验收",
+      "evidence": [
+        "workspace/reports/neutral-defect-pair-v001/job-64/tests.txt",
+        "docs/neutral-defect-chain-implementation.md"
+      ],
+      "scientific_qualification": false,
+      "implementation_version": "0.10.0",
+      "installed": true,
+      "verification_level": "installed_software_with_prior_source_evidence_science_separate"
+    },
+    {
+      "capability": "charged_scf_candidate",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "固定胞PW非SOC nspin1/fixed正偶数目标电子；75/76/77/80真实GPU，86安装版原生电子数及局部E/F加密通过；raw结果保留未资格，形成能/修正/材料生产域未完成",
+      "evidence": [
+        "docs/charged-scf-next-slice.md",
+        "workspace/reports/charged-scf-v002/execution-ledger.md",
+        "workspace/reports/system-v0100/installed-charged-86/acceptance.json",
+        "workspace/configs/charged-scf-native-protocol-v002.json"
+      ],
+      "implementation_version": "0.10.0",
+      "installed": true,
+      "verification_level": "real_native_fixed_geometry_local_refinement_and_installed_acceptance",
+      "scientific_qualification": false,
+      "native_charged_positive": true
+    },
+    {
+      "capability": "P9_mace_gpu_external_engine",
+      "status": "implemented_verified",
+      "stage": "P9",
+      "scope": "独立ML-MACE/Kokkos单V100 float64引擎，安装97完成；原生98成功但批任务解析失败终态保留，后处理101复用98/ASE84证据通过同模型E/F/globalvirial门；非全材料或生产MD资格",
+      "bundle_integration": "installed0.11_public_task107_and_parse_consumer108_verified",
+      "production_qualification": false,
+      "evidence": [
+        "docs/lammps-mace-build-20261022.md",
+        "workspace/configs/lammps-mace-environment-v001.json",
+        "workspace/reports/lammps-mace-build-v001/acceptance.json",
+        "workspace/reports/lammps-mace-build-v001/interface-v002/interface-acceptance.json"
+      ]
+    },
+    {
+      "capability": "MACE_single_GPU_static_task_creator",
+      "status": "implemented_verified",
+      "stage": "P9",
+      "scope": "公共create/prepare/transfer/submit/status/collect/parse与下游读取经106/107/108验收；1GPU run0，未资格状态保留",
+      "implementation_version": "0.11.0",
+      "installed": true,
+      "full_native_execution_verified": true,
+      "production_qualification": false,
+      "evidence": [
+        "docs/system-contracts-v0110.md",
+        "workspace/reports/mace-creator-v011-v001/check-104/acceptance.json",
+        "workspace/reports/mace-creator-v011-v001/scheduler-104.txt",
+        "workspace/reports/mace-public-v011-v001/installed-108/acceptance.json"
+      ]
+    },
+    {
+      "capability": "MD00_complete_trajectory_thermo_public_collection",
+      "status": "implemented_verified",
+      "stage": "P10",
+      "scope": "job45完整11帧/11thermo及来源时间单位映射；105模块验收复用，108新增CLI两项/实际入口；缺失image flags/速度/窗口显式，未输出MSD或平衡资格",
+      "implementation_version": "0.11.0",
+      "installed": true,
+      "scientific_qualification": false,
+      "production_qualification": false,
+      "evidence": [
+        "workspace/reports/md-series-v011-v001/acceptance.json",
+        "workspace/reports/mace-public-v011-v001/installed-108/acceptance.json"
+      ]
+    },
+    {
+      "capability": "MD01_conditions_windows_public_cli",
+      "status": "implemented_verified",
+      "stage": "P10",
+      "scope": "显式条件/窗口与缺失态；module109及CLI111复用，0.12/0.13已安装接入；无新的MD/DFT",
+      "implementation_version": "0.12.0",
+      "installed": true,
+      "scientific_qualification": false,
+      "production_qualification": false,
+      "evidence": [
+        "workspace/reports/md-conditions-v011-v001/acceptance.json",
+        "workspace/reports/md-conditions-cli-v012-v001/acceptance.json",
+        "workspace/reports/md-conditions-cli-v012-v001/scheduler-111.txt",
+        "workspace/reports/system-v0120/installed-113/acceptance.json"
+      ]
+    },
+    {
+      "capability": "MD02_explicit_source_selection",
+      "status": "implemented_verified",
+      "stage": "P10",
+      "implementation_version": "0.12.0",
+      "installed": true,
+      "scope": "source/atom mapping and unresolved replica; module110 reused, public CLI and consumer113",
+      "production_qualification": false,
+      "evidence": [
+        "workspace/reports/md-sources-v012-v001/acceptance.json",
+        "workspace/reports/system-v0120/installed-113/acceptance.json"
+      ]
+    },
+    {
+      "capability": "MD06_descriptive_thermo",
+      "status": "implemented_verified",
+      "stage": "P10",
+      "implementation_version": "0.12.0",
+      "installed": true,
+      "scope": "explicit whole-system recorded temperature mean/min/max and energy endpoint difference only; no stationarity/uncertainty qualification",
+      "production_qualification": false,
+      "evidence": [
+        "workspace/reports/md-thermo-v012-v001/acceptance.json",
+        "workspace/reports/system-v0120/installed-113/acceptance.json"
+      ]
+    },
+    {
+      "capability": "MD07_rdf_engineering_module",
+      "status": "implemented_verified",
+      "stage": "P10",
+      "implementation_version": "0.13.0",
+      "installed": false,
+      "scope": "固定胞完全周期RDF模块119，统一deliver-md可选产物127；显式窗口/截断/有限粒子数归一化；第一峰及科学资格未完成",
+      "production_qualification": false,
+      "evidence": [
+        "workspace/reports/md-rdf-v013-v001/acceptance.json",
+        "workspace/reports/md-rdf-v013-v001/scheduler-119.txt",
+        "workspace/reports/md-rdf-v013-v001/integration-request.md",
+        "workspace/reports/system-v0130/installed-127/acceptance.json"
+      ]
+    },
+    {
+      "capability": "MD_single_study_vertical_property_delivery",
+      "status": "implemented_verified",
+      "stage": "P12",
+      "implementation_version": "0.12.0",
+      "installed": true,
+      "scope": "native task45 workflow collection conditions sources thermo observables result package; wrong Study/potential rejected missing window unresolved",
+      "production_qualification": false,
+      "evidence": [
+        "workspace/reports/system-v0120/acceptance.json",
+        "workspace/reports/system-v0120/installed-113/ni-md-delivery/delivery.json"
+      ]
+    },
+    {
+      "capability": "explicit_bicrystal_Study_task_provenance",
+      "status": "implemented_verified",
+      "stage": "P2/P4/P9",
+      "scope": "neutral pristine engineering bicrystal geometry, Study, input creators and static source/result field wiring; no native grain run",
+      "evidence": [
+        "workspace/reports/grain-boundary-v001/acceptance.json",
+        "workspace/reports/grain-task-integration-v001/integration-190/acceptance.json",
+        "workspace/reports/system-v0160/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P5_branch_Born_Gamma_dielectric_consumers",
+      "status": "implemented_verified",
+      "stage": "P5/P7",
+      "scope": "Real native CZO same-method 1e-11 local Born/Gamma/electronic/ionic/static response and Study delivery accepted; explicit reviewed branch integers; raw/symmetric/translation-processed matrices and scope retained; broader material precision not validated",
+      "evidence": [
+        "workspace/reports/p5-v017-integration-v001/acceptance.json",
+        "workspace/reports/berry-branch-review-v001/job-192/acceptance.json",
+        "workspace/reports/dielectric-response-v001/job-194/acceptance.json",
+        "workspace/reports/phonon-gamma-v001/job195-state.txt",
+        "workspace/reports/czo-born-gamma-literature-v001/gamma-consumer/scf11-run-424/acceptance.json",
+        "docs/system-contracts-v0340.md"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P5_Study_delivery_and_native_P7_source",
+      "status": "implemented_verified",
+      "stage": "P5/P7/P12",
+      "scope": "saved real CZO unqualified missing products and actual job provenance delivered; full math tensor transfer; native P7 method source missing fields; no native complete-force Gamma or electronic producer",
+      "evidence": [
+        "workspace/reports/p5-study-delivery-v001/acceptance.json",
+        "workspace/reports/phonon-gamma-native-source-v001/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P4_defect_electronic_reference_Study_delivery",
+      "status": "implemented_verified",
+      "stage": "P4/P12",
+      "scope": "native50/121 saved electronic extraction200; five neutral/charged source pairs201; installed Study/CLI202 preserves levels, method differences and missing alignment/correction/formation; science unqualified",
+      "evidence": [
+        "workspace/reports/defect-reference-integration-v001/acceptance.json",
+        "workspace/reports/defect-electronic-reference-v001/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P4_electrostatic_potential_native_source",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "ABACUS3.10.1 PW NC fixed-cell SCF output_control out_pot2; native neutral nspin1 GPU205; installed206 public cube/unit/atom/source/electronic transfer. One host field does not establish alignment or corrections",
+      "evidence": [
+        "workspace/reports/electrostatic-source-integration-v001/acceptance.json",
+        "workspace/reports/abacus-electrostatic-potential-v001/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P4_chemical_reference_native_source_and_delivery",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "Saved neutral fixed-occupation non-SOC ABACUS3.10.1 PW source binding, explicit phase/formula normalization, common physics/PP, actual method labels and Study delivery; native host50 accepted207/208. Complete region/point only software evidence; native elemental/competing references and point missing",
+      "evidence": [
+        "workspace/reports/chemical-reference-integration-v001/acceptance.json",
+        "workspace/reports/chemical-reference-native-v001/job-acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P4_explicit_region_potential_difference",
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "Same-cell/grid explicit index-box union; defect-minus-host electron potential energy statistics; original sources and candidate gauge shift preserved. Full arithmetic software-only; real205/121 pair lacks defect grid and region. No correction energy or native alignment qualification",
+      "evidence": [
+        "workspace/reports/potential-alignment-integration-v001/acceptance.json",
+        "workspace/reports/potential-alignment-v001/"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P5_ordered_SCF_energy_path",
+      "status": "implemented_verified",
+      "stage": "P5",
+      "scope": "Fixed-cell supplied structures; same-parent distinct child Study/model; native177/178 energy and saved Berry attachments; relative whole-cell eV, endpoint and sampled maximum; no branch/NEB/free-energy/ferroelectric qualification",
+      "evidence": [
+        "workspace/reports/polarization-energy-integration-v001/acceptance.json",
+        "workspace/reports/polarization-energy-v001/"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P5_clamped_ion_polarization_strain",
+      "status": "implemented_verified",
+      "stage": "P5",
+      "scope": "Explicit clamped-ion strain producer and saved response/Study delivery. Actual yy±0.01 gdir1 native sources221/222/225/226, parse227, consumer228 and Study229 verified on installed0.24. Full response algebra retains prior math evidence; native branches/gdir2_3/full tensor and scientific qualification remain missing.",
+      "evidence": [
+        "workspace/reports/polarization-strain-integration-v001/acceptance.json",
+        "workspace/reports/berry-strain-response-v001",
+        "workspace/reports/polarization-strain-v001",
+        "workspace/reports/berry-strain-native-v001/acceptance.json",
+        "workspace/reports/polarization-strain-native-v001/audit.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "fixed_cell_ionic_relaxation_saved_structure_bridge",
+      "status": "implemented_verified",
+      "stage": "P5",
+      "scope": "Explicit source-ID ionic masks, native controls/stop/evaluated-final geometry and free-component criterion; saved Ni33 promotion to Model/Study and fresh SCF inputs/dependency consumption. Partial Cartesian axes limited to axis-aligned positive orthorhombic cells; native constrained and insulating Berry positives not verified.",
+      "evidence": [
+        "workspace/reports/fixed-cell-relax-integration-v001/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "P5_saved_relaxed_strain_producer_consumer",
+      "status": "implemented_verified",
+      "stage": "P5",
+      "scope": "Saved relaxed all-free and constrained fixed-cell strain pair binding, source bridge reuse, relaxation controls, parameter transfer and Study delivery. Software evidence only; native relaxed plus/minus pair and scientific qualification remain incomplete.",
+      "evidence": [
+        "workspace/reports/berry-strain-relaxed-producer-v001/acceptance.json",
+        "workspace/reports/polarization-strain-relaxed-v001/checked-239/acceptance.json",
+        "workspace/reports/relaxed-strain-integration-v001/acceptance.json"
+      ],
+      "scientific_qualification": false
+    },
+    {
+      "capability": "general_ABACUS_LCAO_public_creator",
+      "status": "implemented_verified",
+      "stage": "P5/P12",
+      "scope": "0.31 enabled: public LCAO create/prepare and provenance; scientific/production qualification remains separate.",
+      "evidence": [
+        "workspace/reports/lcao-public-creator-v031-v001/release-acceptance.json"
+      ],
+      "candidate_version": "0.31.0",
+      "enabled": true,
+      "scientific_qualification": false,
+      "production_qualification": false
+    },
+    {
+      "evidence": [
+        "workspace/reports/charge-correction-v001/acceptance.json",
+        "workspace/reports/charge-correction-v001/installed-v036/acceptance.json"
+      ],
+      "status": "implemented_verified",
+      "stage": "P4",
+      "scope": "Fixed mature backend, explicit sources/charge/dielectric, alignment counted once, stable envelope on explicit EF interval, same Study including missing/native source path",
+      "capability": "P4_scalar_FNV_charged_formation_charge_transitions_Study"
+    },
+    {
+      "status": "implemented_verified",
+      "scope": "total magnetic moment and cell mean, initial seed/local absence distinguished, native and scheduler failure states, same Study",
+      "stage": "P6",
+      "evidence": [
+        "workspace/reports/magnetic-consumer-v001/acceptance.json",
+        "workspace/reports/magnetic-consumer-v001/installed-v037/acceptance.json"
+      ],
+      "capability": "P6_saved_native_collinear_magnetic_Study"
+    },
+    {
+      "stage": "P8",
+      "scope": "BoltzTraP2 26.3.1 thin adapter; explicit reference/T/mu, four tensors and same Study, missing magnetic symmetry remains null",
+      "status": "implemented_verified",
+      "capability": "P8_saved_ABACUS_band_transport_Study",
+      "evidence": [
+        "workspace/reports/transport-v001/run-437/acceptance.json",
+        "workspace/reports/transport-v001/installed-v038/acceptance.json"
+      ]
+    },
+    {
+      "status": "implemented_verified",
+      "scope": "explicit periodic two-side geometry and atom lineage, four task-local source files, unsubmitted LAMMPS task and same Study input delivery",
+      "evidence": [
+        "workspace/reports/layered-interface-v001/acceptance.json",
+        "workspace/reports/layered-interface-v001/installed-v039/acceptance.json"
+      ],
+      "capability": "P11_two_source_interface_model_LAMMPS_input_Study",
+      "stage": "P11"
+    },
+    {
+      "evidence": [
+        "workspace/reports/interface-normal-v001/acceptance.json",
+        "workspace/reports/interface-normal-v001/installed-v040/acceptance.json"
+      ],
+      "capability": "P11_fixed_cell_normal_response_Study",
+      "stage": "P11",
+      "scope": "explicit groups/path/area, native force-displacement and interval slope, coordinate-return closure, original Study and unresolved unrun instance",
+      "status": "implemented_verified"
+    },
+    {
+      "capability": "P11_interface_thermal_input_kernel_Study",
+      "status": "implemented_software_verified_native_thermal_data_unrun",
+      "stage": "P11",
+      "evidence": [
+        "workspace/reports/interface-thermal-v001/acceptance.json",
+        "workspace/reports/interface-thermal-v001/installed-v041/acceptance.json"
+      ],
+      "scope": "explicit reservoirs/profile input, energy and temperature table reader, mathematical power/temperature/explicit split response, unresolved same-Study consumption"
+    },
+    {
+      "evidence": [
+        "workspace/reports/local-stress-v001/acceptance.json",
+        "workspace/reports/local-stress-v001/installed-v042/acceptance.json"
+      ],
+      "scope": "native per-atom virial, explicit group volume, source-frame stress, partial missing-volume and unresolved unrun consumption",
+      "capability": "P11_explicit_group_virial_stress_Study",
+      "stage": "P11",
+      "status": "implemented_native_engineering_verified"
+    },
+    {
+      "capability": "MD06_explicit_thermo_diagnostics_Study",
+      "scope": "explicit blocks and thresholds, physical-time OLS, z-score and missing-window propagation",
+      "status": "implemented_saved_native_engineering_verified",
+      "stage": "P10",
+      "evidence": [
+        "workspace/reports/md-thermo-diagnostics-v001/acceptance.json",
+        "workspace/reports/md-thermo-diagnostics-v001/installed-v043/acceptance.json"
+      ]
+    },
+    {
+      "status": "implemented_input_math_and_saved_native_missing_source_verified",
+      "evidence": [
+        "workspace/reports/md-msd-v001/acceptance.json",
+        "workspace/reports/md-msd-v001/installed-v044/acceptance.json"
+      ],
+      "scope": "explicit native xu/yu/zu, fixed-cell all-origin atom tracer MSD, explicit fit diagnostics, missing-source null and same Study",
+      "capability": "MD04_native_unwrapped_input_atom_MSD_Fick_Study",
+      "stage": "P10"
+    },
+    {
+      "capability": "MD05_saved_scalar_replica_Study_delivery",
+      "status": "implemented_software_verified_single_source_unresolved",
+      "stage": "P10",
+      "implementation_version": "0.45.0",
+      "installed": true,
+      "scope": "saved scalar same-parent replica summary and same-Study delivery; actual source count remains one and statistics/material sampling qualification is unresolved",
+      "scientific_qualification": false,
+      "production_qualification": false,
+      "evidence": [
+        "docs/md-replica-contract-v001.md",
+        "workspace/reports/md-replica-delivery-v001/integration-v045/source-review.json",
+        "workspace/reports/md-replica-delivery-v001/installed-v045/acceptance.json",
+        "workspace/reports/md-replica-delivery-v001/integration-v045/release-acceptance.json"
+      ]
+    },
+    {
+      "scope": "explicit inputs and saved-source engineering delivery; no COMSOL native import or material qualification",
+      "capability": "M1_explicit_multicomponent_recipe_and_Study",
+      "status": "implemented_engineering_verified",
+      "stage": "M1/M2/M3/C1/C2/I1",
+      "evidence": [
+        "workspace/reports/multi-dopant-continuum-v001/integration-v050/release-acceptance.json"
+      ]
+    },
+    {
+      "scope": "explicit inputs and saved-source engineering delivery; no COMSOL native import or material qualification",
+      "capability": "M2_new_element_neutral_method_pair",
+      "status": "implemented_engineering_verified",
+      "stage": "M1/M2/M3/C1/C2/I1",
+      "evidence": [
+        "workspace/reports/multi-dopant-continuum-v001/integration-v050/release-acceptance.json"
+      ]
+    },
+    {
+      "scope": "explicit inputs and saved-source engineering delivery; no COMSOL native import or material qualification",
+      "capability": "M3_saved_composition_property_comparison",
+      "status": "implemented_engineering_verified",
+      "stage": "M1/M2/M3/C1/C2/I1",
+      "evidence": [
+        "workspace/reports/multi-dopant-continuum-v001/integration-v050/release-acceptance.json"
+      ]
+    },
+    {
+      "scope": "explicit inputs and saved-source engineering delivery; no COMSOL native import or material qualification",
+      "capability": "C1_SI_material_parameter_package",
+      "status": "implemented_engineering_verified",
+      "stage": "M1/M2/M3/C1/C2/I1",
+      "evidence": [
+        "workspace/reports/multi-dopant-continuum-v001/integration-v050/release-acceptance.json"
+      ]
+    },
+    {
+      "scope": "explicit inputs and saved-source engineering delivery; no COMSOL native import or material qualification",
+      "capability": "C2_COMSOL_material_file_export",
+      "status": "implemented_engineering_verified",
+      "stage": "M1/M2/M3/C1/C2/I1",
+      "evidence": [
+        "workspace/reports/multi-dopant-continuum-v001/integration-v050/release-acceptance.json"
+      ]
+    },
+    {
+      "stage": "M4",
+      "evidence": [
+        "workspace/reports/composition-configurations-v001/integration-v051/release-acceptance.json"
+      ],
+      "scope": "finite sampling, full occupancy fixed-parent-lattice EXTXYZ import, atom mapping/geometry/provenance/Study; no SQS optimization quality claim",
+      "status": "implemented_engineering_verified",
+      "capability": "M4_explicit_seed_configurations_and_external_SQS_import"
+    },
+    {
+      "capability": "P4_oxygen_vacancy_site_analysis_and_native_NEB",
+      "scope": "same atom/cell/potential input,4GPU native NEB,per-image originals,candidate barrier,site ambiguity and Study; no confirmed physical migration or scientific qualification",
+      "evidence": [
+        "workspace/reports/vacancy-migration-v001/integration-v052/release-acceptance.json"
+      ],
+      "stage": "P4",
+      "status": "implemented_engineering_verified"
+    }
+  ],
+  "H0_complete": true,
+  "H1_complete": false,
+  "production_engine_switch": false,
+  "design_assessment": "not_assessed",
+  "development_policy": {
+    "source": "2026-10-22 current user message",
+    "gpu_policy": "GPU_preferred_when_supported_Berry_failure_separate",
+    "cpu_berry_policy": "reuse_existing_no_new_CPU_Berry_no_future_actual_DFT_wallclock_limit",
+    "acceptance": "real_engineering_path_correct_inputs_native_execution_outputs_units_mapping_provenance_transfer_downstream_and_failure_handling; scientific_production_qualification_separate",
+    "avoid": [
+      "overdevelopment",
+      "repeated_unchanged_validation",
+      "new_generic_frameworks"
+    ],
+    "new_development_priority": [
+      "crystal_defects",
+      "ferroelectric_dielectric",
+      "material_potential_qualification"
+    ],
+    "reuse_first": [
+      "general_MD_postprocessing",
+      "statistics",
+      "polymer_workflows"
+    ],
+    "documentation": "docs/computational-development-focus-20261022.md",
+    "dft_wallclock_policy": "no_fixed_time_limit_require_convergence_cpu_gpu_UNLIMITED_test_only_passed",
+    "material_accuracy_blocks_system_or_release": false,
+    "current_MACE_accuracy_work": "deferred_keep_not_qualified_no_more_refinement_or_reselection_campaign",
+    "numerical_jobs_submitted_this_turn": [
+      "120",
+      "121",
+      "123",
+      "127"
+    ]
+  },
+  "p5_candidate_delivery": {
+    "schema": "mlcc.p5-public-delivery-acceptance.v1",
+    "version": "0.14.0-candidate",
+    "job_id": "138",
+    "public_cli_passed": true,
+    "native_task_and_result_unchanged": true,
+    "native_source_jobs": [
+      "50",
+      "58"
+    ],
+    "new_DFT_runs": 0,
+    "single_gdir_only": true,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "artifact": "/home/v100/projects/mlcc/reports/p5-delivery-v014-v001/polarization-delivery.json",
+    "scope": "read_only_native_single_direction_Berry_public_delivery",
+    "scheduler_state": "COMPLETED",
+    "exit_code": "0:0",
+    "focused_tests_passed": 4,
+    "failed_preceding_job": "137",
+    "installed": false
+  },
+  "ceramic_scenario_gap_register": "docs/ceramic-parameter-transfer-gaps-20261022.md",
+  "P5_public_delivery": {
+    "status": "implemented_verified",
+    "installed_version": "0.14.0",
+    "evidence": "workspace/reports/system-v0140/acceptance.json",
+    "scope": "read_only_native_Berry_public_delivery_and_explicit_fixed_cell_single_gdir_path_consumption",
+    "scientific_qualification": false,
+    "real_multistate_delta_P": null
+  },
+  "ordered_system_delivery": {
+    "parallel_first": [
+      "P5_actual_response_producer_engine_Slurm_native_parser_provenance_delivery",
+      "CER_DATA_multisystem_training_freeze_modelcard_same_model_LAMMPS_short_MD"
+    ],
+    "then": "bicrystal_geometry_grain_atom_lineage_Study_task_wiring",
+    "document": "docs/system-blockers-20261022.md",
+    "scientific_qualification_separate": true,
+    "reused_conversion_job": "141"
+  },
+  "candidate_0150": {
+    "berry_input_job": "164",
+    "scientific_qualification": false,
+    "enabled": false,
+    "ceramic_public_job": "166",
+    "berry_gpu_native_job": "167",
+    "berry_gpu_build_job": "160",
+    "ceramic_chain_job": "159",
+    "document": "docs/system-contracts-v0150.md"
+  },
+  "ceramic_public_delivery": {
+    "status": "installed_verified",
+    "version": "0.15.0",
+    "evidence": "workspace/reports/system-v0150/acceptance.json",
+    "training_lineage": true,
+    "missing_window_no_fallback": true,
+    "scientific_qualification": false
+  },
+  "Berry_GPU_engineering": {
+    "native_job": "167",
+    "state": "COMPLETED_0:0",
+    "parser_passed": true,
+    "numerical_equivalence": false,
+    "numerical_evidence": "168_FAILED_1:0",
+    "actual_response": "188_raw_delivered_missing_branch",
+    "scientific_qualification": false
+  },
+  "response_scf_jobs": [
+    "177",
+    "178"
+  ],
+  "grain_boundary_candidate": {
+    "module_job": "174_COMPLETED_0:0",
+    "failed_test_job": "172",
+    "status": "installed0.16_geometry_Study_task_static_sources_verified_native_calculation_unrun",
+    "evidence": "workspace/reports/grain-boundary-v001/acceptance.json",
+    "included_in_015": false,
+    "scientific_qualification": false,
+    "public_job": "186_COMPLETED_0:0",
+    "installed_job": "191_COMPLETED_0:0"
+  },
+  "response_nscf_jobs": [
+    "180",
+    "181",
+    "182",
+    "183",
+    "184",
+    "185"
+  ],
+  "p5_native_response_delivery": {
+    "native_jobs": [
+      "177",
+      "178",
+      "180",
+      "181",
+      "182",
+      "183",
+      "184",
+      "185"
+    ],
+    "native_state": "COMPLETED_0:0_UNLIMITED",
+    "parse_job": "187_COMPLETED_0:0",
+    "collect_job": "188_COMPLETED_0:0",
+    "status": "unresolved_missing_branch",
+    "raw_polarization_quantum_provenance_delivered": true,
+    "born_column": null,
+    "dielectric": null,
+    "scientific_qualification": false,
+    "numerical_qualification": false,
+    "production_qualification": false,
+    "branch_review": "workspace/reports/berry-response-native-v001/branch-review-20261022.md",
+    "result": "workspace/reports/berry-response-native-v001/berry-response-results.gpu-v002.json",
+    "wrapper_decision": "existing_berry_response_public_result_sufficient_no_duplicate_development"
+  },
+  "grain_boundary_delivery": {
+    "status": "installed_verified_static_dataflow",
+    "version": "0.16.0",
+    "native_engine_execution": false,
+    "scientific_qualification": false,
+    "evidence": "workspace/reports/system-v0160/acceptance.json"
+  },
+  "p5_v017_candidate": {
+    "version": "0.17.0",
+    "installed": true,
+    "contract": "docs/p5-v017-integration-contract.md",
+    "branch_review_job": "192_COMPLETED_0:0",
+    "branch_review_tests": 6,
+    "branch_review_decision": "deferred",
+    "branch_evidence": "workspace/reports/berry-branch-review-v001/job-192/acceptance.json",
+    "gamma_adapter": "math_verified195_197_native_source_unconnected",
+    "born_dielectric": "installed_consumers197_real_missing_inputs_retained",
+    "native_full_Born_available": false,
+    "native_Gamma_Hessian_available": false,
+    "native_epsilon_infinity_available": false,
+    "scientific_qualification": false,
+    "new_DFT_MD_training": false
+  },
+  "p5_v017_delivery": {
+    "schema": "mlcc.system-release-acceptance.v009",
+    "version": "0.17.0",
+    "enabled_version": "0.17.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-22T21:57:26.2492502+08:00",
+    "scope": "P5_explicit_branch_review_Born_aggregation_Gamma_math_and_ionic_electronic_static_dielectric_public_consumption",
+    "installed_acceptance_job": "197",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "installed_runtime_seconds": 10,
+    "branch_module_job": "192_COMPLETED_0:0",
+    "dielectric_jobs": [
+      "193_FAILED_1:0_test_expectation",
+      "194_COMPLETED_0:0"
+    ],
+    "gamma_math_job": "195_COMPLETED_0:0",
+    "retained_install_failure": "196_FAILED_1:0_venv_symlink_resolved_to_base_interpreter_no_numerics_executed",
+    "real_response_reused": "188",
+    "real_branch_review_reused": "192_deferred",
+    "real_CZO_Born_missing_columns": 60,
+    "real_CZO_Born": null,
+    "real_CZO_dielectric": null,
+    "Gamma_native_source_path": "not_connected_P7_Berry_compatible_method_source_fields_missing",
+    "Gamma_verified_scope": "software_math_only",
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/p5-v017-integration-v001/matterai-headless-session-v0170.json",
+    "MCP_version": "0.17.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.17.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.17.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.17.0/installed/0.17.0",
+    "remote_bridge_reused": "/home/v100/projects/mlcc/development/0.15.0/dependencies",
+    "release_installed_text_files": 119,
+    "previous_release_preserved": "0.16.0",
+    "new_DFT_MD_training": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "native_Gamma_method_source_adapter",
+      "physical_Berry_branches_and_full_Born",
+      "native_epsilon_infinity_producer",
+      "full_native_P7_force_set",
+      "charged_alignment_corrections_chemical_potentials",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.16 rollback;0.10 prior policy block unchanged;0.11-0.15 old software pending retirement;shared0.9 environment and0.15 dependencies/build-tools retained"
+  },
+  "p5_v018_delivery": {
+    "schema": "mlcc.system-release-acceptance.v010",
+    "version": "0.18.0",
+    "enabled_version": "0.18.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-22T22:43:15.98191+08:00",
+    "scope": "P5_Study_delivery_and_physical_method_native_P7_source_binding",
+    "installed_acceptance_job": "199",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "installed_runtime_seconds": 4,
+    "changed_path_tests_passed": 21,
+    "native_P7_source_job": "198",
+    "native_P7_source_tests_passed": 9,
+    "native_P7_source_state": "COMPLETED/0:0",
+    "old_Gamma_math_tests_deselected": 5,
+    "reused_real_response": "188",
+    "reused_product_acceptance": "197",
+    "preserved_DFT_source_jobs": [
+      "177",
+      "178",
+      "180",
+      "181",
+      "182",
+      "183",
+      "184",
+      "185"
+    ],
+    "real_CZO_Born_missing_columns": 60,
+    "real_CZO_Born": null,
+    "real_CZO_dielectric": null,
+    "real_P7_completed_tasks": 0,
+    "P7_missing_force_tasks": 15,
+    "Gamma_native_source_reader": "implemented_verified_missing_fields_preserved",
+    "Gamma_native_complete_force_to_dielectric": "not_accepted_full_native_force_source_absent",
+    "native_epsilon_infinity_producer": "unimplemented_no_confirmed_3.10.1_route",
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/p5-study-delivery-v001/matterai-headless-session-v0180.json",
+    "MCP_version": "0.18.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.18.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.18.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.18.0/installed/0.18.0",
+    "release_installed_text_files": 121,
+    "previous_release_preserved": "0.17.0",
+    "new_DFT_MD_training": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "physical_Berry_branches_and_full_Born",
+      "native_epsilon_infinity_producer",
+      "full_native_P7_force_set_and_Gamma_end_to_end",
+      "charged_VBM_potential_alignment_corrections_chemical_potentials",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.17 rollback;0.10 prior policy block unchanged;0.11-0.16 old software pending retirement;shared0.9 environment and0.15 dependencies/build-tools preserved"
+  },
+  "p4_v019_delivery": {
+    "schema": "mlcc.system-release-acceptance.v010",
+    "version": "0.19.0",
+    "enabled_version": "0.19.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-22T23:39:07.1947191+08:00",
+    "scope": "P4_saved_electronic_reference_source_binding_and_Study_delivery",
+    "installed_acceptance_job": "202",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "installed_runtime_seconds": 3,
+    "changed_path_tests_passed": 5,
+    "module_acceptance_job": "201",
+    "module_job_state": "COMPLETED/0:0",
+    "module_tests_passed": 14,
+    "saved_source_pair_checks": 5,
+    "first_electronic_extraction_job": "200",
+    "extraction_state": "COMPLETED/0:0",
+    "preserved_DFT_source_jobs": [
+      "50",
+      "121",
+      "75",
+      "76",
+      "77",
+      "80"
+    ],
+    "installed_Study_source_jobs": [
+      "50",
+      "121"
+    ],
+    "reparsed_charged_native_levels": false,
+    "new_DFT_MD_training": false,
+    "aligned_host_vbm_eV": null,
+    "potential_alignment_eV": null,
+    "FNV_eFNV_correction_eV": null,
+    "charged_formation_energy_eV": null,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/defect-reference-integration-v001/matterai-headless-session-v0190.json",
+    "MCP_version": "0.19.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.19.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.19.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.19.0/installed/0.19.0",
+    "release_installed_text_files": 124,
+    "previous_release_preserved": "0.18.0",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "electrostatic_potential_source_and_alignment",
+      "chemical_potentials_dielectric_and_charge_corrections",
+      "physical_Berry_branches_and_full_Born",
+      "native_epsilon_infinity_producer",
+      "full_native_P7_force_set_and_Gamma_end_to_end",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.18 rollback;0.10 prior policy block unchanged;0.11-0.17 old software pending retirement;shared0.9 environment and0.15 dependencies/build-tools preserved"
+  },
+  "p4_v020_delivery": {
+    "schema": "mlcc.system-release-acceptance.v011",
+    "version": "0.20.0",
+    "enabled_version": "0.20.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T00:40:16.2979541+08:00",
+    "scope": "P4_ABACUS_electrostatic_output_native_GPU_source_and_public_CLI",
+    "installed_acceptance_job": "206",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "installed_runtime_seconds": 4,
+    "reader_module_job": "203",
+    "reader_tests": 24,
+    "writer_input_job": "204",
+    "writer_tests": 11,
+    "native_DFT_job": "205",
+    "native_DFT_state": "COMPLETED/0:0",
+    "native_DFT_runtime_seconds": 33,
+    "native_DFT_time_limit": "UNLIMITED",
+    "native_DFT_task": "p4-czo-host-elecstat-v001",
+    "native_output_observed": true,
+    "native_GPU_accepted": true,
+    "electronic_converged": true,
+    "same_task_electronic_reference": true,
+    "grid_shape": [
+      72,
+      72,
+      100
+    ],
+    "mapped_atom_count": 20,
+    "value_unit": "Ry",
+    "geometry_unit": "Bohr",
+    "sign_convention": "electron_potential_energy",
+    "new_DFT_tasks": 1,
+    "new_MD_training": false,
+    "material_accuracy_optimization": false,
+    "frozen_tests_repeated": false,
+    "aligned_host_vbm_eV": null,
+    "potential_alignment_eV": null,
+    "FNV_eFNV_correction_eV": null,
+    "charged_formation_energy_eV": null,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/electrostatic-source-integration-v001/matterai-headless-session-v0200.json",
+    "MCP_version": "0.20.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.20.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.20.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.20.0/installed/0.20.0",
+    "release_installed_text_files": 127,
+    "previous_release_preserved": "0.19.0",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "chemical_potential_native_reference_source_chain",
+      "host_defect_potential_alignment_dielectric_charge_corrections",
+      "physical_Berry_branches_and_full_Born",
+      "native_epsilon_infinity_producer",
+      "full_native_P7_force_set_and_Gamma_end_to_end",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.19 rollback;0.10 prior policy block unchanged;0.11-0.18 old software pending retirement;shared0.9 environment and0.15 dependencies/build-tools preserved"
+  },
+  "p4_v021_delivery": {
+    "schema": "mlcc.system-release-acceptance.v012",
+    "version": "0.21.0",
+    "enabled_version": "0.21.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T01:41:30.6116895+08:00",
+    "scope": "P4_saved_native_chemical_reference_normalization_common_method_group_Study_delivery_and_neutral_point_routing",
+    "module_acceptance_job": "207",
+    "module_job_state": "COMPLETED/0:0",
+    "module_tests_passed": 18,
+    "installed_acceptance_job": "208",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "installed_runtime_seconds": 4,
+    "changed_path_tests_passed": 11,
+    "native_DFT_source_job": "50",
+    "saved_electronic_source_job": "200",
+    "source_normalization_job": "207",
+    "source_normalization_repeated": false,
+    "native_electronic_reparsed": false,
+    "formula_stoichiometry": {
+      "Ca": 1,
+      "Zr": 1,
+      "O": 3
+    },
+    "formula_units": 4,
+    "cell_composition": {
+      "Ca": 4,
+      "Zr": 4,
+      "O": 12
+    },
+    "total_energy_eV_cell": -14816.896622614182,
+    "energy_eV_per_formula_unit": -3704.2241556535455,
+    "missing": [
+      "elemental_reference:Ca",
+      "elemental_reference:Zr",
+      "elemental_reference:O",
+      "competing_phase_selection",
+      "selected_delta_mu"
+    ],
+    "native_chemical_region": null,
+    "native_chemical_point": null,
+    "raw_formation_energy_eV": null,
+    "charged_formation_energy_eV": null,
+    "complete_region_and_point_evidence": "software_contract_only",
+    "mathematical_point_forwarded_to_native_neutral": false,
+    "new_DFT_MD_training": false,
+    "frozen_tests_repeated": false,
+    "material_accuracy_optimization": false,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/chemical-reference-integration-v001/matterai-headless-session-v0210.json",
+    "MCP_version": "0.21.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.21.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.21.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.21.0/installed/0.21.0",
+    "release_installed_text_files": 131,
+    "previous_release_preserved": "0.20.0",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "selected_native_elemental_and_competing_phase_sources_and_mu_point",
+      "host_defect_potential_alignment_dielectric_charge_corrections",
+      "physical_Berry_branches_and_full_Born",
+      "native_epsilon_infinity_producer",
+      "full_native_P7_force_set_and_Gamma_end_to_end",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.20 rollback;0.10 prior policy block unchanged;0.11-0.19 old software pending retirement;shared0.9 environment and0.15 dependencies/build-tools preserved"
+  },
+  "p4_v022_delivery": {
+    "schema": "mlcc.system-release-acceptance.v013",
+    "version": "0.22.0",
+    "enabled_version": "0.22.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T02:45:08.760318+08:00",
+    "scope": "P4_explicit_region_electron_potential_difference_saved_source_binding_and_Study_delivery",
+    "module_acceptance_job": "209",
+    "module_job_state": "COMPLETED/0:0",
+    "module_tests_passed": 32,
+    "installed_acceptance_job": "210",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "changed_path_tests_passed": 6,
+    "native_DFT_source_jobs": [
+      "205",
+      "121"
+    ],
+    "saved_source_jobs": [
+      "206",
+      "200"
+    ],
+    "native_source_scope": "host205_potential_and_same_task_electronic;defect121_electronic;defect_grid_and_region_absent",
+    "complete_difference_scope": "software_contract_only",
+    "difference_definition": "mean_R(Vdefect_electron_energy - Vhost_electron_energy), eV",
+    "missing": [
+      "defect_potential",
+      "selection"
+    ],
+    "native_difference": null,
+    "candidate_host_vbm_on_defect_gauge_eV": null,
+    "potential_alignment_eV": null,
+    "aligned_host_vbm_eV": null,
+    "correction_terms": null,
+    "FNV_eFNV_correction_eV": null,
+    "charged_formation_energy_eV": null,
+    "source_binding_repeated_at_install": false,
+    "native_parsing_repeated": false,
+    "new_DFT_MD_training": false,
+    "frozen_tests_repeated": false,
+    "material_accuracy_optimization": false,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/potential-alignment-integration-v001/matterai-headless-session-v0220.json",
+    "MCP_version": "0.22.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.22.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.22.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.22.0/installed/0.22.0",
+    "release_installed_text_files": 134,
+    "previous_release_preserved": "0.21.0",
+    "native_alignment_accepted": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "native_defect_grid_and_explicit_physical_alignment_region",
+      "dielectric_model_charge_and_FNV_eFNV_contract_and_sources",
+      "selected_native_elemental_competing_sources_and_mu_point",
+      "physical_Berry_branches_and_full_Born",
+      "native_epsilon_infinity_producer",
+      "full_native_P7_force_set_and_Gamma_end_to_end",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.21 rollback;0.10 prior policy block unchanged;0.11-0.20 old software pending retirement;shared0.9 environment and0.15 dependencies/build-tools preserved"
+  },
+  "p5_v023_delivery": {
+    "schema": "mlcc.system-release-acceptance.v014",
+    "version": "0.23.0",
+    "enabled_version": "0.23.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T03:42:58.4480169+08:00",
+    "scope": "P5_fixed_cell_ordered_saved_SCF_energy_path_and_parent_Study_delivery",
+    "module_acceptance_job": "211",
+    "module_job_state": "COMPLETED/0:0",
+    "module_tests_passed": 29,
+    "installed_acceptance_job": "212",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "changed_path_tests_passed": 10,
+    "native_DFT_source_jobs": [
+      "177",
+      "178"
+    ],
+    "saved_Berry_source_jobs": [
+      "180",
+      "183"
+    ],
+    "saved_parse_job": "187",
+    "source_evidence_kind": "native_saved_scf_engineering",
+    "endpoint_difference_eV_cell": 0.003013417335751001,
+    "sampled_maximum": {
+      "energy_eV_cell": -14816.89468779338,
+      "relative_energy_eV_cell": 0.003013417335751001,
+      "point_ids": [
+        "atom8-plus-x-gpu-v002"
+      ],
+      "coordinates": [
+        1.0
+      ],
+      "sources": [
+        {
+          "point_id": "atom8-plus-x-gpu-v002",
+          "task_id": "p5-czo-berry-response-atom8-plus-x-scf-gpu-v002",
+          "native_job": {
+            "scheduler_job_id": "178",
+            "scheduler_state": "COMPLETED",
+            "exit_code": "0:0",
+            "runner": "slurm"
+          }
+        }
+      ]
+    },
+    "missing": [
+      "reviewed_polarization_coordinate",
+      "insulating_path_qualification",
+      "ferroelectric_path_qualification"
+    ],
+    "neb_barrier_eV": null,
+    "finite_temperature_free_energy_eV": null,
+    "spontaneous_polarization": null,
+    "double_well_qualified": false,
+    "distinct_child_Study_model_shared_parent_preserved": true,
+    "source_binding_repeated_at_install": false,
+    "path_arithmetic_repeated_at_install": false,
+    "native_parsing_repeated": false,
+    "new_DFT_MD_training": false,
+    "frozen_tests_repeated": false,
+    "material_accuracy_optimization": false,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/polarization-energy-integration-v001/matterai-headless-session-v0230.json",
+    "MCP_version": "0.23.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.23.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.23.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.23.0/installed/0.23.0",
+    "release_installed_text_files": 137,
+    "previous_release_preserved": "0.22.0",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "reviewed_physical_Berry_path_and_branches",
+      "full_Born_native_Gamma_and_electronic_dielectric_sources",
+      "variable_cell_or_constrained_relaxed_energy_paths_and_NEB",
+      "selected_native_elemental_competing_sources_and_mu_point",
+      "native_defect_grid_physical_alignment_dielectric_and_FNV_eFNV",
+      "native_grain_and_full_elastic_experiments",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.22 rollback;older software copies pending recorded retirement;shared0.9 environment and0.15 dependencies/build-tools preserved"
+  },
+  "p5_v024_delivery": {
+    "schema": "mlcc.system-release-acceptance.v015",
+    "version": "0.24.0",
+    "enabled_version": "0.24.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T04:52:24.8935438+08:00",
+    "scope": "P5_07_clamped_ion_strain_producer_saved_proper_improper_response_and_Study_delivery",
+    "producer_jobs": [
+      "213",
+      "216"
+    ],
+    "consumer_job": "218",
+    "consumer_tests": 24,
+    "consumer_initial_job": "217",
+    "consumer_initial_state": "FAILED/1:0",
+    "consumer_initial_passed": 20,
+    "consumer_targeted_fix_checks": 4,
+    "consumer_unique_checks_with_passed_evidence": 24,
+    "consumer_failure_reason": "software_stub_missing_case_field",
+    "consumer_production_code_changed_after_initial_job": false,
+    "installed_acceptance_job": "219",
+    "installed_job_state": "COMPLETED",
+    "installed_job_exit_code": "0:0",
+    "changed_path_tests_passed": 10,
+    "relevant_job_states": "COMPLETED/0:0",
+    "source_manifest": "/home/v100/projects/mlcc/reports/berry-strain-response-v001/installed-213/materialized-response/response-manifest.json",
+    "deliveries": [
+      {
+        "label": "unsubmitted",
+        "source": "/home/v100/projects/mlcc/reports/polarization-strain-integration-v001/installed-219/unsubmitted-response.json",
+        "delivery": "/home/v100/projects/mlcc/reports/polarization-strain-integration-v001/installed-219/unsubmitted-delivery.json",
+        "evidence_kind": "unsubmitted_inputs_only"
+      },
+      {
+        "label": "software",
+        "source": "/home/v100/projects/mlcc/reports/polarization-strain-v001/software-result.json",
+        "delivery": "/home/v100/projects/mlcc/reports/polarization-strain-integration-v001/installed-219/software-delivery.json",
+        "evidence_kind": "software_contract_only"
+      }
+    ],
+    "diagnosed_failure_preserved": {
+      "job": "214",
+      "state": "FAILED",
+      "exit_code": "1:0",
+      "reason": "serialized_fraction_tolerance_and_invalid_mutation_fixture",
+      "resolution_jobs": [
+        "215",
+        "216"
+      ]
+    },
+    "producer_evidence": "workspace/reports/berry-strain-response-v001",
+    "consumer_evidence": "workspace/reports/polarization-strain-v001",
+    "engineering_evidence": "unsubmitted_existing_material_strain_inputs_plus_explicit_software_algebra_and_saved_result_delivery",
+    "native_strain_calculation_performed": false,
+    "new_DFT_MD_training": false,
+    "native_parsing_repeated": false,
+    "frozen_tests_repeated": false,
+    "mathematical_response_recomputed_at_install": false,
+    "material_accuracy_optimization": false,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/polarization-strain-integration-v001/matterai-headless-session-v0240.json",
+    "MCP_version": "0.24.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.24.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.24.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.24.0/installed/0.24.0",
+    "release_installed_text_files": 142,
+    "previous_release_preserved": "0.23.0",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "native_strain_Berry_sources_and_reviewed_branches",
+      "full_Born_native_Gamma_and_electronic_dielectric_sources",
+      "relaxed_ion_strain_response_and_stress_driven_d",
+      "electrostriction_and_qualified_energy_paths_NEB",
+      "native_chemical_references_mu_defect_potential_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.23 rollback;older copies pending recorded retirement;shared0.9 environment and0.15 dependencies/build tools preserved"
+  },
+  "p5_v025_delivery": {
+    "schema": "mlcc.system-release-acceptance.v025",
+    "version": "0.25.0",
+    "enabled_version": "0.25.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T07:48:06.9094165+08:00",
+    "scope": "fixed_cell_ionic_constraints_native_stop_evaluated_geometry_and_saved_Model_Study_SCF_bridge",
+    "producer_job": "230",
+    "producer_checks": 18,
+    "producer_runtime_seconds": 4,
+    "consumer_job": "231",
+    "consumer_checks": 18,
+    "consumer_runtime_seconds": 2,
+    "installed_acceptance_job": "232",
+    "installed_runtime_seconds": 3,
+    "installed_public_CLI_commands": 2,
+    "relevant_job_states": "COMPLETED/0:0",
+    "producer_evidence": "workspace/reports/fixed-cell-relax-producer-v001/checked-230/acceptance.json",
+    "consumer_evidence": "workspace/reports/relaxed-structure-bridge-v001/acceptance.json",
+    "installed_evidence": "workspace/reports/fixed-cell-relax-integration-v001/installed-232/acceptance.json",
+    "native_source_job": "33",
+    "native_source_scope": "historical_GPU_Ni_all_free_fixed_cell_five_ionic_steps",
+    "native_reparse_job": "230",
+    "native_reparsed_once_in_new_evidence_copy": true,
+    "historic_task_budget_and_results_preserved": true,
+    "native_source_task": "/home/v100/projects/mlcc/reports/fixed-cell-relax-producer-v001/checked-230/native-ni33-evidence-copy/workspace/tasks/h1-ni-relax-v001/task.json",
+    "bridge_file": "/home/v100/projects/mlcc/reports/fixed-cell-relax-integration-v001/installed-232/derived/bridge.json",
+    "new_scf_task": "/home/v100/projects/mlcc/reports/fixed-cell-relax-integration-v001/installed-232/workspace/tasks/ni33-relaxed-scf-installed-232/task.json",
+    "fresh_scf_submitted": false,
+    "native_partial_constraints_verified": false,
+    "insulating_Berry_positive_verified": false,
+    "variable_cell_NEB_and_full_relaxed_ion_response_verified": false,
+    "new_DFT_MD_training": false,
+    "frozen_tests_repeated": false,
+    "material_accuracy_optimization": false,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/fixed-cell-relax-integration-v001/matterai-headless-session-v0250.json",
+    "MCP_version": "0.25.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "release_path": "workspace/releases/mlcc-agent-0.25.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.25.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.25.0/installed/0.25.0",
+    "release_installed_text_files": 145,
+    "previous_release_preserved": "0.24.0",
+    "installation_note": "Initial local pip lacked existing setuptools build-tools on PYTHONPATH. Preserved failure log; explicitly supplied existing build-tools and installed successfully. No source or numerical rerun; already successful host check reused. Initial relative evidence-copy destination corrected to absolute path.",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "native_partial_ionic_constraints_and_insulating_relaxed_Berry_positive",
+      "variable_cell_relaxation_NEB_and_complete_relaxed_ion_response",
+      "physical_polarization_branches_full_Born_native_Gamma_and_electronic_dielectric_producer",
+      "native_chemical_references_mu_defect_potential_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.24 rollback;older software copies pending previously recorded retirement;shared0.9 environment and0.15 dependencies/build tools preserved"
+  },
+  "constrained_relax_native_addendum": {
+    "schema": "mlcc.constrained-relax-native-addendum.v1",
+    "version": "0.25.0",
+    "recorded_date": "2026-10-23",
+    "status": "negative_path_verified_positive_chain_incomplete",
+    "engineering_scope_accepted": true,
+    "scope": "explicit_partial_Cartesian_mask_native_execution_saved_unconverged_stop_and_no_geometry_promotion",
+    "native_job": "237",
+    "native_scheduler_state": "COMPLETED",
+    "native_exit_code": "0:0",
+    "native_runtime_seconds": 113,
+    "time_limit": "UNLIMITED",
+    "gpu": "one_V100",
+    "preparation_failed_job": "233",
+    "preparation_recovery_job": "234",
+    "first_parse_job": "240",
+    "postprocessing_state": "COMPLETED/0:0",
+    "product_code_changed": false,
+    "release_or_host_repeated": false,
+    "relaxation": {
+      "schema": "mlcc.fixed-cell-relaxation-result.v1",
+      "cell_constraint": "fixed_cell",
+      "ionic_constraints": {
+        "schema": "mlcc.ionic-constraints.v1",
+        "coordinate_basis": "cartesian",
+        "atom_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ],
+        "move_flags": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0
+          ]
+        ],
+        "relax_new": true,
+        "origin": "explicit_request"
+      },
+      "relax_new": true,
+      "ionic_steps": 8,
+      "relax_nmax": 8,
+      "method_relax_nmax": 8,
+      "native_stop_reason": "ionic_iteration_limit",
+      "native_marker_text": {
+        "electronic": "charge density convergence is achieved",
+        "ionic": "Relaxation is not converged yet!",
+        "finish": "Finish Time  : Fri Oct 23 08:42:33 2026",
+        "native_echo": "/home/v100/projects/mlcc/reports/constrained-relax-native-v001/task-workspace/tasks/p5-czo-constrained-relax-gpu-native-v001/OUT.CZOBerry/INPUT",
+        "native_controls_bound": true,
+        "last_ionic_snapshot": "/home/v100/projects/mlcc/reports/constrained-relax-native-v001/task-workspace/tasks/p5-czo-constrained-relax-gpu-native-v001/OUT.CZOBerry/STRU_ION8_D",
+        "last_evaluated_structure": null
+      },
+      "electronic_converged": true,
+      "ionic_converged": false,
+      "native_completed": true,
+      "force_metric": "max_abs_movable_cartesian_component",
+      "force_threshold_eV_per_A": 0.02,
+      "native_force_threshold_eV_per_A": 0.02,
+      "max_free_force_component_eV_per_A": 0.0848762249,
+      "max_all_force_component_eV_per_A": 0.1712462763,
+      "fixed_cell_verified": true,
+      "frozen_dofs_verified": true,
+      "final_geometry_matches_last_evaluation": false,
+      "final_geometry_role": "unevaluated_proposed_next_geometry",
+      "geometry_promotable": false
+    },
+    "scientific_status": "not_converged",
+    "positive_relaxed_Berry_chain_completed": false,
+    "fresh_scf_created": false,
+    "Berry_NSCF_created": false,
+    "DFT_count": 1,
+    "automatic_retry": false,
+    "parameter_change_after_submission": false,
+    "production_qualification": false,
+    "scientific_qualification": false,
+    "native_response_pair": false,
+    "result_file": "workspace/reports/constrained-relax-native-v001/relax-result-job237.json",
+    "native_task_path": "/home/v100/projects/mlcc/reports/constrained-relax-native-v001/task-workspace/tasks/p5-czo-constrained-relax-gpu-native-v001/task.json",
+    "blocked_dependency": "workspace/reports/constrained-relax-native-v001/blocked-relax-240.json",
+    "remaining": [
+      "native_converged_partial_relax_to_fresh_SCF_Berry_positive",
+      "native_opposite_relaxed_strain_pair",
+      "scientific_production_qualification"
+    ],
+    "recovery_condition": "Future explicit selected task and separately reviewed convergence protocol; no automatic rerun or parameter refinement in this slice",
+    "next_independent_work": "0.26 saved relaxed strain producer/consumer software integration"
+  },
+  "p5_v026_delivery": {
+    "schema": "mlcc.system-release-acceptance.v026",
+    "version": "0.26.0",
+    "enabled_version": "0.26.0",
+    "rollback_version": "0.25.0",
+    "candidate_source_version": "0.27.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T08:56:50.8510792+08:00",
+    "scope": "P5_saved_relaxed_strain_producer_consumer_all_free_partial_labels_source_binding_parameter_transfer_and_Study_delivery",
+    "producer_evidence": "workspace/reports/berry-strain-relaxed-producer-v001/acceptance.json",
+    "producer_job": "243",
+    "producer_state": "COMPLETED/0:0",
+    "producer_evidence_jobs": [
+      "241",
+      "242",
+      "243"
+    ],
+    "producer_evidence_note": "Four passes in failed241, four passes in failed242, two passes in completed243; only diagnosed failures rerun",
+    "producer_distinct_cases": 10,
+    "consumer_evidence": "workspace/reports/polarization-strain-relaxed-v001/checked-239/acceptance.json",
+    "consumer_job": "239",
+    "consumer_state": "COMPLETED/0:0",
+    "consumer_checks": 39,
+    "consumer_distinct_cases": 37,
+    "consumer_selection_deviation": "-k relaxed matched parent report directory: 24 existing cases also ran; 2 were repeated in the explicit clamped invocation. No rerun.",
+    "installed_acceptance_job": "245",
+    "installed_job_state": "COMPLETED/0:0",
+    "installed_evidence": "workspace/reports/relaxed-strain-integration-v001/installed-245/acceptance.json",
+    "installed_public_entry": true,
+    "installed_Study_delivery": true,
+    "matterai_original_host_passed": true,
+    "host_evidence": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "MCP_version": "0.26.0",
+    "MCP_declared_tools": 7,
+    "MCP_host_call": "mlcc_list_tasks",
+    "python_binding_evidence": "workspace/reports/relaxed-strain-integration-v001/local-python-binding.json",
+    "direct_comparison_evidence": "workspace/reports/relaxed-strain-integration-v001/release-install-comparison.json",
+    "registry_evidence": "workspace/.zeus/bundles.json",
+    "release_path": "workspace/releases/mlcc-agent-0.26.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.26.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.26.0/installed/0.26.0",
+    "release_installed_text_files": 145,
+    "previous_release_preserved": "0.25.0",
+    "native_relaxed_strain_pair_verified": false,
+    "native_relaxed_strain_pair_scope": "not_run_in_software_slice",
+    "native_A_job": "237",
+    "native_A_parse_job": "240",
+    "native_A_scientific_status": "not_converged",
+    "native_A_geometry_promotable": false,
+    "native_A_downstream_scf_berry_created": false,
+    "native_A_is_B_relaxed_strain_endpoint": false,
+    "native_A_negative_evidence": [
+      "workspace/reports/constrained-relax-native-v001/acceptance.json",
+      "workspace/reports/constrained-relax-native-v001/blocked-relax-240.json"
+    ],
+    "native_parsing_repeated": false,
+    "new_DFT_MD_training": false,
+    "new_DFT_MD_training_scope": "software_B_and_installation_only; separate native_A contains one new GPU relax237",
+    "frozen_tests_repeated": true,
+    "repetition_scope": "consumer239 selector accidentally ran24 existing checks and repeated2; no further reruns",
+    "installation_failures": [
+      "244 report script omitted required CLI --output; no analysis executed; fixed245",
+      "initial local host invocation used wrong relative script path; original error retained; corrected absolute path"
+    ],
+    "material_accuracy_optimization": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "native_converged_relaxed_plus_minus_strain_pair_and_Berry_sources",
+      "native_partial_ionic_constraints_and_insulating_relaxed_Berry_positive",
+      "physical_Berry_branches_full_Born_native_Gamma_and_electronic_dielectric_producer",
+      "native_chemical_references_mu_defect_potential_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.25 rollback; older software copies remain subject to the recorded retention policy; shared0.9 environment and0.15 dependencies/build tools preserved"
+  },
+  "p5_v027_delivery": {
+    "schema": "mlcc.system-release-acceptance.v027",
+    "version": "0.27.0",
+    "enabled_version": "0.27.0",
+    "rollback_version": "0.26.0",
+    "candidate_source_version": "0.28.0",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "recorded_at": "2026-10-23T09:23:11.7551385+08:00",
+    "scope": "force_collection_saved_native_task_records_and_installed_Gamma_source_selection",
+    "producer_evidence": "workspace/reports/phonon-force-source-handoff-v001/acceptance.json",
+    "producer_job": "249",
+    "producer_new_checks": 5,
+    "consumer_evidence": "workspace/reports/phonon-gamma-source-handoff-v001/job-247/acceptance.json",
+    "consumer_job": "247",
+    "consumer_new_checks": 7,
+    "collect_only_jobs": [
+      "246",
+      "248"
+    ],
+    "exact_node_ids_inspected_before_execution": true,
+    "old_tests_executed": 0,
+    "installed_acceptance_job": "250",
+    "installed_evidence": "workspace/reports/phonon-source-integration-v001/installed-250/acceptance.json",
+    "job_terminal_states": {
+      "247": "COMPLETED/0:0",
+      "249": "COMPLETED/0:0",
+      "250": "COMPLETED/0:0"
+    },
+    "scheduler_state_source": "retained_native_scontrol_terminal_records",
+    "later_live_query": "jobs_no_longer_retained_by_scontrol; no resubmission",
+    "saved_collection_reused_job": "249",
+    "selected_task_records": [
+      "/home/v100/projects/mlcc/reports/phonon-force-source-handoff-v001/execute-249/fixtures/test_collection_native_task_re1/phonon-source-fixture/task-3-reference/task.json",
+      "/home/v100/projects/mlcc/reports/phonon-force-source-handoff-v001/execute-249/fixtures/test_collection_native_task_re1/phonon-source-fixture/task-2-u-plus/task.json",
+      "/home/v100/projects/mlcc/reports/phonon-force-source-handoff-v001/execute-249/fixtures/test_collection_native_task_re1/phonon-source-fixture/task-1-u-minus/task.json"
+    ],
+    "complete_native_handoff_verified": false,
+    "new_native_Gamma_created": false,
+    "collection_remains_blocked": true,
+    "downstream_evidence_reused_job": "197",
+    "downstream_recomputed": false,
+    "matterai_host_rerun": false,
+    "host_connection_evidence_reused": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "unchanged_host_entry_files": [
+      "src/mlcc/cli.py",
+      "tools/mlcc_mcp.py"
+    ],
+    "MCP_binding_version": "0.27.0",
+    "python_binding_evidence": "workspace/reports/phonon-source-integration-v001/local-python-binding.json",
+    "direct_comparison_evidence": "workspace/reports/phonon-source-integration-v001/release-install-comparison.json",
+    "release_installed_text_files": 145,
+    "registry_evidence": "workspace/.zeus/bundles.json",
+    "release_path": "workspace/releases/mlcc-agent-0.27.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.27.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.27.0/installed/0.27.0",
+    "new_DFT_MD_training": false,
+    "native_parsing_repeated": false,
+    "frozen_tests_repeated": false,
+    "material_accuracy_optimization": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "complete_native_Gamma_force_set_and_Born_sources",
+      "physical_Berry_branches_and_native_electronic_dielectric_producer",
+      "native_converged_relaxed_response",
+      "native_chemical_references_mu_defect_potential_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.26 selected rollback;0.25 and older pending recorded retirement; no deletion; scientific evidence and shared0.9 environment/0.15 dependencies preserved"
+  },
+  "next_slice_review": {
+    "document": "docs/p5-next-ready-system-slice-review.md",
+    "status": "external_electronic_review_consumed_by_accepted0.28",
+    "proposed_scope": "explicit_external_electronic_dielectric_source_classification_and_Study_delivery",
+    "native_ABACUS_epsilon_producer": false,
+    "new_numerical_work_authorized": false
+  },
+  "p5_v028_delivery": {
+    "schema": "mlcc.system-release-acceptance.v028",
+    "version": "0.28.0",
+    "enabled_version": "0.28.0",
+    "rollback_version": "0.27.0",
+    "candidate_source_version": "0.29.0",
+    "recorded_at": "2026-10-23T09:42:53.6199991+08:00",
+    "passed": true,
+    "installed": true,
+    "frozen": true,
+    "scope": "explicit_external_electronic_input_contribution_provenance_public_combination_and_same_Study_delivery",
+    "producer_evidence": "workspace/reports/external-electronic-source-v001/acceptance.json",
+    "producer_job": "252",
+    "producer_new_checks": 14,
+    "consumer_evidence": "workspace/reports/external-electronic-delivery-v001/job-254/acceptance.json",
+    "consumer_job": "254",
+    "consumer_new_checks": 14,
+    "collect_only_jobs": [
+      "251",
+      "253"
+    ],
+    "exact_node_ids_inspected_before_execution": true,
+    "old_tests_executed": 0,
+    "all_new_checks_passed_once": true,
+    "installed_acceptance_job": "255",
+    "installed_evidence": "workspace/reports/external-electronic-integration-v001/installed-255/acceptance.json",
+    "installed_public_commands": 2,
+    "installed_Study_delivery": true,
+    "job_terminal_states": {
+      "252": "COMPLETED/0:0",
+      "255": "COMPLETED/0:0",
+      "254": "COMPLETED/0:0"
+    },
+    "saved_tensors_reused_job": "197",
+    "preserved_method_engine": "math-fixture",
+    "Gamma_ionic_solvers_recomputed": false,
+    "native_main_route_evidence": "software_contract_only_reader_stub",
+    "native_ABACUS_electronic_producer": false,
+    "material_electronic_dielectric_verified": false,
+    "matterai_host_rerun": false,
+    "host_connection_evidence_reused": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "unchanged_MCP_entry": "tools/mlcc_mcp.py",
+    "CLI_changed_path_verified_job": "255",
+    "MCP_binding_version": "0.28.0",
+    "python_binding_evidence": "workspace/reports/external-electronic-integration-v001/local-python-binding.json",
+    "direct_comparison_evidence": "workspace/reports/external-electronic-integration-v001/release-install-comparison.json",
+    "release_installed_text_files": 145,
+    "registry_evidence": "workspace/.zeus/bundles.json",
+    "release_path": "workspace/releases/mlcc-agent-0.28.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.28.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.28.0/installed/0.28.0",
+    "new_DFT_MD_training": false,
+    "native_parsing_repeated": false,
+    "frozen_tests_repeated": false,
+    "material_accuracy_optimization": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "remaining": [
+      "native_ABACUS_electronic_dielectric_producer",
+      "complete_native_Born_Gamma_and_physical_Berry_branches",
+      "converged_native_relaxed_response",
+      "chemical_references_mu_defect_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "P6_P8_P11"
+    ],
+    "retention": "0.27 selected rollback;0.26 and older pending recorded retirement; no deletion; scientific evidence/shared0.9 environment/0.15 dependencies retained"
+  },
+  "active_p5_slice": {
+    "contract": "docs/system-contracts-v0300.md",
+    "version": "0.30.0",
+    "enabled": "0.30.0",
+    "rollback": "0.29.0",
+    "status": "accepted_enabled_frozen_engineering_scope",
+    "scope": "native_CZO_ABACUS_LCAO_PYATB_Born_affine_family_raw_Gamma_electronic_dielectric_same_Study_engineering_delivery",
+    "acceptance": "workspace/reports/czo-native-response-v0300-install-v001/release-acceptance.json",
+    "scientific_qualification": false,
+    "production_qualification": false
+  },
+  "p5_v029_delivery": {
+    "schema": "mlcc.system-release-acceptance.v029",
+    "version": "0.29.0",
+    "enabled_version": "0.29.0",
+    "rollback_version": "0.28.0",
+    "candidate_source_version": "0.30.0",
+    "recorded_at": "2026-10-23T10:26:15.6792739+08:00",
+    "passed": true,
+    "installed": true,
+    "enabled": true,
+    "frozen": true,
+    "scope": "Gamma_directional_Wang_NAC_saved_197_public_entry_same_Study_delivery",
+    "core_job": "257",
+    "core_new_checks": 9,
+    "consumer_jobs": [
+      "259",
+      "260"
+    ],
+    "consumer_unique_new_checks": 6,
+    "collect_only_jobs": [
+      "256",
+      "258"
+    ],
+    "old_tests_executed": 0,
+    "skipped_tests": 0,
+    "original_failures": {
+      "job261": "bothCLI exit0; final delivery source-path assertion failed; NAC product path added, delivery-only262 passed",
+      "job259": "1 failed and5 passed; exact float volume dictionary assertion fixed, only that node re-executed260"
+    },
+    "job_terminal_states": {
+      "262": "COMPLETED/0:0",
+      "261": "FAILED/1:0",
+      "260": "COMPLETED/0:0",
+      "257": "COMPLETED/0:0",
+      "256": "COMPLETED/0:0",
+      "259": "FAILED/1:0",
+      "258": "COMPLETED/0:0"
+    },
+    "installed_nac_command_job": "261",
+    "installed_nac_command_exit_code": 0,
+    "installed_delivery_job": "262",
+    "installed_evidence": "workspace/reports/phonon-nac-v029-v001/installed-delivery-262/acceptance.json",
+    "installed_Study_delivery": true,
+    "saved_fixture_job": "197",
+    "same_Study": "p5-math-study-v001",
+    "method_engine": "math-fixture",
+    "fixture_material": "NaCl-math-fixture",
+    "nac_method": "wang",
+    "direction_basis": "primitive_reciprocal_fractional",
+    "direction": [
+      1,
+      0,
+      0
+    ],
+    "numeric_checks": {
+      "analytic_correction_max_abs_diff": 2.7755575615628914E-17,
+      "correction_rank": 1,
+      "direction_scaled_max_abs_diff": 0.0,
+      "nac_factor_eV_angstrom": 14.39965172592227,
+      "saved_gamma_baseline_max_abs_diff": 0.0,
+      "schema": "mlcc.phonon-gamma-nac.numeric-checks.v1",
+      "transverse_max_abs": 0.0
+    },
+    "baseline_frequencies_THz": [
+      -8.48770294733039E-08,
+      -1.4432036089811927E-15,
+      8.487702947330393E-08,
+      9.061496523455434,
+      9.061496523455435,
+      9.061496523455437
+    ],
+    "corrected_frequencies_THz": [
+      -6.877883804959488E-08,
+      6.637534204209666E-08,
+      1.779528069064541E-07,
+      9.061496523455437,
+      9.061496523455437,
+      11.337641468419204
+    ],
+    "hermitianize": false,
+    "born_epsilon_symmetrized": false,
+    "existing_ionic_Hessian_modified": false,
+    "existing_Gamma_ionic_solver_rerun": false,
+    "force_constants_refitted": false,
+    "new_DFT_MD_training": false,
+    "native_ABACUS_NAC_accepted": false,
+    "full_polar_spectrum_accepted": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "resources": {
+      "reason": "installed Phonopy Rust CPU small matrix interface, no configured CUDA path",
+      "allocated_logical_CPUs": 2,
+      "requested_CPUs": 1,
+      "walltime": "00:10:00",
+      "partition": "cpu",
+      "requeue": 0,
+      "GPU": 0,
+      "memory": "2GiB"
+    },
+    "matterai_host_rerun": false,
+    "host_connection_evidence_reused": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "unchanged_MCP_entry": "tools/mlcc_mcp.py",
+    "MCP_binding_version": "0.29.0",
+    "python_binding_evidence": "workspace/reports/phonon-nac-v029-v001/local-python-binding.json",
+    "direct_comparison_evidence": "workspace/reports/phonon-nac-v029-v001/release-install-comparison.json",
+    "release_installed_text_files": 148,
+    "registry_evidence": "workspace/.zeus/bundles.json",
+    "release_path": "workspace/releases/mlcc-agent-0.29.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.29.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.29.0/installed/0.29.0",
+    "release_archive": "workspace/reports/phonon-nac-v029-v001/candidate-bundle-v0290-r1.tar.gz",
+    "independent_review": "workspace/reports/phonon-nac-v029-review-v001/review.md",
+    "implementation_review": "workspace/reports/phonon-nac-v029-v001/review-notes.md",
+    "remaining": [
+      "complete_native_Born_Gamma_and_physical_Berry_branches",
+      "native_ABACUS_electronic_dielectric_producer",
+      "converged_native_relaxed_response",
+      "chemical_references_mu_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "old_Gamma_run_qpoints_implicit_Hermitianization_contract_risk"
+    ],
+    "retention": "0.28 selected rollback;0.27 and older software copies pending retirement; no deletion; scientific evidence/shared0.9 environment/0.15 dependencies retained",
+    "ownership": "implementation window completed release after mainline systemError; independent review reused; all implementation files handed back"
+  },
+  "active_native_dielectric_slice": {
+    "protocol": "docs/czo-native-dielectric-protocol-v001.md",
+    "status": "native_source_same_study_delivery_355_356_enabled_0_31_creator",
+    "parent_model": "workspace/models/cazro3-pnma-pristine/v001/model.json",
+    "parent_study": "workspace/configs/cases/cazro3-firing-v003.json",
+    "candidate": "0.32.0",
+    "enabled": "0.31.0",
+    "root_owner": "physical_protocol_input_generation_Slurm_integration",
+    "consumer_owner": "01a15851-eb0c-7832-ba67-4833802afd0f",
+    "reference_SCF_count": 1,
+    "displacement_count": 24,
+    "displacement_count_status": "24/24_source_ready_consumed",
+    "max_independent_GPU_tasks": 3,
+    "GPUs_per_task": 1,
+    "new_DFT_submitted": true,
+    "reference_scf_job_id": "269",
+    "reference_scf_state": "COMPLETED",
+    "reference_scf_exit_code": "0:0",
+    "job_ledger": "workspace/reports/czo-native-dielectric-v001/job-ledger.json",
+    "scientific_qualification": false,
+    "math197_for_native_acceptance": false,
+    "old_relax237_rerun": false,
+    "release_acceptance": "workspace/reports/lcao-public-creator-v031-v001/release-acceptance.json",
+    "source_job": "355",
+    "installed_job": "356",
+    "native_unique_job_count": 54,
+    "native_role_binding_count": 81,
+    "atom_count": 20,
+    "unresolved": [
+      "physical_Born_branch_unselected_full_tensor_null",
+      "raw_Gamma_nonsymmetric_no_implicit_projection",
+      "ionic_dielectric_null",
+      "epsilon_static_null"
+    ],
+    "production_qualification": false,
+    "creator_candidate_job": "357",
+    "creator_candidate_status": "accepted_enabled_frozen_engineering_scope",
+    "creator_candidate_evidence": "workspace/reports/lcao-public-creator-v031-v001/release-acceptance.json"
+  },
+  "acceptance": {
+    "schema": "mlcc.system-release-acceptance.v032",
+    "version": "0.32.0",
+    "enabled_version": "0.32.0",
+    "rollback_version": "0.31.0",
+    "candidate_source_version": "0.33.0",
+    "recorded_at": "2026-10-23T16:59:32.4514735+08:00",
+    "passed": true,
+    "installed": true,
+    "enabled": true,
+    "frozen": true,
+    "scope": "public_on_site_NAO_snapshot_native_library_provenance_to_existing_qualification_creator_and_prepare",
+    "installed_jobs": [
+      "358",
+      "359"
+    ],
+    "original_job_state": "358 FAILED/1:0",
+    "final_job_state": "359 COMPLETED/0:0",
+    "new_unique_checks": 9,
+    "job358_passed": 8,
+    "job359_targeted_passed": 1,
+    "old_tests_executed": 0,
+    "original_failure": "native SUMMARY double whitespace rejected by test exact string; product raw text preserved correctly; test-only fix",
+    "installed_acceptance": "workspace/reports/nao-public-entry-v032-v001/run-359/acceptance.json",
+    "initial_evidence": "workspace/reports/nao-public-entry-v032-v001/run-358/junit.xml",
+    "changed_test_evidence": "workspace/reports/nao-public-entry-v032-v001/candidate-test-fix-v002.json",
+    "candidate_archive": "workspace/reports/nao-public-entry-v032-v001/candidate-bundle-v0321.tar.gz",
+    "source_chain_handoff": "workspace/reports/nao-public-entry-v032-v001/consumer-handoff/saved-source-chain.md",
+    "existing_chain_reused": [
+      "269",
+      "277",
+      "344",
+      "355",
+      "356",
+      "357"
+    ],
+    "new_DFT_PYATB_jobs": [],
+    "created_task_submitted": false,
+    "source_chain_product_changes": 0,
+    "history_job_ids_assigned_to_new_tasks": false,
+    "engine_native_output_parsing_repeated": false,
+    "unchanged_MCP_host_evidence": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "full_system_complete": false,
+    "python_binding": {
+      "version": "0.32.0",
+      "module": "D:\\project\\mlcc\\workspace\\.zeus\\bundles\\mlcc-agent\\0.32.0\\src\\mlcc\\__init__.py"
+    },
+    "MCP_entry": "zeus://workspace/current/.zeus/bundles/mlcc-agent/0.32.0/tools/mlcc_mcp.py",
+    "release_path": "D:/project/mlcc/workspace/releases/mlcc-agent-0.32.0",
+    "local_installed_path": "D:/project/mlcc/workspace/.zeus/bundles/mlcc-agent/0.32.0",
+    "remote_installed_path": "/home/v100/projects/mlcc/development/0.32.0/installed/0.32.0"
+  },
+  "p5_v030_delivery": {
+    "schema": "mlcc.system-release-acceptance.v030",
+    "version": "0.30.0",
+    "enabled_version": "0.30.0",
+    "rollback_version": "0.29.0",
+    "candidate_source_version": "0.31.0",
+    "recorded_at": "2026-10-23T13:29:29.4377089+08:00",
+    "passed": true,
+    "installed": true,
+    "enabled": true,
+    "frozen": true,
+    "scope": "native_CZO_ABACUS_LCAO_PYATB_Born_affine_family_raw_Gamma_electronic_dielectric_same_Study_engineering_delivery",
+    "source_job": "355",
+    "installed_job": "356",
+    "state": "COMPLETED/0:0",
+    "native_unique_job_count": 54,
+    "native_role_binding_count": 81,
+    "atom_count": 20,
+    "source_acceptance": "workspace/reports/czo-native-dielectric-consumer-v001/response-public-355/acceptance.json",
+    "installed_acceptance": "workspace/reports/czo-native-response-v030-install-v001/installed-delivery-356/acceptance.json",
+    "source_review": "workspace/reports/czo-native-dielectric-v001/integration-review-355.md",
+    "new_software_checks": {
+      "job354": 1,
+      "job350": 9,
+      "job352": 1
+    },
+    "reused_electronic_checks": 17,
+    "old_tests_executed": 0,
+    "additional_DFT_MD_PYATB_runs": 0,
+    "unchanged_MCP_host_evidence": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "python_binding": {
+      "version": "0.30.0",
+      "module": "D:\\project\\mlcc\\workspace\\.zeus\\bundles\\mlcc-agent\\0.30.0\\src\\mlcc\\__init__.py"
+    },
+    "MCP_entry": "zeus://workspace/current/.zeus/bundles/mlcc-agent/0.30.0/tools/mlcc_mcp.py",
+    "release_path": "D:/project/mlcc/workspace/releases/mlcc-agent-0.30.0",
+    "local_installed_path": "D:/project/mlcc/workspace/.zeus/bundles/mlcc-agent/0.30.0",
+    "remote_installed_path": "/home/v100/projects/mlcc/development/0.30.0/installed/0.30.0",
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "complete_physical_dielectric": false,
+    "unresolved": [
+      "physical_Born_branch_unselected_full_tensor_null",
+      "raw_Gamma_nonsymmetric_no_implicit_projection",
+      "ionic_dielectric_null",
+      "epsilon_static_null",
+      "generic_LCAO_public_creator_not_yet_implemented"
+    ],
+    "historical_failures_preserved": true,
+    "status": "accepted_enabled_frozen_engineering_scope",
+    "next_version": "0.31.0",
+    "next_minimum_task": "Define the minimum wiring from the existing CaZrO3 LCAO production scripts to the public creator. Creator prerequisites are Model/Study, method set, ABACUS version, pseudopotentials/numerical orbitals, task parameters, resource configuration and structural atom IDs/STRU atom-map. Generated task/model/Study/INPUT/STRU/job.sbatch artifacts must record TaskRecord and Slurm provenance. Raw Gamma forces, displacement lists, Born branch families, polarization quanta and external physical branch review are explicit inputs to later response consumption, not gates on generic SCF/response creation. Do not submit a calculation, auto-select branches, project raw Gamma, or mix PW/LCAO labels.",
+    "next_contract": "docs/system-contracts-v0300.md#下一最小-031-范围"
+  },
+  "historical_release_acceptance_0_29": {
+    "schema": "mlcc.system-release-acceptance.v029",
+    "version": "0.29.0",
+    "enabled_version": "0.29.0",
+    "rollback_version": "0.28.0",
+    "candidate_source_version": "0.30.0",
+    "recorded_at": "2026-10-23T10:26:15.6792739+08:00",
+    "passed": true,
+    "installed": true,
+    "enabled": true,
+    "frozen": true,
+    "scope": "Gamma_directional_Wang_NAC_saved_197_public_entry_same_Study_delivery",
+    "core_job": "257",
+    "core_new_checks": 9,
+    "consumer_jobs": [
+      "259",
+      "260"
+    ],
+    "consumer_unique_new_checks": 6,
+    "collect_only_jobs": [
+      "256",
+      "258"
+    ],
+    "old_tests_executed": 0,
+    "skipped_tests": 0,
+    "original_failures": {
+      "job261": "bothCLI exit0; final delivery source-path assertion failed; NAC product path added, delivery-only262 passed",
+      "job259": "1 failed and5 passed; exact float volume dictionary assertion fixed, only that node re-executed260"
+    },
+    "job_terminal_states": {
+      "262": "COMPLETED/0:0",
+      "261": "FAILED/1:0",
+      "260": "COMPLETED/0:0",
+      "257": "COMPLETED/0:0",
+      "256": "COMPLETED/0:0",
+      "259": "FAILED/1:0",
+      "258": "COMPLETED/0:0"
+    },
+    "installed_nac_command_job": "261",
+    "installed_nac_command_exit_code": 0,
+    "installed_delivery_job": "262",
+    "installed_evidence": "workspace/reports/phonon-nac-v029-v001/installed-delivery-262/acceptance.json",
+    "installed_Study_delivery": true,
+    "saved_fixture_job": "197",
+    "same_Study": "p5-math-study-v001",
+    "method_engine": "math-fixture",
+    "fixture_material": "NaCl-math-fixture",
+    "nac_method": "wang",
+    "direction_basis": "primitive_reciprocal_fractional",
+    "direction": [
+      1,
+      0,
+      0
+    ],
+    "numeric_checks": {
+      "analytic_correction_max_abs_diff": 2.7755575615628914E-17,
+      "correction_rank": 1,
+      "direction_scaled_max_abs_diff": 0.0,
+      "nac_factor_eV_angstrom": 14.39965172592227,
+      "saved_gamma_baseline_max_abs_diff": 0.0,
+      "schema": "mlcc.phonon-gamma-nac.numeric-checks.v1",
+      "transverse_max_abs": 0.0
+    },
+    "baseline_frequencies_THz": [
+      -8.48770294733039E-08,
+      -1.4432036089811927E-15,
+      8.487702947330393E-08,
+      9.061496523455434,
+      9.061496523455435,
+      9.061496523455437
+    ],
+    "corrected_frequencies_THz": [
+      -6.877883804959488E-08,
+      6.637534204209666E-08,
+      1.779528069064541E-07,
+      9.061496523455437,
+      9.061496523455437,
+      11.337641468419204
+    ],
+    "hermitianize": false,
+    "born_epsilon_symmetrized": false,
+    "existing_ionic_Hessian_modified": false,
+    "existing_Gamma_ionic_solver_rerun": false,
+    "force_constants_refitted": false,
+    "new_DFT_MD_training": false,
+    "native_ABACUS_NAC_accepted": false,
+    "full_polar_spectrum_accepted": false,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "design_assessment": "not_assessed",
+    "entire_P0_P12_complete": false,
+    "resources": {
+      "reason": "installed Phonopy Rust CPU small matrix interface, no configured CUDA path",
+      "allocated_logical_CPUs": 2,
+      "requested_CPUs": 1,
+      "walltime": "00:10:00",
+      "partition": "cpu",
+      "requeue": 0,
+      "GPU": 0,
+      "memory": "2GiB"
+    },
+    "matterai_host_rerun": false,
+    "host_connection_evidence_reused": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "unchanged_MCP_entry": "tools/mlcc_mcp.py",
+    "MCP_binding_version": "0.29.0",
+    "python_binding_evidence": "workspace/reports/phonon-nac-v029-v001/local-python-binding.json",
+    "direct_comparison_evidence": "workspace/reports/phonon-nac-v029-v001/release-install-comparison.json",
+    "release_installed_text_files": 148,
+    "registry_evidence": "workspace/.zeus/bundles.json",
+    "release_path": "workspace/releases/mlcc-agent-0.29.0",
+    "installed_local": "workspace/.zeus/bundles/mlcc-agent/0.29.0",
+    "installed_remote": "/home/v100/projects/mlcc/development/0.29.0/installed/0.29.0",
+    "release_archive": "workspace/reports/phonon-nac-v029-v001/candidate-bundle-v0290-r1.tar.gz",
+    "independent_review": "workspace/reports/phonon-nac-v029-review-v001/review.md",
+    "implementation_review": "workspace/reports/phonon-nac-v029-v001/review-notes.md",
+    "remaining": [
+      "complete_native_Born_Gamma_and_physical_Berry_branches",
+      "native_ABACUS_electronic_dielectric_producer",
+      "converged_native_relaxed_response",
+      "chemical_references_mu_alignment_dielectric_FNV",
+      "material_potential_production_qualification",
+      "old_Gamma_run_qpoints_implicit_Hermitianization_contract_risk"
+    ],
+    "retention": "0.28 selected rollback;0.27 and older software copies pending retirement; no deletion; scientific evidence/shared0.9 environment/0.15 dependencies retained",
+    "ownership": "implementation window completed release after mainline systemError; independent review reused; all implementation files handed back",
+    "software_copy_status": "removed",
+    "retirement_record": "workspace/reports/lcao-public-creator-v031-v001/retirement-v029.json",
+    "current_enabled_version": "0.31.0",
+    "current_rollback_version": "0.30.0"
+  },
+  "lcao_public_creator_next": {
+    "contract": "docs/p5-v031-lcao-public-creator-contract.md",
+    "status": "accepted_enabled_frozen_engineering_scope",
+    "implementation_authorized_in_this_slice": true,
+    "verification_budget": {
+      "cpu": 1,
+      "gpu": 0,
+      "memory_MiB": 2048,
+      "walltime": "00:10:00",
+      "kind": "non_DFT_only"
+    },
+    "new_job_ids": [
+      "357"
+    ],
+    "owners": {
+      "root": [
+        "abacus_tasks.py",
+        "tests/test_lcao_task_creation.py",
+        "integration"
+      ],
+      "luna": [
+        "method_inputs.py",
+        "method_tasks.py"
+      ],
+      "existing_execution_chat": [
+        "abacus.py",
+        "tests/test_abacus_lcao_writer.py"
+      ]
+    },
+    "scientific_qualification": false,
+    "schema": "mlcc.system-release-acceptance.v031",
+    "version": "0.31.0",
+    "job_id": "357",
+    "state": "COMPLETED/0:0",
+    "passed": true,
+    "installed": true,
+    "enabled": true,
+    "frozen": true,
+    "scope": "public_LCAO_neutral_fixed_nspin1_GPU_cusolver_SCF_input_creation_orbital_qualification_and_runner_prepare",
+    "evidence": "workspace/reports/lcao-public-creator-v031-v001/run-357/acceptance.json",
+    "installed_path": "/home/v100/projects/mlcc/development/0.31.0/installed/0.31.0",
+    "new_checks": 29,
+    "writer_checks": 17,
+    "creator_checks": 12,
+    "old_tests_executed": 0,
+    "source_jobs_reused": [
+      "269",
+      "284"
+    ],
+    "new_DFT_PYATB_jobs": [],
+    "scheduler_job_ids_for_created_tasks": [
+      null,
+      null
+    ],
+    "native_H_S_r_observed": false,
+    "production_qualification": false,
+    "release_acceptance": "workspace/reports/lcao-public-creator-v031-v001/release-acceptance.json",
+    "release_acceptance_present_at_update": true,
+    "next_source_version_after_enablement": "0.32.0",
+    "enabled_version": "0.31.0",
+    "rollback_version": "0.30.0",
+    "candidate_source_version": "0.32.0",
+    "recorded_at": "2026-10-23T16:37:16.0648673+08:00",
+    "installed_job": "357",
+    "scheduler_state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed": "00:00:03",
+    "writer_new_checks": 17,
+    "creator_new_checks": 12,
+    "reused_engine_jobs": [
+      "269",
+      "284"
+    ],
+    "reused_response_jobs": [
+      "355",
+      "356"
+    ],
+    "installed_acceptance": "workspace/reports/lcao-public-creator-v031-v001/run-357/acceptance.json",
+    "scheduler_evidence": "workspace/reports/lcao-public-creator-v031-v001/job357-scontrol.txt",
+    "direct_comparison": "workspace/reports/lcao-public-creator-v031-v001/direct-comparison.json",
+    "unchanged_MCP_host_evidence": "workspace/reports/relaxed-strain-integration-v001/matterai-headless-session-v0260.json",
+    "public_creation_count": 2,
+    "created_tasks_submitted": false,
+    "created_tasks_native_output_observed": false,
+    "full_system_complete": false,
+    "python_binding": {
+      "version": "0.31.0",
+      "module": "D:\\project\\mlcc\\workspace\\.zeus\\bundles\\mlcc-agent\\0.31.0\\src\\mlcc\\__init__.py"
+    },
+    "MCP_entry": "zeus://workspace/current/.zeus/bundles/mlcc-agent/0.31.0/tools/mlcc_mcp.py",
+    "release_path": "D:/project/mlcc/workspace/releases/mlcc-agent-0.31.0",
+    "local_installed_path": "D:/project/mlcc/workspace/.zeus/bundles/mlcc-agent/0.31.0",
+    "remote_installed_path": "/home/v100/projects/mlcc/development/0.31.0/installed/0.31.0",
+    "limitations": [
+      "LCAO limited to neutral nonSOC nspin1 fixed SCF GPU cusolver",
+      "physical Born and ionic/static dielectric unresolved",
+      "raw Gamma unprojected nonsymmetric",
+      "P6/P8 full magnetic/electronic transport and P11 interface remain incomplete"
+    ],
+    "next_source_version": "0.32.0"
+  },
+  "system_remaining_queue": [
+    {
+      "order": 1,
+      "status": "engineering_delivered_static_response_unresolved",
+      "owner": "root",
+      "action": "BTO native electronic/Born/Gamma response chain using selected P4mm baseline",
+      "item": "BTO_native_electronic_Born_Gamma",
+      "contract": "docs/native-chain-expansion-20261025.md",
+      "stages": [
+        "P5"
+      ],
+      "evidence_jobs": [
+        "524",
+        "535",
+        "536"
+      ]
+    },
+    {
+      "order": 2,
+      "status": "native_source_and_consumption_delivered_task_specific_inputs_missing",
+      "owner": "root",
+      "action": "Selected crystal-defect potential/charge reference chain with explicit source and failed-state propagation",
+      "item": "selected_crystal_defect_potential",
+      "contract": "docs/native-chain-expansion-20261025.md",
+      "stages": [
+        "P4",
+        "P9"
+      ],
+      "evidence_jobs": [
+        "489",
+        "490",
+        "496",
+        "525"
+      ]
+    },
+    {
+      "order": 3,
+      "status": "engineering_delivered_partial_native_result_preserved",
+      "owner": "root",
+      "action": "Ni/BaTiO3 native thermal response consumption; retain partial/empty-bin/no-flux state",
+      "item": "Ni_BaTiO3_native_thermal_response",
+      "contract": "docs/p11-thermal-response-contract-v001.md",
+      "stages": [
+        "P11"
+      ],
+      "evidence_jobs": [
+        "457",
+        "458",
+        "462"
+      ]
+    },
+    {
+      "order": 4,
+      "status": "engineering_delivered",
+      "owner": "root",
+      "action": "DeePMD nine-component per-atom virial native output and existing local-stress接线",
+      "item": "DeePMD_nine_component_atomic_virial",
+      "contract": "docs/native-chain-expansion-20261025.md",
+      "stages": [
+        "P9",
+        "P11"
+      ],
+      "evidence_jobs": [
+        "466",
+        "468",
+        "494",
+        "498"
+      ]
+    },
+    {
+      "order": 5,
+      "status": "engineering_delivered_source_history_unresolved",
+      "owner": "root",
+      "action": "Local thermal-stress reference difference and temperature/load history path",
+      "item": "local_thermal_stress_temperature_load_history",
+      "contract": "docs/native-chain-expansion-20261025.md",
+      "stages": [
+        "P11"
+      ],
+      "evidence_jobs": [
+        "494",
+        "498"
+      ]
+    }
+  ],
+  "post_activation_source_version": "0.57.0",
+  "system_remaining_queue_scope": "MD05 software path and same-Study delivery accepted in 0.45; single-source replica/statistical qualification remains unresolved. Authorized BTO, defect-potential, Ni/BaTiO3 thermal, DeePMD virial, and local thermal-stress/history tracks continue independently; whole system remains incomplete.",
+  "nao_public_entry_next": {
+    "contract": "docs/system-contracts-v0320.md",
+    "status": "accepted_enabled_frozen_engineering_scope",
+    "enabled": "0.32.0",
+    "rollback": "0.31.0",
+    "candidate_source": "0.33.0",
+    "scope": "public_inspect_nao_to_qualify_method_to_abacus_lcao_create_prepare",
+    "evidence": "workspace/reports/nao-public-entry-v032-v001/release-acceptance.json",
+    "job358_terminal": "FAILED/1:0; eight negative checks passed; terminal failure retained",
+    "job359_terminal": "COMPLETED/0:0; one targeted positive check",
+    "new_unique_checks": 9,
+    "existing_chain_reused": [
+      "269",
+      "277",
+      "344",
+      "355",
+      "356",
+      "357"
+    ],
+    "job277_evidence_kind": "direct_read_abacus_electronic_task_function_evidence_not_cli_acceptance",
+    "new_DFT_PYATB_jobs": [],
+    "created_task_submitted": false,
+    "source_chain_product_changes": 0,
+    "scientific_qualification": false,
+    "production_qualification": false,
+    "full_system_complete": false,
+    "next_candidate": "P5 visible scientific gap remains unresolved: the Born tensor lacks continuous polarization-branch evidence because independent endpoints P/Q do not establish one continuous branch; raw Gamma remains nonsymmetric, so ionic and complete static dielectric remain incomplete. Record this status only. Do not add DFT, automatically select a branch, project raw Gamma, submit a task, or use a wrapper to manufacture progress.",
+    "next_candidate_status": "p5_scientific_gap_record_only_no_new_calculation_or_wrapper",
+    "next_candidate_constraints": [
+      "no_new_DFT",
+      "no_automatic_polarization_branch_selection",
+      "no_raw_Gamma_projection",
+      "no_task_submission",
+      "no_wrapper_as_progress"
+    ]
+  },
+  "p5_domain_next": {
+    "software_gap": "native Born/Gamma/electronic/ionic/static same-Study local response path delivered; do not rebuild",
+    "scientific_dependencies": [
+      "displacement_step_kmesh_basis_precision_for_selected_use",
+      "equilibrium_reference_for_equilibrium_material_claims",
+      "temperature_applicability",
+      "unsampled_path_continuity_beyond_explicit_local_review"
+    ],
+    "existing_source_chain": "available; no new bridge",
+    "prohibited": [
+      "unreviewed branch selection",
+      "unrecorded Gamma modification",
+      "automatic retries or parameter expansion",
+      "wrapper-only releases"
+    ],
+    "current_implementation": "accepted_installed_job424_six_public_commands;algorithm390_reused",
+    "qualification": "specified_geometry_local_response_delivered; broader_material_and_production_use_unvalidated",
+    "documentation": "docs/p5-physical-completion-dependencies-v001.md",
+    "latest_authorization": "2026-10-24 explicit user adoption; old prohibitions superseded only within born-gamma-provisional-standard-v001"
+  },
+  "bto_selected_baseline": {
+    "phase": "P4mm",
+    "primitive_atoms": 5,
+    "charge_state": 0,
+    "dopants": [],
+    "polar_axis_requested": [
+      0,
+      0,
+      1
+    ],
+    "selection": "user_confirmed_2026-10-23",
+    "source": "existing_ZStar_PBEsol_tetragonal_reference_snapshot",
+    "binding_status": "bound_job361_COMPLETED_0_0",
+    "no_new_DFT_authorized": true,
+    "model_path": "workspace/models/batio3-p4mm-ferroelectric/v001",
+    "study_path": "workspace/configs/cases/batio3-firing-v002.json",
+    "evidence": "workspace/reports/bto-p4mm-baseline-v001/binding.json"
+  },
+  "born_gamma_literature_v001": {
+    "status": "real_native_local_response_and_installed_consumption_accepted",
+    "protocol": "docs/born-gamma-provisional-standard-v001.md",
+    "scf_thr": 1E-11,
+    "scf_count": 25,
+    "halfstep_count": "only_explicit_ambiguous_directions_after_review",
+    "maximum_parallel_gpu_jobs": 3,
+    "initial_standards": {
+      "gamma_acoustic_warning_cm_1": 30,
+      "gamma_negative_frequency_flag_cm_1": 5,
+      "born_neutrality_warning_e": 0.2,
+      "born_near_zero_absolute_e": 0.005,
+      "born_neutrality_target_e": 0.02,
+      "born_major_relative": 0.005,
+      "gamma_treatment": "P ((K+K.T)/2) P; exact three geometric translations only"
+    },
+    "target": "specified_unrelaxed_CZO_geometry_local_fixed_cell_zero_field_response",
+    "new_jobs": [
+      "365",
+      "366",
+      "367",
+      "368",
+      "369",
+      "370",
+      "371",
+      "372",
+      "373",
+      "374",
+      "375",
+      "376",
+      "377",
+      "378",
+      "379",
+      "380",
+      "381",
+      "382",
+      "383",
+      "384",
+      "385",
+      "386",
+      "387",
+      "388",
+      "389"
+    ],
+    "scientific_qualification": false,
+    "evidence": "workspace/reports/czo-born-gamma-literature-v001/progress.json",
+    "scf_native_completion": "25/25 COMPLETED/0:0 and native electronic convergence; collect391",
+    "pyatb_native_completion": "25/25 COMPLETED/0:0;394-418",
+    "raw_gamma_job": "419",
+    "born_family_job": "420",
+    "precision_comparison_job": "421",
+    "branch_decision": "workspace/reports/czo-born-gamma-literature-v001/root-branch-decision.json",
+    "precision_scope": "SCF comparison passed at native polarization printing resolution; displacement/kmesh/basis remain unqualified",
+    "installed_candidate": "0.34.0 accepted job424 and enabled;0.33 rollback",
+    "installed_job": "424",
+    "delivery": "workspace/reports/czo-born-gamma-literature-v001/gamma-consumer/scf11-run-424/delivery.json",
+    "production_qualification": false
+  },
+  "self_trained_potential_route_v001": {
+    "accepted": true,
+    "release": "workspace/reports/self-trained-potential-route-v001/integration-v035/release-acceptance.json",
+    "repeated_tests": false,
+    "state": "COMPLETED/0:0",
+    "mace_cross_validation": false,
+    "source_job": "423",
+    "installed_job": "425",
+    "enabled_version": "0.35.0"
+  },
+  "charge_correction_v036": {
+    "fixed_backend": "pymatgen-analysis-defects==2026.3.20",
+    "accepted": true,
+    "retained_failures": [
+      "427",
+      "429"
+    ],
+    "scope": "scalar_Freysoldt_charge_correction_charged_formation_charge_state_envelope_and_same_Study_delivery",
+    "real_ABACUS_defect_field": "missing; retained null and missing lists",
+    "no_recalculation_at_install": true,
+    "state": "COMPLETED/0:0",
+    "release": "workspace/reports/charge-correction-v001/integration-v036/release-acceptance.json",
+    "installed_job": "431",
+    "source_jobs": [
+      "426",
+      "428",
+      "430"
+    ]
+  },
+  "magnetic_consumer_v037": {
+    "magnetic_order": "unassessed",
+    "new_status_checks": 5,
+    "new_DFT_MD": false,
+    "release": "workspace/reports/magnetic-consumer-v001/integration-v037/release-acceptance.json",
+    "old_tests_repeated": false,
+    "accepted": true,
+    "native_job": "37",
+    "source_job": "432",
+    "state": "COMPLETED/0:0",
+    "installed_job": "433",
+    "local_moments": "null"
+  },
+  "transport_v038": {
+    "source_job": "437",
+    "native_jobs": [
+      "37",
+      "40"
+    ],
+    "CZO": "available_explicit_engineering_point",
+    "installed_job": "438",
+    "state": "COMPLETED/0:0",
+    "Ni": "unresolved_missing_magnetic_symmetry",
+    "old_tests_repeated": false,
+    "new_DFT_MD": false,
+    "new_checks": 15,
+    "accepted": true,
+    "release": "workspace/reports/transport-v001/integration-v038/release-acceptance.json"
+  },
+  "layered_interface_v039": {
+    "accepted": true,
+    "release": "workspace/reports/layered-interface-v001/integration-v039/release-acceptance.json",
+    "LAMMPS_job_id": null,
+    "atom_count": 18,
+    "installed_job": "440",
+    "source_job": "439",
+    "state": "COMPLETED/0:0",
+    "native_interface_response": "not_calculated",
+    "old_tests_repeated": false
+  },
+  "interface_normal_v040": {
+    "state": "COMPLETED/0:0",
+    "release": "workspace/reports/interface-normal-v001/integration-v040/release-acceptance.json",
+    "native_job": "442",
+    "native_points": 3,
+    "consumer_job": "443",
+    "retained_failed_job": "441",
+    "accepted": true,
+    "native_atom_count": 8,
+    "Ni_BTO": "unrun_unresolved",
+    "old_tests_repeated": false,
+    "unique_new_checks": 11,
+    "installed_job": "444"
+  },
+  "interface_thermal_v041": {
+    "old_tests_repeated": false,
+    "unique_new_checks": 15,
+    "accepted": true,
+    "release": "workspace/reports/interface-thermal-v001/integration-v041/release-acceptance.json",
+    "Ni_BTO": "defined_unrun_unresolved",
+    "source_commands": 3,
+    "source_job": "445",
+    "native_thermal_data_executed": false,
+    "state": "COMPLETED/0:0",
+    "installed_job": "446"
+  },
+  "local_stress_v042": {
+    "local_thermal_stress": null,
+    "installed_job": "449",
+    "source_commands": 6,
+    "consumer_job": "448",
+    "accepted": true,
+    "unique_new_checks": 12,
+    "native_job": "447",
+    "MACE": "defined_unrun_unresolved_unsupported_per_atom_virial",
+    "Ni": "partial_subset_missing_volume",
+    "state": "COMPLETED/0:0",
+    "old_tests_repeated": false,
+    "release": "workspace/reports/local-stress-v001/integration-v042/release-acceptance.json"
+  },
+  "remaining_scope_separation": {
+    "note": "instance scientific inputs and qualification do not block independent software; no whole-stage completion implied",
+    "software": [
+      "MD05_saved_scalar_replica_and_same_Study_delivery_accepted_0.45; statistics/material_sampling_qualification_unresolved",
+      "relaxed_individual_interface_traction",
+      "local_thermal_stress_reference_history_consumption",
+      "selected_polarizable_interface_electrical_response",
+      "polymer_workflows"
+    ],
+    "instance_sources": [
+      "Ni_BTO_interface_runs_unexecuted",
+      "thermal_reservoir_and_spatial_temperature_native_data_absent",
+      "per_atom_virial_unavailable_in_deployed_MACE_Kokkos",
+      "explicit_stress_reference_temperature_loading_history_absent",
+      "selected_crystal_defect_competing_phase_potentials_and_chemical_points_incomplete"
+    ]
+  },
+  "md_thermo_diagnostics_v043": {
+    "installed_job": "452",
+    "release": "workspace/reports/md-thermo-diagnostics-v001/integration-v043/release-acceptance.json",
+    "accepted": true,
+    "unique_new_checks": 10,
+    "old_tests_repeated": false,
+    "retained_failed_job": "451",
+    "source_job": "450",
+    "state": "COMPLETED/0:0",
+    "source_public_commands": 2,
+    "material_sampling_qualification": false
+  },
+  "md_msd_v044": {
+    "production_qualification": false,
+    "installed_job": "454",
+    "old_tests_repeated": false,
+    "unique_new_checks": 17,
+    "source_public_commands": 2,
+    "accepted": true,
+    "state": "COMPLETED/0:0",
+    "source_job": "453",
+    "release": "workspace/reports/md-msd-v001/integration-v044/release-acceptance.json",
+    "native_unwrapped_positive": false
+  },
+  "native_chain_expansion_20261025": {
+    "DFT_time": 0,
+    "max_parallel_independent_DFT": 3,
+    "contract": "docs/native-chain-expansion-20261025.md",
+    "authorization": "original human message in supervisor thread verified",
+    "owners": {
+      "third_thread": "DeePMD nine-component domain/native handoff accepted 466/468; shared files released",
+      "implementation_thread": "thermal_stress plus DeePMD saved-product public delivery, combined 0.46 candidate",
+      "charged_luna": "charged-potential-native-v001 inputs",
+      "thermal_luna": "interface-thermal-native-v001 native run and consumption",
+      "root": "method/resource/science/integration",
+      "bto_luna": "native_lcao_producer: BTO native inputs/jobs/collection; native_electronic_cli: separate PYATB producer"
+    },
+    "automatic_retries": false,
+    "status": "inputs_and_native_execution_in_progress",
+    "dopants": {
+      "selected_elements": [
+        "Dy",
+        "Ho"
+      ],
+      "host_material": "BaTiO3",
+      "series": [
+        "BTO:Dy",
+        "BTO:Ho"
+      ],
+      "doping_mode": "separate_single_dopant_series_confirmed",
+      "site_concentration_compensation": "proposal_pending",
+      "current_authorization": "prepare_literature_engineering_proposal",
+      "user_quote": "BTO 分别单掺，先提出文献工程方案",
+      "source_thread_id": "01a16204-b7d5-7093-abc4-8f9c8b1060ca",
+      "source_turn_id": "01a1717e-38e7-7e02-922e-d99f20731939",
+      "human_message_verified": true,
+      "proposal_owner": "supervisor",
+      "create_instance": false,
+      "submit_rare_earth_DFT": false,
+      "extend_to_CZO": false,
+      "Dy_Ho_codoping": false,
+      "engineering_proposal": {
+        "report": "workspace/reports/bto-dy-ho-proposal-v001/report.md",
+        "status": "proposal_pending_user_selection",
+        "owner": "supervisor",
+        "suggested_parent": "batio3-p4mm-ferroelectric/v001",
+        "suggested_supercell": [
+          2,
+          2,
+          2
+        ],
+        "suggested_atom_count": 40,
+        "suggested_instances": [
+          "Ba7Ti7Dy2O24",
+          "Ba7Ti7Ho2O24"
+        ],
+        "suggested_site_pattern": "one Ba substitution and one Ti substitution by the same rare-earth element; same representative pair in both cases",
+        "suggested_compensation": "formal R3+ A/B self-compensation",
+        "suggested_net_charge": 0,
+        "suggested_first_chain": "fixed-cell SCF -> native E/F/global stress/electronic state -> same Study",
+        "concentration_scope": "high-concentration engineering proposal, not experimental additive molar ratio or dilute-phase equivalence",
+        "user_approved_concentration_sites_compensation": false,
+        "model_created": false,
+        "DFT_submitted": false,
+        "method_dependencies": [
+          "actual compatible Dy/Ho PP and NAO files and library provenance",
+          "explicit 4f treatment and spin/occupations based on selected library",
+          "current LCAO creator permits only neutral nspin1 fixed; extend only if the actual selected method requires it"
+        ],
+        "inventory_review": "workspace/reports/bto-dy-ho-proposal-v001/method-inventory-review.md",
+        "inventory_status": "candidate_files_found_not_selected_or_qualified"
+      }
+    },
+    "DFT_scf_thr": "1e-11",
+    "existing_CZO_repeated": false,
+    "progress": {
+      "observed_at": "2026-10-25T11:59:33.527695+08:00",
+      "bto": {
+        "reference_job": "464",
+        "reference_terminal": "COMPLETED/0:0",
+        "reference_native_scf": "converged_at_1e-11",
+        "endpoint_job_ids": [
+          "469",
+          "470",
+          "471",
+          "472",
+          "473",
+          "474",
+          "475",
+          "476",
+          "477",
+          "478",
+          "479",
+          "480",
+          "481",
+          "482",
+          "483",
+          "484",
+          "485",
+          "486"
+        ],
+        "status": "19_native_SCF_converged_saved_collection493",
+        "response_contract": "docs/bto-native-response-consumption-v001.md",
+        "pyatb": "499-517_all_COMPLETED_0:0_native_outputs_ready",
+        "collection_job": "493",
+        "collection_terminal": "COMPLETED/0:0",
+        "upstream_parse_job": "492",
+        "failed_collection_jobs": [
+          "491",
+          "492"
+        ],
+        "public_force_collector": "PW_only_rejects_LCAO_under_review_reference_binding_also_needed",
+        "force_record": "workspace/reports/bto-native-dielectric-v001/bto-native-force-records-v001.json",
+        "pyatb_jobs": [
+          "499",
+          "500",
+          "501",
+          "502",
+          "503",
+          "504",
+          "505",
+          "506",
+          "507",
+          "508",
+          "509",
+          "510",
+          "511",
+          "512",
+          "513",
+          "514",
+          "515",
+          "516",
+          "517"
+        ],
+        "pyatb_evidence": "workspace/reports/bto-native-dielectric-v001/postprocess-producer/pyatb-terminal-snapshot-v001.json",
+        "failed_pyatb_preparation_jobs": [
+          "495",
+          "497"
+        ],
+        "gamma": "report_adapter_under_review_not_submitted",
+        "born": "actual_source_adapter_under_review_unselected"
+      },
+      "charged_potential": {
+        "preparation_job": "488",
+        "preparation_terminal": "COMPLETED/0:0",
+        "defect_job": "489",
+        "host_job": "490",
+        "last_state": "489_490_COMPLETED_0:0_native_SCF_converged",
+        "failed_preparation_jobs": [
+          "459",
+          "465",
+          "467",
+          "487"
+        ],
+        "automatic_retries_permitted": false,
+        "evidence": "workspace/reports/charged-potential-native-v001/native-convergence-evidence-v001.json",
+        "postprocess_job": "496",
+        "postprocess_state": "COMPLETED/0:0",
+        "potential_status": "native_source_bound_unaligned"
+      },
+      "ni_bto_thermal": {
+        "jobs": [
+          "457",
+          "458",
+          "462"
+        ],
+        "terminal": "COMPLETED/0:0",
+        "engineering_path": "accepted",
+        "result": "partial_transient",
+        "single_interface_G_R": null,
+        "evidence": "workspace/reports/interface-thermal-native-v001/acceptance.json"
+      },
+      "deepmd_centroid": {
+        "jobs": [
+          "466",
+          "468"
+        ],
+        "terminal": "COMPLETED/0:0",
+        "domain_path": "accepted_engineering",
+        "public_delivery": "494_source_498_installed_passed_enabled_0.46",
+        "evidence": "workspace/reports/deepmd-atomic-virial-v001/integration-review.md"
+      },
+      "thermal_stress": {
+        "source_job": "494",
+        "terminal": "COMPLETED/0:0",
+        "new_checks": 34,
+        "public_commands": 5,
+        "status": "enabled_0.46_rollback_0.45",
+        "real_response": "unresolved",
+        "evidence": "workspace/reports/thermal-stress-v001/primary-review.md",
+        "installed_job": "498"
+      },
+      "material_qualification": false,
+      "bto_saved_response_20261025_1210": {
+        "gamma_job": "518",
+        "gamma_state": "COMPLETED/0:0",
+        "optical_modes": 12,
+        "static_inverse_status": "unresolved_two_negative_optical_modes_about_minus96.8_cm-1",
+        "born_job": "520",
+        "born_state": "COMPLETED/0:0",
+        "failure_preserved": "519 atom-index tuple error before numerical work",
+        "symmetry_operations": 8,
+        "independent_directions": 9,
+        "branch_decision": "27 explicit zero integers reviewed by primary; local sampled path only",
+        "evidence": "workspace/reports/bto-native-dielectric-v001/born-producer/root-branch-decision.json",
+        "public_consumption": "pending 0.47 P7 source/Study binding and saved Gamma packaging",
+        "qualification": false
+      },
+      "lcao_public_source_contract_521_522": {
+        "jobs": {
+          "521": "FAILED/1:0; 14 new checks passed; original metadata defect and fixture failure preserved",
+          "522": "COMPLETED/0:0; two focused checks and 19 saved Task/Study/Model metadata checks passed"
+        },
+        "engineering_status": "passed",
+        "collector_repeated": false,
+        "native_parsing_repeated": false,
+        "evidence": "workspace/reports/phonon-lcao-reference-v001/acceptance.json",
+        "scientific_qualification": false,
+        "ready_for_harmonic": false,
+        "candidate_version": "0.47",
+        "enabled_version": "0.46",
+        "next": "saved Gamma import and Born/electronic/Gamma same-Study consumption; no DFT/PYATB/Gamma recomputation"
+      },
+      "bto_response_523_and_slurm_blocker": {
+        "schema": "mlcc.bto-response-candidate-status.v1",
+        "candidate": "0.47.0",
+        "enabled_version": "0.46.0",
+        "job_id": "523",
+        "submitted_at": "2026-10-25T12:34:43+08:00",
+        "initial_scheduler_state": "PENDING",
+        "initial_reason": "InvalidAccount",
+        "controller_journal": {
+          "started_at": "2026-10-25T12:34:52+08:00",
+          "finished_at": "2026-10-25T12:34:55+08:00",
+          "WEXITSTATUS": 1
+        },
+        "terminal_scontrol_state": "FAILED",
+        "terminal_scontrol_exit_code": "1:0",
+        "terminal_scontrol_reason": "NonZeroExitCode",
+        "terminal_evidence": "../slurm-recovery-20261025/mlcc-slurm-recovery-20261025-214038/job523.txt",
+        "terminal_scontrol_reason_previously_unavailable": "slurmctld crashed before terminal query; restored on 2026-10-25 at 21:40:38 Asia/Shanghai",
+        "new_checks_passed": 6,
+        "consumer_status": "failed_before_public_cli_commands",
+        "error": "ValueError: native raw original result must be a non-empty absolute path",
+        "repair": "Convert the already resolved Path to str when calling the existing string-only source-ref helper",
+        "repair_validated_on_v100": true,
+        "followup_batch": "consume-followup.sbatch",
+        "followup_submitted": true,
+        "followup_job_id": "524",
+        "followup_terminal": "COMPLETED/0:0",
+        "followup_acceptance": "acceptance-524.json",
+        "tests_to_repeat": [],
+        "blocker": {
+          "service": "slurmctld",
+          "state": "resolved; original failed (core-dump) evidence retained",
+          "time": "2026-10-25T12:35:08+08:00",
+          "signal": "SIGSEGV",
+          "slurmd_state": "active",
+          "sudo_authentication": "password required",
+          "coredumpctl": "not installed",
+          "owner": "v100 administrator / user",
+          "resolved_at": "2026-10-25T21:40:38+08:00",
+          "recovery": "Start slurmctld with administrator authentication, preserve existing state, then inspect job523 terminal state before submitting the remaining consumer once"
+        },
+        "scientific_qualification": false,
+        "production_qualification": false,
+        "release_accepted": false,
+        "DFT_PYATB_Gamma_kernel_repeated": false
+      }
+    },
+    "current_ownership": {
+      "root": "science_integration_branch_review",
+      "BTO_PYATB": "native_electronic_cli",
+      "BTO_LCAO_public_force_gap": "next_core_scope_0.47_implementation",
+      "BTO_Gamma": "existing_implementation_thread_report_adapter",
+      "charged_potential": "next_core_scope",
+      "release_0.46_install": "completed_enabled_old0.44_retirement_auto_approval_blocked",
+      "BTO_Born": "native_lcao_producer_report_adapter"
+    }
+  },
+  "parallel_execution_context_20261025": {
+    "release_0_45": {
+      "status": "enabled_frozen",
+      "installed_job": "461",
+      "installed_state": "COMPLETED",
+      "installed_exit_code": "0:0",
+      "rollback": "0.44.0",
+      "source": "0.46.0",
+      "evidence": "workspace/reports/md-replica-delivery-v001/integration-v045/release-acceptance.json"
+    },
+    "ni_batio3_native_thermal": {
+      "prep_job": "457",
+      "native_gpu_job": "458",
+      "consumer_job": "462",
+      "states": {
+        "457": "COMPLETED/0:0",
+        "458": "COMPLETED/0:0",
+        "462": "COMPLETED/0:0"
+      },
+      "status": "partial_engineering_delivery",
+      "ab_temperature_pair": "empty_upstream_bin_unresolved",
+      "ba_delta_temperature_K": 4212.46,
+      "heat_allocation": null,
+      "single_interface_G_or_R": null,
+      "additional_md": false,
+      "evidence": "workspace/reports/interface-thermal-native-v001/final-handoff.md"
+    },
+    "bto_460": {
+      "status": "preparation_FileExistsError_retained",
+      "action": "reuse_reference_and_phonon_plan; add points-v002/requests-v002 only",
+      "df_t_submitted": false
+    },
+    "charged_459": {
+      "status": "failed_metadata_extxyz_precision_difference_retained",
+      "approved_action": "strict comparison of real execution extxyz once, then matched host/q2 DFT",
+      "automatic_retry": false
+    },
+    "implementation_thread": "thermal_stress_independent_path_continued",
+    "third_thread": "DeePMD_nine_component_atomic_virial_continued",
+    "no_new_test_or_numerical_task_for_release_activation": true
+  },
+  "interface_tangential_next": {
+    "contract": "docs/interface-tangential-v001.md",
+    "state": "accepted_installed_enabled_0.48",
+    "plan_items": [
+      "P11.08",
+      "P11.15"
+    ],
+    "source_version": "0.48.0",
+    "enabled_version": "0.48.0",
+    "input_native_shared_owner": "01a15851-eb0c-7832-ba67-4833802afd0f",
+    "domain_owner": "01a162dc-49a9-7122-bd2e-fdbab0851548",
+    "integration_owner": "root",
+    "native_preparation_owner": "root/normal_relax_native",
+    "new_job_ids": [
+      "531",
+      "532",
+      "533"
+    ],
+    "old_checks_or_calculations_to_repeat": [],
+    "budget_per_stage": {
+      "cpus": 1,
+      "no_requeue": true,
+      "mem_GiB": 2,
+      "time": "00:05:00"
+    },
+    "stages": [
+      "new_checks_and_prepare",
+      "native_tangential_minimization",
+      "native_consumption"
+    ],
+    "software_accepted": true,
+    "scientific_qualification": false,
+    "release_or_install_slice": false,
+    "source_ownership": "returned_to_root",
+    "acceptance": "workspace/reports/interface-tangential-native-v001/acceptance-reviewed.json",
+    "native_terminal_states": {
+      "531": "COMPLETED/0:0",
+      "532": "COMPLETED/0:0",
+      "533": "COMPLETED/0:0"
+    },
+    "new_checks_passed": 29,
+    "native_stopping_criteria": [
+      "force tolerance",
+      "force tolerance",
+      "force tolerance"
+    ],
+    "complete_P11": false,
+    "installed_job": "534"
+  },
+  "p5_mode_response_next": {
+    "contract": "docs/p5-mode-resolved-response-v001.md",
+    "state": "accepted_installed_enabled_0.49",
+    "owner": "root",
+    "integration_owner": "root",
+    "candidate": "0.49.0",
+    "source_data": "CZO424 and BTO524 saved Born/Gamma/ionic",
+    "no_native_rerun": true,
+    "budget": {
+      "cpu": 1,
+      "gpu": 0,
+      "memory_GiB": 4,
+      "time": "00:05:00",
+      "no_requeue": true
+    },
+    "new_job_ids": [
+      "535",
+      "536"
+    ],
+    "accepted": true,
+    "acceptance": "workspace/reports/dielectric-modes-v001/acceptance-reviewed.json",
+    "installed_owner": "01a162dc-49a9-7122-bd2e-fdbab0851548",
+    "installed_accepted": true,
+    "installed_job": "536",
+    "release_acceptance": "workspace/reports/dielectric-modes-v001/integration-v049/release-acceptance.json"
+  },
+  "multi_dopant_continuum_20261026": {
+    "schema": "mlcc.multi-dopant-continuum-execution.v1",
+    "status": "first_batch_accepted_enabled",
+    "candidate_version": "0.50.0",
+    "enabled_version": "0.50.0",
+    "rollback_version": "0.49.0",
+    "scope": [
+      "M1 composition input",
+      "M2 new-element neutral pair",
+      "M3 saved composition property comparison",
+      "C1 SI parameter package",
+      "C2 COMSOL Java template",
+      "I1 shared entry integration"
+    ],
+    "ownership": {
+      "root": [
+        "defect_tasks.py",
+        "defect_thermodynamics.py",
+        "method comparison helper",
+        "integration and acceptance"
+      ],
+      "original_implementation": [
+        "dopant_composition.py",
+        "composition_comparison.py",
+        "minimal model metadata",
+        "cli.py",
+        "property_delivery.py",
+        "Skill"
+      ],
+      "third_window": [
+        "continuum_parameters.py",
+        "comsol_export.py",
+        "templates"
+      ]
+    },
+    "source_acceptance": {
+      "job_id": "538",
+      "submitted": true,
+      "partition": "cpu",
+      "nodes": 1,
+      "tasks": 1,
+      "cpus": 1,
+      "gpus": 0,
+      "memory_GiB": 4,
+      "walltime": "00:10:00",
+      "requeue": false,
+      "scope": "only new tests, real PP input generation, saved product consumption and new public paths",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0"
+    },
+    "installed_acceptance": {
+      "job_id": "539",
+      "submitted": true,
+      "scope": "one necessary installed entry/binding and saved product delivery check after source acceptance",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0"
+    },
+    "new_DFT_MD_training": false,
+    "repeat_old_checks": false,
+    "new_material_recipe_selected": false,
+    "comsol_native_import_verified": false,
+    "comsol_documentation_version": "6.3",
+    "scf_policy": {
+      "new_ABACUS_scf_thr": 1E-11,
+      "born_gamma_standards": "docs/born-gamma-provisional-standard-v001.md",
+      "retroactive_recalculation": false
+    },
+    "source_history": [
+      {
+        "job_id": "537",
+        "state": "FAILED",
+        "exit_code": "1:0",
+        "passed_tests": 71,
+        "failed_tests": 1,
+        "cause": "Test input ndarray was not converted to JSON list",
+        "fix": "np.eye(3).tolist() in one test",
+        "unexecuted": [
+          "M2 inputs",
+          "M1/M3 public",
+          "C1/C2 public"
+        ]
+      },
+      {
+        "job_id": "538",
+        "scope": "only corrected test plus unexecuted public paths"
+      }
+    ],
+    "source_ownership": "all implementations handed back to root; no parallel source edits active",
+    "release_acceptance": "workspace/reports/multi-dopant-continuum-v001/integration-v050/release-acceptance.json"
+  },
+  "composition_configurations_m4_v001": {
+    "schema": "mlcc.m4-configurations-execution.v1",
+    "status": "engineering_accepted_enabled",
+    "enabled_version": "0.51.0",
+    "rollback_version": "0.50.0",
+    "candidate_version": "0.51.0",
+    "contract": "docs/composition-configurations-m4-v001.md",
+    "source_job_id": "540",
+    "installed_job_id": "541",
+    "budget": {
+      "walltime": "00:10:00",
+      "maximum_external_imports": 1,
+      "no_requeue": true,
+      "gpu": 0,
+      "max_atoms": 32,
+      "maximum_random_configurations": 3,
+      "memory_GiB": 4,
+      "cpu": 1
+    },
+    "owners": {
+      "third_thread": "composition_sqs_import and dedicated tests/examples",
+      "implementation_thread": "composition_configurations, M1 minimal helper, CLI/property_delivery/Skill",
+      "root": "contract, Slurm, integration and final review"
+    },
+    "comsol_environment": "workspace/reports/composition-configurations-v001/comsol-environment.json",
+    "new_DFT_MD_training": false,
+    "SQS_optimization": false,
+    "old_acceptance_repeated": false,
+    "source_archive": "workspace/reports/composition-configurations-v001/integration-v051/source-candidate-v051.tar.gz",
+    "source_scheduler_terminal": "COMPLETED/0:0",
+    "installed_scheduler_terminal": "COMPLETED/0:0",
+    "release_acceptance": "workspace/reports/composition-configurations-v001/integration-v051/release-acceptance.json",
+    "source_ownership": "M4 handed back and frozen; new vacancy migration scope is separate 0.52 work"
+  },
+  "vacancy_migration_v001": {
+    "schema": "mlcc.vacancy-migration-execution.v1",
+    "status": "accepted_enabled_frozen",
+    "enabled_version": "0.52.0",
+    "rollback_version": "0.51.0",
+    "source_version": "0.53.0",
+    "contract": "docs/vacancy-migration-v001.md",
+    "source_job": "544",
+    "native_job": "546",
+    "consumer_job": "547",
+    "new_DFT_training": false,
+    "repeated_155": false,
+    "owners": {
+      "third": "lammps_neb neb_tasks and dedicated tests",
+      "root": "path endpoints site integration",
+      "implementation": "vacancy_migration and CLI/Study"
+    },
+    "preparation_job": "542",
+    "preparation_terminal": "COMPLETED/0:0",
+    "prepared_input": "workspace/reports/vacancy-migration-v001/prepared-542/prepared.json",
+    "source_terminal": "544 COMPLETED/0:0; original543 FAILED/1:0 with25passed/1failed; onlyfailedfixed",
+    "memory_review": "32768MiB refused before job creation; RealMemory27800MiB; reviewed24576MiB",
+    "installed_job": "548",
+    "corrected_geometric_consumer_job": "549",
+    "release_acceptance": "workspace/reports/vacancy-migration-v001/integration-v052/release-acceptance.json",
+    "source_ownership": "all new implementations handed back to root; no new implementation range assigned"
+  },
+  "modular_stage_handoff_v001": {
+    "schema": "mlcc.modular-stage-handoff-review.v1",
+    "state": "assessment_complete_neb_continuation_installed_enabled",
+    "human_authorization_turn": "01a17694-8f73-73e1-a031-ebc1334aebba",
+    "contract": "docs/modular-stage-handoff-v001.md",
+    "report": "workspace/reports/modular-stage-handoff-v001/report.md",
+    "source_acceptance": "workspace/reports/modular-stage-handoff-v001/acceptance.json",
+    "job_id": "550",
+    "scheduler_state": "COMPLETED",
+    "exit_code": "0:0",
+    "enabled_version": "0.53.0",
+    "rollback_version": "0.52.0",
+    "candidate_version": "0.54.0",
+    "installed": true,
+    "activation_changed": true,
+    "source_owner": "root",
+    "changed_source": [
+      "mlcc-agent/src/mlcc/workflow.py",
+      "mlcc-agent/tests/test_neb_workflow.py"
+    ],
+    "reused_native_job_id": "546",
+    "scientific_calculations": 0,
+    "domain_modular_contracts_implemented": false,
+    "next_action": "Continue original ready core queue. Modular adapters remain a proposal; no additional NEB convergence or repeated550/551 verification.",
+    "installed_job_id": "551",
+    "installed_terminal": "COMPLETED/0:0",
+    "release_acceptance": "workspace/reports/modular-stage-handoff-v001/integration-v053/release-acceptance.json"
+  },
+  "czo_md_real_sources_v001": {
+    "schema": "mlcc.czo-md-real-sources-execution.v1",
+    "state": "accepted_enabled_frozen",
+    "human_authorization_turn": "01a1770f-104c-7541-8cc0-246dfa2f769a",
+    "contract": "docs/czo-md-real-sources-v001.md",
+    "enabled_version": "0.54.0",
+    "rollback_version": "0.53.0",
+    "source_version": "0.55.0",
+    "native_job_ids": [
+      "561",
+      "562",
+      "563",
+      "564"
+    ],
+    "analysis_job_id": "565",
+    "installed_job_id": "567",
+    "study_id": "cazro3_firing_validation_v003",
+    "model_id": "cazro3-pnma-pristine",
+    "model_version": "v001",
+    "potential_id": "deepmd-czo-neutral-joint-training-v001",
+    "potential_version": "146",
+    "temperatures_K": [
+      300,
+      400
+    ],
+    "velocity_seeds": [
+      202610261,
+      202610262
+    ],
+    "tasks": 4,
+    "steps": 6000,
+    "timestep_ps": 0.0001,
+    "production_steps": [
+      1000,
+      6000
+    ],
+    "dump_stride": 10,
+    "resources_per_task": {
+      "walltime": "00:20:00",
+      "ranks": 1,
+      "GPUs": 1,
+      "memory_GiB": 6,
+      "requeue": false,
+      "cpus_per_task": 2
+    },
+    "max_concurrency": 4,
+    "scientific_qualification": false,
+    "automatic_retry": false,
+    "owners": {
+      "root": "All implementation handed back; science, contracts, integration and review"
+    },
+    "completed_evidence_reused": [
+      "529",
+      "530",
+      "531",
+      "532",
+      "533",
+      "534",
+      "546",
+      "547",
+      "548",
+      "549",
+      "550",
+      "551"
+    ],
+    "next": "Continue finite BTO host/Dy/Ho engineering list after exact PP/NAO and common-method review; retain multiscale parameter producers in ordered queue; no repeat of561-566 or installed acceptance.",
+    "preparation_job_id": "560",
+    "native_jobs": [
+      {
+        "task_id": "czo-host20-nvt-t300-s202610261-v001",
+        "job_id": "561",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:01:36",
+        "control_task": "D:/project/mlcc/workspace/reports/czo-md-real-sources-v001/control/czo-host20-nvt-t300-s202610261-v001/task.json",
+        "remote_task": "/home/v100/projects/mlcc/workspace/reports/czo-md-real-sources-v001/native-producer/prepare-560/workspace/tasks/czo-host20-nvt-t300-s202610261-v001/task.json"
+      },
+      {
+        "task_id": "czo-host20-nvt-t300-s202610262-v001",
+        "job_id": "562",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:01:33",
+        "control_task": "D:/project/mlcc/workspace/reports/czo-md-real-sources-v001/control/czo-host20-nvt-t300-s202610262-v001/task.json",
+        "remote_task": "/home/v100/projects/mlcc/workspace/reports/czo-md-real-sources-v001/native-producer/prepare-560/workspace/tasks/czo-host20-nvt-t300-s202610262-v001/task.json"
+      },
+      {
+        "task_id": "czo-host20-nvt-t400-s202610261-v001",
+        "job_id": "563",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:01:35",
+        "control_task": "D:/project/mlcc/workspace/reports/czo-md-real-sources-v001/control/czo-host20-nvt-t400-s202610261-v001/task.json",
+        "remote_task": "/home/v100/projects/mlcc/workspace/reports/czo-md-real-sources-v001/native-producer/prepare-560/workspace/tasks/czo-host20-nvt-t400-s202610261-v001/task.json"
+      },
+      {
+        "task_id": "czo-host20-nvt-t400-s202610262-v001",
+        "job_id": "564",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:01:34",
+        "control_task": "D:/project/mlcc/workspace/reports/czo-md-real-sources-v001/control/czo-host20-nvt-t400-s202610262-v001/task.json",
+        "remote_task": "/home/v100/projects/mlcc/workspace/reports/czo-md-real-sources-v001/native-producer/prepare-560/workspace/tasks/czo-host20-nvt-t400-s202610262-v001/task.json"
+      }
+    ],
+    "analysis_terminal": "FAILED/1:0",
+    "analysis_passed": [
+      "8 new consumer tests",
+      "4 native results/collections/stress sources saved"
+    ],
+    "analysis_failure": "First deliver-md blocked by workflow result identity/source validation; no delivery computed; source565 retained",
+    "followup_job_id": "566",
+    "followup_terminal": "COMPLETED/0:0",
+    "source_acceptance": "acceptance-reviewed.json",
+    "release_acceptance": "workspace/reports/czo-md-real-sources-v001/integration-v054/release-acceptance.json"
+  },
+  "domain_parameter_json_v001": {
+    "human_authorization_turn": "01a1773d-94f0-7aa1-b1e8-3342b485f87d",
+    "contract": "docs/domain-parameter-json-development-v001.md",
+    "native_job_ids": [
+      "578",
+      "579"
+    ],
+    "analysis_job_id": "580",
+    "endpoint": "domain_parameter_JSON",
+    "owners": {
+      "root": "All source and integration handed back; frozen0.57",
+      "implementation": "idle; handed back",
+      "third": "idle; handed back",
+      "luna": "backup document completed; no numerical scope"
+    },
+    "j1": "Saved561-566 mass density and two same-seed cv_secant intervals; no old parse or engine",
+    "j1_resources": {
+      "walltime": "00:10:00",
+      "GPUs": 0,
+      "requeue": false,
+      "memory_GiB": 6,
+      "CPUs": 2
+    },
+    "j2": {
+      "steps": 6000,
+      "pdamp_ps": 0.1,
+      "temperatures_K": [
+        300,
+        400
+      ],
+      "tdamp_ps": 0.01,
+      "dump_every": 10,
+      "potential": "DeePMD146",
+      "max_concurrency": 2,
+      "seed": 202610261,
+      "timestep_ps": 0.0001,
+      "production_steps": [
+        1000,
+        6000
+      ],
+      "coupling": "iso",
+      "equilibration_steps": [
+        0,
+        990
+      ],
+      "resources_per_task": {
+        "CPUs": 2,
+        "ranks": 1,
+        "memory_GiB": 6,
+        "walltime": "00:20:00",
+        "GPUs": 1,
+        "requeue": false
+      },
+      "ensemble": "npt",
+      "model": "CZO host20",
+      "pressure_bar": 0
+    },
+    "after": [],
+    "excluded": [
+      "FEM/COMSOL new work",
+      "general SI conversion framework",
+      "hashes",
+      "repeat old validations"
+    ],
+    "j3": {
+      "schema": "mlcc.lammps-elastic-domain-development.v1",
+      "source_version": "0.55.0",
+      "contract": "docs/lammps-elastic-domain-v001.md",
+      "preparation_job": "586",
+      "preparation_terminal": "COMPLETED/0:0",
+      "new_checks_passed": 4,
+      "manifest": "workspace/reports/lammps-elastic-domain-v001/native-producer/prepare-586/plan/prepare-manifest.json",
+      "response_request": "workspace/reports/lammps-elastic-domain-v001/native-producer/prepare-586/plan/response-request.json",
+      "point_count": 13,
+      "strain_amplitude": 0.001,
+      "native_job_ids": [
+        "588",
+        "589",
+        "590",
+        "591",
+        "592",
+        "593",
+        "594",
+        "595",
+        "596",
+        "597",
+        "598",
+        "599",
+        "600"
+      ],
+      "maximum_native_concurrency": 2,
+      "owners": {
+        "implementation": "J2 consumer still in progress; later public J3 CLI wiring",
+        "root": "all J3 sources/control scripts handed back; numerical integration",
+        "third": "handed back"
+      },
+      "local_copy": "All586 input models/childStudies,588-600 native files/results and601 domain/Study evidence returned locally; server originals retained",
+      "native_terminal": "All13 COMPLETED/0:0, per-task native query JSON and uploaded task records saved",
+      "consumption": {
+        "job_id": "601",
+        "study_delivery": "workspace/reports/lammps-elastic-domain-v001/consumer/run-601/delivery.json",
+        "parser_runs_per_task": 1,
+        "status": "delivered",
+        "terminal": "COMPLETED/0:0",
+        "property_names": [
+          "elastic_stiffness_tensor",
+          "reference_stress_tensor"
+        ],
+        "domain_product": "workspace/reports/lammps-elastic-domain-v001/consumer/run-601/domain-parameters.json"
+      },
+      "enabled_version": "0.55.0",
+      "state": "functional_demo_complete_installed_0_55",
+      "next": "J4 one-direction bulk NEMD to J/gradT/kappa domain JSON"
+    },
+    "execution_record": "workspace/reports/czo-bulk-thermal-v001/execution.json",
+    "j1_delivery": {
+      "study_delivery": "workspace/reports/bulk-thermodynamics-v001/run-577/delivery.json",
+      "product": "workspace/reports/bulk-thermodynamics-v001/run-577/domain-parameters.json",
+      "properties": {
+        "mass_density": 4,
+        "mass_specific_heat_cv_interval": 2
+      },
+      "native_sources_reused": [
+        "561",
+        "562",
+        "563",
+        "564"
+      ],
+      "state": "functional_demo_complete",
+      "saved_sources_reused": [
+        "565",
+        "566"
+      ]
+    },
+    "j2_native_status": [
+      {
+        "task_id": "czo-host20-npt-t300-s202610261-v001",
+        "job_id": "578",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:01:24",
+        "query_evidence": "D:\\project\\mlcc\\workspace\\reports\\czo-bulk-thermal-v001\\control\\czo-host20-npt-t300-s202610261-v001\\query.json",
+        "query_stderr": "D:\\project\\mlcc\\workspace\\reports\\czo-bulk-thermal-v001\\control\\czo-host20-npt-t300-s202610261-v001\\query.stderr",
+        "task_path": "/home/v100/projects/mlcc/workspace/reports/czo-bulk-thermal-v001/native-producer/prepare-577/workspace/tasks/czo-host20-npt-t300-s202610261-v001/task.json"
+      },
+      {
+        "task_id": "czo-host20-npt-t400-s202610261-v001",
+        "job_id": "579",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed": "00:01:23",
+        "query_evidence": "D:\\project\\mlcc\\workspace\\reports\\czo-bulk-thermal-v001\\control\\czo-host20-npt-t400-s202610261-v001\\query.json",
+        "query_stderr": "D:\\project\\mlcc\\workspace\\reports\\czo-bulk-thermal-v001\\control\\czo-host20-npt-t400-s202610261-v001\\query.stderr",
+        "task_path": "/home/v100/projects/mlcc/workspace/reports/czo-bulk-thermal-v001/native-producer/prepare-577/workspace/tasks/czo-host20-npt-t400-s202610261-v001/task.json"
+      }
+    ],
+    "j2_saved_sources": "native-producer/prepare-577/sources-580.json",
+    "j2_read_and_recovery": {
+      "recovery_state": "COMPLETED/0:0",
+      "recovery_scope": "Two resume-plan calls only; both completed, no parser/engine/test repeat",
+      "job_id": "580",
+      "recovery_job_id": "584",
+      "parse_status": "two_sources_saved",
+      "terminal": "FAILED/2:0",
+      "failure": "Root resume-plan invocation omitted required --site after both native results had been saved"
+    },
+    "j2_delivery": {
+      "property_count": 7,
+      "study_delivery": "workspace/reports/czo-bulk-thermal-v001/consumer/run-587/delivery.json",
+      "job_id": "587",
+      "product": "workspace/reports/czo-bulk-thermal-v001/consumer/run-587/domain-parameters.json",
+      "terminal": "COMPLETED/0:0",
+      "state": "functional_demo_complete",
+      "new_checks_passed": 5
+    },
+    "j3_contract": "docs/lammps-elastic-domain-v001.md",
+    "state": "J1_J2_J3_J4_J5_J6_engineering_domain_JSON_stage_complete",
+    "source_version": "0.57.0",
+    "next": "Current J1-J6 domain-JSON scope complete; no new implementation or numerical scope assigned; source0.57 remains frozen.",
+    "j4": {
+      "schema": "mlcc.j4-execution.v1",
+      "state": "source_engineering_demo_complete",
+      "source_version": "0.56.0",
+      "enabled_version": "0.55.0",
+      "rollback_version": "0.54.0",
+      "contract": "docs/bulk-thermal-transport-j4-v001.md",
+      "preparation": {
+        "job_id": "622",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed_seconds": 2,
+        "new_checks_passed": 12,
+        "transient_pending_reason": "InvalidAccount observed immediately after submission, cleared by Slurm without intervention; same job completed with Restarts0/Requeue0",
+        "manifest": "native-producer/prepare-622/prepare-manifest.json"
+      },
+      "native": {
+        "job_id": "623",
+        "state": "COMPLETED",
+        "gpu_count": 1,
+        "cpus": 2,
+        "memory_mib": 6144,
+        "walltime": "00:20:00",
+        "steps": 6000,
+        "atom_count": 80,
+        "task_id": "czo-supercell80-bulk-heat-z-v001",
+        "exit_code": "0:0",
+        "elapsed_seconds": 81
+      },
+      "analysis": {
+        "job_id": "624",
+        "state": "COMPLETED",
+        "exit_code": "0:0",
+        "elapsed_seconds": 5,
+        "native_parse_count": 1,
+        "consumer_count": 1,
+        "study_delivery_count": 1
+      },
+      "engineering_demo_complete": true,
+      "scientific_qualification": false,
+      "old_numerical_reruns": 0,
+      "source_ownership": "all J4 source handed back to root",
+      "next": "J5 only missing saved-product domain JSON adapters, then J6 minimal ABACUS differences; do not repeat622–624 or install0.56 solely for this field."
+    },
+    "completion_evidence": "workspace/reports/domain-json-stage-completion-v001/boundary-review.json",
+    "j5_completion": {
+      "job": "633",
+      "terminal": "COMPLETED/0:0",
+      "properties": 9,
+      "deliveries": 3,
+      "acceptance": "workspace/reports/saved-md-parameters-v001/acceptance-reviewed.json"
+    },
+    "production_qualification": false
+  },
+  "j5_saved_domain_parameters": {
+    "source_demo_complete": true,
+    "job_id": "625",
+    "new_checks": 8,
+    "terminal": "COMPLETED/0:0",
+    "acceptance": "workspace/reports/saved-domain-parameters-v001/acceptance-reviewed.json",
+    "completion_job": "633",
+    "complete": true,
+    "completion_acceptance": "workspace/reports/saved-md-parameters-v001/acceptance-reviewed.json"
+  },
+  "j6_bto_dy_ho_scf": {
+    "acceptance": "workspace/reports/bto-dy-ho-scf-j6-v001/acceptance-reviewed.json",
+    "preserved_failed_job": "630 FAILED/1:0",
+    "prepare_job": "626",
+    "consumer_job": "631",
+    "terminal": "COMPLETED/0:0",
+    "method_confounded": true,
+    "native_jobs": [
+      "627",
+      "628",
+      "629"
+    ],
+    "scientific_qualification": false,
+    "source_demo_complete": true,
+    "installed_job": "632",
+    "enabled_version": "0.56.0",
+    "installation_owner": "root_review_complete"
+  },
+  "previous_enabled_release_acceptance": {
+    "schema": "mlcc.release-acceptance.v1",
+    "status": "accepted_enabled_frozen",
+    "enabled_version": "0.56.0",
+    "rollback_version": "0.55.0",
+    "candidate_source_version": "0.57.0",
+    "installed_job": "632",
+    "installed_terminal": "COMPLETED/0:0",
+    "source_archive": "workspace/reports/saved-domain-parameters-v001/source-j5-j6-v056.tar.gz",
+    "source_acceptance": [
+      "workspace/reports/lammps-bulk-heat-domain-v001/acceptance-reviewed.json",
+      "workspace/reports/saved-domain-parameters-v001/acceptance-reviewed.json",
+      "workspace/reports/bto-dy-ho-scf-j6-v001/acceptance-reviewed.json"
+    ],
+    "installed_evidence": "workspace/reports/bto-dy-ho-scf-j6-v001/integration-v056/candidate-acceptance.json",
+    "binding_evidence": "workspace/reports/bto-dy-ho-scf-j6-v001/root-control/activation-config-056.json",
+    "retirement": "workspace/reports/bto-dy-ho-scf-j6-v001/root-control/retirement-054-plan.json",
+    "j4_jobs": [
+      "622",
+      "623",
+      "624"
+    ],
+    "j5_job": "625",
+    "j6_prepare_job": "626",
+    "j6_native_jobs": [
+      "627",
+      "628",
+      "629"
+    ],
+    "j6_consumer_job": "631",
+    "preserved_failure": "630 FAILED/1:0: electronic received task.json instead of directory;631 reused saved host parse and completed remaining consumption.",
+    "functional_delivery": "J4 native heat-flow/gradient/conductivity domain JSON; J5 saved NEB/interface/stress bridges; J6 host/Dy/Ho native SCF to five parameters and same-Study delivery plus gap/stress differences.",
+    "native_reruns": 0,
+    "native_parser_repeats": 0,
+    "old_test_repeats": 0,
+    "installed_checks_only": true,
+    "production_qualification": false,
+    "full_system_complete": false,
+    "scientific_limits": [
+      "J4 short finite-window heat imbalance and steady-state limitations retained.",
+      "NEB unconverged and earlier BTO nonpositive modes remain unchanged.",
+      "J6 method_confounded=true because protocol/PP descriptive metadata are unsupported by existing comparison; f-core scalar static references do not establish material qualification."
+    ],
+    "next_source_version": "0.57.0",
+    "reviewer": "root",
+    "review_date": "2026-10-26",
+    "next_minimum_task": "Continue the original ready functional queue; do not repeat622-632. No new numerical scope assigned by this release."
+  },
+  "enabled_version": "0.57.0",
+  "bundle_version": "0.57.0",
+  "rollback_version": "0.56.0",
+  "source_version": "0.57.0",
+  "source_status": "frozen",
+  "candidate_source_version": null,
+  "next_source_version": null,
+  "next_release": null,
+  "next_bundle_version": null,
+  "next_minimum_task_version": null,
+  "next_implementation_contract": "docs/zeus-web-entry-v001.md",
+  "status": "enabled_0_57_J1_J6_domain_JSON_stage_complete",
+  "integration_release_status": "accepted_enabled_frozen",
+  "next_implementation_contract_status": "browser_flow_complete_historical_job_unavailable",
+  "next_minimum_task": "Current Zeus saved-data browser scope complete; retain historical job20 native query error. No new computation or expanded web scope assigned.",
+  "current_file_owners": {
+    "implementation": "backend handed back",
+    "third": "frontend handed back",
+    "root": "Integrated runtime and browser acceptance"
+  },
+  "current_release_acceptance": {
+    "schema": "mlcc.release-acceptance.v1",
+    "status": "accepted_enabled_frozen",
+    "enabled_version": "0.57.0",
+    "rollback_version": "0.56.0",
+    "source_version": "0.57.0",
+    "candidate_source_version": null,
+    "next_source_version": null,
+    "installed_candidate_version": "0.57.0",
+    "installed_job": "633",
+    "installed_terminal": "COMPLETED/0:0",
+    "elapsed_seconds": 7,
+    "first_demo_on_installed_candidate": true,
+    "resources": {
+      "requested": {
+        "cpu": 1,
+        "gpu": 0,
+        "time": "00:10:00",
+        "memory_GiB": 2
+      },
+      "allocated": {
+        "cpu": 2,
+        "gpu": 0,
+        "memory_GiB": 2
+      },
+      "evidence": "workspace/reports/saved-md-parameters-v001/integration-v057/scheduler-633.txt"
+    },
+    "source_archive": "workspace/reports/saved-md-parameters-v001/source-j5-completion-v057.tar.gz",
+    "installed_archive": "workspace/reports/saved-md-parameters-v001/integration-v057/installed-057.tar.gz",
+    "installed_evidence": "workspace/reports/saved-md-parameters-v001/integration-v057/acceptance.json",
+    "binding_evidence": "workspace/reports/saved-md-parameters-v001/root-control/activation-config-057.json",
+    "retirement": "workspace/reports/saved-md-parameters-v001/root-control/retirement-055-plan.json",
+    "new_checks_passed": 3,
+    "saved_products": 3,
+    "named_parameters": 9,
+    "same_study_deliveries": 3,
+    "public_calls": 6,
+    "new_native_jobs": 0,
+    "repeated_domain_algorithms": 0,
+    "old_test_repeats": 0,
+    "separate_installation_retest": false,
+    "functional_delivery": "Saved MSD, replica statistics and NEB vacancy occupancy/events to named domain parameters and original Study; J1-J6 domain JSON stage complete.",
+    "stage_completion": "workspace/reports/domain-json-stage-completion-v001/boundary-review.json",
+    "local_backup": "workspace/reports/local-backup-status-20261026.md",
+    "production_qualification": false,
+    "full_system_complete": false,
+    "scientific_limits": [
+      "D, SE and CI remain null; finite sampling and potential qualification unchanged.",
+      "NEB images are not physical time; native nonconvergence and unresolved transitions retained.",
+      "J4 balance/steady-state and interface G/R unresolved; J6 method_confounded flag retained.",
+      "Engineering stage completion does not establish whole-system or material production qualification."
+    ],
+    "next_minimum_task": "Current J1-J6 domain-JSON scope complete; no new implementation or numerical scope assigned; source0.57 remains frozen.",
+    "reviewer": "root",
+    "reviewed_at": "2026-10-26T20:57:35.7963004+08:00"
+  },
+  "release_acceptance": "workspace/reports/saved-md-parameters-v001/integration-v057/release-acceptance.json",
+  "updated_date": "2026-10-27",
+  "zeus_web_entry_v001": {
+    "schema": "mlcc.zeus-web-entry.v1",
+    "status": "browser_flow_complete_historical_job_unavailable",
+    "date": "2026-10-27",
+    "contract": "docs/zeus-web-entry-v001.md",
+    "enabledMlccVersion": "0.57.0",
+    "rollbackMlccVersion": "0.56.0",
+    "webUrl": "http://127.0.0.1:1430",
+    "apiUrl": "http://127.0.0.1:8787",
+    "processRecord": "workspace/runtime/matterai/project/web-entry/processes.json",
+    "logs": "D:\\project\\mlcc\\workspace\\runtime\\matterai\\project\\web-entry\\run-20261027-101358",
+    "frontendTypecheck": "passed_once_by_frontend_owner",
+    "backendSyntax": "passed_new_files_only_by_backend_owner",
+    "browserObserved": [
+      "Original Zeus registration and authenticated project",
+      "Installed MLCC 0.57 selection",
+      "Actual MCP task list",
+      "Actual query reached v100 Slurm; historical job20 Invalid job id specified",
+      "Current saved query_failed separated from historical COMPLETED",
+      "Saved CaZrO3 Study",
+      "md_msd values, units, unresolved null and original JSON"
+    ],
+    "browserAcceptance": "passed_saved_viewer_and_native_query_error_handling",
+    "pending": null,
+    "scientificJobsSubmitted": 0,
+    "oldCalculationsRepeated": 0,
+    "owners": {
+      "implementation": "backend handed back",
+      "third": "frontend handed back",
+      "root": "Integrated runtime and browser acceptance"
+    },
+    "sources": "workspace/runtime/matterai/apps/server/src/mlcc/sources.json",
+    "browserRecheck": {
+      "checkedAt": "2026-10-27T10:33:08.7794824+08:00",
+      "authenticated": true,
+      "authorizationTurn": "01a17b18-f65d-7b02-8d16-0fd17a5cabdf",
+      "studyId": "cazro3_firing_validation_v003",
+      "parameter": "md_msd",
+      "queryTask": "h0-ni-single-v004",
+      "queryHttpStatus": 502,
+      "queryExitCode": 1,
+      "scientificWorkRepeated": 0,
+      "evidence": [
+        "browser-task-query.png",
+        "browser-query-error.ax.txt",
+        "browser-parameters.png",
+        "browser-parameters.ax.txt",
+        "browser-query-after-fix.ax.txt",
+        "browser-native-query-error.ax.txt",
+        "browser-native-query-error.png"
+      ],
+      "queryAttempts": 2,
+      "retryScope": "One failed-query continuation after PROGRAMDATA fix; no repeated scientific calculation",
+      "nativeError": "slurm_load_jobs error: Invalid job id specified"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "vasp-roundtrip",
+  "stages": [
+    "P1",
+    "P3"
+  ],
+  "kind": "real_integration",
+  "prompt": "在独立 MLCC 工作区完成小模型 VASP 弛豫和 SCF，并回传真实结果。",
+  "expected": [
+    "LAN 传输和真实任务过程",
+    "真实 Slurm job ID、状态、资源与退出码；不回退直接 SSH 进程",
+    "NVHPC MPI/PMIx 单独验收，不把非 MPI CUDA smoke 当 VASP 四卡成功",
+    "授权 POTCAR 与显式 VASP MPI 环境",
+    "实际 CONTCAR/OUTCAR/vasprun.xml 产物",
+    "E/F/应力单位及原子顺序恢复",
+    "区分退出状态与电子/离子收敛",
+    "不运行原项目重启脚本终止其他服务"
+  ],
+  "execution_status": "not_run"
+}

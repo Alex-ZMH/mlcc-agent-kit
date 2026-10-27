@@ -1,0 +1,20 @@
+{
+  "schema": "mlcc.deepmd-source-manifest.v1",
+  "engine": "abacus",
+  "method_set": "ni-oncv-pbe18-pw-engineering-v001",
+  "virial": {
+    "source": "result.stress_GPa",
+    "sign": "source_stress_times_volume",
+    "input_unit": "GPa",
+    "output_unit": "eV"
+  },
+  "sources": [
+    {
+      "task_id": "h1-ni-scf-v001",
+      "path": "../../../workspace/tasks/h1-ni-scf-v001",
+      "input_structure": "input.extxyz",
+      "split": "train",
+      "source_group": "scf"
+    }
+  ]
+}

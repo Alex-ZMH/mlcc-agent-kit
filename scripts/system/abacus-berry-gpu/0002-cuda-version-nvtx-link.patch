@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -332,7 +332,7 @@
+   # ${ABACUS_BIN_NAME} is added before CUDA is enabled
+   set_property(TARGET ${ABACUS_BIN_NAME}
+                PROPERTY CUDA_ARCHITECTURES ${CMAKE_CUDA_ARCHITECTURES})
+-  if (CUDAToolkit_VERSION VERSION_GREATER_EQUAL 12.9)
++  if (CMAKE_CUDA_COMPILER_VERSION VERSION_GREATER_EQUAL 12.9)
+     target_link_libraries(${ABACUS_BIN_NAME} cudart)
+   else ()
+     target_link_libraries(${ABACUS_BIN_NAME} cudart nvToolsExt)

@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mlcc-agent"
+version = "0.57.0"
+description = "MLCC Slurm task adapter and scientific workflow contracts"
+requires-python = ">=3.12"
+dependencies = [
+  "ase==3.29.0",
+  "numpy==2.5.4",
+  "scipy==1.18.1",
+  "phonopy==4.8.3",
+  "phonors==0.6.0",
+  "symfc==1.7.3",
+  "PyYAML==6.0.3",
+  "h5py==3.16.0",
+  "pymatgen==2026.9.24",
+  "pymatgen-core==2026.10.16",
+  "pymatgen-analysis-defects==2026.3.20",
+  "mcp==2.3.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest==9.1.1"]
+ceramic = ["mlcc-deepmd-bridge==0.1.0"]
+transport = ["BoltzTraP2==26.3.1"]
+
+[project.scripts]
+mlcc = "mlcc.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+
+
+
+
+
+
+
+
+

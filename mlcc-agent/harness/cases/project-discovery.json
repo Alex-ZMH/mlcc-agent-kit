@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "project-discovery",
+  "stages": [
+    "P0"
+  ],
+  "kind": "integration",
+  "prompt": "把本独立 MLCC Bundle 安装到一个空用户工作区并确认角色与技能发现。",
+  "expected": [
+    "真实 MatterAI 安装/注册记录",
+    "mlcc Agent 有 title/description 和 2–4 个 starters",
+    "四个 manifest 技能实际被发现",
+    "不把 docs-only 或空 mcpServers 报成计算已可用"
+  ],
+  "execution_status": "not_run"
+}

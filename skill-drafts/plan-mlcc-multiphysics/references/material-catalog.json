@@ -1,0 +1,87 @@
+{
+  "catalog_status": "planning_candidates_not_imported_structures",
+  "updated_date": "2026-10-20",
+  "selected_material_id": null,
+  "selected_phase_id": null,
+  "initial_comparison_recommendation": ["CaZrO3", "BaTiO3"],
+  "grade_is_not_a_phase_or_recipe": true,
+  "materials": [
+    {
+      "id": "CaZrO3",
+      "family_context": "class_I_mechanism_reference",
+      "composition_type": "compound",
+      "sublattices": {"A": "Ca", "B": "Zr", "O": "O"},
+      "phases": [
+        {"id": "CaZrO3_Pnma", "space_group_number": 62, "symbol": "Pnma", "polar": false, "phase_role": "common_nonpolar_reference", "source": "https://www.ctcms.nist.gov/~knc6/jsmol/JVASP-13829.html"},
+        {"id": "CaZrO3_Pm-3m", "space_group_number": 221, "symbol": "Pm-3m", "polar": false, "phase_role": "high_temperature_or_constrained_reference", "source": "https://www.sciencedirect.com/science/article/pii/S0039602812003627"}
+      ],
+      "structure_import_status": "not_imported",
+      "device_grade_verified": false
+    },
+    {
+      "id": "SrZrO3",
+      "family_context": "zirconate_extension",
+      "composition_type": "compound",
+      "sublattices": {"A": "Sr", "B": "Zr", "O": "O"},
+      "phases": [
+        {"id": "SrZrO3_Pnma", "space_group_number": 62, "symbol": "Pnma", "polar": false, "phase_role": "common_nonpolar_reference", "source": "https://www.sciencedirect.com/science/article/pii/S0022369707005665"}
+      ],
+      "structure_import_status": "not_imported",
+      "device_grade_verified": false
+    },
+    {
+      "id": "MgTiO3",
+      "family_context": "temperature_compensation_microwave_candidate",
+      "composition_type": "compound",
+      "sublattices": {"Mg": "Mg", "Ti": "Ti", "O": "O"},
+      "phases": [
+        {"id": "MgTiO3_R-3", "space_group_number": 148, "symbol": "R-3", "polar": false, "phase_role": "ilmenite_reference", "source": "https://www.sciencedirect.com/science/article/abs/pii/S221478531630089X"}
+      ],
+      "structure_import_status": "not_imported",
+      "device_grade_verified": false
+    },
+    {
+      "id": "BaTiO3",
+      "family_context": "class_II_ferroelectric_mechanism_reference",
+      "composition_type": "compound",
+      "sublattices": {"A": "Ba", "B": "Ti", "O": "O"},
+      "phase_source": "https://pubs.rsc.org/en/content/articlehtml/2021/ma/d1ma00651g",
+      "phases": [
+        {"id": "BaTiO3_P4mm", "space_group_number": 99, "symbol": "P4mm", "polar": true, "phase_role": "tetragonal_ferroelectric_reference"},
+        {"id": "BaTiO3_Amm2", "space_group_number": 38, "symbol": "Amm2", "polar": true, "phase_role": "orthorhombic_ferroelectric_reference"},
+        {"id": "BaTiO3_R3m", "space_group_number": 160, "symbol": "R3m", "polar": true, "phase_role": "rhombohedral_ferroelectric_reference"},
+        {"id": "BaTiO3_Pm-3m", "space_group_number": 221, "symbol": "Pm-3m", "polar": false, "phase_role": "paraelectric_high_temperature_or_constrained_reference"}
+      ],
+      "structure_import_status": "not_imported",
+      "device_grade_verified": false
+    },
+    {
+      "id": "BST",
+      "formula_family": "Ba(1-x)Sr(x)TiO3",
+      "family_context": "composition_dependent_dielectric_and_ferroelectric_extension",
+      "composition_type": "solid_solution",
+      "composition_parameters_required": ["x_Sr_on_A"],
+      "phase_selection_requires_composition": true,
+      "phases": [],
+      "structure_import_status": "not_imported",
+      "device_grade_verified": false
+    },
+    {
+      "id": "BZT_BCTZ",
+      "formula_family": "Ba(1-y)Ca(y)Zr(x)Ti(1-x)O3",
+      "family_context": "multicomponent_ferroelectric_extension",
+      "composition_type": "solid_solution",
+      "composition_parameters_required": ["y_Ca_on_A", "x_Zr_on_B"],
+      "phase_selection_requires_composition": true,
+      "phases": [],
+      "structure_import_status": "not_imported",
+      "device_grade_verified": false
+    }
+  ],
+  "periodic_table_policy": {
+    "all_valid_elements_may_be_proposed": true,
+    "common_candidates_from_user_request": ["Sr", "Y", "Dy", "Ho", "Mg", "Mn", "V", "Cr", "Mo", "W"],
+    "selection_does_not_prove_solubility_or_site": true,
+    "checks_after_selection": ["sublattice", "oxidation_states", "compensation", "integer_concentration", "pseudopotential_and_orbital", "spin_f_electron_model", "force_field_coverage"]
+  }
+}

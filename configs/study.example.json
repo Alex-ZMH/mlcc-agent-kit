@@ -1,0 +1,125 @@
+{
+  "status": "generic_request_template_not_active_verification_case",
+  "study_id": "mlcc_two_part_study",
+  "stage_plan": "plans/stages.json",
+  "reference_candidates": [
+    "CaZrO3",
+    "BaTiO3"
+  ],
+  "model": {
+    "model_id": null,
+    "version": "v001",
+    "material": null,
+    "phase": null,
+    "source_structure": null,
+    "dopants": [],
+    "spatial_mode": null,
+    "random_seed": null
+  },
+  "backends": {
+    "bootstrap_dft": "VASP",
+    "production_dft": "ABACUS",
+    "active_dft": null,
+    "phonons": "Phonopy",
+    "lattice_transport": "Phono3py_when_required",
+    "electronic_transport": "BoltzTraP2_with_project_ABACUS_adapter",
+    "md": "LAMMPS",
+    "continuum": null,
+    "circuit_solver": null
+  },
+  "execution": {
+    "site_configuration": "configs/site.v100.example.json",
+    "runner": "slurm",
+    "runner_status": "consult_active_site_and_execution_evidence",
+    "automatic_retry": false,
+    "automatic_engine_fallback": false,
+    "scheduler_status": "consult_active_site_and_execution_evidence"
+  },
+  "electronic_transport": {
+    "temperature_K": [],
+    "chemical_potential_eV": [],
+    "scattering_time_s": null
+  },
+  "replication": {
+    "parent_structure": "P4_ABACUS_relaxed_structure",
+    "mode": "exact",
+    "repeat_matrix": null,
+    "potential": null
+  },
+  "device": {
+    "ceramic_thickness_range_um": [],
+    "thickness_state": null,
+    "active_gap_count": null,
+    "overlap_area_m2": null,
+    "electrode": null,
+    "polymer_branch": null,
+    "prediction_scope": "parameter_handoff_and_conditional_analytical_estimates",
+    "loss_and_parasitic_parameters": null
+  },
+  "case_role": null,
+  "case_id": null,
+  "purpose_options": [
+    "normal",
+    "comparison",
+    "conformance",
+    "diagnosis"
+  ],
+  "selected_purposes": [],
+  "scenario_options": [
+    "nominal",
+    "operating_boundary",
+    "diagnostic"
+  ],
+  "selected_scenarios": [],
+  "selected_required_tasks": [],
+  "design_requirements_ref": null,
+  "design_requirements_template": "configs/design-targets.example.json",
+  "requirements_document": "docs/design-requirements.md",
+  "system_capability_acceptance_is_separate": true,
+  "available_microscopic_routes": [
+    "ferroelectric",
+    "magnetism",
+    "phonons",
+    "thermoelectric_transport"
+  ],
+  "selected_microscopic_routes": [],
+  "public_DFT_work_packages": [
+    "structure_electronic_elastic_baseline",
+    "defect_thermodynamics_when_requested",
+    "NEB_migration_when_requested",
+    "interface_reference_when_requested"
+  ],
+  "implementation_status": "planning_contract_not_runtime_feature",
+  "scientific_work_packages_document": "docs/ferroelectric-and-defect-work-packages.md",
+  "ferroelectric_branch": {
+    "material_state": null,
+    "allowed_material_states": [
+      "ferroelectric",
+      "paraelectric",
+      "nonferroelectric",
+      "undetermined"
+    ],
+    "phase_conditions_and_history_ref": null,
+    "state_evidence_ref": null,
+    "selected_observables": [],
+    "polarization_model_ref": null,
+    "field_protocol_ref": null,
+    "electrical_boundary_ref": null,
+    "qualification_ref": null
+  },
+  "defect_thermodynamics": {
+    "selected_tasks": [],
+    "host_model_ref": null,
+    "defect_set_ref": null,
+    "charge_states": [],
+    "chemical_potential_domain_ref": null,
+    "selected_chemical_potential_points": [],
+    "fermi_level_reference": "VBM_of_same_method_bulk",
+    "fermi_level_grid_eV": [],
+    "charged_supercell_method_ref": null,
+    "dielectric_tensor_ref": null,
+    "charge_correction_method_ref": null,
+    "charge_neutrality_or_reservoir_model_ref": null,
+    "validation_ref": null
+  }
+}

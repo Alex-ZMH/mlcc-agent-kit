@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "MD-boundary-and-interfaces",
+  "stages": [
+    "P10",
+    "P11"
+  ],
+  "kind": "behavioral_and_real_integration",
+  "prompt": "比较陶瓷/Ni、高分子保留层和临时粘结剂，并要求 60 um 整层相场和 FEM 裂纹图。",
+  "expected": [
+    "明确 LAMMPS MD 不是现成相场/FEM，整层图不在本版输出",
+    "一条真实小 MD 任务有势/边界/漂移与尺寸证据",
+    "保留层与排胶后缺陷模型分开",
+    "无反应模型不以删除原子冒充排胶",
+    "Wsep/速率相关 MD 功/宏观 Gc 分开"
+  ],
+  "execution_status": "not_run"
+}

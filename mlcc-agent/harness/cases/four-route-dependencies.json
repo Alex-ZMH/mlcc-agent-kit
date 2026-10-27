@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "four-route-dependencies",
+  "stages": [
+    "P5",
+    "P6",
+    "P7",
+    "P8"
+  ],
+  "kind": "behavioral_and_numerical",
+  "prompt": "计算 BTO/Ni 相关四性质，但尚无 Born、三阶力常数和散射时间。",
+  "expected": [
+    "不把磁性/铁电/热电混同",
+    "极化分支和金属极化边界明确",
+    "缺 Born 不报完整极性非解析修正/离子响应",
+    "声子谱不直接给热导",
+    "无 tau 只报 tau 归一化电子输运，无 kappa_l 不报完整 ZT",
+    "所有数值来自实际任务，未算项不填零"
+  ],
+  "execution_status": "not_run"
+}

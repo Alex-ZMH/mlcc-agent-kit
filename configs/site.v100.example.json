@@ -1,0 +1,109 @@
+{
+  "status": "Slurm_installed_CPU_four_GPU_and_device_isolation_verified_MLCC_runner_not_implemented",
+  "checked_date": "2026-10-20",
+  "ssh": {
+    "alias": "v100",
+    "observed_hostname": "192.168.110.35",
+    "observed_user": "v100",
+    "observed_port": 22,
+    "transfer": "scp",
+    "public_endpoint_supplied_by_user": {
+      "hostname": "43.142.15.151",
+      "port": 22022,
+      "status": "not_tested"
+    },
+    "automatic_route_fallback": false
+  },
+  "workspace": {
+    "local": "D:/project/mlcc/workspace",
+    "remote_proposed": "/home/v100/projects/mlcc",
+    "remote_created": false
+  },
+  "runner": {
+    "selected": "slurm",
+    "implemented": false,
+    "slurm_status": "single_node_CPU_GPU_scheduling_verified",
+    "max_concurrent_tasks": 1,
+    "resource_selection_status": "to_be_benchmarked",
+    "slurm": {
+      "version": "23.11.4",
+      "cluster": "mlcc-v100",
+      "node": "v100",
+      "partitions": [
+        "cpu",
+        "gpu"
+      ],
+      "gpu_gres": "gpu:v100:4",
+      "logical_cpus": 16,
+      "physical_cores": 8,
+      "threads_per_core": 2,
+      "schedulable_memory_MiB": 27800,
+      "priority": "basic",
+      "automatic_requeue": false,
+      "job_accounting": "jobcomp_filetxt_and_recent_scontrol_state",
+      "sacct_database_configured": false,
+      "NVML_accounting_configured": false,
+      "MPI_PMIX_verified": false,
+      "validation_jobs": {
+        "CPU": "2",
+        "four_independent_GPUs": [
+          "3_0",
+          "3_1",
+          "3_2",
+          "3_3"
+        ],
+        "single_four_GPU_allocation": "9",
+        "queued_extra_GPU": "10",
+        "device_cgroup_isolation": "11"
+      },
+      "services_active_and_enabled": [
+        "munge",
+        "slurmctld",
+        "slurmd"
+      ],
+      "evidence": "docs/slurm-installation.md"
+    }
+  },
+  "observed_hardware": {
+    "gpu_count": 4,
+    "gpu_model": "Tesla V100-SXM2-16GB",
+    "gpu_memory_MiB_each": 16384,
+    "logical_cpus": 16,
+    "RAM_GiB_approx": 31
+  },
+  "modeling_python": {
+    "proposed_major_minor": "3.12_or_3.13",
+    "remote_executable": null,
+    "environment_created": false
+  },
+  "vasp": {
+    "binary": "/opt/vasp/vasp_std",
+    "ncl_binary": "/opt/vasp/vasp_ncl",
+    "gamma_binary": "/opt/vasp/vasp_gam",
+    "saved_output_version": "6.5.1_gamma_only",
+    "mpi_launcher": "/opt/nvidia/hpc_sdk/Linux_x86_64/24.1/comm_libs/mpi/bin/mpirun",
+    "launch_environment": null,
+    "potcar_library": null,
+    "MLCC_smoke_run_completed": false
+  },
+  "abacus": {
+    "binary": "/home/v100/miniforge3/envs/abacus_env/bin/abacus",
+    "environment_package_version": "3.10.1",
+    "mpi_launcher": "/home/v100/miniforge3/envs/abacus_env/bin/mpiexec",
+    "launch_environment": null,
+    "pseudopotential_directory": "/home/v100/abacus-work/PPORBs/pseudopotentials",
+    "orbital_directory": "/home/v100/abacus-work/PPORBs/orbitals-efficiency",
+    "resources_qualified": false,
+    "MLCC_smoke_run_completed": false
+  },
+  "lammps": {
+    "binary": null,
+    "packages": null,
+    "potential": null,
+    "status": "not_confirmed"
+  },
+  "mcp": {
+    "endpoint": null,
+    "status": "not_deployed"
+  }
+}

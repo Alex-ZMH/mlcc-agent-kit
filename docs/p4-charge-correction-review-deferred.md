@@ -1,0 +1,7 @@
+# Deferred P4 charged-correction source review
+
+2026-10-23: deferred before implementation, dependency installation or numerical tests. P5 ordered SCF energy path has ready saved data and takes priority. 0.22 is unchanged.
+
+Reviewed reusable candidates: [pymatgen-analysis-defects v2026.3.20 Freysoldt](https://github.com/materialsproject/pymatgen-analysis-defects/blob/v2026.3.20/pymatgen/analysis/defects/corrections/freysoldt.py) and [pydefect Ewald/eFNV](https://github.com/kumagai-group/pydefect/tree/master/pydefect/corrections). Neither dependency is installed in the checked shared runtime. pymatgen's high-level interface averages anisotropic dielectric input and chooses an alignment window; these defaults cannot silently establish an anisotropic correction protocol. pydefect requires version pinning, unit/sign audit and explicit appropriate potential samples before use.
+
+Existing `defect_thermodynamics.formation_energy_terms` already accepts one explicit `correction_terms.total_eV` and validates its component sum. Future full correction must bind charge, model, cell, method, dielectric, boundary conditions and potential sources; include both image and alignment-like terms without counting either twice. The 0.22 raw regional electron-potential difference and shifted VBM candidate are not correction energies. Do not multiply that raw difference by q and call it FNV/eFNV; point-charge energy alone is also incomplete. No scientific producer or charged-native adapter was opened by this review.

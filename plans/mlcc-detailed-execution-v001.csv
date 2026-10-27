@@ -1,0 +1,214 @@
+﻿task_id,stage,definition,record_type,execution_evidence
+P0.01,P0,核对工作树现状。列出既有文件、最近执行证据和用户未确认项；不清空 workspace，不重新生成已有 Bundle。输出执行起始记录。,planning_definition,plans/stages.json and actual task ledgers
+P0.02,P0,读取 MatterAI 的 Bundle/扩展契约和实际注册表，确认 matterai.bundle.v2、精确三段版本、Agent 的 title/description/starters、manifest.agent.skills 及 MCP 权限路径。输出契约对照表，注明本地来源。,planning_definition,plans/stages.json and actual task ledgers
+P0.03,P0,查明可用的平台运行环境。优先使用既有 MatterAI 运行副本；确需准备时与参考树分离，不先搭 PostgreSQL/Web/云 Worker。输出实际 Node/依赖/安装器位置。,planning_definition,plans/stages.json and actual task ledgers
+P0.04,P0,使用平台真实安装器，把文档型 Bundle 安装并启用到独立 workspace。检查目标版本是否已存在；已安装版本不可覆盖，升级须发布新版本，不删除旧运行记录。,planning_definition,plans/stages.json and actual task ledgers
+P0.05,P0,通过真实 registry/平台入口核实 mlcc Agent 与四项 Skill 被发现，starters 与技能关联符合清单。保存返回记录，不以自写目录扫描代替平台注册验收。,planning_definition,plans/stages.json and actual task ledgers
+P0.06,P0,只在需要实现领域函数时创建 Python 包和项目环境。优先 Python 3.12/3.13，实测依赖组合；不要把远端 Python 3.14 base 或没有 Python 的 abacus_env 当成完整项目环境。,planning_definition,plans/stages.json and actual task ledgers
+P0.07,P0,建立最小代码边界：modeling、tasks、site_runner、vasp、abacus、ferroelectric、magnetism、phonons、transport、lammps、reporting。按阶段增量创建实际模块，不一次创建空基类/注册器/插件目录。,planning_definition,plans/stages.json and actual task ledgers
+P0.08,P0,约定 Model/Method/Task/Result 的当前字段、单位和目录，先写普通函数/轻量记录，避免通用 schema 修复器、兼容所有历史格式的解析器或消息队列。,planning_definition,plans/stages.json and actual task ledgers
+P0.09,P0,列出八个已有 harness 案例，制定实际运行/断言方式。case.v2 标识被接受不代表已有标准案例执行器；没有执行器时明确采用项目测试，不伪称平台替我们跑过。,planning_definition,plans/stages.json and actual task ledgers
+P0.10,P0,建立方法行为、确定性数值、真实集成三层验收。只有代码实现后才建立对应测试；不添加仅匹配文案或目录存在的形式测试。,planning_definition,plans/stages.json and actual task ledgers
+P0.11,P0,真实工具完成前保持 mcpServers=[] 和 docs-only 的事实；工具加入后显式更新权限、风险、依赖与版本。Bundle 声明不会自动授予执行权。,planning_definition,plans/stages.json and actual task ledgers
+P0.12,P0,输出 P0 验收：安装器日志、安装/启用目录、Agent/Skill 发现记录、实际软件版本、已实现入口、未实现入口和测试结果。,planning_definition,plans/stages.json and actual task ledgers
+P1.01,P1,只读复核 LAN：ssh -G v100、主机/用户、scontrol ping、sinfo、当前队列、设备和可用磁盘。记录现在的状态，不扫描无关网络或自动换公网。,planning_definition,plans/stages.json and actual task ledgers
+P1.02,P1,对照已有调度证据，确认 cpu/gpu 分区、gpu:v100:4、16 逻辑 CPU、27800 MiB、cgroup v2、JobRequeue=0。已有验收不反复重跑；只有发现配置变化/证据需要时才做小复测。,planning_definition,plans/stages.json and actual task ledgers
+P1.03,P1,检查已有活动作业/他人进程。需要改服务时只处理相关服务，不能运行杀所有端口的脚本、清空控制器 state 或强制释放他人 allocation。,planning_definition,plans/stages.json and actual task ledgers
+P1.04,P1,读取 VASP 动态库、NVHPC MPI 的版本/编译信息，以及 Slurm 可用 MPI 插件。srun --mpi=list 只是列插件，不能证明 PMIx 库已加载或与 VASP MPI 兼容。,planning_definition,plans/stages.json and actual task ledgers
+P1.05,P1,诊断缺失的 PMIx 库及 ABI/依赖。根据实际包和 NVHPC MPI 选择一个明确启动方案，先修复必要库/配置，再用相同 MPI 编译并运行一个真实 MPI hello/reduction。不得只把 --mpi=none 用于 MPI 程序后称成功。,planning_definition,plans/stages.json and actual task ledgers
+P1.06,P1,在 Slurm allocation 内分别验证一 rank 和四 rank，确认 world size、rank 唯一性、主机与 CPU affinity、MPI reduction 结果。若采用 mpirun，也必须在已分配的批作业内，使用确定的 NVHPC launcher，不走 allocation 外的 SSH 进程。CPU reduction 不证明 CUDA-aware 通信；VASP 构建若依赖它，还须小型设备缓冲区通信测试或对应四卡实算证据。,planning_definition,plans/stages.json and actual task ledgers
+P1.07,P1,明确记账路线。第一条工程闭环可用现有 scontrol 近期状态并由 MLCC 落盘；若要直接复用依赖 sacct 的 ACS worker，先单列 SlurmDBD/数据库配置与验收。两条路线是显式选择，不是运行时自动回退。,planning_definition,plans/stages.json and actual task ledgers
+P1.08,P1,创建独立生产工作根和项目环境，检查其 AGENTS 规则、权限及现有内容。配置远端 executable/Python、MPI 环境和数据根；不要在管理验收目录里跑生产。,planning_definition,plans/stages.json and actual task ledgers
+P1.09,P1,实现 prepare/transfer/submit/query/cancel/collect 的 Slurm 适配器。提交用真实 sbatch --parsable，保留原始 job ID（含可能的集群后缀），状态来自实际控制器。,planning_definition,plans/stages.json and actual task ledgers
+P1.10,P1,实现明确资源映射：节点、分区、ntasks、cpus-per-task、GPU 请求、RAM、walltime、输出路径及 --no-requeue。批脚本采用 UTF-8/LF，生成脚本时输出目录已存在；不把用户任意字符串拼成 shell 指令，不对赝势/原始数据进行全目录换行替换。,planning_definition,plans/stages.json and actual task ledgers
+P1.11,P1,"在模板中沿用已验证的 GPU 参数口径：GPU-per-task 优先在 sbatch 定义，srun 做 binding；不重复制造 23.11 中 gpus-per-task/tres-per-task 冲突。不硬写 CUDA_VISIBLE_DEVICES=0,1,2,3 绕过分配。",planning_definition,plans/stages.json and actual task ledgers
+P1.12,P1,用无科学计算的小任务贯通本地准备→LAN→Slurm→查询→收集。另提交一个明确的短 sleep 测试 cancel，验证只取消对应 job ID，并保存 CANCELLED 证据。,planning_definition,plans/stages.json and actual task ledgers
+P1.13,P1,验证终态落盘：退出码、开始/结束时间、实际分配、stdout/stderr、输入/输出文件路径与任务依赖。SSH 断开/查询失败不改变为“计算成功”。,planning_definition,plans/stages.json and actual task ledgers
+P1.14,P1,对已经实现的函数加 MCP 薄封装，按 MatterAI 实际信任/允许工具路径登记，真实握手 tools/list。不要让 Bundle 的空声明或文档工具名成为调用成功的替代证据。,planning_definition,plans/stages.json and actual task ledgers
+P1.15,P1,核对源码、用户工作区、远端工作根三者分离。传轻量结果，不传许可证、密钥或整套环境；不启用当前与“无文件哈希校验”要求冲突的云 Worker 上传链，也不删除上游安全机制。,planning_definition,plans/stages.json and actual task ledgers
+P1.16,P1,输出 P1 验收：MPI 路线与结果、站点私有配置、runner 单测、真实提交/查询/取消/回传、MCP 工具清单、记账已实现范围和剩余限制。,planning_definition,plans/stages.json and actual task ledgers
+P2.01,P2,实现材料入口：保留顺电、铁电、磁性、金属、电极/界面和高分子等通用案例所需的组成目录；CaZrO3/SrZrO3/MgTiO3、BaTiO3、BST/BZT/BCTZ 可作为已有参考或验证案例。设备等级 C0G/NP0/X7R/X5R 与晶相分字段，但不把等级反推成材料结论。,planning_definition,plans/stages.json and actual task ledgers
+P2.02,P2,展示可选相与来源，不默认接受推荐相，也不自动替换用户选择。无掺杂 CaZrO3 Pnma、330 K/400 K、1 atm 保留为当前已指定验证案例；BaTiO3 等适合铁电能力验证的案例与其他未来材料独立记录。,planning_definition,plans/stages.json and actual task ledgers
+P2.03,P2,获取实际结构并记录来源 ID/文件/版本、晶胞设置、单位、温压背景、元素计量。保留导入结构和经变换的工作结构，不能只保存最终 CIF 而失去来源。,planning_definition,plans/stages.json and actual task ledgers
+P2.04,P2,用 pymatgen/ASE 建立同一原子模型，分开 conventional/primitive/超胞，记录基变换和站位标签。掺杂后对称性可降低，分别保存指定母相与实际检测对称性。,planning_definition,plans/stages.json and actual task ledgers
+P2.05,P2,周期表选择只产生候选元素；随后明确子晶格、价态、补偿、整数个数、浓度分母和超胞。说明所选元素是否有赝势/f 电子/势支持，不用统一半径阈值自动拒绝科研假设。,planning_definition,plans/stages.json and actual task ledgers
+P2.06,P2,计算可达的真实浓度。例如 5 原子 BTO 母胞的 3×3×3 超胞有 27 个 A/B 位，一个替换为对应子晶格的 1/27，不是总原子百分比；不把浓度静默四舍五入。,planning_definition,plans/stages.json and actual task ledgers
+P2.07,P2,将补偿作为显式模型：等价替位、电子补偿、中性缺陷复合体、带电缺陷分别处理。Y_Ba 施主不能默认由正氧空位补偿；Y_Ti 受主可研究相应中性复合体，但不据此预选用户的 Y。,planning_definition,plans/stages.json and actual task ledgers
+P2.08,P2,实现 pristine、无约束随机、最大分散、SQS、团簇/缺陷束缚与界面偏聚中实际需要的模式。最大分散与随机分开，不强制所有模式同一最小间距而改变其统计含义。,planning_definition,plans/stages.json and actual task ledgers
+P2.09,P2,为随机系综固定种子、整数占位、周期最小像、同/异类配对统计和独立构型关系；SQS 记录目标关联和误差。一个掺杂原子不声称已测试胞内分散。,planning_definition,plans/stages.json and actual task ledgers
+P2.10,P2,导出 source.cif、model.extxyz、model.json、dopants.json 与稳定 atom/site ID；DFT 输入必须是显式整数原子，不用统计占位 CIF 直接替代。,planning_definition,plans/stages.json and actual task ledgers
+P2.11,P2,将元素分组/排序映射写入数据，VASP POSCAR、POTCAR 元素顺序和后续 ABACUS STRU 均能还原为同一原子谱系。导出不应静默丢失自旋初值或边界信息。,planning_definition,plans/stages.json and actual task ledgers
+P2.12,P2,维护独立 Ni fcc 工程 fixture，记录 fixture=true、用途=调度/连接测试。参数只是工程参考，不把其结果并入陶瓷或界面性能结论，也不因已有 CaZrO3 验证案例而把 Ni 变成科学材料。,planning_definition,plans/stages.json and actual task ledgers
+P2.13,P2,做科学测试：计量/补偿/浓度、周期距离、种子可复现、不同分布统计、模型回读和排序还原。VESTA 只作辅助查看，不承担算法正确性证明。,planning_definition,plans/stages.json and actual task ledgers
+P2.14,P2,周期表/结构预览前端最后调用同一建模函数；没有前端不阻塞 H0。不要为了 UI 重写一套不同的占位算法。,planning_definition,plans/stages.json and actual task ledgers
+P2.15,P2,输出用户确认的研究请求或明确未确认清单，以及工程 fixture。只为实际明确的模型推进计算；当前 CaZrO3 验证请求与通用系统能力不能混成唯一生产材料。,planning_definition,plans/stages.json and actual task ledgers
+P2.16,P2,为每个请求记录 `selected_purposes`（可组合，取值为 normal、comparison、conformance、diagnosis）、`selected_scenarios`（可组合，取值为 nominal、operating_boundary、diagnostic）、材料/相/组成、工况、结构来源和可选规格引用；字段缺失时不得从任务名称猜测，并保留四种目的的说明。,planning_definition,plans/stages.json and actual task ledgers
+P2.17,P2,对 conformance 规格建立指标记录：名称、单位、上下限、条件、来源、required/optional 状态及目标 ID。阈值未知保留 `null`，不以默认行业值补齐；normal/comparison 请求可无阈值继续推进。,planning_definition,plans/stages.json and actual task ledgers
+P2.18,P2,按 `selected_scenarios` 建立 `nominal`、`operating_boundary`、`diagnostic` 三种场景。`operating_boundary` 只接受请求明确给出的范围，未给范围不杜撰；当前 CaZrO3 验证案例的温度只记录 330 K 和 400 K 两个输入点，不扩写成连续边界；`diagnostic` 不能直接充当 conformance 达标证据。,planning_definition,plans/stages.json and actual task ledgers
+P2.19,P2,输出目标矩阵与适用性清单：无阈值的 normal/comparison 结果可交付性能值和误差；conformance 无阈值时 `design_assessment=not_assessed`；未来材料、铁电/磁性/热电和界面/聚合物案例按独立 model/version 保存。,planning_definition,plans/stages.json and actual task ledgers
+P2.20,P2,按所选相、温度/压力、应变、电场和历史判断材料在本 study 中属于 `ferroelectric`、`paraelectric`、`nonferroelectric` 或 `undetermined`。不能按化学式、材料目录标签或当前净极化为零直接判定；跨相变、相共存、受限薄膜或场驱动请求仍须进入可极化链，状态依据和证据写入模型。,planning_definition,plans/stages.json and actual task ledgers
+P3.01,P3,核实 std/gam/ncl 的实际版本/编译特征与链接库，区分历史 gamma 日志和本次 std/ncl。选择适合 k 点和自旋的二进制，不为省时把非 Γ 模型强塞进 gam。,planning_definition,plans/stages.json and actual task ledgers
+P3.02,P3,明确 VASP 授权和 POTCAR 库位置，记录元素/版本/价电子模型。服务器按 POSCAR 顺序组装，许可证资源不放入 Bundle、公开报告或 Git。,planning_definition,plans/stages.json and actual task ledgers
+P3.03,P3,定义小 fixture 的固定几何、组分、自旋/展宽、k 点、泛函、cutoff、电子精度、输出和资源。先查看赝势建议值/数值目标，不把随意常数宣称为已收敛精度。,planning_definition,plans/stages.json and actual task ledgers
+P3.04,P3,生成 POSCAR/INCAR/KPOINTS、运行脚本与 method/task 记录。轻微可控位移可用于验证力和后续弛豫，但须标记属于工程扰动。,planning_definition,plans/stages.json and actual task ledgers
+P3.05,P3,首先一 GPU、一 MPI rank SCF，通过 Slurm 提交。明确非交互环境、OMP 线程、输出路径与 --no-requeue；启动方式沿 P1 的已验收 MPI 路线。,planning_definition,plans/stages.json and actual task ledgers
+P3.06,P3,取回真实 stdout/stderr、OUTCAR/vasprun.xml 和结构，核实正常退出、电子迭代收敛、有限 E/F/应力、原子数/排序与 method。到 NELM 上限但进程退出 0 不通过。,planning_definition,plans/stages.json and actual task ledgers
+P3.07,P3,同一固定几何用四 rank/四 GPU 再做单点。保持相同物理参数、初态与能带设置，核对 rank/物理 GPU 映射，比较 E/F/应力和磁态。小体系不要求四卡加速，但数值差须有解释。,planning_definition,plans/stages.json and actual task ledgers
+P3.08,P3,数值比较阈值在运行前写入方法记录，并由目标精度决定，不只比较最后总能小数位；若磁态落入不同局域极小，先解释/控制物理状态，不能盲目判并行算法错误。,planning_definition,plans/stages.json and actual task ledgers
+P3.09,P3,运行一次真实结构弛豫，再从其 CONTCAR 启动静态 SCF。区分 fixed-cell ionic relax 与 cell relax，分别检查力/应力约束和离子停止原因。,planning_definition,plans/stages.json and actual task ledgers
+P3.10,P3,实现 VASP 解析：晶格/位置/总能/力/应力、电子/离子收敛、磁矩和必要输出路径。统一单位、应力正负/Voigt 顺序与原子映射；用小应变能导数辅助确认应力定义。,planning_definition,plans/stages.json and actual task ledgers
+P3.11,P3,验证实际依赖：SCF 使用指定弛豫版本，不从某目录“最新 CONTCAR”猜文件。如果下游需要电荷/波函数，显式设置并保存所需输出；不一边关 LCHARG 一边声称可重用 CHGCAR。,planning_definition,plans/stages.json and actual task ledgers
+P3.12,P3,安排一次明确的低成本失败场景，用无效测试输入或受控失败命令验证错误呈现，不破坏授权资源。保存 FAILED/非零退出与原始日志，不自动修正并重提。,planning_definition,plans/stages.json and actual task ledgers
+P3.13,P3,通过 MLCC 的真实调用入口贯通 prepare→transfer→submit→query→collect，不只在服务器手工跑完。入口层和 shell 层证据分开。,planning_definition,plans/stages.json and actual task ledgers
+P3.14,P3,发布 material/reference 的 VASP 工程结果与 job ID 列表，将相关真实输出加入解析回归测试。八个 harness 中对应案例实际跑过才更新执行状态。,planning_definition,plans/stages.json and actual task ledgers
+P3.15,P3,输出 H0 报告：已完成/失败/未做、方法、资源、GPU 正确性、结构谱系、数值与原始文件、下一 ABACUS 对照任务。,planning_definition,plans/stages.json and actual task ledgers
+P4.01,P4,核实实际 ABACUS 版本、MPI/MPICH、GPU 构建、非交互启动环境。其 conda 环境没有 Python 的事实与 Python 后处理环境分开处理。,planning_definition,plans/stages.json and actual task ledgers
+P4.02,P4,核实选定元素的 UPF/ORB：名称/版本、泛函、价电子、相对论/f 壳层、自旋适用性和基组。文件存在不等于质量合格，不按元素符号随意选第一份资源。,planning_definition,plans/stages.json and actual task ledgers
+P4.03,P4,明确 VASP 与 ABACUS 的可比方法：泛函、色散、自旋/电子数、k 密度、基组误差、几何与约束。不能要求两种赝势裸总能相等。,planning_definition,plans/stages.json and actual task ledgers
+P4.04,P4,实现 INPUT/STRU/KPT 与输出适配，保存元素排序/atom ID、k 坐标约定与应力单位/符号。只支持当前实测格式，不写猜字段或兼容所有版本的恢复层。,planning_definition,plans/stages.json and actual task ledgers
+P4.05,P4,在 P3 完全同一几何做 ABACUS 单点，再对小位移和小应变构型做对照。比较相对能、力、应力/导数、磁态和电子结构特征。,planning_definition,plans/stages.json and actual task ledgers
+P4.06,P4,独立 ABACUS 弛豫，不简单把 VASP 弛豫结构改名为 ABACUS 结果。记录 relaxed phase、晶格/原子偏移及约束。,planning_definition,plans/stages.json and actual task ledgers
+P4.07,P4,做目标 cutoff、k 点、基组/轨道和弛豫收敛。界面结合/应力若使用 LCAO，增加相应 PW 锚点/基组误差考察，不把 bulk 精度自动推广到界面。,planning_definition,plans/stages.json and actual task ledgers
+P4.08,P4,建立本机能力表：SCF、relax/cell-relax、E/F/stress、能带/DOS、Berry phase、有限场、Born/介电、共线/非共线、SOC/U 与标注输出。每格写“实际通过/未测/不支持”，附证据。,planning_definition,plans/stages.json and actual task ledgers
+P4.09,P4,对每个选定研究/验证案例扩展必要母体/掺杂参考：结构、电子态、弹性、需要的缺陷/化学势。不同组成不能只用裸总能排序；当前 CaZrO3 案例是通用链的一个实例，不限制后续材料。,planning_definition,plans/stages.json and actual task ledgers
+P4.10,P4,当本阶段验收成立时，显式把 study 的 active_dft/production_dft 设为 ABACUS，保存切换记录。VASP 保留只读工程/方法对照，后续生产不自动回退。,planning_definition,plans/stages.json and actual task ledgers
+P4.11,P4,按 engine＋method_set 分开数据。P9 生产训练统一使用已确定 ABACUS 方法；未定义多保真模型前不混 VASP 标签。,planning_definition,plans/stages.json and actual task ledgers
+P4.12,P4,输出 H1：对照结果、数值容差、已知差异、能力表、生产方法集、ABACUS 弛豫母模型与资源账本。,planning_definition,plans/stages.json and actual task ledgers
+P4.13,P4,仅当 `selected_required_tasks` 或承诺的能力验证选择了弹性/电子基线时，建立完整弹性与电子基线：按晶体对称性列出全部独立 (C_{ij})，记录应变幅度、内部弛豫/晶格约束、单位、拟合误差和适用温度/压力；同时输出电子 DOS、带隙及自旋/费米能级条件。普通请求不因未选择该 observable 而阻塞；仅有单个弹性常数或单张 DOS 图不能作为已选基线。,planning_definition,plans/stages.json and actual task ledgers
+P4.14,P4,作为缺陷热力学汇总入口，根据 selected_required_tasks 转入 P4.18–P4.27；形成/结合/偏聚能、化学势、费米能级和带电修正不是每个材料/模式的必跑项，但必须保留可追溯的条件分支。1 atm 是外部机械压力输入，不能据此推导 pO2 或氧化学势。,planning_definition,plans/stages.json and actual task ledgers
+P4.15,P4,仅在请求的迁移、解离或诊断问题需要时做 NEB：明确初态、末态、鞍点收敛、路径约束、前因子和速率假设。任务未选择或未计算时只记录任务选择和实际执行事实，不能把 `design_assessment` 的 `not_assessed` 当作执行状态；无目标规格才用 `not_assessed`，物理不适用才用 `not_applicable`，有目标但缺证据用 `insufficient_evidence`。,planning_definition,plans/stages.json and actual task ledgers
+P4.16,P4,保留 H0 与 Ni jobs 32/33/34 的工程证据，不重跑已通过闭环；对当前 CaZrO3 验证案例及未来用户案例分别建立 ABACUS 生产资格记录。工程闭环通过、生产资格未验收和设计规格未提供必须分开记录。,planning_definition,plans/stages.json and actual task ledgers
+P4.17,P4,仅在请求包含界面能力时建立公共界面 DFT 工作包：真实元素、终止面/取向、面内胞、应变约束、registry/间距、分离、界面局域电子态、静电势对齐、电荷参考和带隙误差；按需计算金属/陶瓷注入势垒及适用介质间带阶，输出可供 P9 势资格使用的锚点。不得由 DOS/带隙直接推漏电。该工作包属于 H2/相应能力门，不是 H1 生产引擎资格的总阻塞；任务未选择或未计算时只记录执行事实，已选择但物理上不适用才记 `scientific_status=not_applicable`，无设计目标时 `design_assessment=not_assessed`。,planning_definition,plans/stages.json and actual task ledgers
+P4.18,P4,建立缺陷对象清单：空位、替位、间隙、反位、复合体、表面/界面缺陷及每个候选位置；为每个对象定义中性和可研究电荷态、原子数变化、参考相和唯一 ID，不把“氧空位”自动当作所有异价补偿。,planning_definition,plans/stages.json and actual task ledgers
+P4.19,P4,为同一母体方法集建立 VBM、CBM、带隙、静电势参考和电子数/自旋条件；记录费米能级的参考零点和扫描区间。原始 SCF 展宽得到的费米能不能直接代替缺陷热力学的电子化学势。,planning_definition,plans/stages.json and actual task ledgers
+P4.20,P4,计算宿主及竞争相稳定域的化学势不等式，输出允许的元素/氧化学势区域及温度、pO2 假设；机械压力、氧分压和氧化学势分开记录。空域时报告相稳定/参考冲突，不人为补出平衡稳定域；若另有明确亚稳或非平衡电子/原子库问题，单列其假设与适用范围。,planning_definition,plans/stages.json and actual task ledgers
+P4.21,P4,以同一超胞/方法集完成带电 DFT 小胞能力验证：电荷态、均匀背景电荷、总电荷、偶极/势输出和周期边界必须有实际输出；不把输入了电荷态当作已完成带电能力。,planning_definition,plans/stages.json and actual task ledgers
+P4.22,P4,选择并实证介电屏蔽与 FNV/eFNV 或同等方法的各向异性带电修正、势对齐和参考区域；分开记录原始周期能、镜像/势对齐与必要带填充等修正，不重复计数。弛豫热力学态与固定离子电子过程采用相应屏蔽/修正框架；表面/界面二维几何不能直接套用体相修正。,planning_definition,plans/stages.json and actual task ledgers
+P4.23,P4,对每个缺陷和电荷态输出形成能随费米能级的曲线、稳定电荷态区间和电荷转变能级；公式中的化学势、VBM/CBM、势对齐和修正项全部可追溯。,planning_definition,plans/stages.json and actual task ledgers
+P4.24,P4,用守恒的孤立组分/复合体参考定义结合能和偏聚能，统一符号并说明正值是否表示结合有利；结合能只说明热力学关联，不能代替 NEB 解离势垒或速率。,planning_definition,plans/stages.json and actual task ledgers
+P4.25,P4,仅在请求需要时求解缺陷电荷中性、有限温度浓度和载流子平衡；固定费米库、冻结缺陷和局域电荷假设分别记录，不由一张形成能图直接生成浓度或寿命。,planning_definition,plans/stages.json and actual task ledgers
+P4.26,P4,对超胞尺寸、缺陷电荷局域、介电张量、k/截断/基组和方法集做独立收敛或参考比较；缺少带隙/介电/局域化证据时记录科学有效性缺口。只有存在设计目标时才据此给 design_assessment=insufficient_evidence；无目标仍为 not_assessed。,planning_definition,plans/stages.json and actual task ledgers
+P4.27,P4,交付原始总能、化学势域、VBM/CBM/费米网格、每个修正分量、校正后形成/结合/偏聚能、转变能级、引用和数据索引；明确正常绝缘性能解释、诊断机制和未覆盖对象。,planning_definition,plans/stages.json and actual task ledgers
+P5.01,P5,按实际体系标注是否适合绝缘体极化。金属 Ni、金属化掺杂态和金属/陶瓷异质超胞不能直接套体相 Berry-phase 公式。,planning_definition,plans/stages.json and actual task ledgers
+P5.02,P5,定义参考态、极性态、极化方向、晶胞基与路径，确认路径上的电子态适用性。高温立方结构是参考，不因 0 K 不稳定而假造其有限温度稳定性。,planning_definition,plans/stages.json and actual task ledgers
+P5.03,P5,计算路径上足够多的连续几何/电子结构，展开极化量子分支，报告极化差而不是随意相减两个主值。,planning_definition,plans/stages.json and actual task ledgers
+P5.04,P5,计算固定/允许应变条件下的能量路径，区分线性插值、约束弛豫与真实最小能量路径。0 K 势垒和有限温度自由能分别命名。,planning_definition,plans/stages.json and actual task ledgers
+P5.05,P5,在本机确实支持的方案下求 ε∞、Born 和电子/离子介电。有限差分法须有清楚场/位移边界和数值对照，不给未实现的 DFPT 功能伪造输入。,planning_definition,plans/stages.json and actual task ledgers
+P5.06,P5,等待 P7 的合格 force constants，完成离子响应或极性修正的数据交接。使用同一结构、单位、atom order 和方法集，避免从另一版本母胞借 Born。,planning_definition,plans/stages.json and actual task ledgers
+P5.07,P5,按实际问题增加极化—应变、压电/电致伸缩或必要畴壁参考；这些系数的定义和机械边界明确，不默认一个二次拟合给所有本构。,planning_definition,plans/stages.json and actual task ledgers
+P5.08,P5,若需要温度相变/畴响应，先选择带极化自由度的有效哈密顿量/模型和统计采样；普通 E/F 势不自动给 P、ε、介电损耗或电场开关。不扩大为当前排除的通用相场求解器。,planning_definition,plans/stages.json and actual task ledgers
+P5.09,P5,检查顺电参考、极化分支、k/基组/路径步长/电场幅度收敛；未产生铁电性的相如实报告，不强行拟合双阱。,planning_definition,plans/stages.json and actual task ledgers
+P5.10,P5,输出 polarization.json、dielectric.json、路径数据与图，分别标 ε∞/离子项/静态或小信号、T/E/频率有效范围和科学限制。,planning_definition,plans/stages.json and actual task ledgers
+P5.11,P5,对非极性 CaZrO3 验证案例优先交付适用的电子、离子和静态/小信号介电响应，明确 Berry phase/有限场公式的绝缘体条件；不因没有铁电双阱而判为设计失败，也不把金属 Ni 或金属化异质胞套用体相极化公式。,planning_definition,plans/stages.json and actual task ledgers
+P5.12,P5,选择并验证有限温度方法（有限温度力学/统计采样、QHA 或其他有证据的方法）并在请求的温度点输出介电响应；QHA 只提供热膨胀/体积路径，必须在一致结构上结合独立介电计算，不能单凭 QHA 得到全部温度介电响应；显式非谐或有限温度弛豫缺失要说明。CaZrO3 验证案例只把 330 K 和 400 K 作为两个已给输入点，不擅自补连续边界或中间温度。,planning_definition,plans/stages.json and actual task ledgers
+P5.13,P5,仅在 `selected_required_tasks` 或承诺的能力验证选择应变/电致响应时，对正常设计和 comparison 请求输出应变依赖的介电/极化或适用电致响应，明确应变张量、机械边界、拟合区间和误差。按具体可观测量判断适用性：非极性态的零自发极化可以是有效结果，不能因此取消介电响应；确实不适用的铁电开关等子任务才附理由标记 `scientific_status=not_applicable`。未选择该 observable 不等于不适用，也不以“未发生损伤”替代性能判断。,planning_definition,plans/stages.json and actual task ledgers
+P6.01,P6,列出磁性对象与目标：总/局域磁矩、自旋态差、各向异性、交换或对介电/界面的影响。非磁陶瓷设置必要参考即可。,planning_definition,plans/stages.json and actual task ledgers
+P6.02,P6,明确赝势价电子/f 壳层、U/J 来源、相对论和 SOC 能力。f 在芯内时不讨论该壳层磁矩。,planning_definition,plans/stages.json and actual task ledgers
+P6.03,P6,构建合理初始自旋构型和超胞，记录原子—磁矩/方向对应。比较能量时保持可比方法及说明几何是否相同。,planning_definition,plans/stages.json and actual task ledgers
+P6.04,P6,计算并核实最终磁态，而不只按输入 MAGMOM/初始方向给模型命名。记录局域定义与总磁矩、收敛情况和亚稳态。,planning_definition,plans/stages.json and actual task ledgers
+P6.05,P6,目标需要才做 SOC 方向能、交换映射或磁各向异性，检查其精度是否高于相应能差；不由少量态差自动推出居里温度。,planning_definition,plans/stages.json and actual task ledgers
+P6.06,P6,对掺杂/缺陷做合理的电荷、自旋、结构关联分析，不把磁性、铁电和热电视为同一个性质。,planning_definition,plans/stages.json and actual task ledgers
+P6.07,P6,给 P9 标注链说明自旋处理：普通坐标 E/F 势不自动含显式自旋自由度，混杂自旋分支可能造成同几何多值标签。限定目标磁态/温区，不能默认能处理磁相变。,planning_definition,plans/stages.json and actual task ledgers
+P6.08,P6,输出 magnetic.json、自旋构型、必要 SOC/交换数据与图、方法/有效范围和不适用说明。,planning_definition,plans/stages.json and actual task ledgers
+P7.01,P7,确认模型稳定相、温度背景、超胞尺寸及目标。0 K 软模与高温稳定相的关系预先说明。,planning_definition,plans/stages.json and actual task ledgers
+P7.02,P7,用所选 Phonopy 版本生成位移结构与位移清单，保存唯一顺序和母模型映射。掺杂降低对称性后重新统计实际任务量。,planning_definition,plans/stages.json and actual task ledgers
+P7.03,P7,生成全部位移力任务，但先打印任务数、每任务原子数和预算。大掺杂胞再扩声子超胞可能超出资源，不能直接满量提交。,planning_definition,plans/stages.json and actual task ledgers
+P7.04,P7,位移态只求力，不重新结构弛豫；统一电子精度、k 密度、自旋和方法。核对漂移/平移不变性及力的数值精度。,planning_definition,plans/stages.json and actual task ledgers
+P7.05,P7,按真实顺序收集位移力，计算二阶力常数。若施加声学和规则/对称化，记录原始与处理后的差异，不用它隐藏严重数值问题。,planning_definition,plans/stages.json and actual task ledgers
+P7.06,P7,计算色散、DOS、软模与本征矢，检查 q 网格、超胞、位移幅度和小负频的数值来源。真实不稳定模不删、不取绝对值。,planning_definition,plans/stages.json and actual task ledgers
+P7.07,P7,极性非解析修正与 P5 共享同模型 Born/ε∞，核对张量和原子顺序。缺数据时报告未做 NAC，不能默认为完整极性谱。,planning_definition,plans/stages.json and actual task ledgers
+P7.08,P7,对稳定相做可适用的 Cv/自由能和必要 QHA 热膨胀；区分 Cv/Cp。强非谐/高温稳定相先定义相应方法，不直接套谐波公式。,planning_definition,plans/stages.json and actual task ledgers
+P7.09,P7,对筛选后的代表性材料做三阶力/BTE κl，先统计位移数和收敛成本，不对每个随机掺杂构型无预算展开。若明确选择 MD κl，则此子项只定义交接和适用条件，实际计算必须等 P9 势资格/P10 热流与尺寸验收；不得在 P7 提前跳过这些依赖。,planning_definition,plans/stages.json and actual task ledgers
+P7.10,P7,说明缺陷散射、同位素、有限晶粒和实验微结构是否包含，避免把理想晶体 κl 直接叫器件总热导。Ni 总热导还含电子项。,planning_definition,plans/stages.json and actual task ledgers
+P7.11,P7,输出 force constants、位移/力文件、phonons.json、thermal-lattice.json 和参数交接。给 P5/P8 的引用指向具体模型/方法任务，不指向无版本的目录。,planning_definition,plans/stages.json and actual task ledgers
+P7.12,P7,完成位移顺序、单位、可重复频率/热学基准和物理收敛测试，附全部 job ID 与失败/未提交列表。,planning_definition,plans/stages.json and actual task ledgers
+P7.13,P7,对正常工况和 comparison 请求交付可用性能输出（稳定相、Cv/Cp、热膨胀、声子 DOS/群速度、κl 或明确的替代量），不能把“查找虚频”当作阶段唯一目标。温度、方向、边界、采样和误差必须随结果保存。,planning_definition,plans/stages.json and actual task ledgers
+P7.14,P7,将虚频分成数值误差、真实 0 K 不稳定和有限温度稳定性问题，分别给出后续动作；虚频或无损轨迹都不能单独决定 `design_assessment`，应回到目标指标和适用方法。,planning_definition,plans/stages.json and actual task ledgers
+P8.01,P8,明确本链是 Seebeck/电子输运，不是声子热导、自热或磁性。确定 T、化学势/载流子范围与绝缘体研究的物理目的。,planning_definition,plans/stages.json and actual task ledgers
+P8.02,P8,用合格 SCF 和稠密均匀 k 采样产生能带；高对称路径 band plot 不能直接当输运积分输入。,planning_definition,plans/stages.json and actual task ledgers
+P8.03,P8,固定 BoltzTraP2 版本，查该版本实际数据接口。实现 ABACUS 数据桥，不宣称存在已验证原生读取器。,planning_definition,plans/stages.json and actual task ledgers
+P8.04,P8,转换晶格、k 坐标、能量零点/单位、电子数、自旋通道及必要对称信息。用解析或已知数据集和独立数值对照验证，不只检查“文件能打开”。,planning_definition,plans/stages.json and actual task ledgers
+P8.05,P8,做插值与密 k/能带窗口收敛，确认简并、自旋/SOC等输入与所选后处理方法兼容，不能把不支持的数据结构硬塞进结果。,planning_definition,plans/stages.json and actual task ledgers
+P8.06,P8,报告刚性带和常数散射时间近似及其限制，输出 S、σ/τ、κe/τ、PF/τ 的张量/方向、T 和 μ/浓度约定。,planning_definition,plans/stages.json and actual task ledgers
+P8.07,P8,给定有来源的 τ 后才输出 σ、κe 和 PF，明确使用何种张量/方向定义。τ 未知就保留归一化结果，不填一个“典型值”冒充预测。,planning_definition,plans/stages.json and actual task ledgers
+P8.08,P8,根据所选路线等待同状态/方向的具体 κl 任务：P7 的 DFT/BTE，或 P9 合格势之后 P10 的 MD 热导。后一条的完整 ZT 必须推迟到相关 H3 结果完成后；此前只验收不依赖 κl 的输运子项。张量情形先定义测量/边界方向，不把所有分量直接当标量套除法。,planning_definition,plans/stages.json and actual task ledgers
+P8.09,P8,讨论带隙误差、缺陷能级/载流子与绝缘漏电代价；高电导/高热电性能不等于 MLCC 更可靠。,planning_definition,plans/stages.json and actual task ledgers
+P8.10,P8,输出 transport.json、T/μ/浓度表、桥接输入/输出、单位测试、收敛证据和未确定参数。,planning_definition,plans/stages.json and actual task ledgers
+P9.01,P9,读取 P4 的明确 model/version，不从 VASP 旧文件或“最新结构”偷偷取父模型。为界面列出陶瓷和 Ni 两个或更多父模型。,planning_definition,plans/stages.json and actual task ledgers
+P9.02,P9,用 ASE 整数矩阵扩胞，输出原子数/计量/晶格与 parent_atom_id＋image_index→child_atom_id。一般非对角矩阵的晶格与周期映射也须正确。,planning_definition,plans/stages.json and actual task ledgers
+P9.03,P9,exact 模式原样复制掺杂/空位图样，报告人为周期相关性；randomize_after_repeat 用明确组成、补偿、种子和统计新建派生模型，不能称为逐原子相同。,planning_definition,plans/stages.json and actual task ledgers
+P9.04,P9,分开 bulk、slab、晶界/异质界面构建；真空长度与实体厚度独立控制。记录取向、晶面、终止、面内变换/应变分配与边界。,planning_definition,plans/stages.json and actual task ledgers
+P9.05,P9,确认 LAMMPS 二进制、版本、所需 package、CPU/GPU 路线和实际 potential 接口。程序能启动不代表 DeepMD/长程/分子拓扑包都已编译。,planning_definition,plans/stages.json and actual task ledgers
+P9.06,P9,对现成势建立资格表：元素、bulk 相、缺陷、表面、界面、加载/温度、长程/电荷/自旋与聚合物拓扑。未覆盖项逐一标记，不把 bulk EAM/氧化物/有机势无标定拼接。,planning_definition,plans/stages.json and actual task ledgers
+P9.07,P9,若需机器学习势，设计最小 ABACUS 标注集：平衡/应变/热扰动、目标缺陷、表面、实际界面 registry、张开/剪切与必要聚合物环境。只做平衡 AIMD 不覆盖断裂。,planning_definition,plans/stages.json and actual task ledgers
+P9.08,P9,用一致 method_set 标注 E/F/应力，明确 dpdata/DeePMD 的原子类型、能量、力、应力/virial 单位与符号。先小数据转换/回读和独立构型对照，再训练。,planning_definition,plans/stages.json and actual task ledgers
+P9.09,P9,按母轨迹、构型家族、加载路径/温度拆训练/验证/测试，不随机切相邻帧冒充独立测试。记录极端界面原子和断键环境误差，不只看平均力 RMSE。,planning_definition,plans/stages.json and actual task ledgers
+P9.10,P9,在单卡 16 GiB 条件下建立训练资源基准，明确 batch/模型大小；不默认四卡显存池化。多模型委员会和主动学习仅在实际需要、版本相容时加入，不先搭通用 DP-GEN 平台。,planning_definition,plans/stages.json and actual task ledgers
+P9.11,P9,资格验收除 E/F 外还比较晶格、应变/弹性、表面/相对 registry、分离曲线和目标温度稳定性。具体误差目标在运行前按物理量给定。,planning_definition,plans/stages.json and actual task ledgers
+P9.12,P9,热传输要检查势与热流实现的多体/长程/维里支持；有 ε/P/电场任务还须额外自由度/标签，普通 E/F 势不自动给它们。,planning_definition,plans/stages.json and actual task ledgers
+P9.13,P9,输出 structure.data、type_map、atom_map、parent_models、potential 文件/来源与 potential.json，写清合格范围/不支持项。新增元素、表面或聚合物后回到资格测试，不只改 type_map。,planning_definition,plans/stages.json and actual task ledgers
+P9.14,P9,没有界面合格势时可验收扩胞算法、单相势和数据链，但不能把 P11 界面 MD 标为可执行。给出明确缺口与下一批标注预算。,planning_definition,plans/stages.json and actual task ledgers
+P9.15,P9,以真实元素、真实目标组成/相和用户给定的范围建立资格样本，并为每类场景选正向基准（已知稳定结构、已通过的小胞或有来源的参考结果）。不以虚拟元素、任意替代元素或未标定混合势填补覆盖缺口。,planning_definition,plans/stages.json and actual task ledgers
+P9.16,P9,建立能力覆盖矩阵：顺电/铁电、磁性、金属、电极/陶瓷界面、保留高分子和排胶后状态逐项记录已实现、需标注、未实现及适用边界。通用系统的通过条件是代表性场景有真实证据，不要求所有场景同时具备合格势。,planning_definition,plans/stages.json and actual task ledgers
+P9.17,P9,将正常工况/设计对照的势资格与诊断/破坏加载资格分开验收；后者缺失时可继续正常性能预测，但不提交超出合格范围的破坏 MD，也不把未发生破坏解释成达标。,planning_definition,plans/stages.json and actual task ledgers
+P9.18,P9,在界面势资格判定之前，消费 P4.17 已生成的、使用与 P11 相同真实元素/面内胞/约束的 ABACUS 界面 DFT 锚点（registry、间距、分离/剪切曲线及必要参考片段），并把锚点、来源任务和适用范围写入资格表。界面任务未选择或未计算时只记录执行事实；已选择但物理上不适用才记 `scientific_status=not_applicable`，无设计目标时 `design_assessment=not_assessed`。P11.03 只消费这些已生成的锚点，不反向定义 P9 的资格门，避免循环依赖。,planning_definition,plans/stages.json and actual task ledgers
+P9.19,P9,按所选铁电、跨相变、局部极化或场驱动响应，明确极化/场模型路线：有效哈密顿量、局部软模/极化、诱导偶极、显式电荷/长程静电或场依赖势；把 P5 极化/介电/Born、必要 P7 力常数和 P4 DFT 标注的依赖写入模型。有效哈密顿量只有在选定实现和版本可执行时才可采用，不能把理论名称当作现成 LAMMPS 接口；只请求无场力学/热学时按对应资格执行。,planning_definition,plans/stages.json and actual task ledgers
+P9.20,P9,核实实际 LAMMPS 接口、长程电荷/偶极实现、恒电势或外场边界、场能量和力的定义；对金属电极、绝缘陶瓷和高分子分别记录边界。普通 DeePMD/E/F/virial 势不自动包含极化、电场、去极化或电极屏蔽，未验证的接口只保留为未实现/待标注。,planning_definition,plans/stages.json and actual task ledgers
+P9.21,P9,以独立结构/温度/应变/场和相态样本验证极化、Born/偶极、力、应力与能量一致性，并分开验收普通 E/F、极化、长程电边界和电-力耦合；极化验证失败时不能用普通 E/F 势替代，也不能把力场拟合误差当作介电误差。,planning_definition,plans/stages.json and actual task ledgers
+P10.01,P10,从小胞开始对照 LAMMPS 与 ABACUS 的相同构型 E/F/应力，核实 units、type 顺序、边界、长程和力场参数。,planning_definition,plans/stages.json and actual task ledgers
+P10.02,P10,做时间步对照与短 NVE 能量漂移，确认约束、质量与势实现稳定。恒温器不能用来掩盖积分/力场错误。,planning_definition,plans/stages.json and actual task ledgers
+P10.03,P10,对真正 bulk 用合适 NPT 取得温度参考晶格/密度与热膨胀；说明各向异性、取向和采样。slab/真空不套三向 bulk 压强耦合。,planning_definition,plans/stages.json and actual task ledgers
+P10.04,P10,按目标做弹性/应变响应、平衡与重复种子对照，说明静态弹性和有限速率响应的区别。,planning_definition,plans/stages.json and actual task ledgers
+P10.05,P10,逐一增加明确晶界、局部孔隙、表面粗糙或缺陷，保持组分/取向/边界的可比对照，不把所有缺陷同时加入后声称找到单一机制。,planning_definition,plans/stages.json and actual task ledgers
+P10.06,P10,规模由数千至数万原子的小基准逐步确定。记录 atom count、GPU/CPU、步耗时、显存/RAM、采样长度和输出体积，不承诺微米厚度逐原子计算。,planning_definition,plans/stages.json and actual task ledgers
+P10.07,P10,局部应力明确 virial/体积/粗粒化窗口；界面/孔隙附近原子体积不唯一，给出对定义的敏感性。位置图着色不自动成为连续应力场。,planning_definition,plans/stages.json and actual task ledgers
+P10.08,P10,按 `selected_purposes` 和 `selected_scenarios` 选择松弛、迁移/滑移或缺陷演化，保存事件定义和统计。迁移和制造组织中的孔隙可属于正常状态；只有额外诊断扰动和损伤加载按相应请求启用，不以事件名称自动判劣化。纳米时间/高应变率结果不能直接解释实验寿命。,planning_definition,plans/stages.json and actual task ledgers
+P10.09,P10,如做 κl，选择与势匹配的 Green–Kubo/NEMD，检验热流、体积、采样和尺寸；不把温控输入能量自动叫热导，也不把 Ni 晶格项当总热导。,planning_definition,plans/stages.json and actual task ledgers
+P10.10,P10,输出真实轨迹/统计、bulk reference、误差/有效范围、Slurm 任务记录及后续界面的温度/边界参考。按科学结果筛选代表性场景，不以动画是否流畅验收。,planning_definition,plans/stages.json and actual task ledgers
+P10.11,P10,仅当 `selected_required_tasks` 或承诺的能力验证选择体相 MD/相应 observable 时，完成正常工况体相基线：结构/密度、弹性响应与卸载恢复、热传输和稳定性，在多个独立样本或种子上报告均值、离散度和误差。普通请求不因未选择全套 MD observable 而阻塞；当前 CaZrO3 验证案例使用 330 K、400 K、1 atm 两个温度点，这些值不硬编码为通用系统默认。,planning_definition,plans/stages.json and actual task ledgers
+P10.12,P10,将已选择的正常性能输出与条件诊断输出分开：若选定结构/弹性/热传输 observable，正常分支报告相应结构、弹性恢复、热传输、样本数和误差；诊断分支才按请求加入迁移、孔隙、缺陷演化或损伤事件。未观测到损伤只表示该轨迹未触发事件，不自动给出 `design_assessment=met`。,planning_definition,plans/stages.json and actual task ledgers
+P10.13,P10,对每个代表性场景记录尺寸/时间/速率适用边界和 `scientific_status`；设计规格缺失时交付性能预测与误差，不虚构 conformance 阈值或把计算失败写成材料 `not_met`。,planning_definition,plans/stages.json and actual task ledgers
+P10.14,P10,对已通过 P9.19–P9.21 的铁电/可极化模型，按正常有限温度工况采样极化态、局部有序参数、结构相和历史依赖；区分热涨落、相变、冻结和真正的极化翻转，不以单时刻净极化为零判定非铁电。,planning_definition,plans/stages.json and actual task ledgers
+P10.15,P10,在给定工作点 E0 附近使用双侧小场扰动及幅度/采样对照，或适用的平衡涨落方法，计算 D、E 及 ∂D/∂E。总极化与电子/离子来源明确，局部极化是空间划分而非额外可重复相加的贡献；不把 P/E 当作所有偏压下的介电常数。,planning_definition,plans/stages.json and actual task ledgers
+P10.16,P10,在选定机械边界下计算电致应变、极化—应变或压电响应的可逆加载/卸载，记录场幅、应变张量、速率、滞后和恢复；普通力学势只能交付无场弹性，不能补写电致响应。,planning_definition,plans/stages.json and actual task ledgers
+P10.17,P10,仅在 selected_required_tasks 或诊断目的要求时，计算局部畴壁/极化界面参考及其有限温度动力学；选择缺陷偶极/畴壁相互作用时先补对应 P9 模型资格，区分正常排列、钉扎和扰动。DFT 热力学电荷态不直接等于经典点电荷，缺陷浓度/分布/冻结假设须明确。保持原子/粒子 MD 尺度，不把结果写成 FEM 或微米相场求解。,planning_definition,plans/stages.json and actual task ledgers
+P10.18,P10,仅在用户明确要求且 P9 极化/电边界资格覆盖时，计算场驱动翻转或 P–E 环；报告加载速率、场历史、周期数、尺寸和有限采样，不能把高场/高频 MD 结果命名为实验矫顽场或寿命。,planning_definition,plans/stages.json and actual task ledgers
+P10.19,P10,输出极化态、D、E、∂D/∂E、电致应变/压电量、局部有序/畴参考、轨迹和统计交接；每个结果绑定模型、场/温度/应力/频率有效范围及 P5/P7/P9 来源任务。,planning_definition,plans/stages.json and actual task ledgers
+P11.01,P11,仅在 `selected_required_tasks` 选择直接界面或高分子角色时，建立清晰对照矩阵：直接陶瓷/Ni；烧结后低温装配的保留高分子层；临时粘结剂所形成的排胶后接触/孔隙/残留。PI/PVB 仅是候选，未选分支不创建任务。,planning_definition,plans/stages.json and actual task ledgers
+P11.02,P11,用户明确陶瓷终止、Ni 晶面/表面状态、是否氧化/羟基、取向、面内匹配和应变约束。小 coherent 界面不能代表真实松弛多晶；报告人为应变。,planning_definition,plans/stages.json and actual task ledgers
+P11.03,P11,使用 P9.18 已生成的 ABACUS 代表性 registry/间距/分离锚点；片段参考保持相同面内胞、组成和相应约束。此项只完成界面模型映射、双界面计数和 MD 输入准备，不把尚未完成的锚点或资格倒推为已通过。,planning_definition,plans/stages.json and actual task ledgers
+P11.04,P11,仅在选择保留高分子分支时明确化学、链长分布、交联/塑化、密度、层厚、初始取向、制备/退火与独立链构型；不默认该层可经历陶瓷共烧仍保留。,planning_definition,plans/stages.json and actual task ledgers
+P11.05,P11,仅在选择临时粘结剂分支时确定研究的是反应过程还是排胶后缺陷状态。没有经验证的反应势/机理时只做后者；删除聚合物原子不是排胶/烧结模拟。,planning_definition,plans/stages.json and actual task ledgers
+P11.06,P11,检查所有异种 cross interaction、键/排除项、电荷/长程、表面和拉伸环境；高分子内部合格不代表其两侧异质界面合格。,planning_definition,plans/stages.json and actual task ledgers
+P11.07,P11,先完成平衡和小载荷正常响应；仅当 `selected_purposes` 包含 diagnosis 或请求明确破坏工况时，才做张开极限，并明确夹持层、活性区、温控区、面积、开口位移、横向约束、加载/卸载、速率和尺寸。,planning_definition,plans/stages.json and actual task ledgers
+P11.08,P11,正常分支比较可逆剪切/滑移与卸载恢复；仅在条件破坏任务中加入 Ni 塑性、高分子松弛或断裂路径，区分两侧界面和聚合物自身路径。固定拓扑非反应模型不能可靠声称化学键断裂。,planning_definition,plans/stages.json and actual task ledgers
+P11.09,P11,仅在 study 的 `selected_scenarios` 或工艺请求包含热循环/热失配时，做目标有限热循环响应；明确无应力参考温度、制备历史和机械约束。未启用该条件分支时不阻塞正常连接路径；完全弛豫晶格并不能自动定义器件残余应力。,planning_definition,plans/stages.json and actual task ledgers
+P11.10,P11,界面热传输按合格 NEMD/其他明确方案计算，说明热流、温度跳变、面积、有限尺寸与稳态区间。含金属时区分晶格通道和电子贡献。,planning_definition,plans/stages.json and actual task ledgers
+P11.11,P11,只有在请求启用张开/破坏或明确需要边界参数时，才分开 DFT 可逆 Wsep、MD 有限速率表观分离功、峰值强度、塑性/黏弹耗散和宏观 Gc。没有标定就不把高加载率 MD 功命名为实验 Gc。,planning_definition,plans/stages.json and actual task ledgers
+P11.12,P11,仅在 selected_required_tasks 要求高分子 comparison/conformance 时，比较独立高分子构型、代表性表面/速度/尺寸，记录误差与排序是否稳定。先小对照，再扩大，不全组合无差别计算。,planning_definition,plans/stages.json and actual task ledgers
+P11.13,P11,按已选正常/条件分支输出局部结构/应力定义、牵引/剪切、松弛/耗散、界面热响应、必要的失效路径、方法/有效范围和排胶后状态清单。,planning_definition,plans/stages.json and actual task ledgers
+P11.14,P11,若向未来连续模型交参数，明确哪些耗散已计入，以免 Ni 塑性/高分子黏弹在 Gc 和显式本构中重复计算；不在本项目伪造 FEM/相场结果。,planning_definition,plans/stages.json and actual task ledgers
+P11.15,P11,仅在 `selected_required_tasks` 选择界面/高分子响应或 comparison 时，先做小载荷正常连接：界面稳定性、界面刚度、可逆滑移/卸载恢复和热传输，固定面积、温度、边界和独立构型，输出均值、离散度及有效范围。已选择的直接陶瓷/Ni 与保留高分子层才要求可比 reference。,planning_definition,plans/stages.json and actual task ledgers
+P11.16,P11,只有在 `selected_purposes` 包含 diagnosis 或明确给出破坏工况时，才增加张开极限、剪切极限、Ni 塑性、聚合物断裂/黏弹耗散等条件任务；结果标注速率/尺寸限制，不把未跑破坏任务判成设计不达标。,planning_definition,plans/stages.json and actual task ledgers
+P11.17,P11,仅在选择高分子方案时，同时输出正常连接收益和电容/电气代价所需的参数，按 comparison 或 conformance 规格形成逐指标结论；没有规格时保留排序、误差和证据缺口，不宣称“改善”或“达标”。,planning_definition,plans/stages.json and actual task ledgers
+P11.18,P11,若铁电陶瓷/电极界面任务被选择，定义电极屏蔽、去极化、极性终止、界面偶极、恒电势/外场和高分子边界；金属/陶瓷异质超胞不能直接套用体相 Berry-phase，电势参考和界面场须独立建立。,planning_definition,plans/stages.json and actual task ledgers
+P11.19,P11,对已选择的直接陶瓷/电极、保留高分子层或排胶后接触及必要对照，在可比几何/边界下比较界面极化、屏蔽和低介电层的电压分配/电气代价；没有合格电荷/长程模型时只交接 DFT/介电参数，不虚构 MD 电场。,planning_definition,plans/stages.json and actual task ledgers
+P11.20,P11,仅在 P9 电边界和势资格覆盖时计算局部电-力-热响应及可逆恢复；否则逐向交付电、力、热参数和有效范围，明确未形成耦合闭环，不把机械/热 MD 结果命名为铁电器件响应。,planning_definition,plans/stages.json and actual task ledgers
+P12.01,P12,按 model/version 建立材料包，收录相/组成/缺陷、方法、ε/弹性/热膨胀/κ/磁性/输运及界面参数。未算/不适用分开，不由别的材料自动补值。,planning_definition,plans/stages.json and actual task ledgers
+P12.02,P12,每个参数保留单位、T/E/f、方向、边界、速率/历史、统计误差、数据文件、source_task 与有效范围；方法不一致时分组，不能平均混合。,planning_definition,plans/stages.json and actual task ledgers
+P12.03,P12,将手册中的 1–60 μm 作为厚度示例，不把它当作全体系硬限制；实际生坯/烧结后厚度状态、有效并联间隙 N、重叠面积 A 和电极/端头由 study 提供。缺几何就只给参数需求，不从 DFT 胞长猜器件尺寸。,planning_definition,plans/stages.json and actual task ledgers
+P12.04,P12,"对相同均匀并联间隙使用 C=Nε0εeff A/d 的适用近似；铁电偏压采用对应工作点 ∂D/∂E，不把零场 ε 当成全部 C(V,T,f)。",planning_definition,plans/stages.json and actual task ledgers
+P12.05,P12,保留绝缘高分子时，对一个间隙先计算各层 t/ε 串联的电气厚度，再按并联间隙汇总；层内电压按电位移/边界求分配。临时粘结剂已去除的分支不能继续当作理想保留薄层。,planning_definition,plans/stages.json and actual task ledgers
+P12.06,P12,仅在有真实损耗谱、电极电阻和寄生电感来源时做明确等效电路的 Z(f)、ESR/ESL/SRF 条件估计。非均匀高频寄生缺失则不伪造曲线；复电容损耗与串联电阻不重复计入。,planning_definition,plans/stages.json and actual task ledgers
+P12.07,P12,不由 Eg 给额定耐压，不由声子频率给 SRF，不凭纯 BTO/CaZrO3 认证 X7R/C0G，不从纳米 MD 单次起裂给整机寿命。,planning_definition,plans/stages.json and actual task ledgers
+P12.08,P12,构建机制证据链：掺杂/缺陷→局部键合/电子/软模→材料响应→局部界面松弛/失效倾向→有条件的器件影响。相关性、模型内因果和实验外推分开。,planning_definition,plans/stages.json and actual task ledgers
+P12.09,P12,比较可用实验/文献时标明温度、频率、尺寸、成分/相、晶粒/孔隙与定义差异，不直接把不相同对象的数值当误差条。,planning_definition,plans/stages.json and actual task ledgers
+P12.10,P12,交付报告、图表/表格、轻量原始数据、参数包、模型/方法/任务索引和逐阶段状态；失败/排除任务在统计中保留，结论只用合格证据。,planning_definition,plans/stages.json and actual task ledgers
+P12.11,P12,检查所有结论能追到实际 source_task、job ID/终态和文件；对无法再从控制器查询的历史任务使用已保存快照，不编造实时状态。,planning_definition,plans/stages.json and actual task ledgers
+P12.12,P12,明确退出范围：微米整层 FEM/相场、完整器件电磁、全电热力反馈和寿命/额定耐压统计属于未来独立需求；只列所需参数/实验和建议接口，不生成假求解器文件。,planning_definition,plans/stages.json and actual task ledgers
+P12.13,P12,输出 H4 总结与下一最小实验/计算批次。只有实际完成当前 study 的 `selected_required_tasks`，才将该 study 的相应阶段标完成；预算耗尽不是科学完成，也不替代系统级能力验收。,planning_definition,plans/stages.json and actual task ledgers
+P12.14,P12,按 `selected_purposes` 和 `selected_scenarios` 输出：normal 给出设计工况下的性能、误差和适用范围；comparison 给出同条件方案差异；conformance 才读取目标矩阵；diagnosis 单独列正常/异常机制证据，不能把诊断结果替代规格符合性。,planning_definition,plans/stages.json and actual task ledgers
+P12.15,P12,为每个指标建立达标矩阵：计算/预测值或有来源的实验参照、单位、上下限、条件、裕量、`design_assessment`、来源任务/数据、未达标原因和待补证据。阈值为 `null` 或未提供时记 `not_assessed`；不把失败作业直接记 `not_met`，也不把不同来源混成单一数值。聚合规则为：任一必需且适用指标有有效证据并明确不满足则整体 `not_met`；没有已证不满足但必需指标证据不足则整体 `insufficient_evidence`；全部必需且适用指标有效满足才整体 `met`；全部指标不适用不能记 `met`。,planning_definition,plans/stages.json and actual task ledgers
+P12.16,P12,明确语义边界：scheduler 状态、`scientific_status`（scientific validity）和 design_assessment 分栏保存；计算失败不等于材料不达标，未发生损伤/断裂不等于设计达标，只有相应目标和合格证据同时满足才可记 `met`。,planning_definition,plans/stages.json and actual task ledgers
+P12.17,P12,分开两个验收层次：系统级总验收必须按承诺能力 × 代表性案例 × 引擎/方法版本覆盖，并附真实证据和适用边界；单个 study 只按 `selected_required_tasks` 收敛，不要求所有可选 P6/P8、所有材料或所有失效机制一次性完成。某案例对某能力 `not_applicable` 只能说明该案例不适用，不能使系统相应能力通过；列出顺电/铁电/金属/界面/高分子场景的已实现与未实现项。,planning_definition,plans/stages.json and actual task ledgers
+P12.18,P12,将 P4.18–P4.27 缺陷结果及 P5/P7/P9–P11 铁电结果装入材料包：极化状态、D、E、∂D/∂E、电致应变/畴参考、缺陷形成/结合/偏聚能、化学势域、费米能级/转变能级、原始与修正能量及有效范围。P12 微分介电和条件性器件估计引用相同工况结果；无目标规格为 not_assessed，有目标而缺相关证据/资格才为 insufficient_evidence。,planning_definition,plans/stages.json and actual task ledgers

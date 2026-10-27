@@ -1,0 +1,17 @@
+{
+  "schemaVersion": "matterai.case.v2",
+  "id": "device-handoff",
+  "stages": [
+    "P12"
+  ],
+  "kind": "behavioral_and_numerical",
+  "prompt": "由材料/界面参数估计多层电容，尚无端头寄生参数、损耗谱和失效统计。",
+  "expected": [
+    "几何/烧结厚度/有效间隙与有效介电来源明确",
+    "相同间隙并联，每间隙用端电压",
+    "保留高分子先考虑 t/epsilon 串联",
+    "无寄生/损耗数据不造 Z/SRF 曲线",
+    "不以带隙给额定耐压，不宣称全器件残余应力/寿命"
+  ],
+  "execution_status": "not_run"
+}

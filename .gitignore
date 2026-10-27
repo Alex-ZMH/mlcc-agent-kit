@@ -1,0 +1,49 @@
+# Local publish metadata (the sandbox keeps the standard .git directory read-only)
+.git-publish/
+
+# Local runtimes, credentials, caches and generated evidence
+.env
+.env.*
+!.env.example
+.codex/
+.zeus/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+node_modules/
+
+# Local scientific runs and site-specific outputs
+workspace/
+output/
+reports/
+tmp/
+*.log
+*.cube
+*.npy
+*.npz
+*.h5
+*.hdf5
+*.traj
+*.dump
+*.pth
+*.pt
+*.ckpt
+
+# Site/runtime-specific private trees and downloaded references
+Autonomous_Computational_Scientist-main/
+MatterAI-main/
+Photoresist-agent-kit-main/
+
+# Local-only instructions and rolling execution state
+AGENTS.md
+CURRENT_TASK.md
+PLAN.md
+
+# Large local reference material
+*.pdf
+*.zip
+*.tar
+*.tar.gz

@@ -1,0 +1,712 @@
+{
+  "schema": "mlcc.capability-preservation-baseline.v1",
+  "date": "2026-10-27",
+  "baseline_kind": "static_inventory_of_enabled_bundle_not_runtime_or_scientific_acceptance",
+  "enabled_version": "0.57.0",
+  "rollback_version": "0.56.0",
+  "bundle_root": "D:/project/mlcc/workspace/.zeus/bundles/mlcc-agent/0.57.0",
+  "cli_source": "src/mlcc/cli.py",
+  "cli_count": 107,
+  "cli_commands": [
+    {
+      "command": "abacus-domain-parameters",
+      "line": 435,
+      "declaration": "literal"
+    },
+    {
+      "command": "assess-design",
+      "line": 338,
+      "declaration": "literal"
+    },
+    {
+      "command": "berry-branch-consume",
+      "line": 286,
+      "declaration": "literal"
+    },
+    {
+      "command": "berry-branch-review",
+      "line": 279,
+      "declaration": "literal"
+    },
+    {
+      "command": "berry-response",
+      "line": 270,
+      "declaration": "literal"
+    },
+    {
+      "command": "bind-grain-boundary-study",
+      "line": 139,
+      "declaration": "literal"
+    },
+    {
+      "command": "bind-interface-study",
+      "line": 147,
+      "declaration": "literal"
+    },
+    {
+      "command": "binding-energy",
+      "line": 198,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "born-affine",
+      "line": 300,
+      "declaration": "literal"
+    },
+    {
+      "command": "born-charges",
+      "line": 293,
+      "declaration": "literal"
+    },
+    {
+      "command": "bulk-thermal-response",
+      "line": 423,
+      "declaration": "literal"
+    },
+    {
+      "command": "bulk-thermal-transport",
+      "line": 429,
+      "declaration": "literal"
+    },
+    {
+      "command": "bulk-thermodynamics",
+      "line": 420,
+      "declaration": "literal"
+    },
+    {
+      "command": "cancel",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "ceramic-data",
+      "line": 109,
+      "declaration": "literal"
+    },
+    {
+      "command": "ceramic-training-bind",
+      "line": 112,
+      "declaration": "literal"
+    },
+    {
+      "command": "charge-correction",
+      "line": 202,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "charge-transitions",
+      "line": 202,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "charged-formation",
+      "line": 202,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "chemical-potential-region",
+      "line": 198,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "chemical-references",
+      "line": 198,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "collect",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "compare-compositions",
+      "line": 388,
+      "declaration": "literal"
+    },
+    {
+      "command": "compare-potential",
+      "line": 198,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "create-abacus",
+      "line": 75,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-berry-nscf",
+      "line": 90,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-berry-reference",
+      "line": 87,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-berry-response",
+      "line": 95,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-berry-response-nscf",
+      "line": 98,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-berry-strain",
+      "line": 102,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-berry-strain-nscf",
+      "line": 105,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-ceramic-lammps",
+      "line": 115,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "create-ceramic-training",
+      "line": 115,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "create-grain-boundary",
+      "line": 136,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-interface",
+      "line": 144,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-lammps",
+      "line": 365,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-lammps-neb",
+      "line": 360,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-neutral-defect-pair",
+      "line": 212,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-phonon",
+      "line": 344,
+      "declaration": "literal"
+    },
+    {
+      "command": "create-relaxed-scf",
+      "line": 84,
+      "declaration": "literal"
+    },
+    {
+      "command": "deliver-md",
+      "line": 460,
+      "declaration": "literal"
+    },
+    {
+      "command": "deliver-polarization",
+      "line": 258,
+      "declaration": "literal"
+    },
+    {
+      "command": "deliver-properties",
+      "line": 218,
+      "declaration": "literal"
+    },
+    {
+      "command": "deliver-result",
+      "line": 71,
+      "declaration": "literal"
+    },
+    {
+      "command": "derive-defect",
+      "line": 131,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "derive-relaxed-structure",
+      "line": 81,
+      "declaration": "literal"
+    },
+    {
+      "command": "derive-supercell",
+      "line": 131,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "dielectric",
+      "line": 319,
+      "declaration": "literal"
+    },
+    {
+      "command": "dielectric-modes",
+      "line": 381,
+      "declaration": "literal"
+    },
+    {
+      "command": "elastic-analyze",
+      "line": 188,
+      "declaration": "literal"
+    },
+    {
+      "command": "elastic-calibrate",
+      "line": 193,
+      "declaration": "literal"
+    },
+    {
+      "command": "elastic-plan",
+      "line": 184,
+      "declaration": "literal"
+    },
+    {
+      "command": "electronic",
+      "line": 159,
+      "declaration": "literal"
+    },
+    {
+      "command": "electronic-dielectric",
+      "line": 169,
+      "declaration": "literal"
+    },
+    {
+      "command": "electronic-dos",
+      "line": 178,
+      "declaration": "literal"
+    },
+    {
+      "command": "electrostatic-potential",
+      "line": 175,
+      "declaration": "literal"
+    },
+    {
+      "command": "export-comsol",
+      "line": 405,
+      "declaration": "literal"
+    },
+    {
+      "command": "export-continuum",
+      "line": 402,
+      "declaration": "literal"
+    },
+    {
+      "command": "finalize-ceramic-training",
+      "line": 118,
+      "declaration": "literal"
+    },
+    {
+      "command": "formation-energy",
+      "line": 198,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "gamma-process",
+      "line": 306,
+      "declaration": "literal"
+    },
+    {
+      "command": "import-model",
+      "line": 123,
+      "declaration": "literal"
+    },
+    {
+      "command": "import-sqs",
+      "line": 398,
+      "declaration": "literal"
+    },
+    {
+      "command": "inspect-nao",
+      "line": 153,
+      "declaration": "literal"
+    },
+    {
+      "command": "inspect-upf",
+      "line": 150,
+      "declaration": "literal"
+    },
+    {
+      "command": "interface-electrical",
+      "line": 408,
+      "declaration": "literal"
+    },
+    {
+      "command": "interface-normal",
+      "line": 370,
+      "declaration": "literal"
+    },
+    {
+      "command": "interface-tangential",
+      "line": 378,
+      "declaration": "literal"
+    },
+    {
+      "command": "interface-thermal",
+      "line": 375,
+      "declaration": "literal"
+    },
+    {
+      "command": "ionic-dielectric",
+      "line": 311,
+      "declaration": "literal"
+    },
+    {
+      "command": "lammps-elastic-response",
+      "line": 426,
+      "declaration": "literal"
+    },
+    {
+      "command": "local-stress",
+      "line": 411,
+      "declaration": "literal"
+    },
+    {
+      "command": "magnetic",
+      "line": 162,
+      "declaration": "literal"
+    },
+    {
+      "command": "md-collection",
+      "line": 438,
+      "declaration": "literal"
+    },
+    {
+      "command": "md-conditions",
+      "line": 444,
+      "declaration": "literal"
+    },
+    {
+      "command": "md-replicas",
+      "line": 466,
+      "declaration": "literal"
+    },
+    {
+      "command": "md-sources",
+      "line": 453,
+      "declaration": "literal"
+    },
+    {
+      "command": "md-thermal-sources",
+      "line": 417,
+      "declaration": "literal"
+    },
+    {
+      "command": "neutral-formation",
+      "line": 206,
+      "declaration": "literal"
+    },
+    {
+      "command": "parse-abacus",
+      "line": 78,
+      "declaration": "literal"
+    },
+    {
+      "command": "parse-berry",
+      "line": 93,
+      "declaration": "literal"
+    },
+    {
+      "command": "parse-ceramic-lammps",
+      "line": 121,
+      "declaration": "literal"
+    },
+    {
+      "command": "parse-lammps",
+      "line": 368,
+      "declaration": "literal"
+    },
+    {
+      "command": "parse-lammps-neb",
+      "line": 363,
+      "declaration": "literal"
+    },
+    {
+      "command": "phonon-forces",
+      "line": 347,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "phonon-gamma",
+      "line": 327,
+      "declaration": "literal"
+    },
+    {
+      "command": "phonon-nac",
+      "line": 333,
+      "declaration": "literal"
+    },
+    {
+      "command": "phonon-plan",
+      "line": 341,
+      "declaration": "literal"
+    },
+    {
+      "command": "phonon-qpoints",
+      "line": 347,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "plan-composition",
+      "line": 384,
+      "declaration": "literal"
+    },
+    {
+      "command": "plan-configurations",
+      "line": 394,
+      "declaration": "literal"
+    },
+    {
+      "command": "polarization-energy",
+      "line": 273,
+      "declaration": "literal"
+    },
+    {
+      "command": "polarization-path",
+      "line": 265,
+      "declaration": "literal"
+    },
+    {
+      "command": "polarization-strain",
+      "line": 276,
+      "declaration": "literal"
+    },
+    {
+      "command": "potential-alignment",
+      "line": 198,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "prepare",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "qualify-method",
+      "line": 156,
+      "declaration": "literal"
+    },
+    {
+      "command": "query",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "resume-plan",
+      "line": 66,
+      "declaration": "literal"
+    },
+    {
+      "command": "saved-domain-parameters",
+      "line": 432,
+      "declaration": "literal"
+    },
+    {
+      "command": "status",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "study-plan",
+      "line": 69,
+      "declaration": "literal"
+    },
+    {
+      "command": "submit",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "thermal-stress",
+      "line": 414,
+      "declaration": "literal"
+    },
+    {
+      "command": "transfer",
+      "line": 62,
+      "declaration": "explicit_loop"
+    },
+    {
+      "command": "transport",
+      "line": 166,
+      "declaration": "literal"
+    },
+    {
+      "command": "vacancy-migration",
+      "line": 391,
+      "declaration": "literal"
+    }
+  ],
+  "delivery_options": [
+    "--tasks",
+    "--magnetic",
+    "--transport",
+    "--md-replicas",
+    "--interface",
+    "--interface-normal",
+    "--interface-tangential",
+    "--interface-thermal",
+    "--interface-electrical",
+    "--local-stress",
+    "--thermal-stress",
+    "--domain-parameters",
+    "--p5",
+    "--dielectric-modes",
+    "--composition",
+    "--vacancy-migration",
+    "--continuum",
+    "--defect-references",
+    "--chemical-references",
+    "--potential-alignment",
+    "--polarization-energy",
+    "--polarization-strain",
+    "--charge-correction",
+    "--charged-formation",
+    "--charge-transitions"
+  ],
+  "skills": [
+    "model-mlcc-structures",
+    "run-mlcc-dft",
+    "compute-mlcc-properties",
+    "run-mlcc-md"
+  ],
+  "mcp_allowed_tools": [
+    "mlcc_list_tasks",
+    "mlcc_prepare_calculation",
+    "mlcc_transfer_calculation",
+    "mlcc_submit_calculation",
+    "mlcc_query_calculation",
+    "mlcc_cancel_calculation",
+    "mlcc_collect_calculation"
+  ],
+  "direct_domain_entry": "python -m mlcc.ceramic_potential_route --request <JSON>",
+  "python_module_files": [
+    "__init__.py",
+    "__main__.py",
+    "abacus_domain_parameters.py",
+    "abacus_tasks.py",
+    "abacus.py",
+    "berry_branch_review.py",
+    "berry_response_results.py",
+    "berry_response.py",
+    "berry_results.py",
+    "berry_strain_response.py",
+    "berry_tasks.py",
+    "berry.py",
+    "born_affine.py",
+    "bulk_thermal_response.py",
+    "bulk_thermal_transport.py",
+    "bulk_thermodynamics.py",
+    "ceramic_data.py",
+    "ceramic_md.py",
+    "ceramic_potential_route.py",
+    "ceramic_training.py",
+    "charge_correction.py",
+    "charge_transition_adapter.py",
+    "charge_transitions.py",
+    "charged_defect.py",
+    "chemical_references.py",
+    "cli.py",
+    "composition_comparison.py",
+    "composition_configurations.py",
+    "composition_sqs_import.py",
+    "comsol_export.py",
+    "continuum_parameters.py",
+    "defect_references.py",
+    "defect_tasks.py",
+    "defect_thermodynamics.py",
+    "dielectric_modes.py",
+    "dielectric_response.py",
+    "domain_parameters.py",
+    "dopant_composition.py",
+    "elastic.py",
+    "electronic.py",
+    "electrostatic_potential.py",
+    "gamma_processing.py",
+    "grain_boundaries.py",
+    "grain_studies.py",
+    "grain_task_sources.py",
+    "interface_electrical_sources.py",
+    "interface_electrical.py",
+    "interface_normal_tasks.py",
+    "interface_normal.py",
+    "interface_sources.py",
+    "interface_tangential_tasks.py",
+    "interface_tangential.py",
+    "interface_thermal_tasks.py",
+    "interface_thermal.py",
+    "interfaces.py",
+    "lammps_bulk_heat.py",
+    "lammps_bulk_thermal.py",
+    "lammps_elastic_response.py",
+    "lammps_elastic.py",
+    "lammps_interface_normal.py",
+    "lammps_interface_thermal.py",
+    "lammps_local_stress.py",
+    "lammps_md_sampling.py",
+    "lammps_neb.py",
+    "lammps_tasks.py",
+    "lammps.py",
+    "local_stress_tasks.py",
+    "local_stress.py",
+    "magnetic_response.py",
+    "mcp_server.py",
+    "md_conditions.py",
+    "md_msd.py",
+    "md_rdf.py",
+    "md_replica.py",
+    "md_sources.py",
+    "md_thermo_diagnostics.py",
+    "md_thermo.py",
+    "md_trajectory.py",
+    "md_unwrapped.py",
+    "method_inputs.py",
+    "method_tasks.py",
+    "model_derivatives.py",
+    "modeling.py",
+    "neb_tasks.py",
+    "phonon_forces.py",
+    "phonon_gamma.py",
+    "phonon_nac.py",
+    "phonon_tasks.py",
+    "phonons.py",
+    "polarization_energy.py",
+    "polarization_strain.py",
+    "polarization.py",
+    "potential_alignment.py",
+    "potential_qualification.py",
+    "property_delivery.py",
+    "qualification.py",
+    "relaxed_structure_bridge.py",
+    "results.py",
+    "saved_domain_parameters.py",
+    "site_runner.py",
+    "strain.py",
+    "studies.py",
+    "tasks.py",
+    "thermal_stress_sources.py",
+    "thermal_stress.py",
+    "transport.py",
+    "vacancy_migration.py",
+    "vasp.py",
+    "workflow.py"
+  ],
+  "runtime_entry_migration_status": "not_started",
+  "evidence_sources": [
+    "workspace/reports/domain-json-stage-completion-v001/report.md",
+    "workspace/reports/saved-md-parameters-v001/integration-v057/release-acceptance.json",
+    "workspace/reports/zeus-web-entry-v001/acceptance.json"
+  ],
+  "limitations": [
+    "Static presence does not imply full scientific capability or production qualification.",
+    "Each existing request option and direct Python API remains part of compatibility; command names alone are not sufficient acceptance.",
+    "No MLCC module was imported or executed; no scientific job or test was run."
+  ]
+}

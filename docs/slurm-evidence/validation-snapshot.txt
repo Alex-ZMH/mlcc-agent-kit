@@ -1,0 +1,64 @@
+2026-10-20T15:37:29+08:00
+v100-System-Product-Name
+Slurmctld(primary) at v100-System-Product-Name is UP
+Tue Oct 20 15:37:29 2026
+NODELIST   NODES PARTITION       STATE CPUS    S:C:T MEMORY TMP_DISK WEIGHT AVAIL_FE REASON              
+v100           1      cpu*        idle 16      1:8:2  27800        0      1   (null) none                
+v100           1       gpu        idle 16      1:8:2  27800        0      1   (null) none                
+NodeName=v100 Arch=x86_64 CoresPerSocket=8 
+   CPUAlloc=0 CPUEfctv=16 CPUTot=16 CPULoad=0.02
+   AvailableFeatures=(null)
+   ActiveFeatures=(null)
+   Gres=gpu:v100:4
+   NodeAddr=192.168.110.35 NodeHostName=v100-System-Product-Name Version=23.11.4
+   OS=Linux 7.0.0-38-generic #38~24.04.4-Ubuntu SMP PREEMPT_DYNAMIC Mon Sep 14 16:37:11 UTC 2 
+   RealMemory=27800 AllocMem=0 FreeMem=28301 Sockets=1 Boards=1
+   State=IDLE ThreadsPerCore=2 TmpDisk=0 Weight=1 Owner=N/A MCS_label=N/A
+   Partitions=cpu,gpu 
+   BootTime=2026-10-19T14:51:34 SlurmdStartTime=2026-10-20T15:28:55
+   LastBusyTime=2026-10-20T15:34:50 ResumeAfterTime=None
+   CfgTRES=cpu=16,mem=27800M,billing=16
+   AllocTRES=
+   CapWatts=n/a
+   CurrentWatts=0 AveWatts=0
+   ExtSensorsJoules=n/a ExtSensorsWatts=0 ExtSensorsTemp=n/a
+
+active
+active
+active
+enabled
+enabled
+enabled
+AccountingStorageType   = (null)
+JobRequeue              = 0
+PriorityType            = priority/basic
+JobId=2 JobName=mlcc-cpu-smoke UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:01 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:30:14 EligibleTime=2026-10-20T15:30:14 AccrueTime=2026-10-20T15:30:14 StartTime=2026-10-20T15:30:25 EndTime=2026-10-20T15:30:26 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:30:25 Scheduler=Backfill Partition=cpu AllocNode:Sid=v100-System-Product-Name.lan:29530 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=4 NumTasks=2 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=2,mem=512M,node=1,billing=2 AllocTRES=cpu=4,mem=512M,node=1,billing=4 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=512M MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/v100/mlcc-slurm-setup/slurm-cpu-smoke.sbatch WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/cpu-2.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/cpu-2.out Power= TresPerTask=cpu:1 
+JobId=4 ArrayJobId=3 ArrayTaskId=0 ArrayTaskThrottle=4 JobName=mlcc-gpu-smoke UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:31 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:30:14 EligibleTime=2026-10-20T15:30:14 AccrueTime=2026-10-20T15:30:14 StartTime=2026-10-20T15:30:25 EndTime=2026-10-20T15:30:56 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:30:25 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:29530 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=1,mem=1G,node=1,billing=1 AllocTRES=cpu=2,mem=1G,node=1,billing=2 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/v100/mlcc-slurm-setup/slurm-gpu-smoke.sbatch WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/gpu-3_0.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/gpu-3_0.out Power= TresPerNode=gres/gpu:v100:1 TresPerTask=cpu:1 
+JobId=5 ArrayJobId=3 ArrayTaskId=1 ArrayTaskThrottle=4 JobName=mlcc-gpu-smoke UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:31 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:30:14 EligibleTime=2026-10-20T15:30:14 AccrueTime=2026-10-20T15:30:14 StartTime=2026-10-20T15:30:25 EndTime=2026-10-20T15:30:56 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:30:25 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:29530 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=1,mem=1G,node=1,billing=1 AllocTRES=cpu=2,mem=1G,node=1,billing=2 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/v100/mlcc-slurm-setup/slurm-gpu-smoke.sbatch WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/gpu-3_1.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/gpu-3_1.out Power= TresPerNode=gres/gpu:v100:1 TresPerTask=cpu:1 
+JobId=6 ArrayJobId=3 ArrayTaskId=2 ArrayTaskThrottle=4 JobName=mlcc-gpu-smoke UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:31 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:30:14 EligibleTime=2026-10-20T15:30:14 AccrueTime=2026-10-20T15:30:14 StartTime=2026-10-20T15:30:25 EndTime=2026-10-20T15:30:56 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:30:25 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:29530 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=1,mem=1G,node=1,billing=1 AllocTRES=cpu=2,mem=1G,node=1,billing=2 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/v100/mlcc-slurm-setup/slurm-gpu-smoke.sbatch WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/gpu-3_2.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/gpu-3_2.out Power= TresPerNode=gres/gpu:v100:1 TresPerTask=cpu:1 
+JobId=3 ArrayJobId=3 ArrayTaskId=3 ArrayTaskThrottle=4 JobName=mlcc-gpu-smoke UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=1 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=1 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:31 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:30:14 EligibleTime=2026-10-20T15:30:14 AccrueTime=2026-10-20T15:30:14 StartTime=2026-10-20T15:30:25 EndTime=2026-10-20T15:30:56 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:30:25 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:29530 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=1,mem=1G,node=1,billing=1 AllocTRES=cpu=2,mem=1G,node=1,billing=2 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/v100/mlcc-slurm-setup/slurm-gpu-smoke.sbatch WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/gpu-3_3.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/gpu-3_3.out Power= TresPerNode=gres/gpu:v100:1 TresPerTask=cpu:1 
+JobId=9 JobName=mlcc-four-gpu-smoke UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=4294901759 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:30 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:32:55 EligibleTime=2026-10-20T15:32:55 AccrueTime=2026-10-20T15:32:55 StartTime=2026-10-20T15:33:20 EndTime=2026-10-20T15:33:50 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:33:20 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:30541 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=8 NumTasks=4 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=4,mem=4G,node=1,billing=4 AllocTRES=cpu=8,mem=4G,node=1,billing=8 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=4G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=/home/v100/mlcc-slurm-setup/slurm-four-gpu-smoke.sbatch WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/four-gpu-9.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/four-gpu-9.out Power= TresBind=gres/gpu:per_task:1 TresPerTask=cpu:1,gres/gpu:v100:1 
+JobId=10 JobName=mlcc-gpu-queue-check UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=4294901758 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:00 TimeLimit=00:01:00 TimeMin=N/A SubmitTime=2026-10-20T15:33:33 EligibleTime=2026-10-20T15:33:33 AccrueTime=2026-10-20T15:33:33 StartTime=2026-10-20T15:34:20 EndTime=2026-10-20T15:34:20 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:34:20 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:30668 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=1,mem=256M,node=1,billing=1 AllocTRES=cpu=2,mem=256M,node=1,billing=2 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=256M MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=(null) WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/queue-10.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/queue-10.out Power= TresPerNode=gres/gpu:v100:1 TresPerTask=cpu:1 
+JobId=11 JobName=mlcc-gpu-cgroup-check UserId=v100(1000) GroupId=v100(1000) MCS_label=N/A Priority=4294901757 Nice=0 Account=(null) QOS=(null) JobState=COMPLETED Reason=None Dependency=(null) Requeue=0 Restarts=0 BatchFlag=1 Reboot=0 ExitCode=0:0 RunTime=00:00:30 TimeLimit=00:02:00 TimeMin=N/A SubmitTime=2026-10-20T15:33:52 EligibleTime=2026-10-20T15:33:52 AccrueTime=2026-10-20T15:33:52 StartTime=2026-10-20T15:34:20 EndTime=2026-10-20T15:34:50 Deadline=N/A SuspendTime=None SecsPreSuspend=0 LastSchedEval=2026-10-20T15:34:20 Scheduler=Backfill Partition=gpu AllocNode:Sid=v100-System-Product-Name.lan:30748 ReqNodeList=(null) ExcNodeList=(null) NodeList=v100 BatchHost=v100 NumNodes=1 NumCPUs=2 NumTasks=1 CPUs/Task=1 ReqB:S:C:T=0:0:*:1 ReqTRES=cpu=1,mem=1G,node=1,billing=1 AllocTRES=cpu=2,mem=1G,node=1,billing=2 Socks/Node=* NtasksPerN:B:S:C=0:0:*:* CoreSpec=* MinCPUsNode=1 MinMemoryNode=1G MinTmpDiskNode=0 Features=(null) DelayBoot=00:00:00 OverSubscribe=OK Contiguous=0 Licenses=(null) Network=(null) Command=(null) WorkDir=/home/v100/mlcc-slurm-setup StdErr=/home/v100/mlcc-slurm-setup/cgroup-11.out StdIn=/dev/null StdOut=/home/v100/mlcc-slurm-setup/cgroup-11.out Power= TresPerNode=gres/gpu:v100:1 TresPerTask=cpu:1 
+
+--- CPU ---
+PASS CPU job=2 rank=1 affinity=[1, 9] sum=333332833333500000
+PASS CPU job=2 rank=0 affinity=[0, 8] sum=333332833333500000
+
+--- INDEPENDENT GPUs ---
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:0C:00.0 PID=29721
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:0D:00.0 PID=29714
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:10:00.0 PID=29717
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:11:00.0 PID=29719
+
+--- FOUR-GPU ALLOCATION ---
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:0C:00.0 PID=30592
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:11:00.0 PID=30595
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:0D:00.0 PID=30593
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:10:00.0 PID=30594
+
+--- DEVICE CGROUP ---
+PASS CUDA_KERNEL=verified VISIBLE_GPUS=1 PCI_BUS_ID=0000:0D:00.0 PID=30829
+
+--- EMPTY QUEUE AND GPU PROCESS CHECK ---
+             JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)

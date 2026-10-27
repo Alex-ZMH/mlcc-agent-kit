@@ -1,0 +1,399 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MLCC material and explicit-atom modeling request",
+  "description": "Data contract for explicit material, phase, doping, conditions and device geometry. Direct domain functions consume these fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "host",
+    "dopants",
+    "spatial_sampling",
+    "requested_routes",
+    "device_geometry"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "draft",
+        "specified"
+      ]
+    },
+    "host": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "material_id",
+        "composition",
+        "selected_phase",
+        "structure_source"
+      ],
+      "properties": {
+        "material_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "composition": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selected_phase": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/phase"
+            }
+          ]
+        },
+        "structure_source": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/structure_source"
+            }
+          ]
+        }
+      }
+    },
+    "dopants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/dopant"
+      }
+    },
+    "spatial_sampling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modes",
+        "random_seeds",
+        "ensemble_size"
+      ],
+      "properties": {
+        "modes": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "pristine",
+              "random",
+              "max_dispersion",
+              "sqs",
+              "clustered",
+              "defect_bound",
+              "interface_segregated"
+            ]
+          }
+        },
+        "random_seeds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "ensemble_size": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "minimum_distance_A": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "sqs_target_specification": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "requested_routes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "dielectric",
+          "ferroelectric",
+          "defects_reliability",
+          "mechanics",
+          "phonons",
+          "thermal_transport",
+          "magnetism",
+          "interface_md",
+          "polymer_interface",
+          "device_impedance",
+          "electrothermal",
+          "thermoelectric_transport"
+        ]
+      }
+    },
+    "operating_conditions": {
+      "type": "object",
+      "properties": {
+        "temperature_range_K": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "frequency_range_Hz": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          }
+        },
+        "dc_bias_V": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "ac_amplitude_V": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "mechanical_boundary_description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "oxygen_activity_description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "device_geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ceramic_thickness_um",
+        "thickness_state",
+        "active_gap_count",
+        "overlap_area_m2"
+      ],
+      "properties": {
+        "ceramic_thickness_um": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 1,
+          "maximum": 60
+        },
+        "thickness_state": {
+          "enum": [
+            "unspecified",
+            "green_tape",
+            "after_debinding",
+            "sintered_device"
+          ]
+        },
+        "active_gap_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "overlap_area_m2": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "electrode_material": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "electrode_thickness_um": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "roughness_and_porosity_source": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase_id",
+        "space_group_number",
+        "space_group_symbol",
+        "setting",
+        "selection_context",
+        "constraint_policy"
+      ],
+      "properties": {
+        "phase_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "space_group_number": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 230
+        },
+        "space_group_symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "setting": {
+          "type": "string",
+          "minLength": 1
+        },
+        "selection_context": {
+          "enum": [
+            "observed_phase",
+            "temperature_reference",
+            "metastable_reference",
+            "constrained_reference"
+          ]
+        },
+        "constraint_policy": {
+          "enum": [
+            "full_relaxation_report_descendant_phase",
+            "fixed_cell_relaxation",
+            "explicitly_constrained_phase"
+          ]
+        }
+      }
+    },
+    "structure_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_reference",
+        "local_source_path",
+        "source_version"
+      ],
+      "properties": {
+        "source_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "local_source_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_version": {
+          "type": "string"
+        }
+      }
+    },
+    "dopant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "element",
+        "target_sublattice",
+        "replaced_element",
+        "oxidation_state_candidates",
+        "requested_fraction",
+        "fraction_basis",
+        "compensation"
+      ],
+      "properties": {
+        "element": {
+          "type": "string",
+          "pattern": "^[A-Z][a-z]?$"
+        },
+        "target_sublattice": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replaced_element": {
+          "type": "string",
+          "pattern": "^[A-Z][a-z]?$"
+        },
+        "oxidation_state_candidates": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "integer"
+          }
+        },
+        "requested_fraction": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 1
+        },
+        "fraction_basis": {
+          "const": "specified_sublattice"
+        },
+        "compensation": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "model",
+            "net_cell_charge_e",
+            "stoichiometry_specification"
+          ],
+          "properties": {
+            "model": {
+              "enum": [
+                "isovalent",
+                "neutral_defect_complex",
+                "electronic_compensation",
+                "charged_defect"
+              ]
+            },
+            "net_cell_charge_e": {
+              "type": "integer"
+            },
+            "stoichiometry_specification": {
+              "type": "string",
+              "minLength": 1
+            },
+            "charged_cell_correction_plan": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}
