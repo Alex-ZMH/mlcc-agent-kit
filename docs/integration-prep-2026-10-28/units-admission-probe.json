@@ -1,0 +1,219 @@
+{
+  "scope": "Current units admission only; no solver or scientific acceptance",
+  "core_version": "1.0.0",
+  "catalog_version": "1.2.0",
+  "cases": [
+    {
+      "role": "shared_length",
+      "kind": "length",
+      "unit": "nm",
+      "admitted": true,
+      "normalized": {
+        "value": 1e-09,
+        "unit": "m"
+      },
+      "errors": []
+    },
+    {
+      "role": "shared_time",
+      "kind": "time",
+      "unit": "ps",
+      "admitted": true,
+      "normalized": {
+        "value": 1e-12,
+        "unit": "s"
+      },
+      "errors": []
+    },
+    {
+      "role": "shared_temperature",
+      "kind": "temperature",
+      "unit": "K",
+      "admitted": true,
+      "normalized": {
+        "value": 1.0,
+        "unit": "K"
+      },
+      "errors": []
+    },
+    {
+      "role": "shared_celsius",
+      "kind": "temperature",
+      "unit": "°C",
+      "admitted": true,
+      "normalized": {
+        "value": 274.15,
+        "unit": "K"
+      },
+      "errors": []
+    },
+    {
+      "role": "atom_length_symbol",
+      "kind": "length",
+      "unit": "Å",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'Å'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "atom_length_text",
+      "kind": "length",
+      "unit": "angstrom",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'angstrom'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "abacus_length",
+      "kind": "length",
+      "unit": "Bohr",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'Bohr'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "atom_time",
+      "kind": "time",
+      "unit": "fs",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'fs'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "atom_energy",
+      "kind": "energy",
+      "unit": "eV",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'eV'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "abacus_cutoff",
+      "kind": "energy",
+      "unit": "Ry",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'Ry'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "atomic_energy",
+      "kind": "energy",
+      "unit": "Hartree",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_UNIT",
+          "message": "Unit is not in the finite whitelist: 'Hartree'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "atom_force",
+      "kind": "force",
+      "unit": "eV/angstrom",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_QUANTITY_KIND",
+          "message": "Unknown quantity kind: 'force'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "md_pressure",
+      "kind": "pressure",
+      "unit": "bar",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_QUANTITY_KIND",
+          "message": "Unknown quantity kind: 'pressure'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "saved_stress",
+      "kind": "stress",
+      "unit": "GPa",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_QUANTITY_KIND",
+          "message": "Unknown quantity kind: 'stress'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "md_mass",
+      "kind": "molar_mass",
+      "unit": "g/mol",
+      "admitted": false,
+      "normalized": null,
+      "errors": [
+        {
+          "code": "UNKNOWN_QUANTITY_KIND",
+          "message": "Unknown quantity kind: 'molar_mass'",
+          "path": "$"
+        }
+      ]
+    },
+    {
+      "role": "thermal_conductivity",
+      "kind": "thermal_conductivity",
+      "unit": "W/(m*K)",
+      "admitted": true,
+      "normalized": {
+        "value": 1.0,
+        "unit": "W/(m K)"
+      },
+      "errors": []
+    }
+  ],
+  "admitted_count": 5,
+  "case_count": 16,
+  "production_code_changed": false
+}
