@@ -1,0 +1,16 @@
+{
+  "source_ast_parse": {
+    "status": "passed",
+    "files": 109
+  },
+  "dependency_discoverability": {
+    "pytest": false,
+    "numpy": false,
+    "scipy": false,
+    "ase": false,
+    "phonopy": false,
+    "mcp": false,
+    "mlcc_deepmd": false
+  },
+  "scientific_acceptance": "not_checked"
+}

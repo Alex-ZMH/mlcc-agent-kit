@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-28",
+  "stage": "preparation_only",
+  "user_goal": "One dialogue invokes DFT, MD, phase_field, RVE, FEM, SPICE",
+  "upstream": {
+    "url": "https://github.com/Alex-ZMH/mlcc-agent-kit",
+    "commit": "b5cbc711211dd78d37beb7e7aecb00882cb4bb97",
+    "version": "0.57.0",
+    "branch": "integration/mlcc-compute-prep-20261028",
+    "clone_path": "D:/Zhaoxiang/code/mlcc-main/tmp/integration/mlcc-agent-kit",
+    "shallow": true,
+    "access": "WSL SSH read verified; connector reports push permission; no push attempted"
+  },
+  "local_git_metadata": false,
+  "verification": {
+    "framework_check": "passed: valid=true, module_count=8",
+    "framework_unittest": "passed: 119 tests, 576.303 seconds, WSL Python 3.12.3",
+    "upstream_site_runner": "13 passed; synthetic executor only",
+    "upstream_workflow": "not_checked: import failed because pytest absent",
+    "upstream_full_regression": "not_checked: isolated base WSL Python lacks declared scientific/test dependencies",
+    "upstream_ast": "109 source files parsed",
+    "real_scientific_calculation": "not_checked",
+    "unified_dialogue_e2e": "not_checked",
+    "server_validation": "not_checked"
+  },
+  "changes": "Preparation documents and metadata only; no scientific code migrated",
+  "pushed": false,
+  "merged": false,
+  "architecture_adjustment": "Allowed for justified integration needs; see photoresist-comparison.md",
+  "dialogue_host_handoff": "Private workspace/runtime/matterai source and launch configuration are absent from public checkout; required for modifying existing Zeus dialogue"
+}

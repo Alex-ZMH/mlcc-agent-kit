@@ -1,0 +1,10 @@
+{
+  "schema_version": "mlcc.structure-check.v1",
+  "valid": true,
+  "acceptance_level": "framework_structure_only",
+  "module_count": 8,
+  "errors": [],
+  "limitations": [
+    "Does not run solvers, validate scientific correctness, or certify scale coverage."
+  ]
+}

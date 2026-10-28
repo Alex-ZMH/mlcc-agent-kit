@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-28",
+  "purpose": "descriptor snapshot only; not a complete source export manifest",
+  "modules": [
+    {
+      "id": "fem",
+      "version": "0.4.2",
+      "descriptor": "modules/fem/module.json",
+      "descriptor_sha256": "64e800240f7ff1f88a6763b5821e34d010ddfcb0b4f79760f3ce37c1366562d0",
+      "operations": [
+        "electrostatics_2d",
+        "electrostatics_2d_quantities",
+        "electrothermal_2d",
+        "ac_eqs_2d",
+        "electromagnetic_2d",
+        "electrothermal_2d_quantities",
+        "ac_eqs_2d_quantities",
+        "electromagnetic_2d_quantities"
+      ],
+      "schema_paths": [
+        "schemas/ac_eqs.input.schema.json",
+        "schemas/ac_eqs.quantities.input.schema.json",
+        "schemas/device.output.schema.json",
+        "schemas/electromagnetic.input.schema.json",
+        "schemas/electromagnetic.quantities.input.schema.json",
+        "schemas/electrostatics.input.schema.json",
+        "schemas/electrostatics.output.schema.json",
+        "schemas/electrostatics.quantities.input.schema.json",
+        "schemas/electrothermal.input.schema.json",
+        "schemas/electrothermal.quantities.input.schema.json"
+      ]
+    },
+    {
+      "id": "phase_field",
+      "version": "0.4.0",
+      "descriptor": "modules/phase_field/module.json",
+      "descriptor_sha256": "9638f01d9510f3dfb467e3eb39f1d5471f98f87c5f995165de9842bad5bbc1ad",
+      "operations": [
+        "steady",
+        "evolve",
+        "steady_si",
+        "evolve_si",
+        "vector_steady",
+        "vector_steady_si",
+        "vector_evolve",
+        "vector_evolve_si",
+        "dielectric_tangent",
+        "dielectric_tangent_si"
+      ],
+      "schema_paths": [
+        "schemas/dielectric_tangent_si.input.schema.json",
+        "schemas/dielectric_tangent.input.schema.json",
+        "schemas/evolve_si.input.schema.json",
+        "schemas/evolve.input.schema.json",
+        "schemas/result.schema.json",
+        "schemas/si.result.schema.json",
+        "schemas/steady_si.input.schema.json",
+        "schemas/steady.input.schema.json",
+        "schemas/tangent.result.schema.json",
+        "schemas/vector_evolve_si.input.schema.json",
+        "schemas/vector_evolve.input.schema.json",
+        "schemas/vector_steady_si.input.schema.json",
+        "schemas/vector_steady.input.schema.json",
+        "schemas/vector.result.schema.json"
+      ]
+    },
+    {
+      "id": "rve",
+      "version": "0.1.3",
+      "descriptor": "modules/rve/module.json",
+      "descriptor_sha256": "970aceac2501a4156ff9f38e542fb30325e7fbd9d12313b5209fc1b9a49115f7",
+      "operations": [
+        "homogenize_electrostatics_2d",
+        "homogenize_thermal_2d",
+        "homogenize_electrostatics_3d",
+        "homogenize_thermal_3d"
+      ],
+      "schema_paths": [
+        "schemas/homogenize_electrostatics_2d.input.schema.json",
+        "schemas/homogenize_electrostatics_2d.output.schema.json",
+        "schemas/homogenize_electrostatics_3d.input.schema.json",
+        "schemas/homogenize_electrostatics_3d.output.schema.json",
+        "schemas/homogenize_thermal_2d.input.schema.json",
+        "schemas/homogenize_thermal_2d.output.schema.json",
+        "schemas/homogenize_thermal_3d.input.schema.json",
+        "schemas/homogenize_thermal_3d.output.schema.json"
+      ]
+    },
+    {
+      "id": "spice",
+      "version": "0.2.1",
+      "descriptor": "modules/spice/module.json",
+      "descriptor_sha256": "51f6957946f470cd10d1e180e904d44ba4af3ba0bacc9d4bc67b31a36f20b4d2",
+      "operations": [
+        "ac_impedance_si",
+        "transient_si",
+        "ac_impedance",
+        "transient"
+      ],
+      "schema_paths": [
+        "schemas/ac_impedance_si.input.schema.json",
+        "schemas/ac_impedance.input.schema.json",
+        "schemas/output.schema.json",
+        "schemas/transient_si.input.schema.json",
+        "schemas/transient.input.schema.json"
+      ]
+    }
+  ]
+}
