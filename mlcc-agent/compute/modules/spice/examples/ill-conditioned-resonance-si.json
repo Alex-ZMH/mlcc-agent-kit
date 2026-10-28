@@ -1,0 +1,22 @@
+{
+  "models": [
+    {
+      "model_name": "lossless_resonance",
+      "model_version": "1.0.0",
+      "source": "synthetic",
+      "capacitance_F": 1.0,
+      "esr_ohm": 0.0,
+      "esl_H": 1.0,
+      "leakage_resistance_ohm": null,
+      "validated_conditions": {
+        "type": "synthetic_linear_demo_only",
+        "temperature": "fixed, unspecified calibration",
+        "dc_bias": "constant C; no DC-bias law"
+      }
+    }
+  ],
+  "points_per_decade": 1,
+  "fmin_Hz": 0.15915494309189535,
+  "fmax_Hz": 0.15915494309189535,
+  "single_frequency": true
+}

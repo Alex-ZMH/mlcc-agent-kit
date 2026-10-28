@@ -1,5 +1,7 @@
 # MLCC Agent
 
+0.58.0候选新增独立FEM、相场、RVE、SPICE接入。使用同一个MLCC Agent、TaskRecord和SSH/Slurm生命周期；DFT/MD保持原有单位体系，不做尺度传递。入口为 `list-scales/describe-scale/create-scale/parse-scale`，详见 [接入与验证记录](../docs/four-scale-integration-2026-10-28.md)。完整Bundle需包含 `compute/`；实际Zeus工作台调用尚待宿主验收。
+
 新增源码入口：`charge-correction`、`charged-formation`、`charge-transitions`，均使用 `--request REQUEST.json --output NEW.json`。实际启用版本以 workspace 发布记录为准。
 
 `charge-correction` 请求 schema 为 `mlcc.charge-correction-request.v1`，字段为 `correction_id`、`host_electronic_path`、`defect_electronic_path`、`descriptor_path`、`host_potential_path`、`defect_potential_path`、`parameters`。参数包含整数 `q`（正值移除电子）、`defect_frac_coords`、`dielectric:{value,unit:"dimensionless",source}`、`q_model:{beta,gamma,expnorm,unit:"Bohr"}`、`integration:{energy_cutoff_eV,mad_tol,step}`、`sampling:{policy:"midpoint_after_defect_shift",axes:[0,1,2],width_angstrom}`。固定后端为 pymatgen-analysis-defects 2026.3.20 的标量 FNV，显式保存图像能、轴向/平均对齐位移、q 乘数、对齐能和总修正；不平均介电张量、不自动定位缺陷。路径相对请求文件解析，明确缺失的势或参数写 null。

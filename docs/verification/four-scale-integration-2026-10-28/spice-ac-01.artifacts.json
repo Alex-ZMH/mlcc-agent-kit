@@ -1,0 +1,27 @@
+[
+  {
+    "path": "artifacts/input.canonical-si.json",
+    "size_bytes": 433,
+    "sha256": "5dc9c106889ac29ff087207f6f22cbb0ef120be68019dc39ee041a2dba6f2911"
+  },
+  {
+    "path": "artifacts/input.original.json",
+    "size_bytes": 999,
+    "sha256": "a6765d56e90c63f05d16d96b101153b24a5a68879c4d7172026482d89c16e072"
+  },
+  {
+    "path": "artifacts/unit_normalization.json",
+    "size_bytes": 3740,
+    "sha256": "db724710607b8bf79ba7ac765298be0769be5c8cef13d6405d1f482ff456e467"
+  },
+  {
+    "path": "logs/adapter.stdout.json",
+    "size_bytes": 2346,
+    "sha256": "550de662d27c1b7921f0976e3be839e59774a185af609d3905eff3a189e5b172"
+  },
+  {
+    "path": "logs/adapter.stderr.log",
+    "size_bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

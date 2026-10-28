@@ -1,0 +1,19 @@
+test_bad_resources_or_path_refused_without_task (test_scale_tasks.ScaleIntegrationTests.test_bad_resources_or_path_refused_without_task) ... ok
+test_catalog_has_26_operations_and_preserves_native_contracts (test_scale_tasks.ScaleIntegrationTests.test_catalog_has_26_operations_and_preserves_native_contracts) ... ok
+test_command_line_catalog_is_the_same_registered_function (test_scale_tasks.ScaleIntegrationTests.test_command_line_catalog_is_the_same_registered_function) ... ok
+test_creation_is_offline_and_does_not_advance_runtime (test_scale_tasks.ScaleIntegrationTests.test_creation_is_offline_and_does_not_advance_runtime) ... ok
+test_duplicate_task_creation_does_not_overwrite_inputs (test_scale_tasks.ScaleIntegrationTests.test_duplicate_task_creation_does_not_overwrite_inputs) ... ok
+test_existing_site_runner_prepares_same_task_without_dft_rules (test_scale_tasks.ScaleIntegrationTests.test_existing_site_runner_prepares_same_task_without_dft_rules) ... ok
+test_mismatched_saved_identity_is_not_accepted (test_scale_tasks.ScaleIntegrationTests.test_mismatched_saved_identity_is_not_accepted) ... ok
+test_native_entry_refuses_login_node_execution (test_scale_tasks.ScaleIntegrationTests.test_native_entry_refuses_login_node_execution) ... ok
+test_real_protocol_failure_roundtrip_preserves_not_checked_and_original_units (test_scale_tasks.ScaleIntegrationTests.test_real_protocol_failure_roundtrip_preserves_not_checked_and_original_units) ... ok
+test_repeated_entry_and_result_reads_do_not_repeat_task_creation (test_scale_tasks.ScaleIntegrationTests.test_repeated_entry_and_result_reads_do_not_repeat_task_creation) ... ok
+test_repeated_entry_refuses_changed_scientific_input (test_scale_tasks.ScaleIntegrationTests.test_repeated_entry_refuses_changed_scientific_input) ... ok
+test_runtime_source_and_numerical_protocol_assets_are_shipped (test_scale_tasks.ScaleIntegrationTests.test_runtime_source_and_numerical_protocol_assets_are_shipped) ... ok
+test_scale_continuation_never_claims_scientific_convergence (test_scale_tasks.ScaleIntegrationTests.test_scale_continuation_never_claims_scientific_convergence) ... ok
+test_unknown_module_operation_and_invalid_input_rejected_before_staging (test_scale_tasks.ScaleIntegrationTests.test_unknown_module_operation_and_invalid_input_rejected_before_staging) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 1.883s
+
+OK

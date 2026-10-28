@@ -1,0 +1,1627 @@
+{
+  "schema_version": "mlcc.result.v1",
+  "task_id": "task-3ffb771b7bb641dfbf412aca18fa47f2",
+  "module": {
+    "id": "phase_field",
+    "version": "0.4.0",
+    "interface_version": "1.0",
+    "kind": "scientific"
+  },
+  "operation": "vector_evolve_si",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T06:33:29.431915+00:00",
+    "updated_at": "2026-10-28T06:33:35.164914+00:00",
+    "backend_exit_code": 0,
+    "events": [
+      {
+        "status": "queued",
+        "at": "2026-10-28T06:33:29.431915+00:00"
+      },
+      {
+        "status": "running",
+        "at": "2026-10-28T06:33:30.221838+00:00"
+      },
+      {
+        "status": "succeeded",
+        "at": "2026-10-28T06:33:35.164914+00:00"
+      }
+    ]
+  },
+  "input": {
+    "schema": "schemas/vector_evolve_si.input.schema.json",
+    "payload": {
+      "schema_version": "phase_field.vector-input.v1",
+      "operation": "vector_evolve_si",
+      "model_profile": "synthetic_tetragonal_quartic_v1",
+      "units": "SI",
+      "dimension": 2,
+      "cells": [
+        2,
+        2
+      ],
+      "boundary_condition": "all_surface_voltage",
+      "initial_condition": {
+        "kind": "uniform",
+        "values": [
+          {
+            "value": 0.8,
+            "unit": "C/m^2",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            }
+          },
+          {
+            "value": 0.1,
+            "unit": "C/m^2",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            }
+          }
+        ]
+      },
+      "field_protocol": {
+        "kind": "constant",
+        "value": [
+          {
+            "value": 0.0,
+            "unit": "V/m",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            }
+          },
+          {
+            "value": 200.0,
+            "unit": "V/m",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            }
+          }
+        ]
+      },
+      "evolution": {
+        "end": {
+          "value": 0.0002,
+          "unit": "s",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "dt": {
+          "value": 0.0001,
+          "unit": "s",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "max_steps": 16,
+        "max_halvings": 6
+      },
+      "output": {
+        "images": true
+      },
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      },
+      "reference_scales": {
+        "length": {
+          "value": 0.001,
+          "unit": "m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "polarization": {
+          "value": 1.0,
+          "unit": "C/m^2",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "time": {
+          "value": 0.001,
+          "unit": "s",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "energy_density": {
+          "value": 1000.0,
+          "unit": "J/m^3",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        }
+      },
+      "reduced_parameters": {
+        "a": {
+          "value": -0.5,
+          "unit": "1",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "b": {
+          "value": 0.25,
+          "unit": "1",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "c": {
+          "value": 1.5,
+          "unit": "1",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        "mobility": {
+          "value": 1.0,
+          "unit": "1",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        }
+      },
+      "g": {
+        "value": 0.0005,
+        "unit": "J*m^3/C^2",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      },
+      "epsilon": {
+        "value": 0.001,
+        "unit": "F/m",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      }
+    }
+  },
+  "provenance": {
+    "applicability": "Synthetic quartic full-vector LGD, scalar isotropic gradient and fixed voltage on all outer faces; no material calibration.; Dynamic triangular single-domain trajectories are not measured or quasistatic material hysteresis/coercive fields.; 90-degree polarization walls have no implemented elastic/electrostrictive coupling; no validated ferroelastic claim.; The c=6b analytic-wall benchmark has a neutral 180-degree splitting mode; no unique stable-wall inference.",
+    "backend": {
+      "name": "Native Linux DOLFINx",
+      "version": "0.11.0"
+    },
+    "conditions": {
+      "deployment_transport": "native_linux",
+      "qc_domain": "dimensionless",
+      "solver_input": {
+        "boundary_condition": "all_surface_voltage",
+        "cells": [
+          2,
+          2
+        ],
+        "dimension": 2,
+        "evolution": {
+          "dt": 0.1,
+          "end": 0.2,
+          "max_halvings": 6,
+          "max_steps": 16
+        },
+        "field_protocol": {
+          "kind": "constant",
+          "value": [
+            0.0,
+            0.2
+          ]
+        },
+        "initial_condition": {
+          "kind": "uniform",
+          "values": [
+            0.8,
+            0.1
+          ]
+        },
+        "model_profile": "synthetic_tetragonal_quartic_v1",
+        "operation": "vector_evolve",
+        "output": {
+          "images": true
+        },
+        "parameters": {
+          "a": -0.5,
+          "b": 0.25,
+          "c": 1.5,
+          "epsilon": 1.0,
+          "g": 0.5,
+          "mobility": 1.0
+        },
+        "schema_version": "phase_field.vector-input.v1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        },
+        "units": "dimensionless"
+      },
+      "unit_mapping_sha256": "ea345eeae01584d31068eea648c2177b1b74d8a1d3fdbc1170c1e60a6350baea"
+    },
+    "evidence_kind": "real_computation",
+    "method": {
+      "name": "Full-vector quartic LGD/TDGL and self-consistent electrostatics; mixed CG1/BE/Newton/MUMPS",
+      "version": "0.4.0"
+    },
+    "sources": [
+      {
+        "description": "Frozen vector PoC migration plus shared Scientific Core primitives; this task has its own native readback",
+        "kind": "code_provenance",
+        "reference": "modules/phase_field/VECTOR_SOURCES.json"
+      },
+      {
+        "description": "Input source and optional explicit uncalibrated reference scales",
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    ],
+    "units": {
+      "results_si": "explicit SI view; 2D energy J/m, 3D J",
+      "solver_dimensionless": "dimensionless"
+    }
+  },
+  "results": {
+    "artifact_refs": [
+      "artifacts/config.json",
+      "artifacts/environment.json",
+      "artifacts/fields.h5",
+      "artifacts/fields.npz",
+      "artifacts/fields.vtu",
+      "artifacts/fields.xdmf",
+      "artifacts/history.csv",
+      "artifacts/history.json",
+      "artifacts/input.canonical-si.json",
+      "artifacts/input.original.json",
+      "artifacts/input.solver-dimensionless.json",
+      "artifacts/metrics.json",
+      "artifacts/native_checks.json",
+      "artifacts/nonlinear.json",
+      "artifacts/readback.json",
+      "artifacts/scientific_core.json",
+      "artifacts/si/fields_si.npz",
+      "artifacts/si/fields_si.vtu",
+      "artifacts/si/fields_units.json",
+      "artifacts/si/history_si.json",
+      "artifacts/si/mapping.json",
+      "artifacts/si/readback.json",
+      "artifacts/si/vector_fields.png",
+      "artifacts/si/vector_history.png",
+      "artifacts/summary.json",
+      "artifacts/unit_normalization.json",
+      "artifacts/vector_fields.png",
+      "artifacts/vector_history.png"
+    ],
+    "dimension": 2,
+    "model_profile": "synthetic_tetragonal_quartic_v1",
+    "operation": "vector_evolve_si",
+    "results_si": {
+      "final": {
+        "E_applied": [
+          0.0,
+          200.0
+        ],
+        "E_depolarization_rms": 5.5594687769501105e-14,
+        "P_rms": 0.8522793626166079,
+        "bound_charge_rms": 0.0,
+        "bulk": -0.0002217972106804555,
+        "electric_enthalpy": -4.306743361541053e-05,
+        "enthalpy": -0.00026486464429586613,
+        "gradient": 0.0,
+        "gradient_by_spatial_axis_rms": [
+          0.0,
+          0.0
+        ],
+        "mean_E": [
+          -8.01600793969529e-15,
+          200.00000000000057
+        ],
+        "mean_P": [
+          0.8444391331541534,
+          0.11533716807705248
+        ],
+        "potential_BC_error": 0.0,
+        "raw_boundary_D_flux": -1.3877787807814457e-19,
+        "t": 0.0002
+      },
+      "material_calibration": "not_checked",
+      "qc_domain": "dimensionless; tolerances are not converted into material acceptance",
+      "units": {
+        "D": "C/m^2",
+        "E": "V/m",
+        "P": "C/m^2",
+        "coordinates": "m",
+        "energy": "J/m",
+        "phi": "V",
+        "raw_boundary_D_flux": "C/m",
+        "rho_bound": "C/m^3",
+        "time": "s",
+        "wall_excess_energy": "J/m^2"
+      }
+    },
+    "schema_version": "phase_field.vector-result.v1",
+    "solver_dimensionless": {
+      "final": {
+        "E_applied": [
+          0.0,
+          0.2
+        ],
+        "E_depolarization_rms": 5.55946877695011e-17,
+        "Gauss_free_residual": 1.3877787807814457e-16,
+        "Gauss_reaction_balance": 5.551115123125783e-17,
+        "P_rms": 0.8522793626166079,
+        "bound_charge_rms": 0.0,
+        "bulk": -0.2217972106804555,
+        "electric_enthalpy": -0.04306743361541053,
+        "enthalpy": -0.26486464429586615,
+        "gradient": 0.0,
+        "gradient_by_spatial_axis_rms": [
+          0.0,
+          0.0
+        ],
+        "mean_E": [
+          -8.01600793969529e-18,
+          0.20000000000000057
+        ],
+        "mean_P": [
+          0.8444391331541534,
+          0.11533716807705248
+        ],
+        "potential_BC_error": 0.0,
+        "raw_boundary_D_flux": -1.3877787807814457e-16,
+        "t": 0.2
+      },
+      "mesh_id": "771f1047b8ba7b264a1a9cbcaa4ac1369cd398064a7fe8014b85c097a534db1c",
+      "resources": {
+        "DOFs_per_P_component": 9,
+        "cells": 8,
+        "creation_seconds": 0.5927302939817309,
+        "nonlinear_iterations": 6,
+        "peak_process_RSS_MiB": 196.00390625,
+        "potential_DOFs": 9,
+        "solve_seconds": 0.10899848106782883,
+        "total_DOFs": 27
+      },
+      "time": {
+        "accepted_steps": 2,
+        "completed": 0.2,
+        "rejected_steps": 0,
+        "stationary_solved": false
+      }
+    },
+    "unit_mapping": {
+      "canonical_si": {
+        "boundary_condition": "all_surface_voltage",
+        "cells": [
+          2,
+          2
+        ],
+        "dimension": 2,
+        "epsilon": 0.001,
+        "evolution": {
+          "dt": 0.0001,
+          "end": 0.0002,
+          "max_halvings": 6,
+          "max_steps": 16
+        },
+        "field_protocol": {
+          "kind": "constant",
+          "value": [
+            0.0,
+            200.0
+          ]
+        },
+        "g": 0.0005,
+        "initial_condition": {
+          "kind": "uniform",
+          "values": [
+            0.8,
+            0.1
+          ]
+        },
+        "model_profile": "synthetic_tetragonal_quartic_v1",
+        "operation": "vector_evolve_si",
+        "output": {
+          "images": true
+        },
+        "reduced_parameters": {
+          "a": -0.5,
+          "b": 0.25,
+          "c": 1.5,
+          "mobility": 1.0
+        },
+        "reference_scales": {
+          "energy_density": 1000.0,
+          "length": 0.001,
+          "polarization": 1.0,
+          "time": 0.001
+        },
+        "schema_version": "phase_field.vector-input.v1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        },
+        "units": "SI"
+      },
+      "derived": {
+        "coefficient_definition": "fL=a*sum(Pi^2)+b*sum(Pi^4)+c*sum(Pi^2*Pj^2); no 1/2 or 1/4 factors",
+        "energy_unit": "J/m",
+        "factor_units_si": {
+          "displacement": "C/m^2",
+          "electric_field": "V/m",
+          "energy": "J/m",
+          "energy_density": "J/m^3",
+          "epsilon": "F/m",
+          "g": "J*m^3/C^2",
+          "length": "m",
+          "polarization": "C/m^2",
+          "polarization_gradient": "C/m^3",
+          "potential": "V",
+          "time": "s"
+        },
+        "factors": {
+          "displacement": 1.0,
+          "electric_field": 1000.0,
+          "energy": 0.001,
+          "energy_density": 1000.0,
+          "epsilon": 0.001,
+          "g": 0.001,
+          "length": 0.001,
+          "polarization": 1.0,
+          "polarization_gradient": 1000.0,
+          "potential": 1.0,
+          "time": 0.001
+        },
+        "material_calibration": "not_checked",
+        "physical_coefficients": {
+          "a": -500.0,
+          "b": 250.0,
+          "c": 1500.0,
+          "epsilon_absolute": 0.001,
+          "g": 0.0005,
+          "mobility": 1.0
+        }
+      },
+      "material_calibration": "not_checked",
+      "normalization_report": {
+        "core_version": "1.0.0",
+        "payload": {
+          "boundary_condition": "all_surface_voltage",
+          "cells": [
+            2,
+            2
+          ],
+          "dimension": 2,
+          "epsilon": 0.001,
+          "evolution": {
+            "dt": 0.0001,
+            "end": 0.0002,
+            "max_halvings": 6,
+            "max_steps": 16
+          },
+          "field_protocol": {
+            "kind": "constant",
+            "value": [
+              0.0,
+              200.0
+            ]
+          },
+          "g": 0.0005,
+          "initial_condition": {
+            "kind": "uniform",
+            "values": [
+              0.8,
+              0.1
+            ]
+          },
+          "model_profile": "synthetic_tetragonal_quartic_v1",
+          "operation": "vector_evolve_si",
+          "output": {
+            "images": true
+          },
+          "reduced_parameters": {
+            "a": -0.5,
+            "b": 0.25,
+            "c": 1.5,
+            "mobility": 1.0
+          },
+          "reference_scales": {
+            "energy_density": 1000.0,
+            "length": 0.001,
+            "polarization": 1.0,
+            "time": 0.001
+          },
+          "schema_version": "phase_field.vector-input.v1",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          },
+          "units": "SI"
+        },
+        "records": {
+          "/epsilon": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "F/m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "absolute_permittivity",
+            "kind": "absolute_permittivity",
+            "normalized": {
+              "unit": "F/m",
+              "value": 0.001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "F/m",
+                "value": 0.001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "F/m",
+              "value": 0.001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/evolution/dt": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "s",
+              "unit_origin": "explicit"
+            },
+            "dimension": "time",
+            "kind": "time",
+            "normalized": {
+              "unit": "s",
+              "value": 0.0001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "s",
+                "value": 0.0001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "s",
+              "value": 0.0001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/evolution/end": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "s",
+              "unit_origin": "explicit"
+            },
+            "dimension": "time",
+            "kind": "time",
+            "normalized": {
+              "unit": "s",
+              "value": 0.0002
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "s",
+                "value": 0.0002
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "s",
+              "value": 0.0002
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/field_protocol/value/0": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "V/m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "electric_field",
+            "kind": "electric_field",
+            "normalized": {
+              "unit": "V/m",
+              "value": 0.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "V/m",
+                "value": 0.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 0.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/field_protocol/value/1": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "V/m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "electric_field",
+            "kind": "electric_field",
+            "normalized": {
+              "unit": "V/m",
+              "value": 200.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "V/m",
+                "value": 200.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 200.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/g": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "J*m^3/C^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "gradient_coefficient",
+            "kind": "gradient_coefficient",
+            "normalized": {
+              "unit": "J*m^3/C^2",
+              "value": 0.0005
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "J*m^3/C^2",
+                "value": 0.0005
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "J*m^3/C^2",
+              "value": 0.0005
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/initial_condition/values/0": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "C/m^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "charge_per_area",
+            "kind": "polarization",
+            "normalized": {
+              "unit": "C/m^2",
+              "value": 0.8
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "C/m^2",
+                "value": 0.8
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.8
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/initial_condition/values/1": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "C/m^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "charge_per_area",
+            "kind": "polarization",
+            "normalized": {
+              "unit": "C/m^2",
+              "value": 0.1
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "C/m^2",
+                "value": 0.1
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.1
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/a": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": -0.5
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": -0.5
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": -0.5
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/b": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": 0.25
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": 0.25
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": 0.25
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/c": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": 1.5
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": 1.5
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": 1.5
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/mobility": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": 1.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": 1.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": 1.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/energy_density": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "J/m^3",
+              "unit_origin": "explicit"
+            },
+            "dimension": "energy_density",
+            "kind": "energy_density",
+            "normalized": {
+              "unit": "J/m^3",
+              "value": 1000.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "J/m^3",
+                "value": 1000.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "J/m^3",
+              "value": 1000.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/length": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "length",
+            "kind": "length",
+            "normalized": {
+              "unit": "m",
+              "value": 0.001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "m",
+                "value": 0.001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "m",
+              "value": 0.001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/polarization": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "C/m^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "charge_per_area",
+            "kind": "polarization",
+            "normalized": {
+              "unit": "C/m^2",
+              "value": 1.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "C/m^2",
+                "value": 1.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 1.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/time": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "s",
+              "unit_origin": "explicit"
+            },
+            "dimension": "time",
+            "kind": "time",
+            "normalized": {
+              "unit": "s",
+              "value": 0.001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "s",
+                "value": 0.001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "s",
+              "value": 0.001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          }
+        }
+      },
+      "original_input": {
+        "boundary_condition": "all_surface_voltage",
+        "cells": [
+          2,
+          2
+        ],
+        "dimension": 2,
+        "epsilon": {
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          },
+          "unit": "F/m",
+          "value": 0.001
+        },
+        "evolution": {
+          "dt": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "s",
+            "value": 0.0001
+          },
+          "end": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "s",
+            "value": 0.0002
+          },
+          "max_halvings": 6,
+          "max_steps": 16
+        },
+        "field_protocol": {
+          "kind": "constant",
+          "value": [
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 0.0
+            },
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 200.0
+            }
+          ]
+        },
+        "g": {
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          },
+          "unit": "J*m^3/C^2",
+          "value": 0.0005
+        },
+        "initial_condition": {
+          "kind": "uniform",
+          "values": [
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.8
+            },
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.1
+            }
+          ]
+        },
+        "model_profile": "synthetic_tetragonal_quartic_v1",
+        "operation": "vector_evolve_si",
+        "output": {
+          "images": true
+        },
+        "reduced_parameters": {
+          "a": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": -0.5
+          },
+          "b": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": 0.25
+          },
+          "c": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": 1.5
+          },
+          "mobility": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": 1.0
+          }
+        },
+        "reference_scales": {
+          "energy_density": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "J/m^3",
+            "value": 1000.0
+          },
+          "length": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "m",
+            "value": 0.001
+          },
+          "polarization": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "C/m^2",
+            "value": 1.0
+          },
+          "time": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "s",
+            "value": 0.001
+          }
+        },
+        "schema_version": "phase_field.vector-input.v1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        },
+        "units": "SI"
+      },
+      "original_input_sha256": "9c9a9ed0fa96a01413a63060178f5f29aa4a3082d68a21adc6b9f4e89253302a",
+      "qc_domain": "dimensionless",
+      "schema_version": "phase_field.vector-unit-mapping.v1",
+      "solver_input_sha256": "5b15070ab53bce66e0ea58ad0ef7872d66e5a0765a91caab2cef20bc2fcfa2f2"
+    },
+    "units": "SI"
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "vector_completed_time",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_history_accounting",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_independent_readback",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_nonlinear",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_rollback",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_voltage_bc",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_voltage_work_energy",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "unit_mapping",
+          "message": "Unique shared UNIT; canonical SI converted once to reduced solver input; QC stays reduced",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_convergence",
+          "message": "No task-specific mesh refinement",
+          "status": "not_checked"
+        },
+        {
+          "id": "time_convergence",
+          "message": "No task-specific time refinement",
+          "status": "not_checked"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_validity",
+          "message": "Synthetic parameters/reference scales; no measured calibration",
+          "status": "not_checked"
+        },
+        {
+          "id": "stationary_stability",
+          "message": "Newton convergence or finite-time evolution does not prove stable equilibrium",
+          "status": "not_checked"
+        },
+        {
+          "id": "electroelasticity",
+          "message": "No elasticity or electrostriction",
+          "status": "not_checked"
+        },
+        {
+          "id": "general_multidomain_cycle",
+          "message": "Controlled dynamic trajectories do not validate arbitrary multidomain hysteresis",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "Synthetic quartic full-vector LGD, scalar isotropic gradient and fixed voltage on all outer faces; no material calibration.",
+    "Dynamic triangular single-domain trajectories are not measured or quasistatic material hysteresis/coercive fields."
+  ],
+  "limitations": [
+    "Synthetic quartic full-vector LGD, scalar isotropic gradient and fixed voltage on all outer faces; no material calibration.",
+    "Dynamic triangular single-domain trajectories are not measured or quasistatic material hysteresis/coercive fields.",
+    "90-degree polarization walls have no implemented elastic/electrostrictive coupling; no validated ferroelastic claim.",
+    "The c=6b analytic-wall benchmark has a neutral 180-degree splitting mode; no unique stable-wall inference.",
+    "Raw CG1/DG0 displacement flux is not H(div)-conservative. Legacy scalar RT0 remains separately available.",
+    "Reference scales create an explicit physical view, not a measured BaTiO3 model; 2D energy is J/m.",
+    "Native-process state must be reconciled after timeout; no automatic resubmission or WSL/server fallback."
+  ],
+  "artifacts": [
+    {
+      "description": "Task-local native evidence: config.json",
+      "media_type": "application/json",
+      "path": "artifacts/config.json",
+      "size_bytes": 589,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: environment.json",
+      "media_type": "application/json",
+      "path": "artifacts/environment.json",
+      "size_bytes": 3167,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.h5",
+      "media_type": "application/x-hdf5",
+      "path": "artifacts/fields.h5",
+      "size_bytes": 13336,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.npz",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/fields.npz",
+      "size_bytes": 2038,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.vtu",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/fields.vtu",
+      "size_bytes": 3911,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.xdmf",
+      "media_type": "application/xml",
+      "path": "artifacts/fields.xdmf",
+      "size_bytes": 3065,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: history.csv",
+      "media_type": "text/csv",
+      "path": "artifacts/history.csv",
+      "size_bytes": 273,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: history.json",
+      "media_type": "application/json",
+      "path": "artifacts/history.json",
+      "size_bytes": 2181,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: input.canonical-si.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 824,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: input.original.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 3734,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: input.solver-dimensionless.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.solver-dimensionless.json",
+      "size_bytes": 710,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: metrics.json",
+      "media_type": "application/json",
+      "path": "artifacts/metrics.json",
+      "size_bytes": 1188,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: launch.json",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 1164,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: request.json",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 19908,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: response.json",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 24883,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: native_checks.json",
+      "media_type": "application/json",
+      "path": "artifacts/native_checks.json",
+      "size_bytes": 169,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: nonlinear.json",
+      "media_type": "application/json",
+      "path": "artifacts/nonlinear.json",
+      "size_bytes": 1449,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: quality.json",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 1990,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: readback.json",
+      "media_type": "application/json",
+      "path": "artifacts/readback.json",
+      "size_bytes": 782,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: scientific_core.json",
+      "media_type": "application/json",
+      "path": "artifacts/scientific_core.json",
+      "size_bytes": 779,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields_si.npz",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/si/fields_si.npz",
+      "size_bytes": 2044,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields_si.vtu",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/si/fields_si.vtu",
+      "size_bytes": 3916,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields_units.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/fields_units.json",
+      "size_bytes": 372,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: history_si.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/history_si.json",
+      "size_bytes": 1505,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: mapping.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/mapping.json",
+      "size_bytes": 18738,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: readback.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/readback.json",
+      "size_bytes": 263,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_fields.png",
+      "media_type": "image/png",
+      "path": "artifacts/si/vector_fields.png",
+      "size_bytes": 58583,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_history.png",
+      "media_type": "image/png",
+      "path": "artifacts/si/vector_history.png",
+      "size_bytes": 32336,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: summary.json",
+      "media_type": "application/json",
+      "path": "artifacts/summary.json",
+      "size_bytes": 21664,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: unit_normalization.json",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 13024,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_fields.png",
+      "media_type": "image/png",
+      "path": "artifacts/vector_fields.png",
+      "size_bytes": 62616,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_history.png",
+      "media_type": "image/png",
+      "path": "artifacts/vector_history.png",
+      "size_bytes": 25690,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "path": "logs/adapter.stdout.json",
+      "media_type": "application/json",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 31166,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stderr.log",
+      "media_type": "text/plain",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 0,
+      "evidence_kind": "none"
+    }
+  ]
+}

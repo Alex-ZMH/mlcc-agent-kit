@@ -1,0 +1,124 @@
+{
+  "ssh": {
+    "alias": "v100"
+  },
+  "workspace": {
+    "local": "REPLACE_WITH_LOCAL_WORKSPACE",
+    "remote_root": "/home/v100/projects/mlcc/zhaoxiang/REPLACE_WITH_RELEASE_WORKSPACE"
+  },
+  "runner": {
+    "selected": "slurm",
+    "slurm": {}
+  },
+  "scales": {
+    "runtime_python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+    "modules": {
+      "fem": {
+        "adapter_python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+        "deployment": {
+          "schema_version": "fea.deployment.native.v1",
+          "transport": "native_linux",
+          "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+          "timeout_seconds": 90,
+          "threads": 1,
+          "max_cells": 50000
+        },
+        "operation_deployments": {
+          "electrothermal_2d": {
+            "schema_version": "fem.deployment.native.v1",
+            "transport": "native_linux",
+            "profile": "device_extended_v1",
+            "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+            "timeout_seconds": 240,
+            "threads": 1,
+            "max_cells": 150000
+          },
+          "ac_eqs_2d": {
+            "schema_version": "fem.deployment.native.v1",
+            "transport": "native_linux",
+            "profile": "device_extended_v1",
+            "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+            "timeout_seconds": 240,
+            "threads": 1,
+            "max_cells": 150000
+          },
+          "electromagnetic_2d": {
+            "schema_version": "fem.deployment.native.v1",
+            "transport": "native_linux",
+            "profile": "device_extended_v1",
+            "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+            "timeout_seconds": 240,
+            "threads": 1,
+            "max_cells": 150000
+          },
+          "electrothermal_2d_quantities": {
+            "schema_version": "fem.deployment.native.v1",
+            "transport": "native_linux",
+            "profile": "device_extended_v1",
+            "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+            "timeout_seconds": 240,
+            "threads": 1,
+            "max_cells": 150000
+          },
+          "ac_eqs_2d_quantities": {
+            "schema_version": "fem.deployment.native.v1",
+            "transport": "native_linux",
+            "profile": "device_extended_v1",
+            "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+            "timeout_seconds": 240,
+            "threads": 1,
+            "max_cells": 150000
+          },
+          "electromagnetic_2d_quantities": {
+            "schema_version": "fem.deployment.native.v1",
+            "transport": "native_linux",
+            "profile": "device_extended_v1",
+            "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+            "timeout_seconds": 240,
+            "threads": 1,
+            "max_cells": 150000
+          }
+        }
+      },
+      "phase_field": {
+        "adapter_python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+        "deployment": {
+          "schema_version": "phase_field.deployment.native.v1",
+          "transport": "native_linux",
+          "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+          "timeout_seconds": 180,
+          "threads": 1,
+          "max_cells": 6000,
+          "max_work": 4000000,
+          "max_history_bytes": 67108864
+        }
+      },
+      "rve": {
+        "adapter_python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+        "deployment": {
+          "schema_version": "rve.deployment.native.v1",
+          "transport": "native_linux",
+          "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+          "timeout_seconds": 240,
+          "threads": 1,
+          "max_cells_2d": 90000,
+          "max_cells_3d": 180000
+        }
+      },
+      "spice": {
+        "adapter_python": "/home/v100/miniforge3/envs/spice/bin/python",
+        "deployment": {
+          "schema_version": "spice.deployment.native.v1",
+          "transport": "native_linux",
+          "python": "/home/v100/miniforge3/envs/spice/bin/python",
+          "ngspice": "/home/v100/miniforge3/envs/spice/bin/ngspice",
+          "solver_timeout_seconds": 120,
+          "client_timeout_seconds": 150,
+          "max_ac_samples": 21000,
+          "max_transient_samples": 100000,
+          "max_branches": 8
+        }
+      }
+    }
+  }
+}

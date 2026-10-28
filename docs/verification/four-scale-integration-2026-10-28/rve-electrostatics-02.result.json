@@ -1,0 +1,555 @@
+{
+  "schema_version": "mlcc.result.v1",
+  "task_id": "task-adbf4aa0797249c8943603a71d3c2aec",
+  "module": {
+    "id": "rve",
+    "version": "0.1.3",
+    "interface_version": "1.0",
+    "kind": "scientific"
+  },
+  "operation": "homogenize_electrostatics_2d",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T06:47:14.631193+00:00",
+    "updated_at": "2026-10-28T06:47:18.740567+00:00",
+    "backend_exit_code": 0,
+    "events": [
+      {
+        "status": "queued",
+        "at": "2026-10-28T06:47:14.631193+00:00"
+      },
+      {
+        "status": "running",
+        "at": "2026-10-28T06:47:15.559091+00:00"
+      },
+      {
+        "status": "succeeded",
+        "at": "2026-10-28T06:47:18.740567+00:00"
+      }
+    ]
+  },
+  "input": {
+    "schema": "schemas/homogenize_electrostatics_2d.input.schema.json",
+    "payload": {
+      "schema_version": "rve.electrostatics-2d-input.v1",
+      "geometry": {
+        "kind": "layers",
+        "physical_lengths": [
+          {
+            "value": 10,
+            "unit": "um",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+            }
+          },
+          {
+            "value": 10,
+            "unit": "um",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+            }
+          }
+        ],
+        "pore_fraction": 0.0,
+        "normalized_fraction": 0.4,
+        "axis": 0
+      },
+      "normalized_h": 0.1,
+      "materials": [
+        {
+          "region_tag": "10",
+          "representation": "isotropic",
+          "scalar": {
+            "value": 8,
+            "unit": "1",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+            }
+          },
+          "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+        },
+        {
+          "region_tag": "20",
+          "representation": "isotropic",
+          "scalar": {
+            "value": 2,
+            "unit": "1",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+            }
+          },
+          "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+        }
+      ],
+      "boundary_condition": "periodic",
+      "pore_model": "explicit"
+    }
+  },
+  "provenance": {
+    "applicability": "Synthetic linear static RVE; material/device applicability not_checked",
+    "backend": {
+      "name": "DOLFINx/PETSc/Gmsh",
+      "version": "0.11.0"
+    },
+    "conditions": {
+      "WSL_science_only": false,
+      "canonical_input": {
+        "boundary_condition": "periodic",
+        "geometry": {
+          "axis": 0,
+          "kind": "layers",
+          "normalized_fraction": 0.4,
+          "physical_lengths": [
+            1e-05,
+            1e-05
+          ],
+          "pore_fraction": 0.0
+        },
+        "materials": {
+          "10": {
+            "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material",
+            "representation": "isotropic",
+            "scalar": 8.0
+          },
+          "20": {
+            "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material",
+            "representation": "isotropic",
+            "scalar": 2.0
+          }
+        },
+        "normalized_h": 0.1,
+        "pore_model": "explicit",
+        "schema_version": "rve.electrostatics-2d-input.v1"
+      },
+      "macro_basis": "eye(d): E [V/m] or negative grad(T) [K/m]",
+      "mpi_ranks": 1,
+      "thermal_reference_K": 300,
+      "windows_adapter": false
+    },
+    "evidence_kind": "real_computation",
+    "method": {
+      "name": "P1 periodic equivalence-class constrained linear elliptic RVE",
+      "version": "0.1.1"
+    },
+    "sources": [
+      {
+        "description": "Migrated dimension-specific kernels with source SHA256; no experiment imports",
+        "kind": "code_provenance",
+        "reference": "modules/rve/SOURCES.json"
+      }
+    ],
+    "units": {
+      "field_coordinates": "m",
+      "tensor": "F/m or W/(m K), operation-specific"
+    }
+  },
+  "results": {
+    "boundary_condition": "periodic",
+    "cells": 254,
+    "coordinate_artifact": "artifacts/coordinates.json",
+    "dimension": 2,
+    "effective_material_artifact": "artifacts/effective_material.json",
+    "load_count": 2,
+    "load_fields": [
+      "artifacts/solution/x/fields.vtu",
+      "artifacts/solution/y/fields.vtu"
+    ],
+    "mesh_id": "dbe95499ccbf3f0a7041164ed9527500f0ed7de8438e286768ae06878d0120f6",
+    "numerical_status": "PASS",
+    "physics": "electrostatics",
+    "pore_model": "explicit",
+    "readback_artifact": "artifacts/readback.json",
+    "rve_id": "1a69a068951a54d8c1d7",
+    "schema_version": "rve.result.v1",
+    "scientific_applicability": "not_checked",
+    "tensor": [
+      [
+        3.2197046592e-11,
+        -3.930435644030965e-28
+      ],
+      [
+        5.611545050023215e-29,
+        4.9583451751679987e-11
+      ]
+    ],
+    "tensor_unit": "F/m"
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "Hill_Mandel",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "PBC_pairing",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "finite_tensor",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "mean_driving_field",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "positive_definite",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "symmetry",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "weak_PDE",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_geometry",
+          "message": "Positive nonempty mesh, region/CAD fraction audit retained",
+          "status": "passed"
+        },
+        {
+          "id": "linear_solver",
+          "message": "All independent basis loads converged",
+          "status": "passed"
+        },
+        {
+          "id": "native_readback",
+          "message": "Independent VTU/HDF5 gradients, constitutive law, flux/work, lifting and saved PBC pairs",
+          "status": "passed"
+        },
+        {
+          "id": "unit_normalization",
+          "message": "Shared core 1.0.0 catalog 1.2.0",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_convergence",
+          "message": "Single run; historical selected grid studies not generalized",
+          "status": "not_checked"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_calibration",
+          "message": "Sources retained; synthetic values not measured calibration",
+          "status": "not_checked"
+        },
+        {
+          "id": "statistical_representativity",
+          "message": "No representative-volume statistical acceptance",
+          "status": "not_checked"
+        },
+        {
+          "id": "device_applicability",
+          "message": "No real material/product owner sign-off",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "Synthetic static linear materials, no calibrated BaTiO3/device prediction.",
+    "Single run mesh convergence and statistical representativity not_checked."
+  ],
+  "limitations": [
+    "Synthetic static linear materials, no calibrated BaTiO3/device prediction.",
+    "Single run mesh convergence and statistical representativity not_checked.",
+    "Raw DG0 flux is diagnostic, not pointwise strong conservation.",
+    "3D complex GB/shell polycrystal not publicly exposed.",
+    "Host deployment is not frozen by public queued snapshot; keep bindings/config fixed until worker completes."
+  ],
+  "artifacts": [
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/diagnostics.json",
+      "size_bytes": 1652,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 1818,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/numerical_protocol.json",
+      "size_bytes": 703,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 3361,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/sources.json",
+      "size_bytes": 22384,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 600,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/coordinates.json",
+      "size_bytes": 586,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 1250,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/artifact_hashes.json",
+      "size_bytes": 3029,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/environment.json",
+      "size_bytes": 439,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/effective_material.json",
+      "size_bytes": 2669,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/readback.json",
+      "size_bytes": 1861,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.kernel-normalized.json",
+      "size_bytes": 974,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/metrics.json",
+      "size_bytes": 739,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/scientific_core.json",
+      "size_bytes": 779,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/solution/effective_tensor.json",
+      "size_bytes": 8356,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/fields.xdmf",
+      "size_bytes": 5141,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/periodic_constraints.npz",
+      "size_bytes": 7814,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/fields.vtu",
+      "size_bytes": 17232,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/fields.h5",
+      "size_bytes": 51016,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/solution/y/metrics.json",
+      "size_bytes": 2192,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/fields.xdmf",
+      "size_bytes": 5141,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/periodic_constraints.npz",
+      "size_bytes": 7814,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/fields.vtu",
+      "size_bytes": 14797,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/fields.h5",
+      "size_bytes": 51016,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/solution/x/metrics.json",
+      "size_bytes": 2253,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/geometry/mesh_identity.npz",
+      "size_bytes": 8392,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/geometry/mesh_normalized.msh",
+      "size_bytes": 10763,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/geometry/periodic_CAD.json",
+      "size_bytes": 245,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/geometry/microstructure.json",
+      "size_bytes": 1039,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/geometry/mesh_metrics.json",
+      "size_bytes": 512,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 1113,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 1002,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/process.json",
+      "size_bytes": 145,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 9524,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/completion.json",
+      "size_bytes": 144,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/native/stdout.log",
+      "size_bytes": 128,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "path": "logs/adapter.stdout.json",
+      "media_type": "application/json",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 10175,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stderr.log",
+      "media_type": "text/plain",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 0,
+      "evidence_kind": "none"
+    }
+  ]
+}

@@ -1,0 +1,253 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "phase_field.tangent-result.v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "phase_field.tangent-result.v1"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "dielectric_tangent",
+        "dielectric_tangent_si"
+      ]
+    },
+    "dimension": {
+      "type": "integer",
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "SI",
+        "dimensionless"
+      ]
+    },
+    "response_class": {
+      "type": "string",
+      "enum": [
+        "uniform_branch_local_response",
+        "finite_fixed_end_multidomain_apparent_response"
+      ]
+    },
+    "tensor_units_nd": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tensors_dimensionless": {
+      "type": "object",
+      "properties": {
+        "total_tangent_permittivity": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "background_permittivity": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "polarization_tangent_contribution": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "frozen_polarization_tensor": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "total_tangent_permittivity",
+        "background_permittivity",
+        "polarization_tangent_contribution",
+        "frozen_polarization_tensor"
+      ],
+      "additionalProperties": false
+    },
+    "tensors_si": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "total_tangent_permittivity": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "background_permittivity": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "polarization_tangent_contribution": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "frozen_polarization_tensor": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 2,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "total_tangent_permittivity",
+        "background_permittivity",
+        "polarization_tangent_contribution",
+        "frozen_polarization_tensor"
+      ],
+      "additionalProperties": false
+    },
+    "tensor_units_si": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "relative_permittivity": {
+      "type": "null"
+    },
+    "bias_field_dimensionless": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 3
+    },
+    "bias_field_si": {
+      "type": [
+        "array",
+        "null"
+      ],
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 3
+    },
+    "branch_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "local_stability": {
+      "type": "object"
+    },
+    "numerical_validation": {
+      "type": "string",
+      "const": "PASS"
+    },
+    "material_validation": {
+      "type": "string",
+      "const": "not_checked"
+    },
+    "unit_mapping": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 2000
+    }
+  },
+  "required": [
+    "schema_version",
+    "operation",
+    "dimension",
+    "units",
+    "response_class",
+    "tensor_units_nd",
+    "tensors_dimensionless",
+    "tensors_si",
+    "tensor_units_si",
+    "relative_permittivity",
+    "bias_field_dimensionless",
+    "bias_field_si",
+    "branch_id",
+    "local_stability",
+    "numerical_validation",
+    "material_validation",
+    "unit_mapping",
+    "artifact_refs"
+  ],
+  "additionalProperties": false
+}

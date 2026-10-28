@@ -1,0 +1,257 @@
+{
+  "scope": "Independent computations only; no scale transfer",
+  "modules": [
+    {
+      "module_id": "fem",
+      "version": "0.4.2",
+      "operations": [
+        {
+          "id": "electrostatics_2d",
+          "input_schema": "schemas/electrostatics.input.schema.json",
+          "output_schema": "schemas/electrostatics.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "electrostatics_2d_quantities",
+          "input_schema": "schemas/electrostatics.quantities.input.schema.json",
+          "output_schema": "schemas/electrostatics.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": {
+            "engineering_execution": "passed",
+            "task_id": "fem-quantity-01",
+            "job_id": "673",
+            "scientific_applicability": "not_checked"
+          },
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "electrothermal_2d",
+          "input_schema": "schemas/electrothermal.input.schema.json",
+          "output_schema": "schemas/device.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "ac_eqs_2d",
+          "input_schema": "schemas/ac_eqs.input.schema.json",
+          "output_schema": "schemas/device.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "electromagnetic_2d",
+          "input_schema": "schemas/electromagnetic.input.schema.json",
+          "output_schema": "schemas/device.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "electrothermal_2d_quantities",
+          "input_schema": "schemas/electrothermal.quantities.input.schema.json",
+          "output_schema": "schemas/device.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "ac_eqs_2d_quantities",
+          "input_schema": "schemas/ac_eqs.quantities.input.schema.json",
+          "output_schema": "schemas/device.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "electromagnetic_2d_quantities",
+          "input_schema": "schemas/electromagnetic.quantities.input.schema.json",
+          "output_schema": "schemas/device.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        }
+      ]
+    },
+    {
+      "module_id": "phase_field",
+      "version": "0.4.0",
+      "operations": [
+        {
+          "id": "steady",
+          "input_schema": "schemas/steady.input.schema.json",
+          "output_schema": "schemas/result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "evolve",
+          "input_schema": "schemas/evolve.input.schema.json",
+          "output_schema": "schemas/result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "steady_si",
+          "input_schema": "schemas/steady_si.input.schema.json",
+          "output_schema": "schemas/si.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "evolve_si",
+          "input_schema": "schemas/evolve_si.input.schema.json",
+          "output_schema": "schemas/si.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "vector_steady",
+          "input_schema": "schemas/vector_steady.input.schema.json",
+          "output_schema": "schemas/vector.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "vector_steady_si",
+          "input_schema": "schemas/vector_steady_si.input.schema.json",
+          "output_schema": "schemas/vector.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "vector_evolve",
+          "input_schema": "schemas/vector_evolve.input.schema.json",
+          "output_schema": "schemas/vector.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "vector_evolve_si",
+          "input_schema": "schemas/vector_evolve_si.input.schema.json",
+          "output_schema": "schemas/vector.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": {
+            "engineering_execution": "passed",
+            "task_id": "phase-vector-si-01",
+            "job_id": "677",
+            "scientific_applicability": "not_checked"
+          },
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "dielectric_tangent",
+          "input_schema": "schemas/dielectric_tangent.input.schema.json",
+          "output_schema": "schemas/tangent.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "dielectric_tangent_si",
+          "input_schema": "schemas/dielectric_tangent_si.input.schema.json",
+          "output_schema": "schemas/tangent.result.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        }
+      ]
+    },
+    {
+      "module_id": "rve",
+      "version": "0.1.3",
+      "operations": [
+        {
+          "id": "homogenize_electrostatics_2d",
+          "input_schema": "schemas/homogenize_electrostatics_2d.input.schema.json",
+          "output_schema": "schemas/homogenize_electrostatics_2d.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": {
+            "engineering_execution": "passed",
+            "task_id": "rve-electrostatics-02",
+            "job_id": "680",
+            "scientific_applicability": "not_checked"
+          },
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "homogenize_thermal_2d",
+          "input_schema": "schemas/homogenize_thermal_2d.input.schema.json",
+          "output_schema": "schemas/homogenize_thermal_2d.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "homogenize_electrostatics_3d",
+          "input_schema": "schemas/homogenize_electrostatics_3d.input.schema.json",
+          "output_schema": "schemas/homogenize_electrostatics_3d.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "homogenize_thermal_3d",
+          "input_schema": "schemas/homogenize_thermal_3d.input.schema.json",
+          "output_schema": "schemas/homogenize_thermal_3d.output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        }
+      ]
+    },
+    {
+      "module_id": "spice",
+      "version": "0.2.1",
+      "operations": [
+        {
+          "id": "ac_impedance_si",
+          "input_schema": "schemas/ac_impedance_si.input.schema.json",
+          "output_schema": "schemas/output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "transient_si",
+          "input_schema": "schemas/transient_si.input.schema.json",
+          "output_schema": "schemas/output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "ac_impedance",
+          "input_schema": "schemas/ac_impedance.input.schema.json",
+          "output_schema": "schemas/output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": {
+            "engineering_execution": "passed",
+            "task_id": "spice-ac-02",
+            "job_id": "679",
+            "scientific_applicability": "not_checked"
+          },
+          "real_workbench_chat": "not_checked"
+        },
+        {
+          "id": "transient",
+          "input_schema": "schemas/transient.input.schema.json",
+          "output_schema": "schemas/output.schema.json",
+          "backend_entry": "create-scale -> existing SiteRunner -> parse-scale",
+          "individual_server_acceptance": "not_checked",
+          "real_workbench_chat": "not_checked"
+        }
+      ]
+    }
+  ]
+}

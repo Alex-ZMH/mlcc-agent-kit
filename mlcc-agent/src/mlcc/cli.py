@@ -59,6 +59,8 @@ from .phonon_gamma import compute_gamma_fixed_cell_hessian
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="mlcc")
     subparsers = parser.add_subparsers(dest="action", required=True)
+    from .scale_cli import register
+    register(subparsers)
     for name in ("prepare", "transfer", "submit", "status", "query", "cancel", "collect"):
         subparser = subparsers.add_parser(name)
         subparser.add_argument("--task", required=True, type=Path)
@@ -473,6 +475,10 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
+        if args.action in ("list-scales", "describe-scale", "create-scale", "parse-scale"):
+            from .scale_cli import dispatch
+            print(json.dumps(dispatch(args), ensure_ascii=False, indent=2, allow_nan=False))
+            return 0
         if args.action == "md-thermal-sources":
             from .thermal_stress_sources import build_md_thermal_sources
             result = build_md_thermal_sources(args.request, args.output_dir)

@@ -1,0 +1,57 @@
+{
+  "models": [
+    {
+      "model_name": "single_rlc",
+      "model_version": "1.0.0",
+      "source": "synthetic",
+      "capacitance_F": {
+        "value": 10,
+        "unit": "nF",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "spice_poc explicit synthetic baseline"
+        }
+      },
+      "esr_ohm": {
+        "value": 50,
+        "unit": "mohm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "spice_poc explicit synthetic baseline"
+        }
+      },
+      "esl_H": {
+        "value": 0.5,
+        "unit": "nH",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "spice_poc explicit synthetic baseline"
+        }
+      },
+      "leakage_resistance_ohm": null,
+      "validated_conditions": {
+        "type": "synthetic_linear_demo_only",
+        "temperature": "fixed, unspecified calibration",
+        "dc_bias": "constant C; no DC-bias law"
+      }
+    }
+  ],
+  "points_per_decade": 400,
+  "fmin_Hz": {
+    "value": 1,
+    "unit": "kHz",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "spice_poc explicit synthetic baseline"
+    }
+  },
+  "fmax_Hz": {
+    "value": 10,
+    "unit": "GHz",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "spice_poc explicit synthetic baseline"
+    }
+  },
+  "single_frequency": false
+}

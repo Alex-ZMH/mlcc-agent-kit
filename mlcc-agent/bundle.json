@@ -2,7 +2,7 @@
   "schemaVersion": "matterai.bundle.v2",
   "name": "mlcc-agent",
   "title": "MLCC 原子建模与多链路仿真能力包",
-  "version": "0.57.0",
+  "version": "0.58.0",
   "description": "独立 MLCC 能力包：可追溯模型、ABACUS 电子/弹性/缺陷、Phonopy 位移与原生力、LAMMPS 工程输入解析、设计适配和 Slurm/MCP。科学资格逐项验收。",
   "agent": {
     "name": "mlcc",
@@ -11,7 +11,8 @@
       "model-mlcc-structures",
       "run-mlcc-dft",
       "compute-mlcc-properties",
-      "run-mlcc-md"
+      "run-mlcc-md",
+      "run-mlcc-scales"
     ]
   },
   "mcpServers": [

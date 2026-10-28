@@ -1,0 +1,67 @@
+{
+  "baseline": "V0.3",
+  "sources": [
+    {
+      "source": "experiments\\ferroelectric_poc\\fem_solver.py",
+      "sha256": "3e42c3c2d26f02a9fca4a0b4680409cdd58dcd6328583321e206e390ca96e957",
+      "frozen_sha256": "3e42c3c2d26f02a9fca4a0b4680409cdd58dcd6328583321e206e390ca96e957",
+      "matches": true
+    },
+    {
+      "source": "experiments\\ferroelectric_poc\\initial_conditions.py",
+      "sha256": "a2df5c39fbbeac5abd77811cd55067aa05db36afa90e3f080332ccac3b058d2b",
+      "frozen_sha256": "a2df5c39fbbeac5abd77811cd55067aa05db36afa90e3f080332ccac3b058d2b",
+      "matches": true
+    },
+    {
+      "source": "experiments\\ferroelectric_poc\\physics.py",
+      "sha256": "7b55389427e463cf736af702b0dd318f7b1592339322f9ca41e522ef46e796be",
+      "frozen_sha256": "7b55389427e463cf736af702b0dd318f7b1592339322f9ca41e522ef46e796be",
+      "matches": true
+    },
+    {
+      "source": "experiments\\ferroelectric_poc\\v02.py",
+      "sha256": "7e509e11c9729d28965b271bbf197e6ff2ee10f2ffcf34633522f17c4d40343c",
+      "frozen_sha256": "7e509e11c9729d28965b271bbf197e6ff2ee10f2ffcf34633522f17c4d40343c",
+      "matches": true
+    },
+    {
+      "source": "experiments\\ferroelectric_poc\\v03.py",
+      "sha256": "0f7450b08746c69445e2968bbedd920c4d1d0a279ccf04ae1f24db3ca8dd394d",
+      "frozen_sha256": "0f7450b08746c69445e2968bbedd920c4d1d0a279ccf04ae1f24db3ca8dd394d",
+      "matches": true
+    }
+  ],
+  "adaptations": [
+    "Physical-only mixed 2D/3D constructor; no MMS, pin_wall, charged benchmark or public fault injection",
+    "Source weak forms, Jacobian, enthalpy, Newton tolerances, rollback and RT0 retained",
+    "Package-relative imports, task artifact output; unique centerline crossing only; absent CSV value blank",
+    "Standard-library common/deployment utilities forked from modules/fem; independent namespace and budgets"
+  ],
+  "module_core_sha256": {
+    "module.json": "af64779f99f98ef4beb8bd3096534caaeb3c4f4bf8b36305e3ef3e68406b0b8f",
+    "adapter.py": "5c69e8eacc19b56e93e6e2f2c54dc9a531984e83c7f88615287e12fa53d4849c",
+    "science_entry.py": "dcb54f07466d1df71a9d7e0a259925b43483e09952009abc276d8bca74385e71",
+    "phasefield/__init__.py": "75bbfee2d7e7fd79429e903b36af8986f47b79767ef3f1fc22ef37aa0c6e5669",
+    "phasefield/adapter_api.py": "3d7cf797ca9b87d5e18dede7eb0df9ff5eb7d97da60de15b833bae1f39e40c76",
+    "phasefield/common.py": "8624ce18afc2b3d820dba8b42d73610b4cf25292d84cc06656395d008f10648c",
+    "phasefield/deployment.py": "fd030a7565dc051fa64095fc41a05ef8ef51e417d0a19ec7000e21d2b835b256",
+    "phasefield/initial_conditions.py": "a2df5c39fbbeac5abd77811cd55067aa05db36afa90e3f080332ccac3b058d2b",
+    "phasefield/kernel.py": "191a7db2efb9d00963b6453a7624436b46200a43e4bc3c85f3602e66c3e43db6",
+    "phasefield/physics.py": "7b55389427e463cf736af702b0dd318f7b1592339322f9ca41e522ef46e796be",
+    "phasefield/science.py": "1097f607944d1b78be2ca489faac918857b8d2e86e7b6ac83d197717ad64a4f2",
+    "phasefield/validation.py": "d43c45514e8181b236b16f16d72db6de2a77163f2cbad31830905ed9b5c77058",
+    "schemas/evolve.input.schema.json": "9b19f5d2cd33ac5b8a0216c0984d500928645ca20e35bd2a27d779e93d90b662",
+    "schemas/result.schema.json": "16ff53e69c5bcf9a6f0945e7499ccea7f2f6356d9be6dd4c9da0d56480382a9e",
+    "schemas/steady.input.schema.json": "b358e3b64b05b60b4dab27bfbb8272aad07b83dc33d3c5cd9e597fd982f17e8a"
+  },
+  "engineering_reference": {
+    "modules\\fem\\device_fem\\common.py": "56442397dd8d32abfa773f274f06ddee7a0ca5499645e223803d5383e5b1d9f0",
+    "modules\\fem\\device_fem\\deployment.py": "fcb295d940ae94ad24509818bce0bb8f579d36effae06b9e6791a8c5227606bb"
+  },
+  "final_additions": [
+    "Total accepted-step history/work guard, actual repeated-shrink regression",
+    "Strict finite JSON; nonfinite failed SNES residual explicitly null, not converted to zero",
+    "Final code validated by final-4bfd6bfa public 3D nucleus task"
+  ]
+}

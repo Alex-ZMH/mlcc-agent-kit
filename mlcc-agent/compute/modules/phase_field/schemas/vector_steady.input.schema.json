@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "phase_field.vector_steady.v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "phase_field.vector-input.v1"
+    },
+    "operation": {
+      "const": "vector_steady"
+    },
+    "model_profile": {
+      "const": "synthetic_tetragonal_quartic_v1"
+    },
+    "units": {
+      "const": "dimensionless"
+    },
+    "dimension": {
+      "type": "integer",
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 25000
+      },
+      "minItems": 2,
+      "maxItems": 3
+    },
+    "boundary_condition": {
+      "const": "all_surface_voltage"
+    },
+    "initial_condition": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "uniform",
+            "perturb",
+            "wall_180",
+            "wall_90xy",
+            "wall_90xz"
+          ]
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "width_factor": {
+          "type": "number",
+          "minimum": 1e-12
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "field_protocol": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "constant",
+            "triangle",
+            "stairs"
+          ]
+        },
+        "value": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "direction": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "period": {
+          "type": "number"
+        },
+        "amplitude": {
+          "type": "number"
+        },
+        "times": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 1,
+          "maxItems": 100
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 3
+          },
+          "minItems": 1,
+          "maxItems": 100
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "evolution": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "number"
+        },
+        "dt": {
+          "type": "number"
+        },
+        "max_steps": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2000
+        },
+        "max_halvings": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 6
+        }
+      },
+      "required": [
+        "end",
+        "dt",
+        "max_steps",
+        "max_halvings"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "images"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "synthetic_test",
+            "user",
+            "manual",
+            "literature"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "reference"
+      ],
+      "additionalProperties": false
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "number"
+        },
+        "b": {
+          "type": "number"
+        },
+        "c": {
+          "type": "number"
+        },
+        "g": {
+          "type": "number"
+        },
+        "epsilon": {
+          "type": "number"
+        },
+        "mobility": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "a",
+        "b",
+        "c",
+        "g",
+        "epsilon",
+        "mobility"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "operation",
+    "model_profile",
+    "units",
+    "dimension",
+    "cells",
+    "boundary_condition",
+    "initial_condition",
+    "field_protocol",
+    "evolution",
+    "output",
+    "source",
+    "parameters"
+  ],
+  "additionalProperties": false
+}

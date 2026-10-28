@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fea.electrostatics-output.v1",
+  "title": "MLCC 2D electrostatics output",
+  "description": "P1, serial, SI linear isotropic lossless electrostatics. Cross-field constraints are checked by the deterministic Adapter.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "fea.electrostatics-output.v1"
+    },
+    "model": {
+      "const": "linear_isotropic_lossless_2d"
+    },
+    "out_of_plane_thickness_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "body_height_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "mesh_cells": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "dof_count": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "potential_min_V": {
+      "type": "number"
+    },
+    "potential_max_V": {
+      "type": "number"
+    },
+    "electric_field_max_V_per_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "charge_total_C": {
+      "type": "object",
+      "properties": {
+        "ELECTRODE_A": {
+          "type": "number"
+        },
+        "ELECTRODE_B": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "ELECTRODE_A",
+        "ELECTRODE_B"
+      ],
+      "additionalProperties": false
+    },
+    "charge_per_unit_depth_C_per_m": {
+      "type": "object",
+      "properties": {
+        "ELECTRODE_A": {
+          "type": "number"
+        },
+        "ELECTRODE_B": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "ELECTRODE_A",
+        "ELECTRODE_B"
+      ],
+      "additionalProperties": false
+    },
+    "energy_total_J": {
+      "type": "number",
+      "minimum": 0
+    },
+    "energy_per_unit_depth_J_per_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "capacitance_energy_total_F": {
+      "type": "number",
+      "minimum": 0
+    },
+    "capacitance_energy_per_unit_depth_F_per_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "capacitance_raw_flux_total_F": {
+      "type": "number",
+      "minimum": 0
+    },
+    "charge_balance_relative": {
+      "type": "number",
+      "minimum": 0
+    },
+    "capacitance_methods_relative": {
+      "type": "number",
+      "minimum": 0
+    },
+    "outer_displacement_flux_total_C": {
+      "type": "number"
+    },
+    "field_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[^\\\\]+$"
+    },
+    "mesh_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[^\\\\]+$"
+    },
+    "diagnostics_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[^\\\\]+$"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "model",
+    "out_of_plane_thickness_m",
+    "body_height_m",
+    "mesh_cells",
+    "dof_count",
+    "potential_min_V",
+    "potential_max_V",
+    "electric_field_max_V_per_m",
+    "charge_total_C",
+    "charge_per_unit_depth_C_per_m",
+    "energy_total_J",
+    "energy_per_unit_depth_J_per_m",
+    "capacitance_energy_total_F",
+    "capacitance_energy_per_unit_depth_F_per_m",
+    "capacitance_raw_flux_total_F",
+    "charge_balance_relative",
+    "capacitance_methods_relative",
+    "outer_displacement_flux_total_C",
+    "field_artifact",
+    "mesh_artifact",
+    "diagnostics_artifact",
+    "assumptions"
+  ],
+  "additionalProperties": false
+}

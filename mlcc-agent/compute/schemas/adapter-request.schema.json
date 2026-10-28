@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "mlcc.adapter-request.v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "mlcc.adapter-request.v1"
+    },
+    "interface_version": {
+      "const": "1.0"
+    },
+    "action": {
+      "type": "string",
+      "enum": [
+        "preflight",
+        "execute"
+      ]
+    },
+    "module_id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "operation": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_]*$"
+    },
+    "input": {
+      "type": "object"
+    },
+    "task_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "artifact_dir": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "interface_version",
+    "action",
+    "module_id",
+    "operation",
+    "input",
+    "task_id",
+    "artifact_dir"
+  ],
+  "additionalProperties": false
+}

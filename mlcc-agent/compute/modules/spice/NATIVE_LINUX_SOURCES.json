@@ -1,0 +1,129 @@
+{
+  "schema_version": "mlcc.module-native-linux-sources.v1",
+  "module_version": "0.2.1",
+  "core_version": null,
+  "date": "2026-10-26",
+  "scope": "Explicit native Linux deployment increment, preserved WSL path. No scientific solver or remote access executed by interface main.",
+  "historical_indices_unchanged": true,
+  "module_files_sha256": {
+    "ACCEPTANCE.md": "9f3e7f123cae5d1a6a121a70ff03269c665a5edc4af76c6aa2c38c82c8d8a750",
+    "adapter.py": "1457b3117c6a964f4d66a87c9a2e417d7dd450fbfe9c8355cb4c97a2dc5e511e",
+    "deployment.example.json": "ae931a18985d96ce534a2cb9f4c5585d20a10e97ff9c29bcc30ce35fae0c4b38",
+    "INTERFACE_PROPOSAL.md": "99d3dc9cd41987d3496d059cd65a794c981ac7cb9f070aab2f937639f6746609",
+    "MAIN_HANDOFF.md": "53f3551c0b649d00e1292c831ab464ae2c8d313a71e1664d6c75bee2c7912bee",
+    "MIGRATION_MATRIX.md": "549d93a39814ab378fb504ec54091fd095fc50c376b49859af0d92b302e0d00a",
+    "module.json": "51f6957946f470cd10d1e180e904d44ba4af3ba0bacc9d4bc67b31a36f20b4d2",
+    "README.md": "3061c232d37acade1db697de5e06f220de284759c23123f975b841274772695b",
+    "science_entry.py": "5e18fa520eaa98e2fc2bbf465b722ff801bd4d1cbc27ce41cd2cbf7092385206",
+    "SOURCES.json": "6a2f11868456159bed1d5c7249aff197abbe662639e73282e94c4c3740f12122",
+    "UNITS_ACCEPTANCE.md": "7ba81449b31d776b28b8a393948d5fecfe026d540ca39ccc6ea16ded22915800",
+    "UNITS_DESIGN.md": "3c09e2c52fcb5b9b87b4774548d4dff18515b06b66f8c51f6dda9f44a1e097f5",
+    "UNITS_SOURCES.json": "4161097dd1f59d474b470d14ab4c60db13de94fdf95d2ba6d3b9ce85bd391426",
+    "cases/demo.json": "0c79423c60581706500803de71b9b62a6811717274be439f57e2827e65974484",
+    "cases/validation.json": "8b03bb7fcad629f089bfc7c0e936737ae61e99bc86422c5095c4c8f92feccb80",
+    "deployment/native.example.json": "823ded20a01961b75d74baf4425d38ccceb63c788535b2ec0f04af36bfe90212",
+    "deployment/native.schema.json": "86cce53a51048691fcab956d2a018508ceedce39de2e3121c6d79271af3189a1",
+    "examples/adapter-preflight.json": "66cc3b8956af4502d0705fcdfbdd54592502a5abe5a0debbc04a3e51f4cbf699",
+    "examples/ideal-c-si.json": "b01960069431fde01c3813a8cf2808f0c46dd08f38822c24386f03125939d234",
+    "examples/ill-conditioned-resonance-si.json": "6a3f7cc38fffa04ec606a20b4e838f134e6824e1043d4017c87cb13fd2d03050",
+    "examples/invalid-ac-si.json": "67c8afa222cdfeedd6fa3c9878eb711622e9628495b6264bc8e31715ccda5df7",
+    "examples/invalid-transient-si.json": "eb707dfdbbabf94acf53b65eea64e4e02b38ab52f462c657030d492357784027",
+    "examples/leakage-si.json": "0f125b4cf484d805f9f05a9bd7cd5f9b99371dbbeac0e48639f62fbdb6a774d7",
+    "examples/no-cap-si.json": "dfb54d5f7ec3a232e346755cb08f1a0900a11668ddc7d5fa623b4b7d1683a443",
+    "examples/parallel-si.json": "101b6265760d81a8877a56eb6156a55dc318fbd5ca72dd5cfdbf71ab29983b2b",
+    "examples/single-quantities-pending.json": "d96bfd656a6f40171c59d3a3518dc6cfaf82053d2b9a6483a73e03e2ff89ca89",
+    "examples/single-quantities.json": "4a0af89cf8c5abd08b95863056a564b214b5c3878538e1b102ef1f401c3a082b",
+    "examples/single-si.json": "92a99db2b251eadc9a7e30ef7cf000164cf97d270ae4a2cb472dd116e018f04b",
+    "examples/transient-leakage-si.json": "cb3c113f2d7b656fc26cd46fdff56b7781baf24fe4f474838d08cacce71c45cb",
+    "examples/transient-quantities-pending.json": "adf15c3d008f6cf6bff0c622b72309ace304e4661566c59b60c5cfcec4cfacec",
+    "examples/transient-quantities.json": "5198d02acff25cebfddea23a3d2c98659dc8ce1eda82c731e8fcca5cbfec757b",
+    "examples/transient-si.json": "43e9ac9986dab6564ca34df0e7f05e3976749748b2671ca99c7ab4d192d78861",
+    "harness/agent_e2e.py": "c055e5b320a45aa00aa644e5681ec1a7301a7ae038212044f6771e0c69271820",
+    "harness/audit_agent_saved.py": "bc6c80af9ead247a68269191ece64b52fa24bf632131658e1e0f5932aebf5dd0",
+    "harness/build_contracts.py": "9f1261a7ccf0eac2f4e6586517e6d3611d59f4757a1a7a4e7181570e7189fc09",
+    "harness/cases.json": "22edf72b99554fd732c0eb089454e8c4ae8d8dfedf63ca93c5b900ef5f5dbf94",
+    "harness/final_audit.py": "1b65cf55a5771279aac824983dd12542f78722a09b67d9fbee97613ba902cc8b",
+    "harness/formal_edges.py": "00ec3b55b84b0cff3a80c4d46bc35328ef987c36fc13fec53e60e65f6fa8c82e",
+    "harness/native_failures.py": "a6ac279de582d4cafd333dfec7cce5b2964c85b12d73b8ec03b8cd7e5cabd1e1",
+    "harness/qualify_saved.py": "4098c545aa1d4bcf9871b83ff8ecd690a9859ffa46e4e0790657dc88596594ca",
+    "harness/runtime_batch.py": "20e8d544dcd37145909202332317d31ae2f4d4a745da546460bdaf12a693a0a5",
+    "harness/source_manifest.py": "db7b8d7bc5c1c8d6489a83e3958adcaa1e5692f6ad71d788da402594cacee13f",
+    "harness/unit_acceptance.py": "2c223dfc4f32000ece985f1909acbc17632c14dd39506d5e8d345933e047e68c",
+    "schemas/ac_impedance.input.schema.json": "fcf00f37b4c0b4354e05cccf305637d1296d5c5ecb91f000684c16cf3f86d3f8",
+    "schemas/ac_impedance_si.input.schema.json": "ae22b325b465fa3ca9940b84e8e847aa53f85d3002e5b06d91ada3c93c516a93",
+    "schemas/output.schema.json": "f5c9e818d33a9cae15de5f041766b1cf4533e409f48dc9fbda419880a8ef52f7",
+    "schemas/transient.input.schema.json": "5305c0e7a3a1564dc15b6987e69f50871a120f39cfdec5a60edb0b974ae8a5e1",
+    "schemas/transient_si.input.schema.json": "eb234e8e9456aef6e2da8a50282deeb4c0102ad719c823b4fb484d6329c04cc4",
+    "spice_module/adapter_api.py": "4938987d1f383ca263aed9668a17fb80227ea8f6d245e43f6a246eea44ad490f",
+    "spice_module/common.py": "660acb28bd8b12c1ca1c7f18dac437da9c8cd1bcf0c8b14f05a3ec50284fd151",
+    "spice_module/contract.py": "45330cc953ca03b18ac60bb0bb98c4edcba4767f6953c214761126c2e5d2dd75",
+    "spice_module/deployment.py": "447f3541b151142d7e1e623a6e24298d90fce3758dcef742c6a53c975eaf7b58",
+    "spice_module/model.py": "fa7b2147d8023cdd3629c13b3718b34c0b62e1d26b2d633597279439275676fe",
+    "spice_module/netlist.py": "2e14b48085a56546f70310b763ba5b8599a4710760b8b670c615a7c423e7bc1d",
+    "spice_module/qualification.py": "f99d6875fa141ea341af82fcdf96dceb81d61cfb99f9c5d2341b1587495206bc",
+    "spice_module/readback.py": "3475051243d7071ce9269566d415034b3a370dbd6b657a44450e25359c7f736d",
+    "spice_module/reference.py": "4a93ccef6da56e08e04b44404c9181cfa0f5387c96a47a8c9c7c58fd68904a0c",
+    "spice_module/results.py": "7afcea28b3332d030ad313c119ab1dc1ad9509cc95279580823e20df62df6e1a",
+    "spice_module/runner.py": "0f1ba6330d469e3f129e56b2ae0b4a30b3f640b49fd1a570adbab725a2beb4da",
+    "spice_module/science.py": "16987040e78bedb2923cc05ff692b8f799930c4c0baa5fc9a6f9b802b1b2e301",
+    "spice_module/__init__.py": "05060933848c01bd4337ca3f3cf34a0b597a22fff72b337a1424ad7af2ed549c",
+    "tests/test_contract.py": "e8b24fba3b695ecb8e16eb3272d1d8f3bf6cc3d167d79d824cf1b32dd6f7cc70",
+    "skills/linear-circuits/SKILL.md": "06cb8145936b7ce87926d7841b7176041714097df43b76df41127ab13c070c64"
+  },
+  "core_files_sha256": {},
+  "delta_from_before": [
+    {
+      "path": "module.json",
+      "before_sha256": "7bc4bae58b06a83fd873c9970e1354f41c4499f1e58e1ab2f19a909036d064a6",
+      "after_sha256": "51f6957946f470cd10d1e180e904d44ba4af3ba0bacc9d4bc67b31a36f20b4d2",
+      "reason": "Native deployment/config/transport provenance/version increment; science equations, UNIT, QC criteria unchanged."
+    },
+    {
+      "path": "README.md",
+      "before_sha256": "86b4b9f46afccdd3482a4fd5d6dd7c4ac13ccbe664bae8362e7f6bc4c4832fb0",
+      "after_sha256": "3061c232d37acade1db697de5e06f220de284759c23123f975b841274772695b",
+      "reason": "Native deployment/config/transport provenance/version increment; science equations, UNIT, QC criteria unchanged."
+    },
+    {
+      "path": "deployment/native.example.json",
+      "before_sha256": null,
+      "after_sha256": "823ded20a01961b75d74baf4425d38ccceb63c788535b2ec0f04af36bfe90212",
+      "reason": "Native deployment/config/transport provenance/version increment; science equations, UNIT, QC criteria unchanged."
+    },
+    {
+      "path": "deployment/native.schema.json",
+      "before_sha256": null,
+      "after_sha256": "86cce53a51048691fcab956d2a018508ceedce39de2e3121c6d79271af3189a1",
+      "reason": "Native deployment/config/transport provenance/version increment; science equations, UNIT, QC criteria unchanged."
+    },
+    {
+      "path": "spice_module/adapter_api.py",
+      "before_sha256": "4ba715bc6bfd2710c2ddc847f98b645398dea15d6acbe9ba83f5f0df7b579203",
+      "after_sha256": "4938987d1f383ca263aed9668a17fb80227ea8f6d245e43f6a246eea44ad490f",
+      "reason": "Native deployment/config/transport provenance/version increment; science equations, UNIT, QC criteria unchanged."
+    },
+    {
+      "path": "spice_module/deployment.py",
+      "before_sha256": "c2461f5fb53d43952f6d08d85072f45531ecabebda88771d494efd2bbf6ea6e9",
+      "after_sha256": "447f3541b151142d7e1e623a6e24298d90fce3758dcef742c6a53c975eaf7b58",
+      "reason": "Native deployment/config/transport provenance/version increment; science equations, UNIT, QC criteria unchanged."
+    }
+  ],
+  "source_index_exclusions": {
+    "directory_components": [
+      ".cache",
+      "__pycache__",
+      "outputs",
+      "q",
+      "review_work",
+      "work"
+    ],
+    "file_names": [
+      "local-*",
+      "local.*",
+      "*.local.*",
+      "local.json"
+    ],
+    "reason": "Portable source release only; omit development artifacts and machine bindings. Historical source indexes remain immutable."
+  }
+}

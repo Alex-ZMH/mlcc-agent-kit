@@ -1,0 +1,265 @@
+{
+  "schema_version": "mlcc.result.v1",
+  "task_id": "task-da529933b7be487eae2d150a47497005",
+  "module": {
+    "id": "rve",
+    "version": "0.1.3",
+    "interface_version": "1.0",
+    "kind": "scientific"
+  },
+  "operation": "homogenize_electrostatics_2d",
+  "execution": {
+    "status": "failed",
+    "created_at": "2026-10-28T06:32:59.614968+00:00",
+    "updated_at": "2026-10-28T06:33:00.661532+00:00",
+    "backend_exit_code": 0,
+    "events": [
+      {
+        "status": "queued",
+        "at": "2026-10-28T06:32:59.614968+00:00"
+      },
+      {
+        "status": "running",
+        "at": "2026-10-28T06:33:00.541762+00:00"
+      },
+      {
+        "status": "failed",
+        "at": "2026-10-28T06:33:00.661532+00:00"
+      }
+    ]
+  },
+  "input": {
+    "schema": "schemas/homogenize_electrostatics_2d.input.schema.json",
+    "payload": {
+      "schema_version": "rve.electrostatics-2d-input.v1",
+      "geometry": {
+        "kind": "layers",
+        "physical_lengths": [
+          {
+            "value": 10,
+            "unit": "um",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+            }
+          },
+          {
+            "value": 10,
+            "unit": "um",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+            }
+          }
+        ],
+        "pore_fraction": 0.0,
+        "normalized_fraction": 0.4,
+        "axis": 0
+      },
+      "normalized_h": 0.1,
+      "materials": [
+        {
+          "region_tag": "10",
+          "representation": "isotropic",
+          "scalar": {
+            "value": 8,
+            "unit": "1",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+            }
+          },
+          "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+        },
+        {
+          "region_tag": "20",
+          "representation": "isotropic",
+          "scalar": {
+            "value": 2,
+            "unit": "1",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+            }
+          },
+          "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+        }
+      ],
+      "boundary_condition": "periodic",
+      "pore_model": "explicit"
+    }
+  },
+  "provenance": {
+    "applicability": "Synthetic linear static RVE; material/device applicability not_checked",
+    "backend": {
+      "name": "DOLFINx/PETSc/Gmsh",
+      "version": "not_recorded"
+    },
+    "conditions": {
+      "WSL_science_only": true,
+      "canonical_input": {},
+      "macro_basis": "eye(d): E [V/m] or negative grad(T) [K/m]",
+      "mpi_ranks": 1,
+      "thermal_reference_K": 300,
+      "windows_adapter": true
+    },
+    "evidence_kind": "none",
+    "method": {
+      "name": "P1 periodic equivalence-class constrained linear elliptic RVE",
+      "version": "0.1.1"
+    },
+    "sources": [
+      {
+        "description": "Migrated dimension-specific kernels with source SHA256; no experiment imports",
+        "kind": "code_provenance",
+        "reference": "modules/rve/SOURCES.json"
+      }
+    ],
+    "units": {
+      "field_coordinates": "m",
+      "tensor": "F/m or W/(m K), operation-specific"
+    }
+  },
+  "results": {},
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "finite_tensor",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "symmetry",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "positive_definite",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "mean_driving_field",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "Hill_Mandel",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "weak_PDE",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "PBC_pairing",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "mesh_geometry",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "linear_solver",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "native_readback",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "unit_normalization",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "mesh_convergence",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_calibration",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "statistical_representativity",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "device_applicability",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "code": "ADAPTER_ERROR",
+      "message": "[Errno 2] No such file or directory: '/home/v100/projects/mlcc/zhaoxiang/four-scale-integration-20261028/tasks/rve-electrostatics-01/payload/modules/rve/SOURCES.json'"
+    }
+  ],
+  "warnings": [
+    "Synthetic static linear materials, no calibrated BaTiO3/device prediction.",
+    "Single run mesh convergence and statistical representativity not_checked."
+  ],
+  "limitations": [
+    "Synthetic static linear materials, no calibrated BaTiO3/device prediction.",
+    "Single run mesh convergence and statistical representativity not_checked.",
+    "Raw DG0 flux is diagnostic, not pointwise strong conservation.",
+    "3D complex GB/shell polycrystal not publicly exposed.",
+    "Host deployment is not frozen by public queued snapshot; keep bindings/config fixed until worker completes."
+  ],
+  "artifacts": [
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 3361,
+      "evidence_kind": "none"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 600,
+      "evidence_kind": "none"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 1250,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stdout.json",
+      "media_type": "application/json",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 2015,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stderr.log",
+      "media_type": "text/plain",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 0,
+      "evidence_kind": "none"
+    }
+  ]
+}

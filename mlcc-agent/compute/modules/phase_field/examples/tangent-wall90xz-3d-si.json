@@ -1,0 +1,140 @@
+{
+  "schema_version": "phase_field.tangent-input.v1",
+  "operation": "dielectric_tangent_si",
+  "units": "SI",
+  "model_profile": "synthetic_tetragonal_quartic_v1",
+  "dimension": 3,
+  "cells": [
+    32,
+    2,
+    2
+  ],
+  "boundary_condition": "all_surface_voltage",
+  "initial_condition": {
+    "kind": "wall_90xz"
+  },
+  "loading_path": [
+    [
+      {
+        "value": 0.0,
+        "unit": "V/m",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+        }
+      },
+      {
+        "value": 0.0,
+        "unit": "V/m",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+        }
+      },
+      {
+        "value": 0.0,
+        "unit": "V/m",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+        }
+      }
+    ]
+  ],
+  "equilibrium_atol": 1e-12,
+  "verification": {
+    "finite_difference": true,
+    "analytical": false
+  },
+  "output": {
+    "images": true
+  },
+  "source": {
+    "kind": "synthetic_test",
+    "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+  },
+  "wall_half_length": {
+    "value": 2.0,
+    "unit": "mm",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+    }
+  },
+  "reduced_parameters": {
+    "a": {
+      "value": -0.5,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    },
+    "b": {
+      "value": 0.25,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    },
+    "c": {
+      "value": 1.5,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    }
+  },
+  "g": {
+    "value": 0.0005,
+    "unit": "J*m^3/C^2",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+    }
+  },
+  "epsilon": {
+    "value": 0.001,
+    "unit": "F/m",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+    }
+  },
+  "reference_scales": {
+    "length": {
+      "value": 1,
+      "unit": "mm",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    },
+    "polarization": {
+      "value": 1,
+      "unit": "C/m^2",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    },
+    "time": {
+      "value": 1,
+      "unit": "ms",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    },
+    "energy_density": {
+      "value": 1,
+      "unit": "kJ/m^3",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "model": null,
+  "circuit": {
+    "supply_V": 3.3,
+    "source_resistance_ohm": 0.08,
+    "line_inductance_H": 5e-09,
+    "baseline_A": 0.1,
+    "step_A": 1.0,
+    "delay_s": 5e-06,
+    "rise_s": 2e-08,
+    "hold_s": 1.5e-05,
+    "fall_s": 2e-08,
+    "stop_s": 3e-05
+  },
+  "maxstep_s": 1.25e-09
+}

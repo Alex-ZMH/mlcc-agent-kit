@@ -1,0 +1,32 @@
+{
+  "models": [
+    {
+      "model_name": "parallel_a",
+      "model_version": "1.0.0",
+      "source": "synthetic",
+      "capacitance_F": 1e-06,
+      "esr_ohm": 0.008,
+      "esl_H": 1e-09,
+      "leakage_resistance_ohm": null,
+      "validated_conditions": {
+        "type": "synthetic_linear_demo_only"
+      }
+    },
+    {
+      "model_name": "parallel_b",
+      "model_version": "1.0.0",
+      "source": "synthetic",
+      "capacitance_F": 1e-08,
+      "esr_ohm": 0.015,
+      "esl_H": 5e-10,
+      "leakage_resistance_ohm": null,
+      "validated_conditions": {
+        "type": "synthetic_linear_demo_only"
+      }
+    }
+  ],
+  "points_per_decade": 1600,
+  "fmin_Hz": 100000.0,
+  "fmax_Hz": 1000000000.0,
+  "single_frequency": false
+}

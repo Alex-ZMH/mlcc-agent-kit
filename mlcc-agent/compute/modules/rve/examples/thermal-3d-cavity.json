@@ -1,0 +1,64 @@
+{
+  "schema_version": "rve.thermal-3d-input.v1",
+  "geometry": {
+    "kind": "homogeneous",
+    "physical_lengths": [
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/inclusions_final/inclusions/pore_adiabatic/thermal/effective_tensor.json"
+        }
+      },
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/inclusions_final/inclusions/pore_adiabatic/thermal/effective_tensor.json"
+        }
+      },
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/inclusions_final/inclusions/pore_adiabatic/thermal/effective_tensor.json"
+        }
+      }
+    ],
+    "pore_fraction": 0.03
+  },
+  "normalized_h": 0.09,
+  "materials": [
+    {
+      "region_tag": "10",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 4.0,
+        "unit": "W/(m K)",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/inclusions_final/inclusions/pore_adiabatic/thermal/effective_tensor.json"
+        }
+      },
+      "applicability": "linear static 3D, fixed temperature, no calibrated BaTiO3 recipe"
+    },
+    {
+      "region_tag": "9000",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 0.026,
+        "unit": "W/(m K)",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/inclusions_final/inclusions/pore_adiabatic/thermal/effective_tensor.json"
+        }
+      },
+      "applicability": "linear static 3D, fixed temperature, no calibrated BaTiO3 recipe"
+    }
+  ],
+  "boundary_condition": "periodic",
+  "pore_model": "insulating_cavity"
+}

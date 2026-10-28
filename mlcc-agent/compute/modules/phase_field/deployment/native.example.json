@@ -1,0 +1,11 @@
+{
+  "schema_version": "phase_field.deployment.native.v1",
+  "transport": "native_linux",
+  "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+  "linux_root": "/home/v100/projects/mlcc-runtime/releases/REPLACE_WITH_TEMP_RELEASE",
+  "timeout_seconds": 180,
+  "threads": 1,
+  "max_cells": 6000,
+  "max_work": 4000000,
+  "max_history_bytes": 67108864
+}

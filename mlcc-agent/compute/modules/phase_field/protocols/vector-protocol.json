@@ -1,0 +1,18 @@
+{
+  "scope":"Synthetic nondimensional a=-0.5,b=0.25,c=1.5 (special analytic-wall benchmark), general c>2b accepted; no elasticity, no material calibration",
+  "SNES_absolute_residual":1e-8,
+  "Jacobian_direction_relative":1e-7,
+  "Gauss_free_residual":1e-8,
+  "field_BC_absolute":1e-10,
+  "fixed_voltage_energy_work_absolute_per_volume":1e-8,
+  "wall_fine_relative_width_and_energy":0.01,
+  "wall_fine_profile_RMS":0.01,
+  "wall_last_mesh_relative_change":0.01,
+  "spatial_MMS_P_phi_order_range":[1.6,2.4],
+  "spatial_MMS_E_order_range":[0.7,1.3],
+  "BE_time_order_range":[0.7,1.3],
+  "PE_fine_coercive_difference":0.02,
+  "max_total_DOFs":25000,
+  "max_dt":0.2,
+  "units":"all fields, coordinates, energy, time and coefficients nondimensional; no covert SI scale"
+}

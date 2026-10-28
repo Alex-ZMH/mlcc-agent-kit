@@ -1,0 +1,18 @@
+test_dft_finite_time_is_rejected_before_prepare_and_submit (test_site_runner.SiteRunnerTests.test_dft_finite_time_is_rejected_before_prepare_and_submit) ... ok
+test_dft_submit_forces_explicit_unlimited_time (test_site_runner.SiteRunnerTests.test_dft_submit_forces_explicit_unlimited_time) ... ok
+test_failed_control_command_keeps_raw_error (test_site_runner.SiteRunnerTests.test_failed_control_command_keeps_raw_error) ... ok
+test_failed_transfer_cannot_be_submitted (test_site_runner.SiteRunnerTests.test_failed_transfer_cannot_be_submitted) ... ok
+test_non_dft_time_behavior_is_unchanged (test_site_runner.SiteRunnerTests.test_non_dft_time_behavior_is_unchanged) ... ok
+test_prepare_dft_engines_default_to_and_persist_unlimited_time (test_site_runner.SiteRunnerTests.test_prepare_dft_engines_default_to_and_persist_unlimited_time) ... ok
+test_prepare_preserves_explicit_slurm_account (test_site_runner.SiteRunnerTests.test_prepare_preserves_explicit_slurm_account) ... ok
+test_prepare_resolves_relative_task_directory (test_site_runner.SiteRunnerTests.test_prepare_resolves_relative_task_directory) ... ok
+test_prepare_writes_slurm_script_and_record (test_site_runner.SiteRunnerTests.test_prepare_writes_slurm_script_and_record) ... ok
+test_submit_does_not_duplicate_existing_job (test_site_runner.SiteRunnerTests.test_submit_does_not_duplicate_existing_job) ... ok
+test_submit_preserves_parsable_cluster_suffix_and_uses_numeric_target (test_site_runner.SiteRunnerTests.test_submit_preserves_parsable_cluster_suffix_and_uses_numeric_target) ... ok
+test_submit_requires_saved_result_dependencies_before_sbatch (test_site_runner.SiteRunnerTests.test_submit_requires_saved_result_dependencies_before_sbatch) ... ok
+test_transfer_submit_query_cancel_collect_preserve_commands (test_site_runner.SiteRunnerTests.test_transfer_submit_query_cancel_collect_preserve_commands) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.041s
+
+OK

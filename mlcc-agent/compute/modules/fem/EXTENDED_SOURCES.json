@@ -1,0 +1,31 @@
+{
+  "schema_version": "fem.extended-sources.v1",
+  "sources": [
+    {
+      "source": "experiments/ac_eqs_poc/thermal_core.py",
+      "sha256": "cac7b75f8b6ce194850b44511d5c2de90167a69aca1b2b9cedd3aaa06eddcf49",
+      "target": "device_fem/extended/thermal_core.py",
+      "adaptation": "Package-relative imports; remove suite device wrapper from thermal_core; inject host mesh cap. Weak forms and raw diagnostics retained."
+    },
+    {
+      "source": "experiments/ac_eqs_poc/ac_solver.py",
+      "sha256": "fb897a62a6ddaf9ae3496c77d11fdefe3dd1a9a389e536c03cdb919b486cd7eb",
+      "target": "device_fem/extended/ac_solver.py",
+      "adaptation": "Package-relative imports; remove suite device wrapper from thermal_core; inject host mesh cap. Weak forms and raw diagnostics retained."
+    },
+    {
+      "source": "experiments/electromagnetic_poc/em_solver.py",
+      "sha256": "759434a09fd9c6672cb244930c178f0fbec77fb50c8bcd7a4522b5b2c2392415",
+      "target": "device_fem/extended/em_solver.py",
+      "adaptation": "Package-relative imports; remove suite device wrapper from thermal_core; inject host mesh cap. Weak forms and raw diagnostics retained."
+    },
+    {
+      "source": "experiments/electromagnetic_poc/geometry.py",
+      "sha256": "9259022e2dc721c20014ff53b630f3690b547d55d79f4e19ccac44a42ecab668",
+      "target": "device_fem/extended/em_geometry.py",
+      "adaptation": "Package-relative imports; remove suite device wrapper from thermal_core; inject host mesh cap. Weak forms and raw diagnostics retained."
+    }
+  ],
+  "source_boundary": "Experiments read-only; module owns these copies. No runtime imports or sys.path injection.",
+  "license_status": "Source ownership as prior module; redistribution clearance not_checked"
+}

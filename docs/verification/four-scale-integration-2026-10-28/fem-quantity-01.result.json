@@ -1,0 +1,540 @@
+{
+  "schema_version": "mlcc.result.v1",
+  "task_id": "task-1897b7e073004146be8bad2fe1050fa0",
+  "module": {
+    "id": "fem",
+    "version": "0.4.2",
+    "interface_version": "1.0",
+    "kind": "scientific"
+  },
+  "operation": "electrostatics_2d_quantities",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T06:27:03.779325+00:00",
+    "updated_at": "2026-10-28T06:27:07.698193+00:00",
+    "backend_exit_code": 0,
+    "events": [
+      {
+        "status": "queued",
+        "at": "2026-10-28T06:27:03.779325+00:00"
+      },
+      {
+        "status": "running",
+        "at": "2026-10-28T06:27:03.915601+00:00"
+      },
+      {
+        "status": "succeeded",
+        "at": "2026-10-28T06:27:07.698193+00:00"
+      }
+    ]
+  },
+  "input": {
+    "schema": "schemas/electrostatics.quantities.input.schema.json",
+    "payload": {
+      "schema_version": "fem.electrostatics-quantities-input.v1",
+      "model": "linear_isotropic_lossless_2d",
+      "units": "explicit_quantities",
+      "geometry": {
+        "body_length": {
+          "value": 1.2,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:body_length_m"
+          }
+        },
+        "active_gap_count": 6,
+        "dielectric_gap": {
+          "value": 0.005,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:dielectric_gap_m"
+          }
+        },
+        "electrode_thickness": {
+          "value": 0.002,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:electrode_thickness_m"
+          }
+        },
+        "electrode_overlap": {
+          "value": 0.8,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:electrode_overlap_m"
+          }
+        },
+        "left_margin": {
+          "value": 0.2,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:left_margin_m"
+          }
+        },
+        "right_margin": {
+          "value": 0.2,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:right_margin_m"
+          }
+        },
+        "top_cover": {
+          "value": 0.01,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:top_cover_m"
+          }
+        },
+        "bottom_cover": {
+          "value": 0.01,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:bottom_cover_m"
+          }
+        }
+      },
+      "material": {
+        "relative_permittivity": 1500,
+        "source_reference": "Source example mlcc_2d.yaml; synthetic qualification input, material applicability not_checked"
+      },
+      "potentials": {
+        "terminal_a": {
+          "value": 0.01,
+          "unit": "kV",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:terminal_a_V"
+          }
+        },
+        "terminal_b": {
+          "value": 0.0,
+          "unit": "kV",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:terminal_b_V"
+          }
+        }
+      },
+      "mesh": {
+        "target_size": {
+          "value": 0.005,
+          "unit": "mm",
+          "source": {
+            "kind": "user",
+            "reference": "synthetic normal.json:mesh.target_size"
+          }
+        }
+      },
+      "outputs": {
+        "field_data": true,
+        "field_images": true
+      },
+      "out_of_plane_thickness": {
+        "value": 1.0,
+        "unit": "mm",
+        "source": {
+          "kind": "user",
+          "reference": "synthetic normal.json:out_of_plane_thickness"
+        }
+      }
+    }
+  },
+  "provenance": {
+    "applicability": "Numerical execution of a bounded idealized model; actual material/device applicability not_checked.",
+    "backend": {
+      "name": "DOLFINx",
+      "version": "0.11.0"
+    },
+    "conditions": {
+      "adapter_host": "Linux",
+      "deployment_sha256": "a3e12624b8304427bf0213178cdd63f6661c70440ad6306e3565c73a0a4a347f",
+      "element_degree": 1,
+      "input_normalization": {
+        "canonical_si_artifact": "artifacts/input.canonical-si.json",
+        "core_version": "1.0.0",
+        "original_input_artifact": "artifacts/input.original.json",
+        "report_artifact": "artifacts/unit_normalization.json"
+      },
+      "mpi_ranks": 1,
+      "scientific_host": "native Linux",
+      "scientific_input": {
+        "geometry": {
+          "active_gap_count": 6,
+          "body_length_m": 0.0012,
+          "bottom_cover_m": 1e-05,
+          "dielectric_gap_m": 5e-06,
+          "electrode_overlap_m": 0.0008,
+          "electrode_thickness_m": 2e-06,
+          "left_margin_m": 0.0002,
+          "right_margin_m": 0.0002,
+          "top_cover_m": 1e-05
+        },
+        "material": {
+          "relative_permittivity": 1500.0,
+          "source_reference": "Source example mlcc_2d.yaml; synthetic qualification input, material applicability not_checked"
+        },
+        "mesh": {
+          "target_size_m": 5e-06
+        },
+        "model": "linear_isotropic_lossless_2d",
+        "out_of_plane_thickness_m": 0.001,
+        "outputs": {
+          "field_data": true,
+          "field_images": true
+        },
+        "potentials": {
+          "terminal_a_V": 10.0,
+          "terminal_b_V": 0.0
+        },
+        "schema_version": "fea.electrostatics-input.v1",
+        "units": "SI"
+      }
+    },
+    "evidence_kind": "real_computation",
+    "method": {
+      "name": "2D linear isotropic electrostatics, ideal electrodes, P1 energy capacitance",
+      "version": "0.4.2"
+    },
+    "sources": [
+      {
+        "description": "Extracted geometry, weak form and sign conventions; module-owned implementation.",
+        "kind": "code_provenance",
+        "reference": "modules/fem/SOURCES.json"
+      },
+      {
+        "description": "User-supplied parameter source, not independently verified",
+        "kind": "material_parameter",
+        "reference": "Source example mlcc_2d.yaml; synthetic qualification input, material applicability not_checked"
+      }
+    ],
+    "units": {
+      "body_height_m": "m",
+      "capacitance_energy_per_unit_depth_F_per_m": "F/m",
+      "capacitance_energy_total_F": "F",
+      "capacitance_raw_flux_total_F": "F",
+      "charge_per_unit_depth_C_per_m": "C/m",
+      "charge_total_C": "C",
+      "electric_field_max_V_per_m": "V/m",
+      "energy_per_unit_depth_J_per_m": "J/m",
+      "energy_total_J": "J",
+      "out_of_plane_thickness_m": "m",
+      "outer_displacement_flux_total_C": "C",
+      "potential_max_V": "V",
+      "potential_min_V": "V"
+    }
+  },
+  "results": {
+    "assumptions": [
+      "2D invariant cross section, explicit extruded depth; no finite-width edge correction",
+      "Single linear isotropic lossless dielectric; no external air domain",
+      "Ideal equipotential electrodes removed from dielectric; no metal volume mesh",
+      "Sharp-tip Emax is diagnostic, not a breakdown/safety criterion"
+    ],
+    "body_height_m": 6.400000000000001e-05,
+    "capacitance_energy_per_unit_depth_F_per_m": 1.2893122250166755e-05,
+    "capacitance_energy_total_F": 1.2893122250166755e-08,
+    "capacitance_methods_relative": 0.0037237110177685416,
+    "capacitance_raw_flux_total_F": 1.2845111988790372e-08,
+    "charge_balance_relative": 0.00023952179257693732,
+    "charge_per_unit_depth_C_per_m": {
+      "ELECTRODE_A": 0.00012845111988790372,
+      "ELECTRODE_B": -0.00012848189410149258
+    },
+    "charge_total_C": {
+      "ELECTRODE_A": 1.2845111988790371e-07,
+      "ELECTRODE_B": -1.2848189410149258e-07
+    },
+    "diagnostics_artifact": "artifacts/diagnostics.json",
+    "dof_count": 5354,
+    "electric_field_max_V_per_m": 2603958.753918159,
+    "energy_per_unit_depth_J_per_m": 0.0006446561125083377,
+    "energy_total_J": 6.446561125083377e-07,
+    "field_artifact": "artifacts/fields/fields.vtu",
+    "mesh_artifact": "artifacts/mesh/mesh.msh",
+    "mesh_cells": 7392,
+    "model": "linear_isotropic_lossless_2d",
+    "out_of_plane_thickness_m": 0.001,
+    "outer_displacement_flux_total_C": -4.247833273292972e-12,
+    "potential_max_V": 10.000000000000009,
+    "potential_min_V": 0.0,
+    "schema_version": "fea.electrostatics-output.v1"
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "mesh_semantics",
+          "message": "Nonempty CERAMIC/A/B/outer; exact exterior coverage, no overlaps/internal mislabeled facets.",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_geometry",
+          "message": "Finite coordinates and nondegenerate P1 triangles; shape metrics recorded, shape threshold not assessed.",
+          "status": "passed"
+        },
+        {
+          "id": "linear_solver",
+          "message": "PETSc reason=4; finite assembled residual 2.12599e-21.",
+          "status": "passed"
+        },
+        {
+          "id": "field_finiteness",
+          "message": "Native finite arrays and VTU round-trip; Windows verifies file hashes, typed results and normalization.",
+          "status": "passed"
+        },
+        {
+          "id": "depth_units",
+          "message": "Explicit t and consistent total/per-depth Q/U/C. Model uses full stack; no extra layer multiplier.",
+          "status": "passed"
+        },
+        {
+          "id": "residual_acceptance",
+          "message": "Assembled residual recorded; no approved residual acceptance threshold.",
+          "status": "not_checked"
+        },
+        {
+          "id": "mesh_shape_acceptance",
+          "message": "Minimum normalized triangle shape recorded; no approved quality threshold.",
+          "status": "not_checked"
+        },
+        {
+          "id": "charge_balance",
+          "message": "Measured terminal relative imbalance=0.000239521793; no approved product tolerance.",
+          "status": "not_checked"
+        },
+        {
+          "id": "capacitance_consistency",
+          "message": "Measured raw-flux/energy relative difference=0.00372371102; no approved product tolerance.",
+          "status": "not_checked"
+        },
+        {
+          "id": "mesh_convergence",
+          "message": "A single run does not compare independently refined meshes.",
+          "status": "not_checked"
+        },
+        {
+          "id": "analytic_reference",
+          "message": "Analytical qualification is separate harness evidence, not automatically attached to this run.",
+          "status": "not_checked"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "model_applicability",
+          "message": "No scientific owner sign-off on actual device/use conditions.",
+          "status": "not_checked"
+        },
+        {
+          "id": "material_provenance",
+          "message": "Parameter source retained; material validity at operating conditions is not independently verified.",
+          "status": "not_checked"
+        },
+        {
+          "id": "independent_device_reference",
+          "message": "No measured device reference supplied.",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "Idealized 2D electrostatics only; scientific applicability remains not_checked."
+  ],
+  "limitations": [
+    "Linear isotropic lossless 2D ideal-electrode model; no AC, leakage, breakdown, nonlinear dielectric or multiphysics.",
+    "Explicit extruded depth; no finite-width edge correction or external air domain.",
+    "Sharp-tip Emax is diagnostic, not breakdown/safety evidence.",
+    "Single run does not establish mesh convergence or material/device applicability.",
+    "Host deployment configuration is not frozen in the current public queued snapshot; keep host binding fixed from submit to worker."
+  ],
+  "artifacts": [
+    {
+      "description": "Native scientific evidence: diagnostics.json",
+      "media_type": "application/json",
+      "path": "artifacts/diagnostics.json",
+      "size_bytes": 1496,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: fields.vtu",
+      "media_type": "application/xml",
+      "path": "artifacts/fields/fields.vtu",
+      "size_bytes": 230333,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: manifest.json",
+      "media_type": "application/json",
+      "path": "artifacts/fields/manifest.json",
+      "size_bytes": 400,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_field_magnitude.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_field_magnitude.png",
+      "size_bytes": 33101,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_field_magnitude_detail.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_field_magnitude_detail.png",
+      "size_bytes": 38733,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_potential.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_potential.png",
+      "size_bytes": 93395,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_potential_detail.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_potential_detail.png",
+      "size_bytes": 261601,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: input.canonical-si.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 704,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: input.normalized.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.normalized.json",
+      "size_bytes": 704,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: input.original.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 1977,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: mesh.msh",
+      "media_type": "application/vnd.gmsh",
+      "path": "artifacts/mesh/mesh.msh",
+      "size_bytes": 413257,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: mesh_report.json",
+      "media_type": "application/json",
+      "path": "artifacts/mesh/mesh_report.json",
+      "size_bytes": 1014,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: semantic_regions.json",
+      "media_type": "application/json",
+      "path": "artifacts/mesh/semantic_regions.json",
+      "size_bytes": 282,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: method_environment.json",
+      "media_type": "application/json",
+      "path": "artifacts/method_environment.json",
+      "size_bytes": 370,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: metrics.json",
+      "media_type": "application/json",
+      "path": "artifacts/metrics.json",
+      "size_bytes": 1441,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: scientific_core.json",
+      "media_type": "application/json",
+      "path": "artifacts/scientific_core.json",
+      "size_bytes": 779,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: unit_normalization.json",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 8488,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Deterministic checks with unassessed items explicitly not_checked",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 2099,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Windows-verified native evidence hashes",
+      "media_type": "application/json",
+      "path": "artifacts/artifact_hashes.json",
+      "size_bytes": 1791,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 1055,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 1084,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 7354,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "text/plain",
+      "path": "artifacts/native/stdout.log",
+      "size_bytes": 1957,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "path": "logs/adapter.stdout.json",
+      "media_type": "application/json",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 9949,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stderr.log",
+      "media_type": "text/plain",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 0,
+      "evidence_kind": "none"
+    }
+  ]
+}

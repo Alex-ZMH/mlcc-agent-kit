@@ -1,0 +1,563 @@
+{
+  "schema_version": "rve.sources.v1",
+  "migration_date": "2026-10-23",
+  "files": [
+    {
+      "source": "experiments/rve_poc/microstructure.py",
+      "source_version": "V0.1",
+      "source_sha256": "ab3fddae934a55457cd73c380c90d7905b7e3e96b1c9be5067c06275667884e1",
+      "destination": "rve_module/kernel2d/microstructure.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "f9bd056024dec947b89058ea4219efcc3403c21fd6b4269b41f7fa9dfd65145a"
+    },
+    {
+      "source": "experiments/rve_poc/rve_mesh.py",
+      "source_version": "V0.1",
+      "source_sha256": "6861d037213808c7ba0072e75506dc753ce219a962252c4a66b7078881169948",
+      "destination": "rve_module/kernel2d/rve_mesh.py",
+      "changes": "relative imports; explicit host max_cells enforced immediately after Gmsh generation before DOLFINx import; source scientific algorithm unchanged",
+      "destination_sha256": "3844672bf2bf6fe23259d671c1b0b1a6c6be9db6c640ab6bad26acba9c324e47"
+    },
+    {
+      "source": "experiments/rve_poc/physics.py",
+      "source_version": "V0.1",
+      "source_sha256": "0d7e7877a99d53ff6061897e396bbeccdad23d51a40508079fdbd59db4a39efb",
+      "destination": "rve_module/kernel2d/physics.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "d2520be4690395c5a989330feb2f972e723642df9c097dfe7f548bf006058e5f"
+    },
+    {
+      "source": "experiments/rve_poc/homogenization.py",
+      "source_version": "V0.1",
+      "source_sha256": "3db97360348228b598f153130eb3dfe7c1b482535cf085362532841276bff987",
+      "destination": "rve_module/kernel2d/homogenization.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "6bfc441cd1b361b92ccf7ede6a55fb5f03d58512fbc78542cd23a10ef0595a87"
+    },
+    {
+      "source": "experiments/rve_poc/fem_common.py",
+      "source_version": "V0.1",
+      "source_sha256": "627ca760450b69e5b0a696fe68d7af9350d7c02997515c0474fadb4f2ad13e93",
+      "destination": "rve_module/kernel2d/fem_common.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "e0aaea4ed07c2a70f2e37406378d91f2cafee206c93ee4f6404ca2d4ec12e379"
+    },
+    {
+      "source": "experiments/rve_poc/verify.py",
+      "source_version": "V0.1",
+      "source_sha256": "52c326683973677bf9d078ba91ae77aa07ab080829d8f58d54a09d8f6e743b17",
+      "destination": "rve_module/kernel2d/verify.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "93f15ffd2e28daeda18e122fb2f25eddf0e2196926db9e25b460c88578e78c1a"
+    },
+    {
+      "source": "experiments/rve_poc/configs/validation_protocol.json",
+      "source_sha256": "42eede1738b5e3ecb238964872fa675bfde4c1e192a8252c16de5bd2d5388203",
+      "destination": "protocols/validation_protocol.json",
+      "changes": "unchanged tolerance source",
+      "destination_sha256": "42eede1738b5e3ecb238964872fa675bfde4c1e192a8252c16de5bd2d5388203"
+    },
+    {
+      "source": "experiments/rve_3d_poc/microstructure.py",
+      "source_version": "V0.2",
+      "source_sha256": "59c8d791996ae59eeb0e533468871ce9bf98de95d895b500b3bbbdd695558396",
+      "destination": "rve_module/kernel3d/microstructure.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "4dbaf74efb66a86e0fd6c3f3196d4fbecd60c095da299194901606f47639fd3c"
+    },
+    {
+      "source": "experiments/rve_3d_poc/rve_mesh.py",
+      "source_version": "V0.2",
+      "source_sha256": "8ac5b4f5c5045a490549dbd44d57291484b7573a32c1a6ec136748f7e185d7f3",
+      "destination": "rve_module/kernel3d/rve_mesh.py",
+      "changes": "relative imports; explicit host max_cells enforced immediately after Gmsh generation before DOLFINx import; source scientific algorithm unchanged",
+      "destination_sha256": "ad40e22354099e1ba03d346b6c8573f9e33bab483db6035aedbe62330e50d3f4"
+    },
+    {
+      "source": "experiments/rve_3d_poc/physics.py",
+      "source_version": "V0.2",
+      "source_sha256": "f775ffb8223615f6118e9acb95ef1e76aa7a480da5abbb3aec03c5e0bd941b93",
+      "destination": "rve_module/kernel3d/physics.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "289018478fcacf8653b89f48d223e3e14d7b762a28fd1c9ac236036411223f34"
+    },
+    {
+      "source": "experiments/rve_3d_poc/homogenization.py",
+      "source_version": "V0.2",
+      "source_sha256": "36e06fa67eedaf36b7e64952af4f9ff3a2254a2bb2161bc38a9a9605a49f004f",
+      "destination": "rve_module/kernel3d/homogenization.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "86d00f83e2493bcf9dbe81939742f24795eb79c22990244d7ac45f98e995ba75"
+    },
+    {
+      "source": "experiments/rve_3d_poc/fem_common.py",
+      "source_version": "V0.2",
+      "source_sha256": "a014b02485ae033af01d965d5fd9fcb49e23c56e6cf548d7866885576a1b5e5c",
+      "destination": "rve_module/kernel3d/fem_common.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "3756f6a72fca485046065a683fedfd5a65b79aeeae816ea3d051cae714d9b452"
+    },
+    {
+      "source": "experiments/rve_3d_poc/verify.py",
+      "source_version": "V0.2",
+      "source_sha256": "6ca457f6398c330a71fa98001cfbbf9022fa443f98b513c76220612d85ea3524",
+      "destination": "rve_module/kernel3d/verify.py",
+      "changes": "package-relative imports; explicit physical lengths; runtime runner supplies explicit materials; later module patches recorded in source inventory",
+      "destination_sha256": "7ef228bdd659ab41481ed91bdd2f307e9d0562d484ce190e12bb64ec400cf512"
+    },
+    {
+      "source": "experiments/rve_3d_poc/configs/numerical_protocol.json",
+      "source_sha256": "e9c4038e5d7dfd881f551241a239d95d7ba1c087b6c38d3d3ca9f7b84dfc13b3",
+      "destination": "protocols/numerical_protocol.json",
+      "changes": "unchanged tolerance source",
+      "destination_sha256": "e9c4038e5d7dfd881f551241a239d95d7ba1c087b6c38d3d3ca9f7b84dfc13b3"
+    },
+    {
+      "source": "modules/fem/device_fem/common.py",
+      "source_sha256": "f755fb53931e881bfaecd173ef3168179fc7ca24d94c6d9e9796b9c3b9aa26ae",
+      "destination": "rve_module/common.py",
+      "changes": "module-owned stdlib contract utility; dynamic object validation and maxLength tightened subsequently",
+      "destination_sha256": "d26a34cac5e19bb876e1979b4d102a2106f7defd3b61104b0740d4120cfc238c"
+    }
+  ],
+  "read_only_review": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "d4a93c5ce672aefea474d22306130b5a4ffd840cf89f53fff20fd20bd6ccb470",
+      "bytes": 1554
+    },
+    {
+      "path": "README.md",
+      "sha256": "96264692c354a9e77392f7f6d4a5457da776a6fb7f708127c4a1382aa6572510",
+      "bytes": 5973
+    },
+    {
+      "path": "docs/architecture.md",
+      "sha256": "8770621cd10a6a0ea61738cfdc3280bfdc2ca005a6b0de22231ac5470591d3a8",
+      "bytes": 8396
+    },
+    {
+      "path": "docs/development.md",
+      "sha256": "0f0738a302da03deb6722d905f297dbf3c661241bf376ee807b16c1c73fe5e3f",
+      "bytes": 5987
+    },
+    {
+      "path": "docs/llm-host.md",
+      "sha256": "7a5a382a94045f1a34084971d0f48fbc39a2c8a996c71e034557defff0bbc622",
+      "bytes": 9394
+    },
+    {
+      "path": "docs/protocol.md",
+      "sha256": "18fb98f8370458c1b1d439bb31f574073a30708bf2735d35d7c429e3ae501cd1",
+      "bytes": 12416
+    },
+    {
+      "path": "docs/rve-development-prompt.md",
+      "sha256": "0b7e78a67fbeaaa17c43c619762611f70844501b201f0d74e6ec00ffc502493e",
+      "bytes": 20603
+    },
+    {
+      "path": "docs/units-contract.md",
+      "sha256": "d7ded102c886d606e2b9862fec7efcf5a594c6c79669a9557d81be8d0b620d55",
+      "bytes": 11885
+    },
+    {
+      "path": "docs/units-handoff.md",
+      "sha256": "571a16184f233518f22db6980eaf0c578de0521644348463ce5ad3061ab2dfeb",
+      "bytes": 9010
+    },
+    {
+      "path": "docs/v1-scope.md",
+      "sha256": "47a0377ecd47e98f02e824b2a166506b6baa5b5ba491581b3392cb808c574faf",
+      "bytes": 6849
+    },
+    {
+      "path": "experiments/rve_3d_poc/README.md",
+      "sha256": "7c34e155114e1f2bca80663bcfbc223589c2345e450350a14ed5d7d6d00945f7",
+      "bytes": 8169
+    },
+    {
+      "path": "experiments/rve_3d_poc/cases.py",
+      "sha256": "dd069ddac57b4302175834a910117865e4aae9b93aea8d97541663d11bb36f30",
+      "bytes": 1885
+    },
+    {
+      "path": "experiments/rve_3d_poc/configs/effective-property-3d.schema.json",
+      "sha256": "8522ded4557710a7534a381e5a64458abe87937b1b367ff599783adacbf22176",
+      "bytes": 1122
+    },
+    {
+      "path": "experiments/rve_3d_poc/configs/numerical_protocol.json",
+      "sha256": "e9c4038e5d7dfd881f551241a239d95d7ba1c087b6c38d3d3ca9f7b84dfc13b3",
+      "bytes": 737
+    },
+    {
+      "path": "experiments/rve_3d_poc/configs/sphere_example.json",
+      "sha256": "ecc786c7db4a0e1841b6f27aafc2cdeb2e193813f2be2f2fb01e2fc5455aa803",
+      "bytes": 82
+    },
+    {
+      "path": "experiments/rve_3d_poc/fem_common.py",
+      "sha256": "a014b02485ae033af01d965d5fd9fcb49e23c56e6cf548d7866885576a1b5e5c",
+      "bytes": 3741
+    },
+    {
+      "path": "experiments/rve_3d_poc/homogenization.py",
+      "sha256": "36e06fa67eedaf36b7e64952af4f9ff3a2254a2bb2161bc38a9a9605a49f004f",
+      "bytes": 2821
+    },
+    {
+      "path": "experiments/rve_3d_poc/microstructure.py",
+      "sha256": "59c8d791996ae59eeb0e533468871ce9bf98de95d895b500b3bbbdd695558396",
+      "bytes": 8460
+    },
+    {
+      "path": "experiments/rve_3d_poc/physics.py",
+      "sha256": "f775ffb8223615f6118e9acb95ef1e76aa7a480da5abbb3aec03c5e0bd941b93",
+      "bytes": 13522
+    },
+    {
+      "path": "experiments/rve_3d_poc/reports/00_2d_baseline_and_3d_architecture.md",
+      "sha256": "810d31d1ef406c169303cb89f166c9a4f1017076eeaffe738bc07db8f4875f88",
+      "bytes": 3102
+    },
+    {
+      "path": "experiments/rve_3d_poc/reports/02_3d_periodic_constraints.md",
+      "sha256": "4c76a2b544e9e50c8c1c7e66bc2ef64b9b710119c615d4967d976537f8f1318e",
+      "bytes": 2530
+    },
+    {
+      "path": "experiments/rve_3d_poc/reports/07_final_closeout.md",
+      "sha256": "535d0f926abd610af965c778913413cff06c34f98d8714ea622ec6970dd8335f",
+      "bytes": 5911
+    },
+    {
+      "path": "experiments/rve_3d_poc/results/acceptance.json",
+      "sha256": "47068cd421024cf6fc07a50d1033f0893141e5f9b58a682085d00f0c42cd0494",
+      "bytes": 25765
+    },
+    {
+      "path": "experiments/rve_3d_poc/results/accepted_readback.json",
+      "sha256": "c31780783e0ce4a534f6603ba3f65a2d50948f8367b80abd551fa4ce40b7216f",
+      "bytes": 149501
+    },
+    {
+      "path": "experiments/rve_3d_poc/results/accepted_runs.json",
+      "sha256": "6e6ad8b3b5c4a21bd4cffb9dd76088b239ee46c2a28049b86c25f7966f4e9965",
+      "bytes": 2538
+    },
+    {
+      "path": "experiments/rve_3d_poc/results/delivery_checks.json",
+      "sha256": "1ebd9967656f8cba3a65c446c2def5cbfa767377f65d488f62ad18f8f5334814",
+      "bytes": 133882
+    },
+    {
+      "path": "experiments/rve_3d_poc/results/regression2d_comparison.json",
+      "sha256": "fd1f65a09e6e723babbb1a13c98d4c2e16ff0e93ec5d12d39610edb4e7d2eb55",
+      "bytes": 15808
+    },
+    {
+      "path": "experiments/rve_3d_poc/run_case.py",
+      "sha256": "99a82534bf7c47afe3faa89e7b5390a3e07a6d4d0c35351ecde595deae06f857",
+      "bytes": 1052
+    },
+    {
+      "path": "experiments/rve_3d_poc/rve_mesh.py",
+      "sha256": "8ac5b4f5c5045a490549dbd44d57291484b7573a32c1a6ec136748f7e185d7f3",
+      "bytes": 10082
+    },
+    {
+      "path": "experiments/rve_3d_poc/tests/test_3d.py",
+      "sha256": "0ec474494e09fb866a49394146705dcc68818c335632708bb808f1d9180b366f",
+      "bytes": 3113
+    },
+    {
+      "path": "experiments/rve_3d_poc/verify.py",
+      "sha256": "6ca457f6398c330a71fa98001cfbbf9022fa443f98b513c76220612d85ea3524",
+      "bytes": 4746
+    },
+    {
+      "path": "experiments/rve_poc/README.md",
+      "sha256": "8c114c9dae7c87614cfe83983c42eea0c27d5ac933d72c254bdec044b9f34755",
+      "bytes": 10015
+    },
+    {
+      "path": "experiments/rve_poc/cases.py",
+      "sha256": "a4975386b8fd27a90a8d2f28ac7b50ab8d263de8ba2ab29166367106988f95f9",
+      "bytes": 2146
+    },
+    {
+      "path": "experiments/rve_poc/configs/effective-property.schema.json",
+      "sha256": "d13118d60bb3836a5adcb79410ca7f9920e858566a9e464d9d4fdc5e25be0037",
+      "bytes": 1475
+    },
+    {
+      "path": "experiments/rve_poc/configs/polycrystal_example.json",
+      "sha256": "3825c4288faf63c80ec5b696c6819be78810a22dec34fc066f425b210f3c5fec",
+      "bytes": 322
+    },
+    {
+      "path": "experiments/rve_poc/configs/validation_protocol.json",
+      "sha256": "42eede1738b5e3ecb238964872fa675bfde4c1e192a8252c16de5bd2d5388203",
+      "bytes": 747
+    },
+    {
+      "path": "experiments/rve_poc/fem_common.py",
+      "sha256": "627ca760450b69e5b0a696fe68d7af9350d7c02997515c0474fadb4f2ad13e93",
+      "bytes": 3679
+    },
+    {
+      "path": "experiments/rve_poc/homogenization.py",
+      "sha256": "3db97360348228b598f153130eb3dfe7c1b482535cf085362532841276bff987",
+      "bytes": 2752
+    },
+    {
+      "path": "experiments/rve_poc/microstructure.py",
+      "sha256": "ab3fddae934a55457cd73c380c90d7905b7e3e96b1c9be5067c06275667884e1",
+      "bytes": 6867
+    },
+    {
+      "path": "experiments/rve_poc/physics.py",
+      "sha256": "0d7e7877a99d53ff6061897e396bbeccdad23d51a40508079fdbd59db4a39efb",
+      "bytes": 12472
+    },
+    {
+      "path": "experiments/rve_poc/reports/00_existing_modules_and_rve_architecture.md",
+      "sha256": "b70dc5a6281388a3a563ebbdb61d4dba5ea4c0792a3f0c0f30ede0f984a62685",
+      "bytes": 3058
+    },
+    {
+      "path": "experiments/rve_poc/reports/02_periodic_bc_and_homogenization.md",
+      "sha256": "8286e46d67189a85b04f6a173f0220c4b5fac5889d9b191a47e944292ae95153",
+      "bytes": 4253
+    },
+    {
+      "path": "experiments/rve_poc/reports/06_integration_interface_proposal.md",
+      "sha256": "6b79c40fc34048ea486e9646a96a3bb0cfde93f381ac50dc85aace01dc714d7d",
+      "bytes": 2681
+    },
+    {
+      "path": "experiments/rve_poc/reports/07_final_closeout.md",
+      "sha256": "f08fa875ff0a3759e44ac0ebc58b31eb1148746ce308062d4f5f2e15ddf4d977",
+      "bytes": 7866
+    },
+    {
+      "path": "experiments/rve_poc/results/acceptance.json",
+      "sha256": "9e19ee81aa380c2c373de7ba739f6b3eca01d1b7eb530cf5d6b88760dfae973f",
+      "bytes": 7973
+    },
+    {
+      "path": "experiments/rve_poc/results/capabilities.json",
+      "sha256": "e2c2e5635d4e9821396230f18d300d339175aeb1b089ab47df1c19c2ea1f91ca",
+      "bytes": 1724
+    },
+    {
+      "path": "experiments/rve_poc/results/delivery_qa.json",
+      "sha256": "929728de3115c3afcd639e3d6fbb6049393e2c35934e146589b10dd2128eb410",
+      "bytes": 840
+    },
+    {
+      "path": "experiments/rve_poc/run_case.py",
+      "sha256": "050519182edad30515b5676487a6fbaaddbb9aebbb4ead78220bd1b8a256f536",
+      "bytes": 1333
+    },
+    {
+      "path": "experiments/rve_poc/rve_mesh.py",
+      "sha256": "6861d037213808c7ba0072e75506dc753ce219a962252c4a66b7078881169948",
+      "bytes": 6618
+    },
+    {
+      "path": "experiments/rve_poc/tests/test_rve.py",
+      "sha256": "5673cc1cc1e80c66f186ed6e43d5366e50f205bd8d219094a7588b47ea36666f",
+      "bytes": 3403
+    },
+    {
+      "path": "experiments/rve_poc/verify.py",
+      "sha256": "52c326683973677bf9d078ba91ae77aa07ab080829d8f58d54a09d8f6e743b17",
+      "bytes": 6471
+    },
+    {
+      "path": "mlcc/units.py",
+      "sha256": "25dcca70dba5841a8cd9aa82ad5457a43f89c6e83203504811676b8d28d81ea7",
+      "bytes": 21072
+    },
+    {
+      "path": "modules/fem/EXTENDED_GUIDE.md",
+      "sha256": "c4b4928bbeb61b606b33159e28a0892f88c5fa19046dab21def67f1fb2fd4c9f",
+      "bytes": 7731
+    },
+    {
+      "path": "modules/fem/EXTENDED_UNITS_ACCEPTANCE.md",
+      "sha256": "e94304996ce50de62d6508555dc6d62c16500d93b1478134e24703a908dd9e0b",
+      "bytes": 5357
+    },
+    {
+      "path": "modules/fem/EXTENDED_UNITS_HANDOFF.md",
+      "sha256": "98fc382430e263b56d9ec5df1c92634aa289ce74d4d1dfec49307bfd91fa6238",
+      "bytes": 3409
+    },
+    {
+      "path": "modules/fem/adapter.py",
+      "sha256": "e9e498cfcd8e947034c11b4e9f91c1b84dc5ab63f7f22b3fdb7bfa9f96256791",
+      "bytes": 767
+    },
+    {
+      "path": "modules/fem/deployment/example.json",
+      "sha256": "830419f0c761333664db4cc4e266e7ae80e9cd0571e7f5d05d2cece18fd6f61e",
+      "bytes": 362
+    },
+    {
+      "path": "modules/fem/device_fem/extended_quantity_input.py",
+      "sha256": "9463439c5498358a651e49d18b9d8bac2900c20c76e0f82518f545d798743f7c",
+      "bytes": 8363
+    },
+    {
+      "path": "modules/fem/device_fem/quantity_input.py",
+      "sha256": "c12fdf5496c098bd7d1181acb17ad89ae82a35425113fc3ea8e5924958af2118",
+      "bytes": 5352
+    },
+    {
+      "path": "modules/fem/examples/electrothermal-quantities.json",
+      "sha256": "39637cb4ebd2c4b7d0b7cdc9c4f189001ce2567178c352703eff2e9d6ed7abde",
+      "bytes": 5605
+    },
+    {
+      "path": "modules/fem/module.json",
+      "sha256": "743de254d15599ada14eb25730adb107680365f66048fec19b7336bfa47a36a0",
+      "bytes": 8327
+    },
+    {
+      "path": "modules/fem/science_entry.py",
+      "sha256": "03fa0ae6ce037cea6ddc075b0addf345ec014c936115ead55eebcc202077dd06",
+      "bytes": 6170
+    },
+    {
+      "path": "modules/fem/skills/linear-electrostatics/SKILL.md",
+      "sha256": "8dd7ce12d46cc3aad5be148f44b218405b515da3ba3ecb330520bd9c3f048a7c",
+      "bytes": 5589
+    },
+    {
+      "path": "modules/fem/tests/test_units.py",
+      "sha256": "5aa3d499045f3911d247bc54f08b04573b76d9c751bbffcd736c5758984331ad",
+      "bytes": 9679
+    },
+    {
+      "path": "modules/phase_field/ACCEPTANCE.md",
+      "sha256": "63ff71f5215ef737328d814863c88f41dfe2652338e329f2b3211fbe5fa43d4b",
+      "bytes": 7335
+    },
+    {
+      "path": "modules/phase_field/LLM_ACCEPTANCE.md",
+      "sha256": "b727ed536cb580cfa2521a0606664a47d7c7557586a3fc4f173dee1791e91804",
+      "bytes": 2296
+    },
+    {
+      "path": "modules/phase_field/MAIN_HANDOFF.md",
+      "sha256": "9342c91d39171367c95d2785de86755c8ed3bb3d48049d12df9a06be72968a6b",
+      "bytes": 1778
+    },
+    {
+      "path": "modules/phase_field/UNITS_DESIGN.md",
+      "sha256": "5185228972457397fb91ca0df4cabc3664a0606eafbfc59a28db2a19a76fbb75",
+      "bytes": 3621
+    },
+    {
+      "path": "modules/phase_field/UNITS_HANDOFF.md",
+      "sha256": "49924e5617d2ac55cd09922987c51882134c58e35de05ca1fc69ebc60935f674",
+      "bytes": 1720
+    },
+    {
+      "path": "modules/phase_field/adapter.py",
+      "sha256": "5c69e8eacc19b56e93e6e2f2c54dc9a531984e83c7f88615287e12fa53d4849c",
+      "bytes": 589
+    },
+    {
+      "path": "modules/phase_field/deployment/example.json",
+      "sha256": "12e95188824c5e8c24ae8b85a5eb39f0979db9928b558f822a84871cecd5572b",
+      "bytes": 439
+    },
+    {
+      "path": "modules/phase_field/examples/units_nd_2d.json",
+      "sha256": "76ee9cbd2fd4ec6d54e7e7777f18b96c82adfcf4f914a60d89c5d537565bbaa2",
+      "bytes": 530
+    },
+    {
+      "path": "modules/phase_field/module.json",
+      "sha256": "dc94c31aa8dda6f0d9ef16007fd44f9d7446943e2f73f8972b44df5d4be2804b",
+      "bytes": 4167
+    },
+    {
+      "path": "modules/phase_field/phasefield/adapter_api.py",
+      "sha256": "2c7f0a726004b63cab0d5a06877a075f2fbb40e7397e2cd5d8f7bc144e352b4b",
+      "bytes": 13566
+    },
+    {
+      "path": "modules/phase_field/phasefield/deployment.py",
+      "sha256": "6a27acf849f3122a7c0a08b8df7750453dd7e7c9b4271cb8f31ad0251dfd4f61",
+      "bytes": 8388
+    },
+    {
+      "path": "modules/phase_field/phasefield/si_input.py",
+      "sha256": "ad73c0654a3ca4c4bb7a1705e4de174b308ae03aad35ae680bfced4a0a675592",
+      "bytes": 5391
+    },
+    {
+      "path": "modules/phase_field/science_entry.py",
+      "sha256": "dcb54f07466d1df71a9d7e0a259925b43483e09952009abc276d8bca74385e71",
+      "bytes": 1287
+    },
+    {
+      "path": "modules/phase_field/skills/mlcc-scalar-ferroelectric/SKILL.md",
+      "sha256": "e049659a6e594b59646315d617ceb737e4acafd79616b1869464cb61a58b1538",
+      "bytes": 5911
+    },
+    {
+      "path": "modules/phase_field/tests/test_units_input.py",
+      "sha256": "a8be170fd9376f498e3961fa7a5a5c1643f8cc06d415c910640bb91ef6cf0b89",
+      "bytes": 5712
+    }
+  ],
+  "module_runtime_hashes": {
+    "adapter.py": "ad504893b2b4e6aed298994c15b085434180eca5ac8f754925940c4444dd82a5",
+    "science_entry.py": "d497001b932b12846bbfe5b629ec5677f4c2fca08789fcd46efb119622195695",
+    "module.json": "726cef89f35caa0d29bb74b38cc2f909e720ef6ccae36c2d9d44de8a45f4623a",
+    "rve_module/__init__.py": "9c1e2f4e04d2fe130f2b50d277b89e3be34854245e659c4c99e0e92f2f4e9d54",
+    "rve_module/adapter_api.py": "c738de2bb082956b913ae583573420ef5cd5592c55a45238a61fe350df1e6b02",
+    "rve_module/common.py": "d26a34cac5e19bb876e1979b4d102a2106f7defd3b61104b0740d4120cfc238c",
+    "rve_module/contract.py": "5b4de124e2162e0657c5af7f93853bb729b6a118741c9e16654efb7fb8c1f0f3",
+    "rve_module/deployment.py": "bea83c22ade77c2e28347bc29f531063edb7826076ba1368c020dc6ec507b4ac",
+    "rve_module/kernel2d/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rve_module/kernel2d/fem_common.py": "e0aaea4ed07c2a70f2e37406378d91f2cafee206c93ee4f6404ca2d4ec12e379",
+    "rve_module/kernel2d/homogenization.py": "6bfc441cd1b361b92ccf7ede6a55fb5f03d58512fbc78542cd23a10ef0595a87",
+    "rve_module/kernel2d/microstructure.py": "f9bd056024dec947b89058ea4219efcc3403c21fd6b4269b41f7fa9dfd65145a",
+    "rve_module/kernel2d/physics.py": "d2520be4690395c5a989330feb2f972e723642df9c097dfe7f548bf006058e5f",
+    "rve_module/kernel2d/rve_mesh.py": "3844672bf2bf6fe23259d671c1b0b1a6c6be9db6c640ab6bad26acba9c324e47",
+    "rve_module/kernel2d/verify.py": "93f15ffd2e28daeda18e122fb2f25eddf0e2196926db9e25b460c88578e78c1a",
+    "rve_module/kernel3d/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "rve_module/kernel3d/fem_common.py": "3756f6a72fca485046065a683fedfd5a65b79aeeae816ea3d051cae714d9b452",
+    "rve_module/kernel3d/homogenization.py": "86d00f83e2493bcf9dbe81939742f24795eb79c22990244d7ac45f98e995ba75",
+    "rve_module/kernel3d/microstructure.py": "4dbaf74efb66a86e0fd6c3f3196d4fbecd60c095da299194901606f47639fd3c",
+    "rve_module/kernel3d/physics.py": "289018478fcacf8653b89f48d223e3e14d7b762a28fd1c9ac236036411223f34",
+    "rve_module/kernel3d/rve_mesh.py": "ad40e22354099e1ba03d346b6c8573f9e33bab483db6035aedbe62330e50d3f4",
+    "rve_module/kernel3d/verify.py": "7ef228bdd659ab41481ed91bdd2f307e9d0562d484ce190e12bb64ec400cf512",
+    "rve_module/science.py": "2917ef271a28dbc3e419307300641b9374dcdaaa5a98fe7d138ccee183aa502d",
+    "schemas/effective-material-2d-electrostatics.schema.json": "aeecfa17848827f156fdd1995d29378ab1e00c3e681f5e83d2db57f6092a9472",
+    "schemas/effective-material-2d-thermal.schema.json": "80c86094f5f0e0ac4267cdfa5df9189db89e2bdf0dc76c3693874a38063669a1",
+    "schemas/effective-material-3d-electrostatics.schema.json": "33dc181527d9a829a6ac41e50b9a10086f664371f824b95764016958606f78aa",
+    "schemas/effective-material-3d-thermal.schema.json": "5a7a22a02d2f48d431bfad9df0641fe710e9a635cdc830f96592886545f2c7f0",
+    "schemas/homogenize_electrostatics_2d.input.schema.json": "1330311ff6ffa8fa5115984ec6db63e59d8c5016e1cbebdc7f941493a61d9dfe",
+    "schemas/homogenize_electrostatics_2d.output.schema.json": "736b33db1c8a432e89e06ee294e85dcea9cb8235b7c835af5046c3e043582c29",
+    "schemas/homogenize_electrostatics_3d.input.schema.json": "b41f0fed0b2cf0e9bd594055a43bf5f975eace29c367e824be4f5a83c1539bc4",
+    "schemas/homogenize_electrostatics_3d.output.schema.json": "e7210b5a46b88421a4d9f4d68a8f6ef79957cdfdbddc5795b3dafd1fe1e4dfb9",
+    "schemas/homogenize_thermal_2d.input.schema.json": "13843741c3dcb49338bd87bb00bdeccc673520a38ae6c1c6d2072eda5812322f",
+    "schemas/homogenize_thermal_2d.output.schema.json": "9869a7b99cc083251c3646018e551077bbb6e4902d03707653c8908f14749483",
+    "schemas/homogenize_thermal_3d.input.schema.json": "7979ba9cab0c53a5b985efac2b36f080daf680669899c9d0fbe96880c36787d6",
+    "schemas/homogenize_thermal_3d.output.schema.json": "2701b43173bfaf2624e470a38c7c55fbc257693bc2c9174b20faab291c5fd8e6"
+  },
+  "post_migration_changes": [
+    "Windows strict canonical source/unit catalog validation and overflow-safe SPD",
+    "Explicit region/material-source association in effective_material.json",
+    "Task-scoped artifact directory, native completion PID marker",
+    "Runtime hashes added after initial ten-task qualification; final tensor/cavity probes identify final revision separately"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "fem.deployment.native.v1",
+  "transport": "native_linux",
+  "profile": "device_extended_v1",
+  "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+  "linux_root": "/home/v100/projects/mlcc-runtime/releases/REPLACE_WITH_TEMP_RELEASE",
+  "timeout_seconds": 240,
+  "threads": 1,
+  "max_cells": 150000
+}

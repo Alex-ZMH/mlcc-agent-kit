@@ -1,0 +1,168 @@
+{
+  "date": "2026-10-28",
+  "candidate_version": "0.58.0",
+  "scope": "Four independent scales; no cross-scale transfer and no DFT/MD unit changes",
+  "source_import_files": 351,
+  "registered_operations": 26,
+  "tests": {
+    "new_integration": {
+      "passed": 14
+    },
+    "existing_site_runner": {
+      "passed": 13
+    },
+    "source_public_framework": {
+      "passed": 119
+    },
+    "full_atomistic_regression": "not_checked_missing_local_dependencies"
+  },
+  "bundle_validation": {
+    "manifest": true,
+    "baseline_errors": 57,
+    "current_errors": 57,
+    "unchanged_harness_errors": true
+  },
+  "cases": [
+    {
+      "task_id": "fem-quantity-01",
+      "module_id": "fem",
+      "operation": "electrostatics_2d_quantities",
+      "scheduler_job_id": "673",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 25,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "c9ced846b77c07ce06abaccd33bce2c34f88a28ee3b4e41a71309fd8acd687da",
+      "source_manifest_sha256": "b79ddcd6723466c376a69f81fe51155477586fa4acb49e675edcbf56c58c9664"
+    },
+    {
+      "task_id": "phase-vector-si-01",
+      "module_id": "phase_field",
+      "operation": "vector_evolve_si",
+      "scheduler_job_id": "677",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 34,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "b79ddcd6723466c376a69f81fe51155477586fa4acb49e675edcbf56c58c9664"
+    },
+    {
+      "task_id": "rve-electrostatics-01",
+      "module_id": "rve",
+      "operation": "homogenize_electrostatics_2d",
+      "scheduler_job_id": "675",
+      "scheduler_state": "FAILED",
+      "exit_code": "1:0",
+      "execution_status": "failed",
+      "evidence_kind": "none",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 5,
+      "native_started": false,
+      "errors": [
+        {
+          "code": "ADAPTER_ERROR",
+          "message": "[Errno 2] No such file or directory: '/home/v100/projects/mlcc/zhaoxiang/four-scale-integration-20261028/tasks/rve-electrostatics-01/payload/modules/rve/SOURCES.json'"
+        }
+      ],
+      "read_only_replay": "passed",
+      "continuation_action": "review_original_error",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "b79ddcd6723466c376a69f81fe51155477586fa4acb49e675edcbf56c58c9664"
+    },
+    {
+      "task_id": "spice-ac-01",
+      "module_id": "spice",
+      "operation": "ac_impedance",
+      "scheduler_job_id": "676",
+      "scheduler_state": "FAILED",
+      "exit_code": "1:0",
+      "execution_status": "failed",
+      "evidence_kind": "none",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 5,
+      "native_started": false,
+      "errors": [
+        {
+          "code": "ADAPTER_ERROR",
+          "message": "[Errno 2] No such file or directory: '/home/v100/projects/mlcc/zhaoxiang/four-scale-integration-20261028/tasks/spice-ac-01/payload/modules/spice/SOURCES.json'"
+        }
+      ],
+      "read_only_replay": "passed",
+      "continuation_action": "review_original_error",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "b79ddcd6723466c376a69f81fe51155477586fa4acb49e675edcbf56c58c9664"
+    },
+    {
+      "task_id": "rve-electrostatics-02",
+      "module_id": "rve",
+      "operation": "homogenize_electrostatics_2d",
+      "scheduler_job_id": "680",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 39,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "728a2f1ed1eb7266ac0203812afe8eec7c22a4b6b411edf8be466ffaf5d25b59"
+    },
+    {
+      "task_id": "spice-ac-02",
+      "module_id": "spice",
+      "operation": "ac_impedance",
+      "scheduler_job_id": "679",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 30,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "728a2f1ed1eb7266ac0203812afe8eec7c22a4b6b411edf8be466ffaf5d25b59"
+    }
+  ],
+  "successful_real_tasks": 4,
+  "preserved_packaging_failures": 2,
+  "real_zeus_chat": "not_checked_private_workbench",
+  "scientific_applicability": "not_checked",
+  "account_observation": "No account required. cpu AllowAccounts=ALL and AccountingStorageEnforce=none. Transient InvalidAccount cleared without configuration/resource changes."
+}

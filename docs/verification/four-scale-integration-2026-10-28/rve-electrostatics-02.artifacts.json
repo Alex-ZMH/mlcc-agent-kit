@@ -1,0 +1,197 @@
+[
+  {
+    "path": "artifacts/diagnostics.json",
+    "size_bytes": 1652,
+    "sha256": "0691a5178a23c71bc9da1f7a9b19f6ffaabf37ad4c33fe0d0df9552bb234f22b"
+  },
+  {
+    "path": "artifacts/quality.json",
+    "size_bytes": 1818,
+    "sha256": "16562e1223a00078db16417d427a3dd9b13293abef4610e2bffa30395749ac27"
+  },
+  {
+    "path": "artifacts/numerical_protocol.json",
+    "size_bytes": 703,
+    "sha256": "7e918ac5c7196b5e2300e0a97b02d27dd2113508231e43163190087b9bcf9e83"
+  },
+  {
+    "path": "artifacts/unit_normalization.json",
+    "size_bytes": 3361,
+    "sha256": "40605491ef6c02ac4a1bba9ea6217bd93729f8c1844b8723c2aad1dd26e17f9e"
+  },
+  {
+    "path": "artifacts/sources.json",
+    "size_bytes": 22384,
+    "sha256": "a1eeba4e5ebfdda07bc795eb82156f87a56ec4e1820d045fe41e9db2e29fbee9"
+  },
+  {
+    "path": "artifacts/input.canonical-si.json",
+    "size_bytes": 600,
+    "sha256": "7f941783b97db21327d91a84af4fa465cbf71f5c08959dc644be454f83e5712a"
+  },
+  {
+    "path": "artifacts/coordinates.json",
+    "size_bytes": 586,
+    "sha256": "c0fb634b5ab1e6791a1b93e1de76ad6feea2f7127428f193aab979409afba8fb"
+  },
+  {
+    "path": "artifacts/input.original.json",
+    "size_bytes": 1250,
+    "sha256": "693fbfccef7d9c2fd984f259abf57281a8923cc98cbc214f209f3438040c694e"
+  },
+  {
+    "path": "artifacts/artifact_hashes.json",
+    "size_bytes": 3029,
+    "sha256": "c7e4d5825fb39a6946ce24583ccac9e96f5166743161e9628c0ebdd17ee38012"
+  },
+  {
+    "path": "artifacts/environment.json",
+    "size_bytes": 439,
+    "sha256": "4daa5f28a1c661f6ca54242ac5e22423b93c2584a4dd2c6ce112df018a9dfc68"
+  },
+  {
+    "path": "artifacts/effective_material.json",
+    "size_bytes": 2669,
+    "sha256": "e9785a1ef70f0f26ca08b66580af1abb1d490924bd910c3d92d37d3d067ec2cb"
+  },
+  {
+    "path": "artifacts/readback.json",
+    "size_bytes": 1861,
+    "sha256": "fe5fcdd5844f14ab12a1cdf3dcc79c2277c0efa74e097455a07d1da060f6b62b"
+  },
+  {
+    "path": "artifacts/input.kernel-normalized.json",
+    "size_bytes": 974,
+    "sha256": "f53a9bad81fa8d72e336f38a4bad1457429cef8eb3a5a773944a56bdb1d359b9"
+  },
+  {
+    "path": "artifacts/metrics.json",
+    "size_bytes": 739,
+    "sha256": "fd3ef9d5e9d4f2836fb28830f80e3800e4a1bae2de1a6bcf202bd495106e7aab"
+  },
+  {
+    "path": "artifacts/scientific_core.json",
+    "size_bytes": 779,
+    "sha256": "518d7c852d1c344451cdef35e7db7b4e46bd97bb329ab64de0e0afe5e1f7eab8"
+  },
+  {
+    "path": "artifacts/solution/effective_tensor.json",
+    "size_bytes": 8356,
+    "sha256": "b5819a90b9304a43ff666cd63589fb7a10cc8714b60c4f938f99a51b15982dd8"
+  },
+  {
+    "path": "artifacts/solution/y/fields.xdmf",
+    "size_bytes": 5141,
+    "sha256": "60ef75656d2915a41ded3836b968d55909cd0852a7022a6bc3e59ec32faa9e05"
+  },
+  {
+    "path": "artifacts/solution/y/periodic_constraints.npz",
+    "size_bytes": 7814,
+    "sha256": "05e87775aa554ac64541cb520587ec12f8ca8a9fba3e05abdd159ae9f837d4ba"
+  },
+  {
+    "path": "artifacts/solution/y/fields.vtu",
+    "size_bytes": 17232,
+    "sha256": "df708ef72ffe3747fe31cf8f93eeb860d927d6dd92108bc7285eca5c430da49d"
+  },
+  {
+    "path": "artifacts/solution/y/fields.h5",
+    "size_bytes": 51016,
+    "sha256": "39b475dac102d137a80a01bd084ade061a361fcb4003addb9b3fd5fc6b0c1767"
+  },
+  {
+    "path": "artifacts/solution/y/metrics.json",
+    "size_bytes": 2192,
+    "sha256": "0416d5d83f1dfebace602a4df6521de1c9b22dd88167e820db7c6a70601188b4"
+  },
+  {
+    "path": "artifacts/solution/x/fields.xdmf",
+    "size_bytes": 5141,
+    "sha256": "60ef75656d2915a41ded3836b968d55909cd0852a7022a6bc3e59ec32faa9e05"
+  },
+  {
+    "path": "artifacts/solution/x/periodic_constraints.npz",
+    "size_bytes": 7814,
+    "sha256": "fe8082734964307266e2673d3e271ed4b78b37106654052e2291f6df4c9d7307"
+  },
+  {
+    "path": "artifacts/solution/x/fields.vtu",
+    "size_bytes": 14797,
+    "sha256": "7f02b7666119a26b73009efa5aba3cdc5bcd133790ee45c238c789d7d9a5a7da"
+  },
+  {
+    "path": "artifacts/solution/x/fields.h5",
+    "size_bytes": 51016,
+    "sha256": "59f7019df30b9fca397fb6d602b424ed42f4dc7d8de1fc868bafd0c5655dd363"
+  },
+  {
+    "path": "artifacts/solution/x/metrics.json",
+    "size_bytes": 2253,
+    "sha256": "71f0dc23b39e17312d6292681f997bd1a1df4d46cf927e28e81efb3c57d783ca"
+  },
+  {
+    "path": "artifacts/geometry/mesh_identity.npz",
+    "size_bytes": 8392,
+    "sha256": "603ad674e96df7445e3b41d336e8f7880c223a4019ca769826223fa0e58982b1"
+  },
+  {
+    "path": "artifacts/geometry/mesh_normalized.msh",
+    "size_bytes": 10763,
+    "sha256": "c7f25ada3118b61a34c7ce8b86b709433b084fc3b23ed110d43c29d75cc75060"
+  },
+  {
+    "path": "artifacts/geometry/periodic_CAD.json",
+    "size_bytes": 245,
+    "sha256": "29cbd7281b4a0b0931a4bc68473b78d23d5ebaa4e7f1c41ea515bb29dc66b28e"
+  },
+  {
+    "path": "artifacts/geometry/microstructure.json",
+    "size_bytes": 1039,
+    "sha256": "fc673282f93b08470d58cfc1b38c246795bf27d3adb32f6af309b2bfa2bd289e"
+  },
+  {
+    "path": "artifacts/geometry/mesh_metrics.json",
+    "size_bytes": 512,
+    "sha256": "c818b8f5628bf228a4e54e08d10c186c40d1568fb5162598a827704e4cb020a9"
+  },
+  {
+    "path": "artifacts/native/launch.json",
+    "size_bytes": 1113,
+    "sha256": "01e2a2330028180fe6497d4140528f39912cb598fa4e3f1588bf8c794df486d0"
+  },
+  {
+    "path": "artifacts/native/request.json",
+    "size_bytes": 1002,
+    "sha256": "389700abf52a344ab606a4ed394b13298b150e30b3ba3f1b509ae2c45ed6ada7"
+  },
+  {
+    "path": "artifacts/native/process.json",
+    "size_bytes": 145,
+    "sha256": "05ca09045150c50eebbe943bb1459cd490b1743eca0a643b6130eddd2cccdf2e"
+  },
+  {
+    "path": "artifacts/native/response.json",
+    "size_bytes": 9524,
+    "sha256": "4bd30e215913002ac9a78823d529662cca28b338ad8e5f820088741d842281c3"
+  },
+  {
+    "path": "artifacts/native/completion.json",
+    "size_bytes": 144,
+    "sha256": "767af5e162189468fb5937737d111b3ea945e42d0d0d3c244e6ff3c3a85d8080"
+  },
+  {
+    "path": "artifacts/native/stdout.log",
+    "size_bytes": 128,
+    "sha256": "ecd3bd75a50a28cb288f0428ef6272faed5bdc4a7793149ff60636cf2b79e57b"
+  },
+  {
+    "path": "logs/adapter.stdout.json",
+    "size_bytes": 10175,
+    "sha256": "4de179661a5d7752d97980044114ce403696aa91eb198b11eca607498a363767"
+  },
+  {
+    "path": "logs/adapter.stderr.log",
+    "size_bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Host deployment only, never scientific input. Deployment.load additionally validates Linux, executable files, canonical confined paths, and relational limits.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "phase_field.deployment.native.v1"
+    },
+    "transport": {
+      "const": "native_linux"
+    },
+    "python": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^/"
+    },
+    "linux_root": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^/"
+    },
+    "timeout_seconds": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 240
+    },
+    "threads": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1
+    },
+    "max_cells": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6000
+    },
+    "max_work": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_history_bytes": {
+      "type": "integer",
+      "minimum": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "transport",
+    "python",
+    "linux_root",
+    "timeout_seconds",
+    "threads",
+    "max_cells",
+    "max_work",
+    "max_history_bytes"
+  ],
+  "additionalProperties": false
+}

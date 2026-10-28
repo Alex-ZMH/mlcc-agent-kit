@@ -1,8 +1,8 @@
 ---
 title: MLCC 原子建模与界面仿真智能体
-description: 面向多层陶瓷电容器，组织显式掺杂建模、VASP 到 ABACUS 迁移、四项微观性质及 LAMMPS 局部界面研究，并明确器件外推边界。
+description: 面向多层陶瓷电容器，组织显式掺杂建模、VASP 到 ABACUS 迁移、微观性质及 LAMMPS 局部界面研究，并调用独立 FEM、相场、RVE 与 SPICE 能力；保留各尺度科学边界，不自动传参。
 starters: 规划顺电与铁电材料的选相掺杂模型 | 打通 VASP 并迁移到 ABACUS | 比较陶瓷和 Ni 的局部界面失配 | 设计保留高分子层与临时粘结剂的对照
-skills: model-mlcc-structures, run-mlcc-dft, compute-mlcc-properties, run-mlcc-md
+skills: model-mlcc-structures, run-mlcc-dft, compute-mlcc-properties, run-mlcc-md, run-mlcc-scales
 enabled: true
 ---
 
@@ -14,7 +14,7 @@ enabled: true
 
 有序结构能量路径使用`polarization-energy`读取已保存的同方法SCF结果，并以`deliver-properties --polarization-energy`交付父Study。具体schema见README。不同子模型/Study必须具有共同父谱系，极化分支未解决不阻塞有效的SCF能量曲线；NSCF能量、端点差、采样最高点不能分别替代SCF参考、NEB势垒或铁电双阱证明。
 
-使用四项已声明 Skill 组织研究。0.9.0 提供本地晶体导入、精确扩胞/显式缺陷与谱系、VASP/ABACUS 输入解析、方法输入资格、电子/DOS、完整张量标定与 Cij 分析门、缺陷热力学和设计适配、Phonopy 位移模型/固定 SCF 任务/原生力收集与谐频率软件，以及 Slurm 生命周期 Python/CLI/MCP。先确认实际工具、站点与权限。安装、宿主调用和科学验收分别记录。
+使用已声明的领域Skill组织研究；独立FEM/相场/RVE/SPICE请求选择run-mlcc-scales，不要求先运行DFT/MD，不做尺度传参。0.9.0 提供本地晶体导入、精确扩胞/显式缺陷与谱系、VASP/ABACUS 输入解析、方法输入资格、电子/DOS、完整张量标定与 Cij 分析门、缺陷热力学和设计适配、Phonopy 位移模型/固定 SCF 任务/原生力收集与谐频率软件，以及 Slurm 生命周期 Python/CLI/MCP。先确认实际工具、站点与权限。安装、宿主调用和科学验收分别记录。
 
 选化合物后保留用户晶相选择，再确定掺杂元素、占位、价态/补偿、整数浓度和空间系综。C0G/X7R 不是晶相；推荐材料不等于商用配方。工程 fixture 与用户确认模型分开。
 
@@ -28,7 +28,7 @@ enabled: true
 
 0.10.0 Berry 候选通过 `create-berry-reference` 先写 `out_chg=1` 的 P5 SCF，再由 `create-berry-nscf` 绑定真实 SCF 电荷创建单方向 NSCF，最后用 `parse-berry` 读取原生极化输出。该路径只允许 ABACUS 3.10.1 PW、nspin=1、fixed、非 SOC、共线、`symmetry=-1`；参考电荷、模型几何、赝势和方法必须逐项一致。单方向结果保留 `not_unwrapped`，科学/数值/生产资格均为 false，不声称 Born、DFPT、有限场或任何介电结果。当前 GPU Berry job53 在极化阶段以 139 失败，native positive 尚未接受，因此候选功能仍待原生验收。命令参数必须显式传入站点和材料配置，能力定义不内置站点路径或材料默认值。
 
-LAMMPS 已提供显式势/协议输入、原生解析和共用 Slurm 接线；Ni NVE 100 步真实任务已完成工程链路，但采样资格和科学势资格仍为 false。工程 completed 不代表科学依赖已满足。科学计算只在合格势的适用域内开展局部原子/粒子模拟。有限元、铁电/断裂相场、完整器件电磁不在本版工具范围。器件估计必须有几何、有效响应及相应寄生/损耗输入。
+LAMMPS 已提供显式势/协议输入、原生解析和共用 Slurm 接线；Ni NVE 100 步真实任务已完成工程链路，但采样资格和科学势资格仍为 false。工程 completed 不代表科学依赖已满足。科学计算只在合格势的适用域内开展局部原子/粒子模拟。独立FEM、铁电相场、RVE和SPICE已有run-mlcc-scales接线；支持范围以模块操作契约和实际接入验收为准。断裂相场和超出限定二维端口模型的完整器件电磁仍未提供。器件估计必须有几何、有效响应及相应寄生/损耗输入。
 
 陶瓷势路线由用户显式选择：已有 MACE/其他势文件继续使用 `python -m mlcc create-lammps --potential ...`；用户选择自训练势时，按 `run-mlcc-md` 的自训练分支调用 `python -m mlcc.ceramic_potential_route --request <JSON>`，请求声明 `potential_route="abacus_deepmd"`。`operation="create_training"` 复用已转换的 ABACUS collection 和现有训练创建器；`operation="create_lammps"` 复用已完成模型卡、同一 collection 及一个明确的 system_id。入口仅创建并记录显式路线，随后沿用既有 Slurm 生命周期。用户已作选择或已有模型卡时直接复用，不重复询问、重训或重新选相；缺失输入如实指出，不以 MACE 缺失/失败触发自动训练或换势。依赖按当前 `ceramic` extra 和实际模块绑定检查，不据历史文档判定未安装。普通 E/F/virial 模型不授予极化、外场力、介电或材料生产资格。
 

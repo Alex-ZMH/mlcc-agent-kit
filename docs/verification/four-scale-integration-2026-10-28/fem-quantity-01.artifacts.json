@@ -1,0 +1,127 @@
+[
+  {
+    "path": "artifacts/diagnostics.json",
+    "size_bytes": 1496,
+    "sha256": "d3d85b32cde905ecd48b5ffb1f77517a47084bfa71e6f2358ae3a7f839accab6"
+  },
+  {
+    "path": "artifacts/fields/fields.vtu",
+    "size_bytes": 230333,
+    "sha256": "9fbcd7fbe808f66d2b1564aa87f37900ae3aba15e42b59b19ac99654125f53ef"
+  },
+  {
+    "path": "artifacts/fields/manifest.json",
+    "size_bytes": 400,
+    "sha256": "6da4e2244f88910a1829c75698a1f11ad321abbb16f9052950d5c2dd7d44db58"
+  },
+  {
+    "path": "artifacts/images/electric_field_magnitude.png",
+    "size_bytes": 33101,
+    "sha256": "14f0fc43b68f65589d23fe0b448802017c5a6559a6b725e86968802ccdf6d5ee"
+  },
+  {
+    "path": "artifacts/images/electric_field_magnitude_detail.png",
+    "size_bytes": 38733,
+    "sha256": "4cd71604b29de14afe1ad677128c6e53cecb0b106eb5873c394eb6b8d85df5b8"
+  },
+  {
+    "path": "artifacts/images/electric_potential.png",
+    "size_bytes": 93395,
+    "sha256": "8c0ca8921b93249cb6dea4f269585adc6750f7796f079942a1befc0857bf3356"
+  },
+  {
+    "path": "artifacts/images/electric_potential_detail.png",
+    "size_bytes": 261601,
+    "sha256": "5972a303f8d7eb292a427ec1231af98a8295f00a15fc6548ad6e9ea1bc946fe4"
+  },
+  {
+    "path": "artifacts/input.canonical-si.json",
+    "size_bytes": 704,
+    "sha256": "bf1513af00ea729eaef4ba451b0e266fc97e23a7c637bde64456b8366af5f9bc"
+  },
+  {
+    "path": "artifacts/input.normalized.json",
+    "size_bytes": 704,
+    "sha256": "bf1513af00ea729eaef4ba451b0e266fc97e23a7c637bde64456b8366af5f9bc"
+  },
+  {
+    "path": "artifacts/input.original.json",
+    "size_bytes": 1977,
+    "sha256": "d114d78a7ecdc4a1852241692f8c4ff077a84d207bda54a5ba5c3a6d228389b7"
+  },
+  {
+    "path": "artifacts/mesh/mesh.msh",
+    "size_bytes": 413257,
+    "sha256": "39607443b2d0dd0f10959cb6c3a364ff09a65963563431394240a49abc5f874c"
+  },
+  {
+    "path": "artifacts/mesh/mesh_report.json",
+    "size_bytes": 1014,
+    "sha256": "847a4f8767d5e8538f3e0fe694119e29e5644796e4d9ee7b28358e1c78cab52a"
+  },
+  {
+    "path": "artifacts/mesh/semantic_regions.json",
+    "size_bytes": 282,
+    "sha256": "dd37863cfec9b72109e92cc31ec7408200750c99dd54857f2541deb1aea484d2"
+  },
+  {
+    "path": "artifacts/method_environment.json",
+    "size_bytes": 370,
+    "sha256": "96ad795fb6773bca9b27a29b741a45dac249add373a79fdb0822ae24d173e9f9"
+  },
+  {
+    "path": "artifacts/metrics.json",
+    "size_bytes": 1441,
+    "sha256": "ad1b57defe7b2c049baf81a85510d63565b522e59a28d1ceb029f43707a695fb"
+  },
+  {
+    "path": "artifacts/scientific_core.json",
+    "size_bytes": 779,
+    "sha256": "518d7c852d1c344451cdef35e7db7b4e46bd97bb329ab64de0e0afe5e1f7eab8"
+  },
+  {
+    "path": "artifacts/unit_normalization.json",
+    "size_bytes": 8488,
+    "sha256": "35089437cc4bc99e9ba0f2a41bcdc5a776b26df85b138d8a437840c46cc46594"
+  },
+  {
+    "path": "artifacts/quality.json",
+    "size_bytes": 2099,
+    "sha256": "016c06d6a5beaf28c99c70878721a2f70fef62a58869ea3927392c329d73c6cc"
+  },
+  {
+    "path": "artifacts/artifact_hashes.json",
+    "size_bytes": 1791,
+    "sha256": "14ade059418cc8aa2f6c3e21bde438eae51e912382ce1068a3921a2479e0b474"
+  },
+  {
+    "path": "artifacts/native/request.json",
+    "size_bytes": 1055,
+    "sha256": "a4d64d4c5fd34b58a0017b05c389df63aa5e614ecbd97b61bde627442972fabc"
+  },
+  {
+    "path": "artifacts/native/launch.json",
+    "size_bytes": 1084,
+    "sha256": "5c7ab886cfef6855838a6c88d9ae778b7b914035639811cca782b62410296382"
+  },
+  {
+    "path": "artifacts/native/response.json",
+    "size_bytes": 7354,
+    "sha256": "6c333a5c808fb427db65fd9e46ffd45034c6247ecf766a08f050e93684ecd16f"
+  },
+  {
+    "path": "artifacts/native/stdout.log",
+    "size_bytes": 1957,
+    "sha256": "1854e694320505f24f963faf7839e2985b247e92116395f42214edb72299ee02"
+  },
+  {
+    "path": "logs/adapter.stdout.json",
+    "size_bytes": 9949,
+    "sha256": "d81b196d6c0f1b4284ae4e370b42033d90c4f2f2ce170365ff8cf769b788f094"
+  },
+  {
+    "path": "logs/adapter.stderr.log",
+    "size_bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -1,0 +1,250 @@
+{
+  "schema_version": "mlcc.module.v1",
+  "id": "fem",
+  "title": "FEM / 器件层",
+  "description": "显式部署Adapter调用WSL或native Linux：二维静电、单向稳态电热、AC-EQS与规定闭合端口Maxwell；科学适用性逐项验收",
+  "version": "0.4.2",
+  "interface_version": "1.0",
+  "kind": "scientific",
+  "implementation": "implemented",
+  "adapter": {
+    "entry": "adapter.py"
+  },
+  "dependencies": [],
+  "operations": {
+    "electrostatics_2d": {
+      "description": "二维参数化 MLCC 理想电极/均匀线性介质静电，导出场与积分结果；物理适用性未独立验收",
+      "input_schema": "schemas/electrostatics.input.schema.json",
+      "output_schema": "schemas/electrostatics.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 180,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "mesh_geometry",
+          "linear_solver",
+          "field_finiteness",
+          "depth_units",
+          "residual_acceptance",
+          "mesh_shape_acceptance",
+          "charge_balance",
+          "capacitance_consistency",
+          "mesh_convergence",
+          "analytic_reference"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "electrostatics_2d_quantities": {
+      "description": "显式量值/单位/来源经共享单位核心规范化为SI后，执行同一二维均匀线性静电",
+      "input_schema": "schemas/electrostatics.quantities.input.schema.json",
+      "output_schema": "schemas/electrostatics.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 180,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "mesh_geometry",
+          "linear_solver",
+          "field_finiteness",
+          "depth_units",
+          "residual_acceptance",
+          "mesh_shape_acceptance",
+          "charge_balance",
+          "capacitance_consistency",
+          "mesh_convergence",
+          "analytic_reference"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "electrothermal_2d": {
+      "description": "二维均匀静电场/规定损耗到陶瓷+Ni稳态热；无温度反馈",
+      "input_schema": "schemas/electrothermal.input.schema.json",
+      "output_schema": "schemas/device.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "linear_solver",
+          "field_finiteness",
+          "power_balance",
+          "source_transfer",
+          "thermal_balance",
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "ac_eqs_2d": {
+      "description": "二维复电势EQS，复Y/Z/Cp、介质损耗及可选稳态热；Ni理想电极",
+      "input_schema": "schemas/ac_eqs.input.schema.json",
+      "output_schema": "schemas/device.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "linear_solver",
+          "field_finiteness",
+          "power_balance",
+          "source_transfer",
+          "thermal_balance",
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "electromagnetic_2d": {
+      "description": "二维Ex/Ey/Hz Maxwell，有限Ni、闭合引导端口Z与分区损耗，可选稳态热；mu_r=1",
+      "input_schema": "schemas/electromagnetic.input.schema.json",
+      "output_schema": "schemas/device.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "linear_solver",
+          "field_finiteness",
+          "power_balance",
+          "source_transfer",
+          "thermal_balance",
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "electrothermal_2d_quantities": {
+      "description": "显式量值/单位/来源经唯一公共单位核心转SI；二维均匀静电场/规定损耗到陶瓷+Ni稳态热；无温度反馈",
+      "input_schema": "schemas/electrothermal.quantities.input.schema.json",
+      "output_schema": "schemas/device.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "linear_solver",
+          "field_finiteness",
+          "power_balance",
+          "source_transfer",
+          "thermal_balance",
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "ac_eqs_2d_quantities": {
+      "description": "显式量值/单位/来源经唯一公共单位核心转SI；二维复电势EQS，复Y/Z/Cp、介质损耗及可选稳态热；Ni理想电极",
+      "input_schema": "schemas/ac_eqs.quantities.input.schema.json",
+      "output_schema": "schemas/device.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "linear_solver",
+          "field_finiteness",
+          "power_balance",
+          "source_transfer",
+          "thermal_balance",
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    "electromagnetic_2d_quantities": {
+      "description": "显式量值/单位/来源经唯一公共单位核心转SI；二维Ex/Ey/Hz Maxwell，有限Ni、闭合引导端口Z与分区损耗，可选稳态热；mu_r=1",
+      "input_schema": "schemas/electromagnetic.quantities.input.schema.json",
+      "output_schema": "schemas/device.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "mesh_semantics",
+          "linear_solver",
+          "field_finiteness",
+          "power_balance",
+          "source_transfer",
+          "thermal_balance",
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    }
+  }
+}

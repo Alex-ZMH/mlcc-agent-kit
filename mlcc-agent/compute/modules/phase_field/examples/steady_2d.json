@@ -1,0 +1,22 @@
+{
+  "operation": "steady",
+  "dimension": 2,
+  "model_profile": "lgd_scalar_y_v03",
+  "units": "dimensionless",
+  "mesh": {
+    "nx": 16,
+    "ny": 4
+  },
+  "g": 0.5,
+  "epsilon": 1.0,
+  "applied_E": 0.0,
+  "initial": {
+    "kind": "uniform",
+    "value": 1.0
+  },
+  "output": {
+    "rt0": true,
+    "images": true,
+    "history": "all_accepted"
+  }
+}

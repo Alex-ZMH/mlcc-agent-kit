@@ -1,0 +1,8 @@
+{
+  "package": "scientific_core",
+  "required_version": "0.1.0",
+  "backend": "fenicsx",
+  "loading": "fixed Bundle bootstrap in WSL science_entry.py",
+  "runtime_dependency": false,
+  "artifact": "artifacts/scientific_core.json"
+}

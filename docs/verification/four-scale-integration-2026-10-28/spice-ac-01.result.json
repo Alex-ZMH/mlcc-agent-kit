@@ -1,0 +1,241 @@
+{
+  "schema_version": "mlcc.result.v1",
+  "task_id": "task-4c8df4d8692c4742b80d8438458e4f96",
+  "module": {
+    "id": "spice",
+    "version": "0.2.1",
+    "interface_version": "1.0",
+    "kind": "scientific"
+  },
+  "operation": "ac_impedance",
+  "execution": {
+    "status": "failed",
+    "created_at": "2026-10-28T06:33:28.830150+00:00",
+    "updated_at": "2026-10-28T06:33:29.077162+00:00",
+    "backend_exit_code": 0,
+    "events": [
+      {
+        "status": "queued",
+        "at": "2026-10-28T06:33:28.830150+00:00"
+      },
+      {
+        "status": "running",
+        "at": "2026-10-28T06:33:28.956559+00:00"
+      },
+      {
+        "status": "failed",
+        "at": "2026-10-28T06:33:29.077162+00:00"
+      }
+    ]
+  },
+  "input": {
+    "schema": "schemas/ac_impedance.input.schema.json",
+    "payload": {
+      "models": [
+        {
+          "model_name": "single_rlc",
+          "model_version": "1.0.0",
+          "source": "synthetic",
+          "capacitance_F": {
+            "value": 10,
+            "unit": "nF",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "spice_poc explicit synthetic baseline"
+            }
+          },
+          "esr_ohm": {
+            "value": 50,
+            "unit": "mohm",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "spice_poc explicit synthetic baseline"
+            }
+          },
+          "esl_H": {
+            "value": 0.5,
+            "unit": "nH",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "spice_poc explicit synthetic baseline"
+            }
+          },
+          "leakage_resistance_ohm": null,
+          "validated_conditions": {
+            "type": "synthetic_linear_demo_only",
+            "temperature": "fixed, unspecified calibration",
+            "dc_bias": "constant C; no DC-bias law"
+          }
+        }
+      ],
+      "points_per_decade": 400,
+      "fmin_Hz": {
+        "value": 1,
+        "unit": "kHz",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "spice_poc explicit synthetic baseline"
+        }
+      },
+      "fmax_Hz": {
+        "value": 10,
+        "unit": "GHz",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "spice_poc explicit synthetic baseline"
+        }
+      },
+      "single_frequency": false
+    }
+  },
+  "provenance": {
+    "applicability": "Synthetic/manual constant linear RLC; material and device applicability not_checked",
+    "backend": {
+      "name": "ngspice",
+      "version": "not_recorded"
+    },
+    "conditions": {
+      "AC": "1 V normalized small-signal phasor; RMS convention for power only",
+      "canonical_input": {},
+      "current": "positive into DUT; signed capacitor delivery",
+      "transient": "baseline DC operating point, no UIC, finite PWL pulse, Gear2"
+    },
+    "evidence_kind": "none",
+    "method": {
+      "name": "Controlled series-RLC branches / native AC or Gear2 finite-pulse transient",
+      "version": "0.1.0"
+    },
+    "sources": [
+      {
+        "description": "Read-only frozen prototype migration; task-native ngspice output, no experiment runtime imports",
+        "kind": "code_provenance",
+        "reference": "modules/spice/SOURCES.json"
+      },
+      {
+        "description": "0.2.0 registration and shared-UNIT source fingerprints; physics kernels unchanged",
+        "kind": "code_provenance",
+        "reference": "modules/spice/UNITS_SOURCES.json"
+      }
+    ],
+    "units": {
+      "C": "F",
+      "L": "H",
+      "R": "ohm",
+      "current": "A",
+      "energy": "J",
+      "frequency": "Hz",
+      "phase": "deg",
+      "power": "W",
+      "time": "s",
+      "voltage": "V"
+    }
+  },
+  "results": {},
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "native_readback",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "circuit_reference",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "power_energy",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "unit_admission",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "sampling_sensitivity",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_calibration",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "device_applicability",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        },
+        {
+          "id": "periodic_steady_state",
+          "status": "not_checked",
+          "message": "Required check not reported by module"
+        }
+      ]
+    }
+  },
+  "errors": [
+    {
+      "code": "ADAPTER_ERROR",
+      "message": "[Errno 2] No such file or directory: '/home/v100/projects/mlcc/zhaoxiang/four-scale-integration-20261028/tasks/spice-ac-01/payload/modules/spice/SOURCES.json'"
+    }
+  ],
+  "warnings": [
+    "Synthetic/manual constant linear lumped RLC only; no product/material calibration.",
+    "Finite pulse/recovery RMS is not periodic steady-state ripple.",
+    "SI compatibility and structured quantities use the unique shared UNIT core; field semantics stay explicit.",
+    "Keep source and host deployment fixed between queue and worker; public snapshot does not freeze their contents."
+  ],
+  "limitations": [
+    "Synthetic/manual constant linear lumped RLC only; no product/material calibration.",
+    "Finite pulse/recovery RMS is not periodic steady-state ripple.",
+    "SI compatibility and structured quantities use the unique shared UNIT core; field semantics stay explicit.",
+    "Keep source and host deployment fixed between queue and worker; public snapshot does not freeze their contents."
+  ],
+  "artifacts": [
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 433,
+      "evidence_kind": "none"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 999,
+      "evidence_kind": "none"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 3740,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stdout.json",
+      "media_type": "application/json",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 2346,
+      "evidence_kind": "none"
+    },
+    {
+      "path": "logs/adapter.stderr.log",
+      "media_type": "text/plain",
+      "description": "Raw adapter protocol or diagnostics; not validated scientific evidence",
+      "size_bytes": 0,
+      "evidence_kind": "none"
+    }
+  ]
+}

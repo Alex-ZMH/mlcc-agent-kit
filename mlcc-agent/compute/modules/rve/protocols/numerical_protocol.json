@@ -1,0 +1,15 @@
+{
+  "scope": "Synthetic linear static 3D mathematical qualification only",
+  "mean_field_weak_residual_energy": 1e-08,
+  "PBC_field": 1e-10,
+  "tensor_symmetry": 1e-08,
+  "analytic_tensor": 1e-08,
+  "independent_dense_matrix": 1e-12,
+  "last_sphere_core_shell_mesh_change": 0.005,
+  "extrusion_inplane_tensor_limit": 0.02,
+  "extrusion_basis": "thin-boundary V0.1 fixture, five successively refined real tetrahedral meshes; finite resource cap; do not claim exact local-field equality",
+  "tetrahedron_cap": 180000,
+  "curved_CAD_to_linear_mesh_volume_limit": 0.12,
+  "statistics": "3 seeds only, EXPERIMENTAL",
+  "GB_core_shell": "N8 single-mesh validation, NOT_FULLY_VALIDATED for broad junction/local-flux convergence"
+}

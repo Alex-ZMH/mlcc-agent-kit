@@ -855,6 +855,18 @@ def inspect_task(task: TaskRecord) -> dict[str, Any]:
                 "review_original_error",
                 "the scheduler reached COMPLETED without the required native exit code 0:0",
             )
+        if data.get("engine") == "scale_compute":
+            if data.get("collect_status") != "collected":
+                return _decision(task, "collect", "scale outputs must be explicitly collected before interpretation")
+            from .scale_tasks import read_scale_result
+            try:
+                delivery = read_scale_result(task.path)
+            except (OSError, ValueError, KeyError) as error:
+                return _decision(task, "review_original_error", str(error))
+            result = delivery['result']
+            return _decision(task, "completed" if result['execution']['status'] == 'succeeded' else "review_original_error",
+                             "read the original scale execution and QC independently; no scientific status is upgraded",
+                             result_file=data.get('result_file'), execution=result['execution'], quality=result['quality'])
         if data.get("engine") == "lammps":
             if data.get("schema") == _LAMMPS_NEB_TASK_SCHEMA:
                 engineering = _lammps_neb_result(task)

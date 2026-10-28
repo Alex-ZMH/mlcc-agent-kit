@@ -1,0 +1,343 @@
+{
+  "type": "object",
+  "properties": {
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,60}$"
+          },
+          "model_version": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,60}$"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "synthetic",
+              "manual"
+            ]
+          },
+          "capacitance_F": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "synthetic_test",
+                      "manual"
+                    ]
+                  },
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200,
+                    "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "reference"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "value",
+              "unit",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          "esr_ohm": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "synthetic_test",
+                      "manual"
+                    ]
+                  },
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200,
+                    "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "reference"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "value",
+              "unit",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          "esl_H": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "synthetic_test",
+                      "manual"
+                    ]
+                  },
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200,
+                    "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "reference"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "value",
+              "unit",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          "leakage_resistance_ohm": {
+            "type": [
+              "object",
+              "null"
+            ],
+            "properties": {
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 40
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "kind": {
+                    "type": "string",
+                    "enum": [
+                      "synthetic_test",
+                      "manual"
+                    ]
+                  },
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 200,
+                    "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+                  }
+                },
+                "required": [
+                  "kind",
+                  "reference"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "value",
+              "unit",
+              "source"
+            ],
+            "additionalProperties": false
+          },
+          "validated_conditions": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              },
+              "temperature": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              },
+              "dc_bias": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "model_name",
+          "model_version",
+          "source",
+          "capacitance_F",
+          "esr_ohm",
+          "esl_H",
+          "leakage_resistance_ohm",
+          "validated_conditions"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "points_per_decade": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1600
+    },
+    "fmin_Hz": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "synthetic_test",
+                "manual"
+              ]
+            },
+            "reference": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+            }
+          },
+          "required": [
+            "kind",
+            "reference"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "fmax_Hz": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "enum": [
+                "synthetic_test",
+                "manual"
+              ]
+            },
+            "reference": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+            }
+          },
+          "required": [
+            "kind",
+            "reference"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "source"
+      ],
+      "additionalProperties": false
+    },
+    "single_frequency": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "models",
+    "points_per_decade",
+    "fmin_Hz",
+    "fmax_Hz",
+    "single_frequency"
+  ],
+  "additionalProperties": false
+}

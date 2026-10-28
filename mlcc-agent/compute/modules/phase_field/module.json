@@ -1,0 +1,310 @@
+{
+  "schema_version": "mlcc.module.v1",
+  "id": "phase_field",
+  "title": "铁电相场 / scalar, vector and static tangent tensors",
+  "description": "Legacy scalar LGD preserved; additive 2D/3D full-vector stationary/TDGL, bounded voltage waveforms and explicit-scale SI views through shared UNIT; full static AD tangent dielectric tensors with branch/stability rejection and explicit F/m views",
+  "version": "0.4.0",
+  "interface_version": "1.0",
+  "kind": "scientific",
+  "implementation": "implemented",
+  "adapter": {
+    "entry": "adapter.py"
+  },
+  "dependencies": [],
+  "operations": {
+    "steady": {
+      "description": "Nonlinear stationary solve; stability not inferred",
+      "input_schema": "schemas/steady.input.schema.json",
+      "output_schema": "schemas/result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "nonlinear_accepted",
+          "finite_fields",
+          "completed_time",
+          "rollback",
+          "native_readback",
+          "gauss_weak",
+          "voltage_bc",
+          "energy_nonincrease",
+          "rt0",
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    "evolve": {
+      "description": "TDGL backward Euler with bounded rollback",
+      "input_schema": "schemas/evolve.input.schema.json",
+      "output_schema": "schemas/result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "nonlinear_accepted",
+          "finite_fields",
+          "completed_time",
+          "rollback",
+          "native_readback",
+          "gauss_weak",
+          "voltage_bc",
+          "energy_nonincrease",
+          "rt0",
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    "steady_si": {
+      "description": "Explicit unit-bearing SI input, reference scales and dimensional result view; Nonlinear stationary solve; stability not inferred",
+      "input_schema": "schemas/steady_si.input.schema.json",
+      "output_schema": "schemas/si.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "nonlinear_accepted",
+          "finite_fields",
+          "completed_time",
+          "rollback",
+          "native_readback",
+          "gauss_weak",
+          "voltage_bc",
+          "energy_nonincrease",
+          "rt0",
+          "mesh_convergence",
+          "time_convergence",
+          "unit_mapping"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    "evolve_si": {
+      "description": "Explicit unit-bearing SI input, reference scales and dimensional result view; TDGL backward Euler with bounded rollback",
+      "input_schema": "schemas/evolve_si.input.schema.json",
+      "output_schema": "schemas/si.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "nonlinear_accepted",
+          "finite_fields",
+          "completed_time",
+          "rollback",
+          "native_readback",
+          "gauss_weak",
+          "voltage_bc",
+          "energy_nonincrease",
+          "rt0",
+          "mesh_convergence",
+          "time_convergence",
+          "unit_mapping"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    "vector_steady": {
+      "description": "Full-vector stationary solve, optional explicit relaxation; explicit synthetic dimensionless parameters",
+      "input_schema": "schemas/vector_steady.input.schema.json",
+      "output_schema": "schemas/vector.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "vector_nonlinear",
+          "vector_rollback",
+          "vector_voltage_bc",
+          "vector_history_accounting",
+          "vector_completed_time",
+          "vector_independent_readback",
+          "vector_voltage_work_energy",
+          "unit_mapping",
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    "vector_steady_si": {
+      "description": "Full-vector stationary solve, optional explicit relaxation; explicit SI reference scales and native reduced QC",
+      "input_schema": "schemas/vector_steady_si.input.schema.json",
+      "output_schema": "schemas/vector.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "vector_nonlinear",
+          "vector_rollback",
+          "vector_voltage_bc",
+          "vector_history_accounting",
+          "vector_completed_time",
+          "vector_independent_readback",
+          "vector_voltage_work_energy",
+          "unit_mapping",
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    "vector_evolve": {
+      "description": "Full-vector TDGL, constant/triangle/stair electric voltage boundary; explicit synthetic dimensionless parameters",
+      "input_schema": "schemas/vector_evolve.input.schema.json",
+      "output_schema": "schemas/vector.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "vector_nonlinear",
+          "vector_rollback",
+          "vector_voltage_bc",
+          "vector_history_accounting",
+          "vector_completed_time",
+          "vector_independent_readback",
+          "vector_voltage_work_energy",
+          "unit_mapping",
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    "vector_evolve_si": {
+      "description": "Full-vector TDGL, constant/triangle/stair electric voltage boundary; explicit SI reference scales and native reduced QC",
+      "input_schema": "schemas/vector_evolve_si.input.schema.json",
+      "output_schema": "schemas/vector.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "vector_nonlinear",
+          "vector_rollback",
+          "vector_voltage_bc",
+          "vector_history_accounting",
+          "vector_completed_time",
+          "vector_independent_readback",
+          "vector_voltage_work_energy",
+          "unit_mapping",
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    "dielectric_tangent": {
+      "description": "Full static d<D>/dE tensor via UFL AD, stable-branch admission, independent readback and optional FD; dimensionless absolute response",
+      "input_schema": "schemas/dielectric_tangent.input.schema.json",
+      "output_schema": "schemas/tangent.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "tangent_admissible",
+          "tangent_static_equilibrium",
+          "tangent_linear_residuals",
+          "tangent_stable_reduced_energy",
+          "tangent_independent_readback",
+          "unit_mapping",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "general_multidomain_constitutive",
+          "finite_frequency_or_elasticity"
+        ]
+      }
+    },
+    "dielectric_tangent_si": {
+      "description": "Full static d<D>/dE tensor via UFL AD, stable-branch admission, independent readback and optional FD; shared UNIT and absolute F/m mapping",
+      "input_schema": "schemas/dielectric_tangent_si.input.schema.json",
+      "output_schema": "schemas/tangent.result.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 240,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "tangent_admissible",
+          "tangent_static_equilibrium",
+          "tangent_linear_residuals",
+          "tangent_stable_reduced_energy",
+          "tangent_independent_readback",
+          "unit_mapping",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "general_multidomain_constitutive",
+          "finite_frequency_or_elasticity"
+        ]
+      }
+    }
+  }
+}

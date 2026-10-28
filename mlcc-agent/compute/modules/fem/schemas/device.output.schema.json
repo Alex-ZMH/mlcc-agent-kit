@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fem.device-result.v1",
+  "title": "Device electrical/thermal summary, SI, complex pairs [real,imag]",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "fem.device-result.v1"
+    },
+    "analysis": {
+      "type": "string",
+      "enum": [
+        "electrothermal",
+        "ac_eqs",
+        "electromagnetic"
+      ]
+    },
+    "frequency_Hz": {
+      "type": "number",
+      "minimum": 0
+    },
+    "out_of_plane_thickness_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "mesh_cells": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "phasor_convention": {
+      "type": "string",
+      "enum": [
+        "dc",
+        "RMS exp(+j omega t)"
+      ]
+    },
+    "electrical": {
+      "type": "object",
+      "properties": {
+        "loss_total_W": {
+          "type": "number",
+          "minimum": 0
+        },
+        "loss_ceramic_W": {
+          "type": "number",
+          "minimum": 0
+        },
+        "loss_metal_W": {
+          "type": "number",
+          "minimum": 0
+        },
+        "electric_field_max_V_per_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "capacitance_F": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "ET: 2U/dV^2; AC-EQS: Im(Y)/omega parallel capacitance; EM: 2We/|Vport|^2 energy equivalent. Null if not computed."
+        },
+        "electric_energy_J": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "magnetic_energy_J": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "magnetic_inductance_H": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "2Wm/|I_rms|^2 within the specified EM port/reference plane; not commercial ESL."
+        },
+        "admittance_S": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "impedance_ohm": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2,
+          "description": "[real,imag], RMS exp(+j omega t); ET prescribed-loss mode returns null."
+        }
+      },
+      "required": [
+        "loss_total_W",
+        "loss_ceramic_W",
+        "loss_metal_W",
+        "electric_field_max_V_per_m",
+        "capacitance_F",
+        "electric_energy_J",
+        "magnetic_energy_J",
+        "magnetic_inductance_H",
+        "admittance_S",
+        "impedance_ohm"
+      ],
+      "additionalProperties": false
+    },
+    "thermal": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "maximum_temperature_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mean_temperature_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximum_rise_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mean_rise_K": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "hotspot_thermal_resistance_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "mean_thermal_resistance_K_per_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "source_power_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "outward_power_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "raw_outward_power_W": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "enabled",
+        "maximum_temperature_K",
+        "mean_temperature_K",
+        "maximum_rise_K",
+        "mean_rise_K",
+        "hotspot_thermal_resistance_K_per_W",
+        "mean_thermal_resistance_K_per_W",
+        "source_power_W",
+        "outward_power_W",
+        "raw_outward_power_W"
+      ],
+      "additionalProperties": false,
+      "description": "Absolute/rise values from one-way steady solve; disabled heat values null, zero-power thermal resistance null."
+    },
+    "mesh_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "diagnostics_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "field_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis",
+    "frequency_Hz",
+    "out_of_plane_thickness_m",
+    "mesh_cells",
+    "phasor_convention",
+    "electrical",
+    "thermal",
+    "mesh_artifact",
+    "diagnostics_artifact",
+    "field_artifacts",
+    "assumptions"
+  ],
+  "additionalProperties": false
+}

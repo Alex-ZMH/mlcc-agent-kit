@@ -1,0 +1,92 @@
+{
+  "role": "Historical engineering evidence only; does not certify a new task or material",
+  "real_server_cases": [
+    {
+      "task_id": "fem-quantity-01",
+      "module_id": "fem",
+      "operation": "electrostatics_2d_quantities",
+      "scheduler_job_id": "673",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 25,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "c9ced846b77c07ce06abaccd33bce2c34f88a28ee3b4e41a71309fd8acd687da",
+      "source_manifest_sha256": "b79ddcd6723466c376a69f81fe51155477586fa4acb49e675edcbf56c58c9664"
+    },
+    {
+      "task_id": "phase-vector-si-01",
+      "module_id": "phase_field",
+      "operation": "vector_evolve_si",
+      "scheduler_job_id": "677",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 34,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "b79ddcd6723466c376a69f81fe51155477586fa4acb49e675edcbf56c58c9664"
+    },
+    {
+      "task_id": "rve-electrostatics-02",
+      "module_id": "rve",
+      "operation": "homogenize_electrostatics_2d",
+      "scheduler_job_id": "680",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 39,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "728a2f1ed1eb7266ac0203812afe8eec7c22a4b6b411edf8be466ffaf5d25b59"
+    },
+    {
+      "task_id": "spice-ac-02",
+      "module_id": "spice",
+      "operation": "ac_impedance",
+      "scheduler_job_id": "679",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "execution_status": "succeeded",
+      "evidence_kind": "real_computation",
+      "quality": {
+        "numerical": "not_checked",
+        "scientific": "not_checked"
+      },
+      "artifact_count": 30,
+      "native_started": true,
+      "errors": [],
+      "read_only_replay": "passed",
+      "continuation_action": "completed",
+      "deployed_entry_sha256": "06a10690b006fa456630e826d59c5575267c2d852a74c4ab19c7541fbe4e3c90",
+      "source_manifest_sha256": "728a2f1ed1eb7266ac0203812afe8eec7c22a4b6b411edf8be466ffaf5d25b59"
+    }
+  ],
+  "real_workbench_chat": "not_checked",
+  "registered_operations": 26,
+  "individually_executed_operations": 4
+}

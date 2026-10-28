@@ -1,0 +1,30 @@
+{
+  "repository": "fem-general-main",
+  "reviewed_commit": "9ba35c43956aa28d7b19801570eed84b2edf0915",
+  "authorization": "User explicitly requested extraction and implementation in this chat. External redistribution license is not_checked.",
+  "files": [
+    {
+      "path": "src/fem_agent/geometry/mlcc.py",
+      "sha256": "01cd181e4bde085e48b059d71b2401fb93e99231f10eba397c89b15a759d8c9a"
+    },
+    {
+      "path": "src/fem_agent/geometry/regions.py",
+      "sha256": "b74d8e485160cf1e115cf7be3c379c9d5bb41c5b74e0468512affbb9a17add45"
+    },
+    {
+      "path": "src/fem_agent/skills/electrostatics/skill.py",
+      "sha256": "1347deea54d4b51467c35853d4b6a098481c99dc27310af65620e0528acdc7b9"
+    },
+    {
+      "path": "experiments/mlcc_electrostatics/spike.py",
+      "sha256": "7615bfa1ebf9c8d5f440d3be528cf252c20a0f985eff0b24394f7c1550e76e8a"
+    }
+  ],
+  "adaptations": [
+    "Module-owned DTO and deterministic validation replace old CaseSpec/registry/service.",
+    "Only MLCC ideal-electrode geometry and linear isotropic electrostatics retained.",
+    "Windows Adapter, trusted deployment driver, native file protocol and result validation are new.",
+    "All source runtime imports, frontend, provider, business state and full-source export removed.",
+    "Added external flux, explicit total/per-depth quantities, actual residual, triangle observations, native evidence hashes and guarded export."
+  ]
+}

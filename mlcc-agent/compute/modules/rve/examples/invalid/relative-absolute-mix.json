@@ -1,0 +1,58 @@
+{
+  "schema_version": "rve.electrostatics-2d-input.v1",
+  "geometry": {
+    "kind": "layers",
+    "physical_lengths": [
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+        }
+      },
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+        }
+      }
+    ],
+    "pore_fraction": 0.0,
+    "normalized_fraction": 0.4,
+    "axis": 0
+  },
+  "normalized_h": 0.1,
+  "materials": [
+    {
+      "region_tag": "10",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 8,
+        "unit": "F/m",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "20",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 2,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    }
+  ],
+  "boundary_condition": "periodic",
+  "pore_model": "explicit"
+}
