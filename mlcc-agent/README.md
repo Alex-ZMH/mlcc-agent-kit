@@ -1,6 +1,6 @@
 # MLCC Agent
 
-0.58.0候选新增独立FEM、相场、RVE、SPICE接入。使用同一个MLCC Agent、TaskRecord和SSH/Slurm生命周期；DFT/MD保持原有单位体系，不做尺度传递。入口为 `list-scales/describe-scale/create-scale/parse-scale`，详见 [接入与验证记录](../docs/four-scale-integration-2026-10-28.md)。完整Bundle需包含 `compute/`；实际Zeus工作台调用尚待宿主验收。
+0.59.0候选将DFT、MD、phase_field、RVE、FEM、SPICE纳入同一能力目录与任务入口。嵌套compute框架已拆除，保留同事原有领域命令、TaskRecord和SiteRunner。使用 `mlcc list-capabilities` / `create-task` / `read-result`，见 [架构与交接](../docs/unified-architecture-2026-10-28.md)。完整交付包含modules、schemas和scientific_core；Zeus私有宿主仍需安装后验收。
 
 新增源码入口：`charge-correction`、`charged-formation`、`charge-transitions`，均使用 `--request REQUEST.json --output NEW.json`。实际启用版本以 workspace 发布记录为准。
 

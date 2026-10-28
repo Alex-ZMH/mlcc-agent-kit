@@ -1,0 +1,107 @@
+{
+  "schema": "mlcc.architecture-verification.v1",
+  "bundle_version": "0.59.0",
+  "independent_scales": [
+    {
+      "module_id": "fem",
+      "task_id": "fem-unified-02",
+      "job_id": "689",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "shared_task_view": "passed",
+      "reads_preserve_files": true
+    },
+    {
+      "module_id": "phase_field",
+      "task_id": "phase-unified-02",
+      "job_id": "690",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "shared_task_view": "passed",
+      "reads_preserve_files": true
+    },
+    {
+      "module_id": "rve",
+      "task_id": "rve-unified-02",
+      "job_id": "691",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "shared_task_view": "passed",
+      "reads_preserve_files": true
+    },
+    {
+      "module_id": "spice",
+      "task_id": "spice-unified-02",
+      "job_id": "692",
+      "scheduler_state": "COMPLETED",
+      "exit_code": "0:0",
+      "shared_task_view": "passed",
+      "reads_preserve_files": true
+    }
+  ],
+  "atomistic_noncomputational_probes": [
+    {
+      "schema": "mlcc.environment-probe.v1",
+      "module_id": "dft",
+      "scheduler_job_id": "695",
+      "binary": "/home/v100/miniforge3/envs/abacus_env/bin/abacus",
+      "binary_exists": true,
+      "binary_executable": true,
+      "scientific_execution": "not_requested",
+      "scientific_acceptance": "not_checked",
+      "native_engine_start": "not_checked",
+      "factory_import": {
+        "status": "failed",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/v100/miniforge3/envs/dpa4/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/home/v100/projects/mlcc/zhaoxiang/unified-architecture-20261028/tasks/dft-environment-probe-02/src/mlcc/abacus_tasks.py\", line 12, in <module>\n    from .abacus import (\n  File \"/home/v100/projects/mlcc/zhaoxiang/unified-architecture-20261028/tasks/dft-environment-probe-02/src/mlcc/abacus.py\", line 29, in <module>\n    from .modeling import ModelArtifacts\n  File \"/home/v100/projects/mlcc/zhaoxiang/unified-architecture-20261028/tasks/dft-environment-probe-02/src/mlcc/modeling.py\", line 18, in <module>\n    import pymatgen.core\nModuleNotFoundError: No module named 'pymatgen'\n"
+      },
+      "task_id": "dft-environment-probe-02",
+      "scheduler_state": "FAILED",
+      "exit_code": "1:0",
+      "probe_sha256": "296de23c9aa38c6cc97b5be582aa552db28a6c61e4276260da1762f3bfefea5b"
+    },
+    {
+      "schema": "mlcc.environment-probe.v1",
+      "module_id": "md",
+      "scheduler_job_id": "696",
+      "binary": "/home/v100/projects/mlcc/.venv-lammps-2025.7.22.4.0/bin/lmp",
+      "binary_exists": true,
+      "binary_executable": true,
+      "scientific_execution": "not_requested",
+      "scientific_acceptance": "not_checked",
+      "native_engine_start": "not_checked",
+      "factory_import": {
+        "status": "failed",
+        "returncode": 1,
+        "stdout": "",
+        "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"/home/v100/miniforge3/envs/dpa4/lib/python3.12/importlib/__init__.py\", line 90, in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"<frozen importlib._bootstrap>\", line 1387, in _gcd_import\n  File \"<frozen importlib._bootstrap>\", line 1360, in _find_and_load\n  File \"<frozen importlib._bootstrap>\", line 1331, in _find_and_load_unlocked\n  File \"<frozen importlib._bootstrap>\", line 935, in _load_unlocked\n  File \"<frozen importlib._bootstrap_external>\", line 999, in exec_module\n  File \"<frozen importlib._bootstrap>\", line 488, in _call_with_frames_removed\n  File \"/home/v100/projects/mlcc/zhaoxiang/unified-architecture-20261028/tasks/md-environment-probe-02/src/mlcc/lammps_tasks.py\", line 16, in <module>\n    from .lammps import (\n  File \"/home/v100/projects/mlcc/zhaoxiang/unified-architecture-20261028/tasks/md-environment-probe-02/src/mlcc/lammps.py\", line 29, in <module>\n    from .modeling import ModelArtifacts\n  File \"/home/v100/projects/mlcc/zhaoxiang/unified-architecture-20261028/tasks/md-environment-probe-02/src/mlcc/modeling.py\", line 18, in <module>\n    import pymatgen.core\nModuleNotFoundError: No module named 'pymatgen'\n"
+      },
+      "task_id": "md-environment-probe-02",
+      "scheduler_state": "FAILED",
+      "exit_code": "1:0",
+      "probe_sha256": "37119fed487b64a7e9bcccf97518c9a3a65122bd64d1eb2444e5d5816e6bfe83"
+    }
+  ],
+  "historical_bridge_read": "passed",
+  "local_tests": {
+    "scale_integration": 15,
+    "architecture": 6,
+    "site_runner": 13,
+    "parent_framework": 119
+  },
+  "first_failed_jobs": [
+    "685",
+    "686",
+    "687",
+    "688"
+  ],
+  "first_probe_missing_numpy_jobs": [
+    "693",
+    "694"
+  ],
+  "zeus_private_host": "not_checked",
+  "atomistic_engine_execution": "not_requested",
+  "full_atomistic_regression": "not_checked",
+  "atomistic_deployment_status": "partial: scheduler and executable checks passed; factory imports missing pymatgen"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "mlcc.capability.v1",
+  "id": "dft",
+  "engine": "abacus",
+  "operations": {
+    "create": {
+      "provider": "mlcc.abacus_tasks:create_abacus_task"
+    },
+    "parse": {
+      "provider": "mlcc.abacus_tasks:parse_abacus_task"
+    }
+  },
+  "scientific_acceptance": "not_checked"
+}

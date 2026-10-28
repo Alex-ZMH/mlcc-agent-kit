@@ -67,7 +67,7 @@ class ScaleIntegrationTests(unittest.TestCase):
         local = Path(task['local_workdir'])
         self.assertFalse((local/'payload/outputs').exists())
         self.assertEqual(task['scientific_input'], json.loads(self.input.read_text()))
-        self.assertEqual(task['command'][1:3], ['-I', 'payload/run_scale.py'])
+        self.assertEqual(task['command'][1:3], ['-I', 'payload/execute.py'])
         # Namespaced runtime loading must not replace the platform's mlcc.
         import mlcc
         self.assertNotIn('/compute/', mlcc.__file__)
@@ -90,6 +90,14 @@ class ScaleIntegrationTests(unittest.TestCase):
             self.create()
         self.assertEqual(before, saved.read_bytes())
 
+    def test_explicit_backend_site_binding_and_conflicts(self):
+        self.site['dolfinx']=self.site.pop('scales')
+        task=self.create()
+        self.assertEqual(task['engine'],'dolfinx')
+        self.request['task_id']='ambiguous-binding'
+        self.site['scales']=self.site['dolfinx']
+        with self.assertRaisesRegex(ValueError,'conflict'):self.create()
+
     def test_bad_resources_or_path_refused_without_task(self):
         for value in ('../bad', 'a/b', ''):
             self.request['task_id'] = value
@@ -111,14 +119,14 @@ class ScaleIntegrationTests(unittest.TestCase):
         runner.prepare(task)
         script = (task.path.parent/'job.sbatch').read_text()
         self.assertIn('#SBATCH --time=00:05:00', script)
-        self.assertIn('payload/run_scale.py', script)
+        self.assertIn('payload/execute.py', script)
         self.assertNotIn('wsl', script)
         self.assertIsNone(task.scheduler_job_id)
 
     def _blocked_execution(self):
         task_data = self.create()
         root = Path(task_data['local_workdir'])
-        command = [sys.executable, '-I', str(root/'payload/run_scale.py'),
+        command = [sys.executable, '-I', str(root/'payload/execute.py'),
                    '--request', str(root/'scale-request.json'), '--response', str(root/'scale-response.json')]
         env = dict(os.environ, SLURM_JOB_ID='synthetic-test-job')
         process = subprocess.run(command, cwd=root, env=env, capture_output=True, text=True)
@@ -146,7 +154,8 @@ class ScaleIntegrationTests(unittest.TestCase):
             scale_tasks.read_scale_result(root/'task.json')
             scale_tasks.read_scale_result(root/'task.json')
         self.assertEqual(before, hashlib.sha256(response.read_bytes()).hexdigest())
-        self.assertEqual(len(list((root/'payload/outputs/tasks').iterdir())), 1)
+        self.assertFalse((root/'payload/outputs/tasks').exists())
+        self.assertEqual(json.loads((root/'scale-response.json').read_text())['result']['task_id'], 'test-fem')
 
     def test_repeated_entry_refuses_changed_scientific_input(self):
         root, command, env = self._blocked_execution()
@@ -155,8 +164,9 @@ class ScaleIntegrationTests(unittest.TestCase):
         path.write_text(json.dumps(request))
         process = subprocess.run(command, cwd=root, env=env, capture_output=True, text=True)
         self.assertNotEqual(process.returncode, 0)
-        self.assertIn('differs from the explicit scientific request', process.stderr)
-        self.assertEqual(len(list((root/'payload/outputs/tasks').iterdir())), 1)
+        self.assertIn('differs; reconcile', process.stderr)
+        self.assertFalse((root/'payload/outputs/tasks').exists())
+        self.assertEqual(json.loads((root/'scale-response.json').read_text())['result']['task_id'], 'test-fem')
 
     def test_scale_continuation_never_claims_scientific_convergence(self):
         from mlcc.workflow import inspect_task
@@ -179,7 +189,7 @@ class ScaleIntegrationTests(unittest.TestCase):
     def test_mismatched_saved_identity_is_not_accepted(self):
         root, _, _ = self._blocked_execution()
         path = root/'scale-response.json'; response = json.loads(path.read_text())
-        for key in ('scheduler_job_id', 'platform_task_id', 'runtime_relative_dir'):
+        for key in ('scheduler_job_id', 'platform_task_id'):
             changed = copy.deepcopy(response); changed[key] = 'unrelated'
             path.write_text(json.dumps(changed))
             with self.assertRaises(ValueError):
@@ -188,7 +198,7 @@ class ScaleIntegrationTests(unittest.TestCase):
     def test_native_entry_refuses_login_node_execution(self):
         task = self.create(); root = Path(task['local_workdir'])
         env = dict(os.environ); env.pop('SLURM_JOB_ID', None)
-        result = subprocess.run([sys.executable, '-I', str(root/'payload/run_scale.py'),
+        result = subprocess.run([sys.executable, '-I', str(root/'payload/execute.py'),
             '--request', str(root/'scale-request.json'), '--response', str(root/'scale-response.json')],
             cwd=root, env=env, capture_output=True, text=True)
         self.assertNotEqual(result.returncode, 0)

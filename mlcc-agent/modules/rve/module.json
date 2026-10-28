@@ -1,0 +1,142 @@
+{
+  "schema_version": "mlcc.module.v1",
+  "id": "rve",
+  "title": "RVE / static electrostatic and thermal homogenization",
+  "description": "Module-owned 2D/3D periodic P1 kernels, shared UNIT core, explicit WSL or native Linux scientific deployment",
+  "version": "0.1.3",
+  "interface_version": "1.0",
+  "kind": "scientific",
+  "implementation": "implemented",
+  "adapter": {
+    "entry": "adapter.py"
+  },
+  "dependencies": [],
+  "operations": {
+    "homogenize_electrostatics_2d": {
+      "description": "True 2D P1 electrostatics RVE with explicit quantities; full tensor, periodic/affine reference, synthetic parameters",
+      "input_schema": "schemas/homogenize_electrostatics_2d.input.schema.json",
+      "output_schema": "schemas/homogenize_electrostatics_2d.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "finite_tensor",
+          "symmetry",
+          "positive_definite",
+          "mean_driving_field",
+          "Hill_Mandel",
+          "weak_PDE",
+          "PBC_pairing",
+          "mesh_geometry",
+          "linear_solver",
+          "native_readback",
+          "unit_normalization",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_calibration",
+          "statistical_representativity",
+          "device_applicability"
+        ]
+      }
+    },
+    "homogenize_thermal_2d": {
+      "description": "True 2D P1 thermal RVE with explicit quantities; full tensor, periodic/affine reference, synthetic parameters",
+      "input_schema": "schemas/homogenize_thermal_2d.input.schema.json",
+      "output_schema": "schemas/homogenize_thermal_2d.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "finite_tensor",
+          "symmetry",
+          "positive_definite",
+          "mean_driving_field",
+          "Hill_Mandel",
+          "weak_PDE",
+          "PBC_pairing",
+          "mesh_geometry",
+          "linear_solver",
+          "native_readback",
+          "unit_normalization",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_calibration",
+          "statistical_representativity",
+          "device_applicability"
+        ]
+      }
+    },
+    "homogenize_electrostatics_3d": {
+      "description": "True 3D P1 electrostatics RVE with explicit quantities; full tensor, periodic/affine reference, synthetic parameters",
+      "input_schema": "schemas/homogenize_electrostatics_3d.input.schema.json",
+      "output_schema": "schemas/homogenize_electrostatics_3d.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "finite_tensor",
+          "symmetry",
+          "positive_definite",
+          "mean_driving_field",
+          "Hill_Mandel",
+          "weak_PDE",
+          "PBC_pairing",
+          "mesh_geometry",
+          "linear_solver",
+          "native_readback",
+          "unit_normalization",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_calibration",
+          "statistical_representativity",
+          "device_applicability"
+        ]
+      }
+    },
+    "homogenize_thermal_3d": {
+      "description": "True 3D P1 thermal RVE with explicit quantities; full tensor, periodic/affine reference, synthetic parameters",
+      "input_schema": "schemas/homogenize_thermal_3d.input.schema.json",
+      "output_schema": "schemas/homogenize_thermal_3d.output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 300,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "finite_tensor",
+          "symmetry",
+          "positive_definite",
+          "mean_driving_field",
+          "Hill_Mandel",
+          "weak_PDE",
+          "PBC_pairing",
+          "mesh_geometry",
+          "linear_solver",
+          "native_readback",
+          "unit_normalization",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_calibration",
+          "statistical_representativity",
+          "device_applicability"
+        ]
+      }
+    }
+  },
+  "engine": "dolfinx",
+  "task_provider": "mlcc.rve_tasks:create_task"
+}

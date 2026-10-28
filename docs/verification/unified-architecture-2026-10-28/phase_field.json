@@ -1,0 +1,1471 @@
+{
+  "module_id": "phase_field",
+  "task_id": "phase-unified-02",
+  "job_id": "690",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T08:31:38.903799+00:00",
+    "updated_at": "2026-10-28T08:31:44.547974+00:00",
+    "backend_exit_code": 0,
+    "events": []
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "vector_completed_time",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_history_accounting",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_independent_readback",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_nonlinear",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_rollback",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_voltage_bc",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "vector_voltage_work_energy",
+          "message": "Frozen PoC criteria; native independent field/residual/voltage-work evidence retained",
+          "status": "passed"
+        },
+        {
+          "id": "unit_mapping",
+          "message": "Unique shared UNIT; canonical SI converted once to reduced solver input; QC stays reduced",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_convergence",
+          "message": "No task-specific mesh refinement",
+          "status": "not_checked"
+        },
+        {
+          "id": "time_convergence",
+          "message": "No task-specific time refinement",
+          "status": "not_checked"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_validity",
+          "message": "Synthetic parameters/reference scales; no measured calibration",
+          "status": "not_checked"
+        },
+        {
+          "id": "stationary_stability",
+          "message": "Newton convergence or finite-time evolution does not prove stable equilibrium",
+          "status": "not_checked"
+        },
+        {
+          "id": "electroelasticity",
+          "message": "No elasticity or electrostriction",
+          "status": "not_checked"
+        },
+        {
+          "id": "general_multidomain_cycle",
+          "message": "Controlled dynamic trajectories do not validate arbitrary multidomain hysteresis",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "results": {
+    "artifact_refs": [
+      "artifacts/config.json",
+      "artifacts/environment.json",
+      "artifacts/fields.h5",
+      "artifacts/fields.npz",
+      "artifacts/fields.vtu",
+      "artifacts/fields.xdmf",
+      "artifacts/history.csv",
+      "artifacts/history.json",
+      "artifacts/input.canonical-si.json",
+      "artifacts/input.original.json",
+      "artifacts/input.solver-dimensionless.json",
+      "artifacts/metrics.json",
+      "artifacts/native_checks.json",
+      "artifacts/nonlinear.json",
+      "artifacts/readback.json",
+      "artifacts/scientific_core.json",
+      "artifacts/si/fields_si.npz",
+      "artifacts/si/fields_si.vtu",
+      "artifacts/si/fields_units.json",
+      "artifacts/si/history_si.json",
+      "artifacts/si/mapping.json",
+      "artifacts/si/readback.json",
+      "artifacts/si/vector_fields.png",
+      "artifacts/si/vector_history.png",
+      "artifacts/summary.json",
+      "artifacts/unit_normalization.json",
+      "artifacts/vector_fields.png",
+      "artifacts/vector_history.png"
+    ],
+    "dimension": 2,
+    "model_profile": "synthetic_tetragonal_quartic_v1",
+    "operation": "vector_evolve_si",
+    "results_si": {
+      "final": {
+        "E_applied": [
+          0.0,
+          200.0
+        ],
+        "E_depolarization_rms": 5.5594687769501105e-14,
+        "P_rms": 0.8522793626166079,
+        "bound_charge_rms": 0.0,
+        "bulk": -0.0002217972106804555,
+        "electric_enthalpy": -4.306743361541053e-05,
+        "enthalpy": -0.00026486464429586613,
+        "gradient": 0.0,
+        "gradient_by_spatial_axis_rms": [
+          0.0,
+          0.0
+        ],
+        "mean_E": [
+          -8.01600793969529e-15,
+          200.00000000000057
+        ],
+        "mean_P": [
+          0.8444391331541534,
+          0.11533716807705248
+        ],
+        "potential_BC_error": 0.0,
+        "raw_boundary_D_flux": -1.3877787807814457e-19,
+        "t": 0.0002
+      },
+      "material_calibration": "not_checked",
+      "qc_domain": "dimensionless; tolerances are not converted into material acceptance",
+      "units": {
+        "D": "C/m^2",
+        "E": "V/m",
+        "P": "C/m^2",
+        "coordinates": "m",
+        "energy": "J/m",
+        "phi": "V",
+        "raw_boundary_D_flux": "C/m",
+        "rho_bound": "C/m^3",
+        "time": "s",
+        "wall_excess_energy": "J/m^2"
+      }
+    },
+    "schema_version": "phase_field.vector-result.v1",
+    "solver_dimensionless": {
+      "final": {
+        "E_applied": [
+          0.0,
+          0.2
+        ],
+        "E_depolarization_rms": 5.55946877695011e-17,
+        "Gauss_free_residual": 1.3877787807814457e-16,
+        "Gauss_reaction_balance": 5.551115123125783e-17,
+        "P_rms": 0.8522793626166079,
+        "bound_charge_rms": 0.0,
+        "bulk": -0.2217972106804555,
+        "electric_enthalpy": -0.04306743361541053,
+        "enthalpy": -0.26486464429586615,
+        "gradient": 0.0,
+        "gradient_by_spatial_axis_rms": [
+          0.0,
+          0.0
+        ],
+        "mean_E": [
+          -8.01600793969529e-18,
+          0.20000000000000057
+        ],
+        "mean_P": [
+          0.8444391331541534,
+          0.11533716807705248
+        ],
+        "potential_BC_error": 0.0,
+        "raw_boundary_D_flux": -1.3877787807814457e-16,
+        "t": 0.2
+      },
+      "mesh_id": "771f1047b8ba7b264a1a9cbcaa4ac1369cd398064a7fe8014b85c097a534db1c",
+      "resources": {
+        "DOFs_per_P_component": 9,
+        "cells": 8,
+        "creation_seconds": 0.5856490639271215,
+        "nonlinear_iterations": 6,
+        "peak_process_RSS_MiB": 196.3203125,
+        "potential_DOFs": 9,
+        "solve_seconds": 0.10855527897365391,
+        "total_DOFs": 27
+      },
+      "time": {
+        "accepted_steps": 2,
+        "completed": 0.2,
+        "rejected_steps": 0,
+        "stationary_solved": false
+      }
+    },
+    "unit_mapping": {
+      "canonical_si": {
+        "boundary_condition": "all_surface_voltage",
+        "cells": [
+          2,
+          2
+        ],
+        "dimension": 2,
+        "epsilon": 0.001,
+        "evolution": {
+          "dt": 0.0001,
+          "end": 0.0002,
+          "max_halvings": 6,
+          "max_steps": 16
+        },
+        "field_protocol": {
+          "kind": "constant",
+          "value": [
+            0.0,
+            200.0
+          ]
+        },
+        "g": 0.0005,
+        "initial_condition": {
+          "kind": "uniform",
+          "values": [
+            0.8,
+            0.1
+          ]
+        },
+        "model_profile": "synthetic_tetragonal_quartic_v1",
+        "operation": "vector_evolve_si",
+        "output": {
+          "images": true
+        },
+        "reduced_parameters": {
+          "a": -0.5,
+          "b": 0.25,
+          "c": 1.5,
+          "mobility": 1.0
+        },
+        "reference_scales": {
+          "energy_density": 1000.0,
+          "length": 0.001,
+          "polarization": 1.0,
+          "time": 0.001
+        },
+        "schema_version": "phase_field.vector-input.v1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        },
+        "units": "SI"
+      },
+      "derived": {
+        "coefficient_definition": "fL=a*sum(Pi^2)+b*sum(Pi^4)+c*sum(Pi^2*Pj^2); no 1/2 or 1/4 factors",
+        "energy_unit": "J/m",
+        "factor_units_si": {
+          "displacement": "C/m^2",
+          "electric_field": "V/m",
+          "energy": "J/m",
+          "energy_density": "J/m^3",
+          "epsilon": "F/m",
+          "g": "J*m^3/C^2",
+          "length": "m",
+          "polarization": "C/m^2",
+          "polarization_gradient": "C/m^3",
+          "potential": "V",
+          "time": "s"
+        },
+        "factors": {
+          "displacement": 1.0,
+          "electric_field": 1000.0,
+          "energy": 0.001,
+          "energy_density": 1000.0,
+          "epsilon": 0.001,
+          "g": 0.001,
+          "length": 0.001,
+          "polarization": 1.0,
+          "polarization_gradient": 1000.0,
+          "potential": 1.0,
+          "time": 0.001
+        },
+        "material_calibration": "not_checked",
+        "physical_coefficients": {
+          "a": -500.0,
+          "b": 250.0,
+          "c": 1500.0,
+          "epsilon_absolute": 0.001,
+          "g": 0.0005,
+          "mobility": 1.0
+        }
+      },
+      "material_calibration": "not_checked",
+      "normalization_report": {
+        "core_version": "1.0.0",
+        "payload": {
+          "boundary_condition": "all_surface_voltage",
+          "cells": [
+            2,
+            2
+          ],
+          "dimension": 2,
+          "epsilon": 0.001,
+          "evolution": {
+            "dt": 0.0001,
+            "end": 0.0002,
+            "max_halvings": 6,
+            "max_steps": 16
+          },
+          "field_protocol": {
+            "kind": "constant",
+            "value": [
+              0.0,
+              200.0
+            ]
+          },
+          "g": 0.0005,
+          "initial_condition": {
+            "kind": "uniform",
+            "values": [
+              0.8,
+              0.1
+            ]
+          },
+          "model_profile": "synthetic_tetragonal_quartic_v1",
+          "operation": "vector_evolve_si",
+          "output": {
+            "images": true
+          },
+          "reduced_parameters": {
+            "a": -0.5,
+            "b": 0.25,
+            "c": 1.5,
+            "mobility": 1.0
+          },
+          "reference_scales": {
+            "energy_density": 1000.0,
+            "length": 0.001,
+            "polarization": 1.0,
+            "time": 0.001
+          },
+          "schema_version": "phase_field.vector-input.v1",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          },
+          "units": "SI"
+        },
+        "records": {
+          "/epsilon": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "F/m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "absolute_permittivity",
+            "kind": "absolute_permittivity",
+            "normalized": {
+              "unit": "F/m",
+              "value": 0.001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "F/m",
+                "value": 0.001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "F/m",
+              "value": 0.001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/evolution/dt": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "s",
+              "unit_origin": "explicit"
+            },
+            "dimension": "time",
+            "kind": "time",
+            "normalized": {
+              "unit": "s",
+              "value": 0.0001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "s",
+                "value": 0.0001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "s",
+              "value": 0.0001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/evolution/end": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "s",
+              "unit_origin": "explicit"
+            },
+            "dimension": "time",
+            "kind": "time",
+            "normalized": {
+              "unit": "s",
+              "value": 0.0002
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "s",
+                "value": 0.0002
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "s",
+              "value": 0.0002
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/field_protocol/value/0": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "V/m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "electric_field",
+            "kind": "electric_field",
+            "normalized": {
+              "unit": "V/m",
+              "value": 0.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "V/m",
+                "value": 0.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 0.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/field_protocol/value/1": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "V/m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "electric_field",
+            "kind": "electric_field",
+            "normalized": {
+              "unit": "V/m",
+              "value": 200.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "V/m",
+                "value": 200.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 200.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/g": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "J*m^3/C^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "gradient_coefficient",
+            "kind": "gradient_coefficient",
+            "normalized": {
+              "unit": "J*m^3/C^2",
+              "value": 0.0005
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "J*m^3/C^2",
+                "value": 0.0005
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "J*m^3/C^2",
+              "value": 0.0005
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/initial_condition/values/0": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "C/m^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "charge_per_area",
+            "kind": "polarization",
+            "normalized": {
+              "unit": "C/m^2",
+              "value": 0.8
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "C/m^2",
+                "value": 0.8
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.8
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/initial_condition/values/1": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "C/m^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "charge_per_area",
+            "kind": "polarization",
+            "normalized": {
+              "unit": "C/m^2",
+              "value": 0.1
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "C/m^2",
+                "value": 0.1
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.1
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/a": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": -0.5
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": -0.5
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": -0.5
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/b": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": 0.25
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": 0.25
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": 0.25
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/c": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": 1.5
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": 1.5
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": 1.5
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reduced_parameters/mobility": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "1",
+              "unit_origin": "explicit"
+            },
+            "dimension": "dimensionless",
+            "kind": "dimensionless_parameter",
+            "normalized": {
+              "unit": "1",
+              "value": 1.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "1",
+                "value": 1.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "1",
+              "value": 1.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/energy_density": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "J/m^3",
+              "unit_origin": "explicit"
+            },
+            "dimension": "energy_density",
+            "kind": "energy_density",
+            "normalized": {
+              "unit": "J/m^3",
+              "value": 1000.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "J/m^3",
+                "value": 1000.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "J/m^3",
+              "value": 1000.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/length": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "m",
+              "unit_origin": "explicit"
+            },
+            "dimension": "length",
+            "kind": "length",
+            "normalized": {
+              "unit": "m",
+              "value": 0.001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "m",
+                "value": 0.001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "m",
+              "value": 0.001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/polarization": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "C/m^2",
+              "unit_origin": "explicit"
+            },
+            "dimension": "charge_per_area",
+            "kind": "polarization",
+            "normalized": {
+              "unit": "C/m^2",
+              "value": 1.0
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "C/m^2",
+                "value": 1.0
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 1.0
+            },
+            "schema_version": "mlcc.quantity.v1"
+          },
+          "/reference_scales/time": {
+            "conversion": {
+              "core_version": "1.0.0",
+              "factor": 1.0,
+              "offset": 0.0,
+              "rule": "SI = raw * 1 + 0",
+              "status": "identity",
+              "unit_key": "s",
+              "unit_origin": "explicit"
+            },
+            "dimension": "time",
+            "kind": "time",
+            "normalized": {
+              "unit": "s",
+              "value": 0.001
+            },
+            "original": {
+              "bare_unit": null,
+              "representation": {
+                "source": {
+                  "kind": "synthetic_test",
+                  "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+                },
+                "unit": "s",
+                "value": 0.001
+              },
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "s",
+              "value": 0.001
+            },
+            "schema_version": "mlcc.quantity.v1"
+          }
+        }
+      },
+      "original_input": {
+        "boundary_condition": "all_surface_voltage",
+        "cells": [
+          2,
+          2
+        ],
+        "dimension": 2,
+        "epsilon": {
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          },
+          "unit": "F/m",
+          "value": 0.001
+        },
+        "evolution": {
+          "dt": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "s",
+            "value": 0.0001
+          },
+          "end": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "s",
+            "value": 0.0002
+          },
+          "max_halvings": 6,
+          "max_steps": 16
+        },
+        "field_protocol": {
+          "kind": "constant",
+          "value": [
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 0.0
+            },
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "V/m",
+              "value": 200.0
+            }
+          ]
+        },
+        "g": {
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          },
+          "unit": "J*m^3/C^2",
+          "value": 0.0005
+        },
+        "initial_condition": {
+          "kind": "uniform",
+          "values": [
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.8
+            },
+            {
+              "source": {
+                "kind": "synthetic_test",
+                "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+              },
+              "unit": "C/m^2",
+              "value": 0.1
+            }
+          ]
+        },
+        "model_profile": "synthetic_tetragonal_quartic_v1",
+        "operation": "vector_evolve_si",
+        "output": {
+          "images": true
+        },
+        "reduced_parameters": {
+          "a": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": -0.5
+          },
+          "b": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": 0.25
+          },
+          "c": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": 1.5
+          },
+          "mobility": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "1",
+            "value": 1.0
+          }
+        },
+        "reference_scales": {
+          "energy_density": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "J/m^3",
+            "value": 1000.0
+          },
+          "length": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "m",
+            "value": 0.001
+          },
+          "polarization": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "C/m^2",
+            "value": 1.0
+          },
+          "time": {
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+            },
+            "unit": "s",
+            "value": 0.001
+          }
+        },
+        "schema_version": "phase_field.vector-input.v1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        },
+        "units": "SI"
+      },
+      "original_input_sha256": "9c9a9ed0fa96a01413a63060178f5f29aa4a3082d68a21adc6b9f4e89253302a",
+      "qc_domain": "dimensionless",
+      "schema_version": "phase_field.vector-unit-mapping.v1",
+      "solver_input_sha256": "5b15070ab53bce66e0ea58ad0ef7872d66e5a0765a91caab2cef20bc2fcfa2f2"
+    },
+    "units": "SI"
+  },
+  "artifacts": [
+    {
+      "description": "Task-local native evidence: config.json",
+      "media_type": "application/json",
+      "path": "artifacts/config.json",
+      "size_bytes": 589,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: environment.json",
+      "media_type": "application/json",
+      "path": "artifacts/environment.json",
+      "size_bytes": 3167,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.h5",
+      "media_type": "application/x-hdf5",
+      "path": "artifacts/fields.h5",
+      "size_bytes": 13336,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.npz",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/fields.npz",
+      "size_bytes": 2038,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.vtu",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/fields.vtu",
+      "size_bytes": 3911,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields.xdmf",
+      "media_type": "application/xml",
+      "path": "artifacts/fields.xdmf",
+      "size_bytes": 3065,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: history.csv",
+      "media_type": "text/csv",
+      "path": "artifacts/history.csv",
+      "size_bytes": 273,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: history.json",
+      "media_type": "application/json",
+      "path": "artifacts/history.json",
+      "size_bytes": 2181,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: input.canonical-si.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 824,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: input.original.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 3734,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: input.solver-dimensionless.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.solver-dimensionless.json",
+      "size_bytes": 710,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: metrics.json",
+      "media_type": "application/json",
+      "path": "artifacts/metrics.json",
+      "size_bytes": 1187,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: launch.json",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 999,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: request.json",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 19823,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: response.json",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 24861,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: native_checks.json",
+      "media_type": "application/json",
+      "path": "artifacts/native_checks.json",
+      "size_bytes": 169,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: nonlinear.json",
+      "media_type": "application/json",
+      "path": "artifacts/nonlinear.json",
+      "size_bytes": 1449,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: quality.json",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 1990,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: readback.json",
+      "media_type": "application/json",
+      "path": "artifacts/readback.json",
+      "size_bytes": 782,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: scientific_core.json",
+      "media_type": "application/json",
+      "path": "artifacts/scientific_core.json",
+      "size_bytes": 779,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields_si.npz",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/si/fields_si.npz",
+      "size_bytes": 2044,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields_si.vtu",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/si/fields_si.vtu",
+      "size_bytes": 3916,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: fields_units.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/fields_units.json",
+      "size_bytes": 372,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: history_si.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/history_si.json",
+      "size_bytes": 1505,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: mapping.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/mapping.json",
+      "size_bytes": 18738,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: readback.json",
+      "media_type": "application/json",
+      "path": "artifacts/si/readback.json",
+      "size_bytes": 263,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_fields.png",
+      "media_type": "image/png",
+      "path": "artifacts/si/vector_fields.png",
+      "size_bytes": 58583,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_history.png",
+      "media_type": "image/png",
+      "path": "artifacts/si/vector_history.png",
+      "size_bytes": 32336,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: summary.json",
+      "media_type": "application/json",
+      "path": "artifacts/summary.json",
+      "size_bytes": 21663,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: unit_normalization.json",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 13024,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_fields.png",
+      "media_type": "image/png",
+      "path": "artifacts/vector_fields.png",
+      "size_bytes": 62616,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Task-local native evidence: vector_history.png",
+      "media_type": "image/png",
+      "path": "artifacts/vector_history.png",
+      "size_bytes": 25690,
+      "evidence_kind": "real_computation"
+    }
+  ],
+  "file_sha256": {
+    "task.json": "99349261cdd1ad32ff5a1dbc0a196c86f7d691ca6d68929b9eaa44138cdcafb3",
+    "scale-response.json": "3fe43bf2e200093df77fb5535a8585520f306f3af0e7eb94902312d37eacfc4f",
+    "artifacts/config.json": "bb076b977f0fb2ebdc2bc0adb826c6ddc52ddaab29e3a7bc2c5f4523704ced45",
+    "artifacts/environment.json": "a9b83a09ce31eea63094ab1223087e0e27f0ebf76754efe27491796a0e8ebcd0",
+    "artifacts/fields.h5": "2240e1d6c0643fee23a569b14be0bddd94a00787b2b9d01e75f5565dd6afd49f",
+    "artifacts/fields.npz": "db7ec668cd7cc61a5198b48f8d5c12077db30bbd3843014e8cac0c7ce90d9751",
+    "artifacts/fields.vtu": "e82d677df4a5fbd67e2575854e2da19c87a8b1b7165fecb736b132965a01e6dc",
+    "artifacts/fields.xdmf": "d783a0f4fc07ccd4d4a8b4980ce2cd0df06df568ee4de1fc4df2967382aa112a",
+    "artifacts/history.csv": "2069c96f0f075c55b24465f0031e8b6da02d3a85a52a12d9f445b010a5d901c1",
+    "artifacts/history.json": "79df697dc81a901e4a9ce1c33cb7fe6a888a4d407dab7896fb87454ebf26a1b7",
+    "artifacts/input.canonical-si.json": "4799238aeb197d3dcfb812e8aba47b069ef7a18a95f122f97a594c4a1b33508a",
+    "artifacts/input.original.json": "f040b1f00c9c160ad8e3a1a53661ef17f425ba9c7a13a555ff1798f3237026f0",
+    "artifacts/input.solver-dimensionless.json": "98f3dd3dee592543c27123cdf6cd5f76f5593f84022eda65b38b34f3a8a80a78",
+    "artifacts/metrics.json": "ae5146793fb8ef986af06d124532774fccffb14071b298dd3ce988c8fb5a5a3d",
+    "artifacts/native/.cache/fenics/libffcx_expressions_95aa945d2d1a05d9456462a4713e30b472c2d0b9.c": "d4a04d8aa5030f03a6e56c1a5e3fad181e0ecad249436bdbc066b88de29e22b7",
+    "artifacts/native/.cache/fenics/libffcx_expressions_95aa945d2d1a05d9456462a4713e30b472c2d0b9.c.cached": "9ce26f2f22f3b1813908efab8bb185f83c5e0d039f470734533c6d554c2bfeac",
+    "artifacts/native/.cache/fenics/libffcx_expressions_95aa945d2d1a05d9456462a4713e30b472c2d0b9.cpython-311-x86_64-linux-gnu.so": "97625b7740b213c2e7cf359618900f564c7bab70bb633bbaafc05769e521bd83",
+    "artifacts/native/.cache/fenics/libffcx_expressions_95aa945d2d1a05d9456462a4713e30b472c2d0b9.o": "a22f04e6f6fad34701e9724883e7ff96f9860811ef5142c7585aed0f12ab5661",
+    "artifacts/native/.cache/fenics/libffcx_expressions_be463aa896ed76f4128f4dd6480b04589179a29f.c": "128386cc4e060f3a1c1e611c37f912f2da9c193640c7679da8eb8f70c121dbf1",
+    "artifacts/native/.cache/fenics/libffcx_expressions_be463aa896ed76f4128f4dd6480b04589179a29f.c.cached": "b0d77bc71d44343fd490656ed59632a86611e9b015cbe2cceaca23693ab49e02",
+    "artifacts/native/.cache/fenics/libffcx_expressions_be463aa896ed76f4128f4dd6480b04589179a29f.cpython-311-x86_64-linux-gnu.so": "4189c5c1acc477dfd0610f80e9f6c00c36c53096b327adfaa810cbe4804cf5dd",
+    "artifacts/native/.cache/fenics/libffcx_expressions_be463aa896ed76f4128f4dd6480b04589179a29f.o": "1a0f595df3bc32050b72c367e1e42bf6933b9cf6ef860ef15fa058b37aba46ff",
+    "artifacts/native/.cache/fenics/libffcx_expressions_e7cc2731635501b6ac99dc6609ad8c0968100984.c": "12bd189f4428cd90793a597bc33d7845f861d48a433d6255a3cc00ce1c23ce4f",
+    "artifacts/native/.cache/fenics/libffcx_expressions_e7cc2731635501b6ac99dc6609ad8c0968100984.c.cached": "d929da81205ea1cd402a8baba8ba38b0880fba25325d51c418d65be1f51e61a1",
+    "artifacts/native/.cache/fenics/libffcx_expressions_e7cc2731635501b6ac99dc6609ad8c0968100984.cpython-311-x86_64-linux-gnu.so": "d58acb72232192bd392e25b77f1d4d5b4399c7fcf5a565e9995bf8a117270860",
+    "artifacts/native/.cache/fenics/libffcx_expressions_e7cc2731635501b6ac99dc6609ad8c0968100984.o": "04c887c8991ef1a9645322650d2f3c641cae8e9832c682d73375f1325f09be83",
+    "artifacts/native/.cache/fenics/libffcx_forms_0d130440106c90b1436b3cc4960eaa4755bd3400.c": "11ad5e1838beee4f8852d58664dc03b26d50aa75d436a9c574a902bac7dfb1a9",
+    "artifacts/native/.cache/fenics/libffcx_forms_0d130440106c90b1436b3cc4960eaa4755bd3400.c.cached": "fda13541ab3af033b9dd7d5dd2f93e12fd2ab8e820ca5a2f20f6d74e48f8a178",
+    "artifacts/native/.cache/fenics/libffcx_forms_0d130440106c90b1436b3cc4960eaa4755bd3400.cpython-311-x86_64-linux-gnu.so": "948f92d3513a7e16b60ec37c46761409c709f78123cb4760ae0851b90437b058",
+    "artifacts/native/.cache/fenics/libffcx_forms_0d130440106c90b1436b3cc4960eaa4755bd3400.o": "04ade97e94a3623d7439de546f220b5bdaf2be85a621f990ef18dd60b1658e28",
+    "artifacts/native/.cache/fenics/libffcx_forms_18ef2e13487103d11de3d21a33a8ae4f5296f949.c": "223edbeb605e4fe02b2affd89bca246992e0bab88f1a9948f00a2a7a3a546a4b",
+    "artifacts/native/.cache/fenics/libffcx_forms_18ef2e13487103d11de3d21a33a8ae4f5296f949.c.cached": "7be3c55f0b818dd2d4f168c881dd631693e6810184d05bd1b4cc25ece0c88419",
+    "artifacts/native/.cache/fenics/libffcx_forms_18ef2e13487103d11de3d21a33a8ae4f5296f949.cpython-311-x86_64-linux-gnu.so": "8177d0bc3c505e2591b077ba6176a4890a5170fa70f16c27dc4d8252088a70ab",
+    "artifacts/native/.cache/fenics/libffcx_forms_18ef2e13487103d11de3d21a33a8ae4f5296f949.o": "0064a1ee11696f3c1c6c9f33b6a5f89521972110284d891fa4ff217b198d50d9",
+    "artifacts/native/.cache/fenics/libffcx_forms_1a4cffc3a58a35590ccba8a1ba13dc1a17accd96.c": "c8a65c959a1dc2a5c1b6dda00f551d3da373abe6f5fa603d8871598c5bada8ff",
+    "artifacts/native/.cache/fenics/libffcx_forms_1a4cffc3a58a35590ccba8a1ba13dc1a17accd96.c.cached": "b1ad034dd8cedb8686a2980114b5a838ffbd39127a2e1785d63bf62cdb59a5b8",
+    "artifacts/native/.cache/fenics/libffcx_forms_1a4cffc3a58a35590ccba8a1ba13dc1a17accd96.cpython-311-x86_64-linux-gnu.so": "70154699c907981b15b58051a2c34e797220d1e29d3039bc6db8b222b707347e",
+    "artifacts/native/.cache/fenics/libffcx_forms_1a4cffc3a58a35590ccba8a1ba13dc1a17accd96.o": "a1ee615474481db44524be27d2de2b50da3e9d3f782daf545b1a455c29e38726",
+    "artifacts/native/.cache/fenics/libffcx_forms_3eb106967e16a26c91fb1f0e20a8b58f2187b7a7.c": "13b7f80b5c5f347a52c9be15c1ee35240b6f7cb9591dc556adb1768939cd1f39",
+    "artifacts/native/.cache/fenics/libffcx_forms_3eb106967e16a26c91fb1f0e20a8b58f2187b7a7.c.cached": "df269a7cd669515d4aad4a9e5a52dab3de14fa86f38e958c25db3d16ff42d7c5",
+    "artifacts/native/.cache/fenics/libffcx_forms_3eb106967e16a26c91fb1f0e20a8b58f2187b7a7.cpython-311-x86_64-linux-gnu.so": "e5ef3d0f7f7c7cee832ed7008ef84e119015d6eb777d47fee75fe17a3107ee2e",
+    "artifacts/native/.cache/fenics/libffcx_forms_3eb106967e16a26c91fb1f0e20a8b58f2187b7a7.o": "14cb7fab01bf7c611fad6e81dca690352271a30af91e92b817e4d22a43f9e0c0",
+    "artifacts/native/.cache/fenics/libffcx_forms_47a94c316de6c135c1ba558b62e1ec7624e9b360.c": "ee3af62ec23cd68801a1d37b616366acd8a78c65a52e95869274c20ba5922e92",
+    "artifacts/native/.cache/fenics/libffcx_forms_47a94c316de6c135c1ba558b62e1ec7624e9b360.c.cached": "6b24b4ce678cd4305a4508e11edaaa3e4a838d758f4997c4767ea09170ea45ce",
+    "artifacts/native/.cache/fenics/libffcx_forms_47a94c316de6c135c1ba558b62e1ec7624e9b360.cpython-311-x86_64-linux-gnu.so": "1a76914ecc1459b430b70ded1839b9628f8fd046ed23c8a5aa90a9d843f16de9",
+    "artifacts/native/.cache/fenics/libffcx_forms_47a94c316de6c135c1ba558b62e1ec7624e9b360.o": "49ebcdbb844becf7ff341716cef503c732998fed31b573f1943c0346fbc2ce96",
+    "artifacts/native/.cache/fenics/libffcx_forms_52a85efd427d715200d4d5b3a56591c38e15c65e.c": "7c87190b401ad95ff73d0fb1df770a0c7b94a813d10aeebe72e790b8b06a4811",
+    "artifacts/native/.cache/fenics/libffcx_forms_52a85efd427d715200d4d5b3a56591c38e15c65e.c.cached": "1508e58706b186f46b3df64e18d6f8a267af6b98a4abf83884e55e2fadfb81fa",
+    "artifacts/native/.cache/fenics/libffcx_forms_52a85efd427d715200d4d5b3a56591c38e15c65e.cpython-311-x86_64-linux-gnu.so": "56530db7bee830de883eaf88fba412d814ece9b65ec1ac91b3e002d86501b931",
+    "artifacts/native/.cache/fenics/libffcx_forms_52a85efd427d715200d4d5b3a56591c38e15c65e.o": "e4fd91c51b59e1d291872742b1d3c0d550d44046f6fd3d57dc3eca3368f2e0f4",
+    "artifacts/native/.cache/fenics/libffcx_forms_7c9feb0594231c255b57e7841cd7524f03e8032d.c": "c2f596ffd1132b42aa75ca0ddf37948131f8a093a8ff0c433b422b17e0f15f85",
+    "artifacts/native/.cache/fenics/libffcx_forms_7c9feb0594231c255b57e7841cd7524f03e8032d.c.cached": "1edc9b805824ba6ffd82df1741caa524e6e863b717a16e5fd89c01b40108b2b0",
+    "artifacts/native/.cache/fenics/libffcx_forms_7c9feb0594231c255b57e7841cd7524f03e8032d.cpython-311-x86_64-linux-gnu.so": "a2829c5ba57c368f487d23bccf0e2ec439b771590aa8fc3f2ed068291a00afcf",
+    "artifacts/native/.cache/fenics/libffcx_forms_7c9feb0594231c255b57e7841cd7524f03e8032d.o": "cb3a02a06189addddaaab7331a31e44130a7d067a9e5ef93ee53ebb79c22e2a2",
+    "artifacts/native/.cache/fenics/libffcx_forms_7d06e667016e00e665d242220efa6ba5d5ef4853.c": "45e9b70ac76b6ba9b11103760c7e3214eeb8a0e7f2a1e3683acb6560254bb53b",
+    "artifacts/native/.cache/fenics/libffcx_forms_7d06e667016e00e665d242220efa6ba5d5ef4853.c.cached": "60021e7422ee38ad8662e370ae956fc6e4b7f8238809734d416a1705065d2101",
+    "artifacts/native/.cache/fenics/libffcx_forms_7d06e667016e00e665d242220efa6ba5d5ef4853.cpython-311-x86_64-linux-gnu.so": "e713b66e9f70da040ba4842adb9d9aa52483b795f29604e0645fb03da7fc70c2",
+    "artifacts/native/.cache/fenics/libffcx_forms_7d06e667016e00e665d242220efa6ba5d5ef4853.o": "c67318627ada289d5ab45718cf70cc5f9897c9ad375147f22f903ca1251a6b89",
+    "artifacts/native/.cache/fenics/libffcx_forms_806d13621aa2c5dd47273bdc7d8232ee46c14371.c": "8069ad93ff24c11f7a91ed49be7d75ac7aa6361113a997934b03c82bac6bf3c1",
+    "artifacts/native/.cache/fenics/libffcx_forms_806d13621aa2c5dd47273bdc7d8232ee46c14371.c.cached": "d34d413102bd704aa9f09cfdcecf70347bf6773686c8bd324eed492a60dae6c6",
+    "artifacts/native/.cache/fenics/libffcx_forms_806d13621aa2c5dd47273bdc7d8232ee46c14371.cpython-311-x86_64-linux-gnu.so": "672b03ee2d0e9d053c0417c60406520605d4ae344518c344b77ad5b23cf98a5d",
+    "artifacts/native/.cache/fenics/libffcx_forms_806d13621aa2c5dd47273bdc7d8232ee46c14371.o": "7bb48cad5dec06231e9cf22c363964b82fc980b849b60eed520fa6a97e8f6ee5",
+    "artifacts/native/.cache/fenics/libffcx_forms_99b18aa1ee6ed640494f4449b057be94dfec3636.c": "913bd9c70148048d99142e5afb7092ca6ad1ee68dc4f27bc83135c1d88cde82f",
+    "artifacts/native/.cache/fenics/libffcx_forms_99b18aa1ee6ed640494f4449b057be94dfec3636.c.cached": "98a295b7c782f78c88e777246e30bac90effb4cdcc4a0fa71aca2bcc139260da",
+    "artifacts/native/.cache/fenics/libffcx_forms_99b18aa1ee6ed640494f4449b057be94dfec3636.cpython-311-x86_64-linux-gnu.so": "41e6d94560b9b8a5f9025bec427732a47b441a5ca0da478d75b3156050496d02",
+    "artifacts/native/.cache/fenics/libffcx_forms_99b18aa1ee6ed640494f4449b057be94dfec3636.o": "cae6c3cd92c6d63bc9e417b55c13b7bb5ae0df893f08298a107e2f5729694e50",
+    "artifacts/native/.cache/fenics/libffcx_forms_9cf12392d84ed64b16d9bcd1dc4ce1e85cb1f114.c": "6e01c78e48c35c6503d59fb0f080a37775e1d8b61901463daa687ba571013cb2",
+    "artifacts/native/.cache/fenics/libffcx_forms_9cf12392d84ed64b16d9bcd1dc4ce1e85cb1f114.c.cached": "f15a5c03fad5ff7c98cda111729f21dba278f9588cdcc1f6e865dce2b9f661ca",
+    "artifacts/native/.cache/fenics/libffcx_forms_9cf12392d84ed64b16d9bcd1dc4ce1e85cb1f114.cpython-311-x86_64-linux-gnu.so": "e637de465ceec56a319b85034cdfbf727ae61aa9d295928cea6ecfe6b845d36e",
+    "artifacts/native/.cache/fenics/libffcx_forms_9cf12392d84ed64b16d9bcd1dc4ce1e85cb1f114.o": "40f05fd63c4f8d75ffd7ff3672e35fb090dc1ff25ae13bb3d077c0a65bc820c5",
+    "artifacts/native/.cache/fenics/libffcx_forms_9e92344048d03f584670acafc2326ee25d3a6410.c": "d1fc427bae6830b2b035d5d6b87781274ef60c7c6850f2cb73be4cc124c1c01a",
+    "artifacts/native/.cache/fenics/libffcx_forms_9e92344048d03f584670acafc2326ee25d3a6410.c.cached": "78fc8c8eaec4abbffc72ff42146f8e7e66e67a0ddfac68d9012bd369ac23eb4e",
+    "artifacts/native/.cache/fenics/libffcx_forms_9e92344048d03f584670acafc2326ee25d3a6410.cpython-311-x86_64-linux-gnu.so": "7de714abbac33fd9ba87c0dc8a38bdef93f907d6ddf736a77f13407ae0b670f0",
+    "artifacts/native/.cache/fenics/libffcx_forms_9e92344048d03f584670acafc2326ee25d3a6410.o": "b8c43d3fef826c6db9e3eac33645b3edeaa208641954e5b2f9e31d58f7271814",
+    "artifacts/native/.cache/fenics/libffcx_forms_9f71bd07034a85e5656227e4b76b205a59ce6cdb.c": "adeedad538e7c13c2c47e82106b5c8c1e2fe281bbe1bd9c6abd6463816dada61",
+    "artifacts/native/.cache/fenics/libffcx_forms_9f71bd07034a85e5656227e4b76b205a59ce6cdb.c.cached": "be344cee52012f41f66efd5f43a94dfadd92047feec7b48751228bfb959d3ee6",
+    "artifacts/native/.cache/fenics/libffcx_forms_9f71bd07034a85e5656227e4b76b205a59ce6cdb.cpython-311-x86_64-linux-gnu.so": "8adef70f0cb3f4a6da9809a17405853e3a11b4c1b6272f53c278bc0bf46607ea",
+    "artifacts/native/.cache/fenics/libffcx_forms_9f71bd07034a85e5656227e4b76b205a59ce6cdb.o": "e42db7c1df5abc43badf09d7470fbafcde25c5147d5eaad84b62763797a45c76",
+    "artifacts/native/.cache/fenics/libffcx_forms_a10804a9bf235c5903748e1e109bd1c566041c18.c": "d2e8943551ffb6fad2e059bd78c229fe1cd0daf3dbf86f0231ef7aec2be5b829",
+    "artifacts/native/.cache/fenics/libffcx_forms_a10804a9bf235c5903748e1e109bd1c566041c18.c.cached": "8f2a3837ae915d63542a79b8cd4e2d3fcefc78d821fa14d8e91d09d33c3bb89d",
+    "artifacts/native/.cache/fenics/libffcx_forms_a10804a9bf235c5903748e1e109bd1c566041c18.cpython-311-x86_64-linux-gnu.so": "42e1deac3e6548198cd8cdb07c584821df76a6eaa1436bbea2688bf63815fd65",
+    "artifacts/native/.cache/fenics/libffcx_forms_a10804a9bf235c5903748e1e109bd1c566041c18.o": "07f4925d02aec6b03fd6dff4459b2eb298b0ee500334ce20cbcccd7748aee30b",
+    "artifacts/native/.cache/fenics/libffcx_forms_a75aba8b9a4e1cef67c6c432daf81b3ffc363e2b.c": "f2ac1eb13c8eeb381d9279557242dca4f449db31295112791a30722c56dfa8b2",
+    "artifacts/native/.cache/fenics/libffcx_forms_a75aba8b9a4e1cef67c6c432daf81b3ffc363e2b.c.cached": "e8fec6b613ddbc34532c29fc8f4cb8cd3022118e69f98fd181caa4d1f3ae725d",
+    "artifacts/native/.cache/fenics/libffcx_forms_a75aba8b9a4e1cef67c6c432daf81b3ffc363e2b.cpython-311-x86_64-linux-gnu.so": "75a6fa9b0c128a880b918f0fd9e93f870eea47b36ef6385944121f3bc24454ac",
+    "artifacts/native/.cache/fenics/libffcx_forms_a75aba8b9a4e1cef67c6c432daf81b3ffc363e2b.o": "f0cd94aaecf7f836815050287d3269ccdf119c56bf03b8c858204d8907462cf8",
+    "artifacts/native/.cache/fenics/libffcx_forms_b40b09ce24d9460c70cb5d7e19e0b026c38c1ce2.c": "ff15ff5fe3d75329511ac2aaa136aafda581d5d284da2bb6950e515f4d6aa620",
+    "artifacts/native/.cache/fenics/libffcx_forms_b40b09ce24d9460c70cb5d7e19e0b026c38c1ce2.c.cached": "a6435720e032c0ebf28a95fca007b3f763db5005865a141bb5306cbd6d3d5aac",
+    "artifacts/native/.cache/fenics/libffcx_forms_b40b09ce24d9460c70cb5d7e19e0b026c38c1ce2.cpython-311-x86_64-linux-gnu.so": "c765073f44e75006c6ebc39bf76053d111ca1dad31b9a89bbd77ccfb5d59e305",
+    "artifacts/native/.cache/fenics/libffcx_forms_b40b09ce24d9460c70cb5d7e19e0b026c38c1ce2.o": "d31c60c2bc0d497de6f89b01fbe10bc2d7ee03ef32f74ba1eb4f40fc741597ea",
+    "artifacts/native/.cache/fenics/libffcx_forms_b60e282710f42e94f419d50195bfb0f9a6142352.c": "e0d082da11097a5f2f61dc55359730ab175ee671fac7264066dc05f1da3e105b",
+    "artifacts/native/.cache/fenics/libffcx_forms_b60e282710f42e94f419d50195bfb0f9a6142352.c.cached": "a1d1d3d444e0ab7fe2b5bf8b4ca9d924ef61331659476d8421c2d9f2fa41b753",
+    "artifacts/native/.cache/fenics/libffcx_forms_b60e282710f42e94f419d50195bfb0f9a6142352.cpython-311-x86_64-linux-gnu.so": "ff1790785824e9b9e40406d85182d43c819e65fe47076ad1a1aa6a6c41bf2761",
+    "artifacts/native/.cache/fenics/libffcx_forms_b60e282710f42e94f419d50195bfb0f9a6142352.o": "11696604790a035747f6913ca1085fd1aa4c616daa4f05a36ab958b89fdc131f",
+    "artifacts/native/.cache/fenics/libffcx_forms_d09130a0a3a891813720eaadf41ea93f64f26399.c": "59ad235c12f0ad050367dd61d3f704ca219c149c7ac67eb114c72544f72e3bf1",
+    "artifacts/native/.cache/fenics/libffcx_forms_d09130a0a3a891813720eaadf41ea93f64f26399.c.cached": "b2bc2933e5df0cbf61b6aff9bfa55548041d520e394e51340696b056bc835920",
+    "artifacts/native/.cache/fenics/libffcx_forms_d09130a0a3a891813720eaadf41ea93f64f26399.cpython-311-x86_64-linux-gnu.so": "2c064017cabb3f916eadf645fdaa2d5d786f976918775141b41fd2f9604b3308",
+    "artifacts/native/.cache/fenics/libffcx_forms_d09130a0a3a891813720eaadf41ea93f64f26399.o": "2aa34945967173e192707ac083175a4cc81e0ed0413595ebfe4e6429d7dc5b66",
+    "artifacts/native/.cache/fenics/libffcx_forms_d81a73783a592168f33701c7c51439a3c08927ea.c": "a168252c069f55f157f8bbbdab3dfd545cd41237081f12394ddfc5aec9b98b82",
+    "artifacts/native/.cache/fenics/libffcx_forms_d81a73783a592168f33701c7c51439a3c08927ea.c.cached": "1ee5a414e4c03e63211d121092387c96cd9ae08523f90345185ddfb47418914b",
+    "artifacts/native/.cache/fenics/libffcx_forms_d81a73783a592168f33701c7c51439a3c08927ea.cpython-311-x86_64-linux-gnu.so": "dc2205bce567faae20ccc5e8e741d3faab6ec1c57cf2eb7414a839089a16949d",
+    "artifacts/native/.cache/fenics/libffcx_forms_d81a73783a592168f33701c7c51439a3c08927ea.o": "238c5e89b1a495de4ea23f7fb577f1fc2946c8ce7c000b0ffea83582dd9cd2c2",
+    "artifacts/native/.cache/fenics/libffcx_forms_d837a3a4ca7243293aa7af511776692c6767a805.c": "90a216f2cc100dd284315ab384c90bb90dbc8a47a8120b8f4865291ee971dd49",
+    "artifacts/native/.cache/fenics/libffcx_forms_d837a3a4ca7243293aa7af511776692c6767a805.c.cached": "c11f634c3368de567a9152f7c8205688e2fef6fd87cca32a5bcf9ccc777f709a",
+    "artifacts/native/.cache/fenics/libffcx_forms_d837a3a4ca7243293aa7af511776692c6767a805.cpython-311-x86_64-linux-gnu.so": "6cfea943903f00b9e0cf5958fdf7f11fa19fb6cb9129723bf89db301ca00fb9f",
+    "artifacts/native/.cache/fenics/libffcx_forms_d837a3a4ca7243293aa7af511776692c6767a805.o": "7207f31fe103bcce74c26d6f3ed7ea3bf519670ea0740376ec65bf297009f81b",
+    "artifacts/native/.cache/fenics/libffcx_forms_e0e14e65217f7731fa563c6db192a8c1934be41a.c": "db0af7649628dbcae796e038c38d98ae227571fcb8cc2f5d20196a9c8b6f0ccb",
+    "artifacts/native/.cache/fenics/libffcx_forms_e0e14e65217f7731fa563c6db192a8c1934be41a.c.cached": "181583bf96103bdfbf12dca9154e7dfae533b7bec1decd77d746bd2c62df748b",
+    "artifacts/native/.cache/fenics/libffcx_forms_e0e14e65217f7731fa563c6db192a8c1934be41a.cpython-311-x86_64-linux-gnu.so": "c8a81c56dc533b13c68ca94d4e94c522c2b87d9bb5e762484fb0753345d6d8b7",
+    "artifacts/native/.cache/fenics/libffcx_forms_e0e14e65217f7731fa563c6db192a8c1934be41a.o": "46d39edeeaf5fac2097984b94c82b1b9ee521b80e284aa4077f236de6cc1f80f",
+    "artifacts/native/.cache/matplotlib/fontlist-v3.11.0.json": "fb7656bccd161aa176bbd9a9c1fc6972439f19147d3509b3122f47a1f24331c8",
+    "artifacts/native/launch.json": "8c399da3f4a115bba05c5c8b106829d18580b61a44db6d818e5d33b46ab72a01",
+    "artifacts/native/request.json": "fe151776962220c198c5ea870cdf643879a2b9593d1eac3adfab85388a0d02aa",
+    "artifacts/native/response.json": "198fed2b7e41c5ca48cf6b8ee53ebf7f1c2f6469e1467ecb472483e4fc791a4b",
+    "artifacts/native/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native_checks.json": "6f7c09a4855fecff1a00f8b1548fbf8688c9880aa2eae14c1b2dd238b9fbaaef",
+    "artifacts/nonlinear.json": "d17053212a86ba32c9ae300a36f58e61dd44594030d95f3961004cd20284607c",
+    "artifacts/quality.json": "53e91318bb90b857fe59278a759a81f49dc9ee87b4abb7106675c3663bc154b2",
+    "artifacts/readback.json": "64a3f6998c75b0a26e1029c6e678ae47815bc079b53fb330a7d12da4151cc686",
+    "artifacts/scientific_core.json": "518d7c852d1c344451cdef35e7db7b4e46bd97bb329ab64de0e0afe5e1f7eab8",
+    "artifacts/si/fields_si.npz": "49f6097f29264c75b5c6bf322163571c4f7fc517afd785d756b6c70f4225f8b7",
+    "artifacts/si/fields_si.vtu": "35c4f3d4558c12b44324957773c3a226ca67d2e962e95b9a7d14de6e785d4da7",
+    "artifacts/si/fields_units.json": "96bfaf39774870bedfa8e386fb7260e0558b9879befc1c76c63d2662a2c77808",
+    "artifacts/si/history_si.json": "94145cc3cdb56ca8a3d4bc6567921e06b628ff39ab510a944b046f040ac07b3a",
+    "artifacts/si/mapping.json": "3ee34cf6b51b2ddec52b1c26eff37705d646acde7c3977b48aa89f61c6c46707",
+    "artifacts/si/readback.json": "7f54c8edbda2efa2ac31858be74f56b573d9f27febb160362f125a8851f07718",
+    "artifacts/si/vector_fields.png": "0715d56857c32a01ffce407797c138e4a4ed67b948bbc9f9b5d55797f26a4ed0",
+    "artifacts/si/vector_history.png": "82828269582560c09556263c524f9222d01e9ee703a2f1b6a4a2c0ee17095c69",
+    "artifacts/summary.json": "d84ab003314fc1ce9a8ea5f5b0a13715690982962fca8c5fc3bb25dbddb7fcc8",
+    "artifacts/unit_normalization.json": "e7186efc1a1bc8a0eefea4b76b7ccd0bc12873ebea445499b8be329801a35198",
+    "artifacts/vector_fields.png": "b752e67fe79d83904ae5d6c3d92dbf906cfd3f6cb478e42e066b6217834fc9a8",
+    "artifacts/vector_history.png": "bb39f3f3a5a5e8c39973919a0254038a86547b2981842a37eff3d6c4f4077afd"
+  },
+  "shared_task_view": "passed",
+  "reads_preserve_files": true
+}

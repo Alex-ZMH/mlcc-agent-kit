@@ -1,0 +1,315 @@
+{
+  "module_id": "spice",
+  "task_id": "spice-unified-02",
+  "job_id": "692",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T08:33:40.908866+00:00",
+    "updated_at": "2026-10-28T08:33:42.295333+00:00",
+    "backend_exit_code": 0,
+    "events": []
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "circuit_reference",
+          "message": "Independent linear network algebra; errors and RMS convention in solver/metrics.json",
+          "status": "passed"
+        },
+        {
+          "id": "power_energy",
+          "message": "Port RMS-normalized real power vs series ESR + terminal leakage",
+          "status": "passed"
+        },
+        {
+          "id": "native_readback",
+          "message": "Reopened raw/CSV independently; checks, errors and raw hashes in readback.json",
+          "status": "passed"
+        },
+        {
+          "id": "sampling_sensitivity",
+          "message": "Single task; explicit qualification harness performs the selected sampling/time refinement matrix",
+          "status": "not_checked"
+        },
+        {
+          "id": "unit_admission",
+          "message": "All fields through unique shared UNIT core",
+          "status": "passed"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_calibration",
+          "message": "No measured/vendor calibration",
+          "status": "not_checked"
+        },
+        {
+          "id": "device_applicability",
+          "message": "No material/product owner applicability sign-off",
+          "status": "not_checked"
+        },
+        {
+          "id": "periodic_steady_state",
+          "message": "Only one finite pulse, no periodic steady-state qualification",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "results": {
+    "analysis": "ac",
+    "curve_artifact": "artifacts/solver/parsed.csv",
+    "metrics_artifact": "artifacts/solver/metrics.json",
+    "plot_artifact": "artifacts/curve.png",
+    "readback_artifact": "artifacts/readback.json",
+    "samples": 2801,
+    "summary": {
+      "droop_V": null,
+      "finite_window_cap_RMS_A": null,
+      "minimum_impedance_ohm": 0.05000028823465126,
+      "minimum_voltage_V": null,
+      "overshoot_V": null,
+      "sampled_minimum_frequency_Hz": 71203279.99992786
+    }
+  },
+  "artifacts": [
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/artifact_hashes.json",
+      "size_bytes": 1879,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "image/png",
+      "path": "artifacts/curve.png",
+      "size_bytes": 67935,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/environment.json",
+      "size_bytes": 697,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 433,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 999,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/input.solver-si.json",
+      "size_bytes": 433,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 1049,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 831,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 3793,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/plain",
+      "path": "artifacts/native/stderr.log",
+      "size_bytes": 0,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/plain",
+      "path": "artifacts/native/stdout.log",
+      "size_bytes": 35,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/native_checks.json",
+      "size_bytes": 580,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/numerical_protocol.json",
+      "size_bytes": 1214,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 1070,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/readback.json",
+      "size_bytes": 634,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/plain",
+      "path": "artifacts/solver/circuit.cir",
+      "size_bytes": 498,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/solver/execution.json",
+      "size_bytes": 824,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/solver/input.json",
+      "size_bytes": 422,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/solver/metrics.json",
+      "size_bytes": 1210,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/plain",
+      "path": "artifacts/solver/ngspice.log",
+      "size_bytes": 243,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solver/output.raw",
+      "size_bytes": 394955,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/csv",
+      "path": "artifacts/solver/parsed.csv",
+      "size_bytes": 779962,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/plain",
+      "path": "artifacts/solver/stderr.txt",
+      "size_bytes": 0,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "text/plain",
+      "path": "artifacts/solver/stdout.txt",
+      "size_bytes": 471,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/sources.json",
+      "size_bytes": 10410,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/summary.json",
+      "size_bytes": 434,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 3740,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "SPICE task evidence; failure artifacts are diagnostic only",
+      "media_type": "application/json",
+      "path": "artifacts/unit_release.json",
+      "size_bytes": 5453,
+      "evidence_kind": "real_computation"
+    }
+  ],
+  "file_sha256": {
+    "task.json": "cadc6ea73f132340ffc298265b90a60f74bbfb20c8c83276a57604a44d4bbb23",
+    "scale-response.json": "8d8cdb12d84c7663cfd7bd4d72f2d1ded9e498155c543bf030385f7d5bd5d10b",
+    "artifacts/artifact_hashes.json": "2c321e9335586a06a89b9a9a5611a50ea06973cf2f867f653639c0f3bed38fcd",
+    "artifacts/curve.png": "e7242bed48e4325fc6180acc6462cb693c67527046b64702e3fe2407ff08850e",
+    "artifacts/environment.json": "66833e30d6d509fb02803e7e8ac061ac03d0f25f8bd8c0a05ed2ccf0aa8c34e4",
+    "artifacts/input.canonical-si.json": "5dc9c106889ac29ff087207f6f22cbb0ef120be68019dc39ee041a2dba6f2911",
+    "artifacts/input.original.json": "a6765d56e90c63f05d16d96b101153b24a5a68879c4d7172026482d89c16e072",
+    "artifacts/input.solver-si.json": "5dc9c106889ac29ff087207f6f22cbb0ef120be68019dc39ee041a2dba6f2911",
+    "artifacts/native/.cache/matplotlib/fontlist-v3.11.0.json": "78e7f7367050020145551b4db539de506a948a7008888e0f352031966fe36595",
+    "artifacts/native/launch.json": "05ced63c372c67c9309be9dde5beee751702ca08fa9e7627af220a5d051b4c06",
+    "artifacts/native/request.json": "ad02da76fb8db2efa97192836b05553aa45f0cc1d927171b1bc2edf3a8a3094a",
+    "artifacts/native/response.json": "8c0e265d465f554ee06e6ad899943df20d1ccdc8817d0dcb211e99766dceb984",
+    "artifacts/native/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native/stdout.log": "ee09609605c11cae92d5e3af98ab50c994d11b8f38a237805ea4e1b964943fa9",
+    "artifacts/native_checks.json": "0849458f79a929414d8b4ab68f22df429e6f52a0fbb2cc696bbc1b7a624cbc95",
+    "artifacts/numerical_protocol.json": "83933c3e828d566a34103854dc2fa9de6c098f2a8c19ecfd175faca6ae5702f2",
+    "artifacts/quality.json": "796abdaefd7e5f40b8010263bda96ef3f6c6643829331ba35a3f71ce20e3388c",
+    "artifacts/readback.json": "0f4d91f229840db3c6ec8fa514cb185fc94fba910016e8e57addd7092bc31713",
+    "artifacts/solver/circuit.cir": "d5b90644942afbff8a3d4014da032e540cb35a5eb9a4bbf400fe5427d0ebcd52",
+    "artifacts/solver/execution.json": "3fba83537f04e6bc7519943b561e54cfd8c11d3a4e157c20d5dd7f7bc2656b44",
+    "artifacts/solver/input.json": "6873f56e0739a61620fbddce2a2c25292b8aad91626dd02204ae282f73b09f1f",
+    "artifacts/solver/metrics.json": "2470ac3f61e240fdce3467c70735b0cc785a174529c8819f551e1342c0267936",
+    "artifacts/solver/ngspice.log": "8b7d3752997fb2c99bc5c76cbaa22956c39ba70c2f378f51053a5eadcb56f7b2",
+    "artifacts/solver/output.raw": "ec6f688423ad6ac612f51e5aa365620ef64bb2db892a4773f11a6c37ab289678",
+    "artifacts/solver/parsed.csv": "51ee761b92cf2076533928b3fb8bed60cfd506639e69c63dc438ae24023cf86b",
+    "artifacts/solver/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/solver/stdout.txt": "d56b66ca5e9d0a7513dd6dd6c041b55b73d1ecc234f62cc598825512b01ffa5b",
+    "artifacts/sources.json": "be50da99b7fb4ae2070b51f6cc01a56b0dc1aae23da4e94f21ad6ba00882aa2f",
+    "artifacts/summary.json": "a697bb47d8b427cc3085637dab5c3a76edc1e47d2c1988e94fcfe2bde08d017f",
+    "artifacts/unit_normalization.json": "db724710607b8bf79ba7ac765298be0769be5c8cef13d6405d1f482ff456e467",
+    "artifacts/unit_release.json": "7f0a6d68943ce8d1c3af2b4ece6f063a762900cf8ce20ad165b71f4979bc27e0"
+  },
+  "shared_task_view": "passed",
+  "reads_preserve_files": true
+}

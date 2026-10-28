@@ -1,0 +1,14 @@
+{
+  "schema_version": "mlcc.capability.v1",
+  "id": "md",
+  "engine": "lammps",
+  "operations": {
+    "create": {
+      "provider": "mlcc.lammps_tasks:create_lammps_task"
+    },
+    "parse": {
+      "provider": "mlcc.lammps_tasks:parse_lammps_task"
+    }
+  },
+  "scientific_acceptance": "not_checked"
+}

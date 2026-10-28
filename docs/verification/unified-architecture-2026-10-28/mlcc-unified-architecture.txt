@@ -1,0 +1,11 @@
+test_native_domain_factories_are_selected_without_rewriting_arguments (test_unified_architecture.UnifiedArchitectureTests.test_native_domain_factories_are_selected_without_rewriting_arguments) ... ok
+test_non_atomic_task_chain_has_no_required_atom_model (test_unified_architecture.UnifiedArchitectureTests.test_non_atomic_task_chain_has_no_required_atom_model) ... ok
+test_primary_cli_catalog_does_not_load_scientific_dependencies (test_unified_architecture.UnifiedArchitectureTests.test_primary_cli_catalog_does_not_load_scientific_dependencies) ... ok
+test_saved_bridge_results_stay_readable (test_unified_architecture.UnifiedArchitectureTests.test_saved_bridge_results_stay_readable) ... skipped 'Historical bridge evidence not part of this checkout'
+test_six_peer_modules_discovered_without_scientific_imports (test_unified_architecture.UnifiedArchitectureTests.test_six_peer_modules_discovered_without_scientific_imports) ... ok
+test_unknown_operations_do_not_import_a_provider (test_unified_architecture.UnifiedArchitectureTests.test_unknown_operations_do_not_import_a_provider) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.084s
+
+OK (skipped=1)

@@ -11,6 +11,7 @@ from mcp.server import MCPServer
 from .site_runner import SiteRunner, runner_for_task
 from .tasks import TaskRecord, load_task
 from .workflow import inspect_task
+from .result_views import task_summary
 
 
 def _task_path(workspace: Path, task_id: str) -> Path:
@@ -61,7 +62,7 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
                     "task_id": task.task_id,
                     "status": task.data.get("status"),
                     "scheduler_job_id": task.scheduler_job_id,
-                    "scientific_status": task.data.get("scientific_status"),
+                    **task_summary(task),
                     "next_action": inspect_task(task)["action"],
                 }
             )

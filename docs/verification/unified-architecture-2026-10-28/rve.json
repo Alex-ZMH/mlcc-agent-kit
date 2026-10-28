@@ -1,0 +1,517 @@
+{
+  "module_id": "rve",
+  "task_id": "rve-unified-02",
+  "job_id": "691",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T08:32:40.903544+00:00",
+    "updated_at": "2026-10-28T08:32:45.046326+00:00",
+    "backend_exit_code": 0,
+    "events": []
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "Hill_Mandel",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "PBC_pairing",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "finite_tensor",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "mean_driving_field",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "positive_definite",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "symmetry",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "weak_PDE",
+          "message": "Migrated numerical protocol; raw errors in diagnostics.json",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_geometry",
+          "message": "Positive nonempty mesh, region/CAD fraction audit retained",
+          "status": "passed"
+        },
+        {
+          "id": "linear_solver",
+          "message": "All independent basis loads converged",
+          "status": "passed"
+        },
+        {
+          "id": "native_readback",
+          "message": "Independent VTU/HDF5 gradients, constitutive law, flux/work, lifting and saved PBC pairs",
+          "status": "passed"
+        },
+        {
+          "id": "unit_normalization",
+          "message": "Shared core 1.0.0 catalog 1.2.0",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_convergence",
+          "message": "Single run; historical selected grid studies not generalized",
+          "status": "not_checked"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "material_calibration",
+          "message": "Sources retained; synthetic values not measured calibration",
+          "status": "not_checked"
+        },
+        {
+          "id": "statistical_representativity",
+          "message": "No representative-volume statistical acceptance",
+          "status": "not_checked"
+        },
+        {
+          "id": "device_applicability",
+          "message": "No real material/product owner sign-off",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "results": {
+    "boundary_condition": "periodic",
+    "cells": 254,
+    "coordinate_artifact": "artifacts/coordinates.json",
+    "dimension": 2,
+    "effective_material_artifact": "artifacts/effective_material.json",
+    "load_count": 2,
+    "load_fields": [
+      "artifacts/solution/x/fields.vtu",
+      "artifacts/solution/y/fields.vtu"
+    ],
+    "mesh_id": "dbe95499ccbf3f0a7041164ed9527500f0ed7de8438e286768ae06878d0120f6",
+    "numerical_status": "PASS",
+    "physics": "electrostatics",
+    "pore_model": "explicit",
+    "readback_artifact": "artifacts/readback.json",
+    "rve_id": "1a69a068951a54d8c1d7",
+    "schema_version": "rve.result.v1",
+    "scientific_applicability": "not_checked",
+    "tensor": [
+      [
+        3.2197046592e-11,
+        -3.930435644030965e-28
+      ],
+      [
+        5.611545050023215e-29,
+        4.9583451751679987e-11
+      ]
+    ],
+    "tensor_unit": "F/m"
+  },
+  "artifacts": [
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/diagnostics.json",
+      "size_bytes": 1652,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 1818,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/numerical_protocol.json",
+      "size_bytes": 703,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 3361,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/sources.json",
+      "size_bytes": 22384,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 600,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/coordinates.json",
+      "size_bytes": 586,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 1250,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/artifact_hashes.json",
+      "size_bytes": 3029,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/environment.json",
+      "size_bytes": 439,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/effective_material.json",
+      "size_bytes": 2669,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/readback.json",
+      "size_bytes": 1861,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/input.kernel-normalized.json",
+      "size_bytes": 974,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/metrics.json",
+      "size_bytes": 739,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/scientific_core.json",
+      "size_bytes": 779,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/solution/effective_tensor.json",
+      "size_bytes": 8356,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/fields.xdmf",
+      "size_bytes": 5141,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/periodic_constraints.npz",
+      "size_bytes": 7814,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/fields.vtu",
+      "size_bytes": 17232,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/y/fields.h5",
+      "size_bytes": 51016,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/solution/y/metrics.json",
+      "size_bytes": 2193,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/fields.xdmf",
+      "size_bytes": 5141,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/periodic_constraints.npz",
+      "size_bytes": 7814,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/fields.vtu",
+      "size_bytes": 14797,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/solution/x/fields.h5",
+      "size_bytes": 51016,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/solution/x/metrics.json",
+      "size_bytes": 2252,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/geometry/mesh_identity.npz",
+      "size_bytes": 8392,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/geometry/mesh_normalized.msh",
+      "size_bytes": 10763,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/geometry/periodic_CAD.json",
+      "size_bytes": 245,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/geometry/microstructure.json",
+      "size_bytes": 1039,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/geometry/mesh_metrics.json",
+      "size_bytes": 512,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 926,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 933,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/process.json",
+      "size_bytes": 145,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 9524,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/json",
+      "path": "artifacts/native/completion.json",
+      "size_bytes": 144,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Preserved task evidence / partial failure diagnostics",
+      "media_type": "application/octet-stream",
+      "path": "artifacts/native/stdout.log",
+      "size_bytes": 128,
+      "evidence_kind": "real_computation"
+    }
+  ],
+  "file_sha256": {
+    "task.json": "d9ba0075f973c94d82d141826620e595cb2dbc4f1c99877b89c19fbda4a1e852",
+    "scale-response.json": "7fe274ce5b174733594295db3686a566be6c56d97fb3d27f01a5b82b9f867a4d",
+    "artifacts/artifact_hashes.json": "49f1a9789c5c6836f16ec379876ba6a6e4ae8e2078232cd90496b53d723e2c70",
+    "artifacts/coordinates.json": "c0fb634b5ab1e6791a1b93e1de76ad6feea2f7127428f193aab979409afba8fb",
+    "artifacts/diagnostics.json": "fa10b76ddf9d21b02ea7c4b7996ee81b3959ef66eb22350d162663c6ecb89d0e",
+    "artifacts/effective_material.json": "e9785a1ef70f0f26ca08b66580af1abb1d490924bd910c3d92d37d3d067ec2cb",
+    "artifacts/environment.json": "3f83cbe5fca057a5729d06cf3f1885f1b5c1ede76f0e46c6c576247c1cce1c30",
+    "artifacts/geometry/mesh_identity.npz": "603ad674e96df7445e3b41d336e8f7880c223a4019ca769826223fa0e58982b1",
+    "artifacts/geometry/mesh_metrics.json": "ced3e8509e9081ec1f608f62789aa1978037a7bc44ecb1784bce2833c039cb37",
+    "artifacts/geometry/mesh_normalized.msh": "c7f25ada3118b61a34c7ce8b86b709433b084fc3b23ed110d43c29d75cc75060",
+    "artifacts/geometry/microstructure.json": "fc673282f93b08470d58cfc1b38c246795bf27d3adb32f6af309b2bfa2bd289e",
+    "artifacts/geometry/periodic_CAD.json": "29cbd7281b4a0b0931a4bc68473b78d23d5ebaa4e7f1c41ea515bb29dc66b28e",
+    "artifacts/input.canonical-si.json": "7f941783b97db21327d91a84af4fa465cbf71f5c08959dc644be454f83e5712a",
+    "artifacts/input.kernel-normalized.json": "f53a9bad81fa8d72e336f38a4bad1457429cef8eb3a5a773944a56bdb1d359b9",
+    "artifacts/input.original.json": "693fbfccef7d9c2fd984f259abf57281a8923cc98cbc214f209f3438040c694e",
+    "artifacts/metrics.json": "fd3ef9d5e9d4f2836fb28830f80e3800e4a1bae2de1a6bcf202bd495106e7aab",
+    "artifacts/native/cache/fenics/libffcx_expressions_1569591f117c4d3638a4808bfab4abd4a7e18c61.c": "17e51326e7cbd708e547365485606b6109578bcac12260a75b3d587311756350",
+    "artifacts/native/cache/fenics/libffcx_expressions_1569591f117c4d3638a4808bfab4abd4a7e18c61.c.cached": "dae324d322abe2b9452a10f4c0483410105bb62a5d67d0de0590cf828190d4b3",
+    "artifacts/native/cache/fenics/libffcx_expressions_1569591f117c4d3638a4808bfab4abd4a7e18c61.cpython-311-x86_64-linux-gnu.so": "24f5b35a10f1ebbb2b04895c354665937178f8141cb55d95dfa26c95bc32a866",
+    "artifacts/native/cache/fenics/libffcx_expressions_1569591f117c4d3638a4808bfab4abd4a7e18c61.o": "eee8e0332a4cf334a1212a837644bf762ed5d560ca8945fc3b1bddf4ed64116c",
+    "artifacts/native/cache/fenics/libffcx_expressions_330cd8ad61172a1e77df9249dee62892e3bbbdb5.c": "a465e132fcab75be96715c59b8c124b53995e22aae498c9895a4202eddc4b0e1",
+    "artifacts/native/cache/fenics/libffcx_expressions_330cd8ad61172a1e77df9249dee62892e3bbbdb5.c.cached": "2c80e46653235810ba8f442dcdb649cf541fbd9589f1464a5ff78bc6663c2c00",
+    "artifacts/native/cache/fenics/libffcx_expressions_330cd8ad61172a1e77df9249dee62892e3bbbdb5.cpython-311-x86_64-linux-gnu.so": "ca07755744a1e7056f73bde9800ea08f2d9e03bacdb1f6c0a454baba86448074",
+    "artifacts/native/cache/fenics/libffcx_expressions_330cd8ad61172a1e77df9249dee62892e3bbbdb5.o": "fdfaaac2bad2280a58e16213d4ede790a88bf8cf4c55a99ad873fd6b328a0578",
+    "artifacts/native/cache/fenics/libffcx_expressions_5985e601d26273199c7205854bc9677fa509c7d9.c": "7015f761c2d5551fa9644c595378517e4f177ef27ea101514786e075aa66d3ad",
+    "artifacts/native/cache/fenics/libffcx_expressions_5985e601d26273199c7205854bc9677fa509c7d9.c.cached": "52f81ece180a40048110b155760bb4018794bcfcd9587b4cd6670136af734e50",
+    "artifacts/native/cache/fenics/libffcx_expressions_5985e601d26273199c7205854bc9677fa509c7d9.cpython-311-x86_64-linux-gnu.so": "fa6446cb4823f7ca01126a8a2f4ca4e5dc3c4d7d80e3638bb26055bc1068dfa1",
+    "artifacts/native/cache/fenics/libffcx_expressions_5985e601d26273199c7205854bc9677fa509c7d9.o": "56c4d79b66f99e0e5e04d1f13656ad86e80dc2554175665dd3bb7f09171dfc5b",
+    "artifacts/native/cache/fenics/libffcx_expressions_b16e4484e720334f600f6d933813392d614928d5.c": "9c79008b7c06d87297bb9f4c5149223e3e1aa7e0f80c75d8fcbc6ca8ebb7dc86",
+    "artifacts/native/cache/fenics/libffcx_expressions_b16e4484e720334f600f6d933813392d614928d5.c.cached": "bd98ab94940da3c97c8fc4244c024a7918e529661b4c126609e83b4b1204d865",
+    "artifacts/native/cache/fenics/libffcx_expressions_b16e4484e720334f600f6d933813392d614928d5.cpython-311-x86_64-linux-gnu.so": "1e308f9cf49466c7d56e3b5027e4bca4db470b487960fe79e2e2086a38c5345c",
+    "artifacts/native/cache/fenics/libffcx_expressions_b16e4484e720334f600f6d933813392d614928d5.o": "1475399024724e3b57967061e035f35e9297a796706d5818d295582cfb891ef6",
+    "artifacts/native/cache/fenics/libffcx_forms_058e7665d56cc1893ecb580425de6975a7a9c095.c": "e0aed6cd7bbca460b8c123b9cf1ccfd46bfd44c758b8e6d78457ddd6f39b3e7f",
+    "artifacts/native/cache/fenics/libffcx_forms_058e7665d56cc1893ecb580425de6975a7a9c095.c.cached": "e0c87a367aa3553720c100e2faa2f386cb599f5d2a760d932a2ef1972e9e4d86",
+    "artifacts/native/cache/fenics/libffcx_forms_058e7665d56cc1893ecb580425de6975a7a9c095.cpython-311-x86_64-linux-gnu.so": "0ec1363cc5fcd99e813d0c8a754c07e77aebbe98021732a035c39a6950be286b",
+    "artifacts/native/cache/fenics/libffcx_forms_058e7665d56cc1893ecb580425de6975a7a9c095.o": "5e26bf9133b3abe9d584ed4ff58fb73f84b2995f54c3675c6353fa4f06fccce9",
+    "artifacts/native/cache/fenics/libffcx_forms_2181a5275d7bca03b3f1c8cf77dd3faa35761331.c": "dfac86bdf54e9b9f6ec01e374555ab99141a669e555690b15e98297bc4648134",
+    "artifacts/native/cache/fenics/libffcx_forms_2181a5275d7bca03b3f1c8cf77dd3faa35761331.c.cached": "3782417957806d952fa39cbafa11dad6beaccec82dc21a7dadf1f4d4165fff4d",
+    "artifacts/native/cache/fenics/libffcx_forms_2181a5275d7bca03b3f1c8cf77dd3faa35761331.cpython-311-x86_64-linux-gnu.so": "dc913af0981f1308e250bff1ea6415adbb64d2f652cc7c6c0ec591b3486d474d",
+    "artifacts/native/cache/fenics/libffcx_forms_2181a5275d7bca03b3f1c8cf77dd3faa35761331.o": "9749f6346166e87baa3d5ce5d93f88d96cc681c771089fb189d914348daaad9d",
+    "artifacts/native/cache/fenics/libffcx_forms_3c581183002dbb407690064e4a0b0c98f37510e5.c": "7ceb59ef4d0a2a8bd08928a6d35b731ffd56e9ea5ffb4c960ebfdb30869753a6",
+    "artifacts/native/cache/fenics/libffcx_forms_3c581183002dbb407690064e4a0b0c98f37510e5.c.cached": "beb0333e1cc3d74469fa232fae8a0f5caa081f79c90a1f90fb83b68e3f796b5d",
+    "artifacts/native/cache/fenics/libffcx_forms_3c581183002dbb407690064e4a0b0c98f37510e5.cpython-311-x86_64-linux-gnu.so": "4169a8af5bedc8aa3ad9fa813e0ebfd0df9dbc9a1554ea502e8d2dd95a4137bc",
+    "artifacts/native/cache/fenics/libffcx_forms_3c581183002dbb407690064e4a0b0c98f37510e5.o": "393fa0949a81481a4fbbfd9e859e13502d6b714f0fa1f5bfc5f7e1fb3db45edf",
+    "artifacts/native/cache/fenics/libffcx_forms_564e7074bed20d9ab5d8cabcf6310dc71f4500fc.c": "1fc2cd737c08f2f57bb1f3d910b044952087ddbcb83fce8c838290ab9cd02e8e",
+    "artifacts/native/cache/fenics/libffcx_forms_564e7074bed20d9ab5d8cabcf6310dc71f4500fc.c.cached": "1a182e3dc4f3b32e458045554910ac379dfb0c2d57d9137798536d6a00babb5f",
+    "artifacts/native/cache/fenics/libffcx_forms_564e7074bed20d9ab5d8cabcf6310dc71f4500fc.cpython-311-x86_64-linux-gnu.so": "5feb469d012a8ea75eedd950ae57f35908c78f87ceb0b9c2deab946b8aef49ce",
+    "artifacts/native/cache/fenics/libffcx_forms_564e7074bed20d9ab5d8cabcf6310dc71f4500fc.o": "70cd355d238a2cc865190497f1bdf31ce7ff1b889314a6c60e79ba246ad1a301",
+    "artifacts/native/cache/fenics/libffcx_forms_6b454fe39ca872818e10543329cde1381aaaf60b.c": "ee9bd57fa6ceb916e585e10ae292efd22be4de71f3695de3afead68cc729deb9",
+    "artifacts/native/cache/fenics/libffcx_forms_6b454fe39ca872818e10543329cde1381aaaf60b.c.cached": "aae1d9b29ee919c7c15fb7deb9b832a1645eb456327db52aba5390aea5305634",
+    "artifacts/native/cache/fenics/libffcx_forms_6b454fe39ca872818e10543329cde1381aaaf60b.cpython-311-x86_64-linux-gnu.so": "fbe9719fa7a7756d4d34711fa2ef081c907270c667f2db46540d774043599f13",
+    "artifacts/native/cache/fenics/libffcx_forms_6b454fe39ca872818e10543329cde1381aaaf60b.o": "0092cbf13052550cb9ed598d265d8752b4ff5239ac4abc682aaf4317e506a507",
+    "artifacts/native/cache/fenics/libffcx_forms_7b2e3c9222b9e6ae71fa7d107c60d1ef567bcb7e.c": "935a64df1fa8c6842ecb6400849c335bd1df99bef63adcaed86a3bfa53ce1a36",
+    "artifacts/native/cache/fenics/libffcx_forms_7b2e3c9222b9e6ae71fa7d107c60d1ef567bcb7e.c.cached": "db0e92da9a4109e077d9760d26c405c2666a439259675440898b7717c03d337d",
+    "artifacts/native/cache/fenics/libffcx_forms_7b2e3c9222b9e6ae71fa7d107c60d1ef567bcb7e.cpython-311-x86_64-linux-gnu.so": "ae9fb08f03d17d75d6d735655220c771fd246cc73455f6e889fe8900c1eb30ce",
+    "artifacts/native/cache/fenics/libffcx_forms_7b2e3c9222b9e6ae71fa7d107c60d1ef567bcb7e.o": "b31095cc92ab2a6f41c7ce0ac4ac1a88bf3fd9e811de724766d7a61d3fa68c38",
+    "artifacts/native/cache/fenics/libffcx_forms_85cd78fa8c1525e159379f850cbb27624bc3db3b.c": "aefbc4025466d7cf4dc38c35ff364c9854ff523193b079080bd8637234c46036",
+    "artifacts/native/cache/fenics/libffcx_forms_85cd78fa8c1525e159379f850cbb27624bc3db3b.c.cached": "446ed22405bd6cfb4080fe69c00d1f1498aea1dfd17cae99c664e8dd4bcb01fd",
+    "artifacts/native/cache/fenics/libffcx_forms_85cd78fa8c1525e159379f850cbb27624bc3db3b.cpython-311-x86_64-linux-gnu.so": "056aa9b61361a3a2c587946bf676d73df1f2bcdd997a02675cd7ba7cc0c357d8",
+    "artifacts/native/cache/fenics/libffcx_forms_85cd78fa8c1525e159379f850cbb27624bc3db3b.o": "ae78bf467ada93b8d56fdbedbbd52d88f0a61ebef4ebc0feeb9d5752604d147f",
+    "artifacts/native/cache/fenics/libffcx_forms_96cdf8b91ac30fd4646ba7ac3ca97e29014f54b7.c": "7d29575ab8ffbef0594b6523ee660482655d0db007f8b5ecc8fef901ea7f5f24",
+    "artifacts/native/cache/fenics/libffcx_forms_96cdf8b91ac30fd4646ba7ac3ca97e29014f54b7.c.cached": "c06fb1690d7b08964a98e334ec43887c06514d229ad47ed422487485849a2db5",
+    "artifacts/native/cache/fenics/libffcx_forms_96cdf8b91ac30fd4646ba7ac3ca97e29014f54b7.cpython-311-x86_64-linux-gnu.so": "146dc48ee941d831b9de7e405b5cfe9c4c167a27bce2308de28ee98f869953ab",
+    "artifacts/native/cache/fenics/libffcx_forms_96cdf8b91ac30fd4646ba7ac3ca97e29014f54b7.o": "913ec4a742a897886ba7eba08067e80899c3a01748bce066d55541193fc2e1cb",
+    "artifacts/native/cache/fenics/libffcx_forms_9a6fcd130d5438b827ecc0d46308365c955212c4.c": "aae62fda3600c9f5f9cf714e20f5919f866367b3b071dd60653279872de7f4ee",
+    "artifacts/native/cache/fenics/libffcx_forms_9a6fcd130d5438b827ecc0d46308365c955212c4.c.cached": "302054864672f2f1e7f576d42909245ff1b0840d42bf4ffc4a22f2119db1b295",
+    "artifacts/native/cache/fenics/libffcx_forms_9a6fcd130d5438b827ecc0d46308365c955212c4.cpython-311-x86_64-linux-gnu.so": "a7aa74de8f7d64053a2f71764ef36e5a4738a5d2aef2a50c63d0d7b0bd62d13c",
+    "artifacts/native/cache/fenics/libffcx_forms_9a6fcd130d5438b827ecc0d46308365c955212c4.o": "fc1349aa77dbb1281912bf2209177f2cafa728197da73b1bbe7e38c458225c6e",
+    "artifacts/native/cache/fenics/libffcx_forms_bbca10cf0b0321146e5c0378da1da942cda7b258.c": "09d766d4844f8ad89394dc91fbf8d13c94d25a4b21a70ea28206f233447430b2",
+    "artifacts/native/cache/fenics/libffcx_forms_bbca10cf0b0321146e5c0378da1da942cda7b258.c.cached": "ac6a5d2295cb2caa823dffe914851f80e159cc75230ad93e5bcac88333b3c842",
+    "artifacts/native/cache/fenics/libffcx_forms_bbca10cf0b0321146e5c0378da1da942cda7b258.cpython-311-x86_64-linux-gnu.so": "1bb4e5f752b4018d66b9419882ab4e99914b4627ea78b9fd615538b3e5ce7993",
+    "artifacts/native/cache/fenics/libffcx_forms_bbca10cf0b0321146e5c0378da1da942cda7b258.o": "cf6c5b2400cbccd30b680a5648dbbc4651884a85d92be04f93fac400f25dba30",
+    "artifacts/native/cache/fenics/libffcx_forms_e267c81bcfdb0f106472aab822185568054a9a24.c": "bc7b00655b2e2c41070b3efb6803fedc5bdf56194487f6b66e10073b49e8ca4d",
+    "artifacts/native/cache/fenics/libffcx_forms_e267c81bcfdb0f106472aab822185568054a9a24.c.cached": "aff3b000a93b772e19f9f4e6fa2625582a26048de9060904ce14c163569cfc0b",
+    "artifacts/native/cache/fenics/libffcx_forms_e267c81bcfdb0f106472aab822185568054a9a24.cpython-311-x86_64-linux-gnu.so": "18f417d053f0d2b583780c139efb493e9d1990a7edd7bab64e7815bca966332a",
+    "artifacts/native/cache/fenics/libffcx_forms_e267c81bcfdb0f106472aab822185568054a9a24.o": "1cf052825790598323a30ffc311d8e8f848c3ab5ba2e43130b57b719a3f4ea9f",
+    "artifacts/native/cache/fenics/libffcx_forms_e68f4b07cccc85d273bd0e987933dcb2c62d4436.c": "31686bcd5d5ed94f5ba84b0a440387388c24d427a01c983b3050ebddecb86551",
+    "artifacts/native/cache/fenics/libffcx_forms_e68f4b07cccc85d273bd0e987933dcb2c62d4436.c.cached": "529a1ef5f29b5302e48e700af0963c3b1334273146f98323b634315d1242fdd2",
+    "artifacts/native/cache/fenics/libffcx_forms_e68f4b07cccc85d273bd0e987933dcb2c62d4436.cpython-311-x86_64-linux-gnu.so": "f710931b14b4f37e4aaf814acf1f7c1b61cd2c6a4302e69a18efa6e081802bb9",
+    "artifacts/native/cache/fenics/libffcx_forms_e68f4b07cccc85d273bd0e987933dcb2c62d4436.o": "1ed67fd89afd0044384706bc61ca7ebf2f0027431331a19946a5d91b881bec4b",
+    "artifacts/native/cache/fenics/libffcx_forms_e760d49ac4d1a5980f84f65968ec555f4901dd7d.c": "cbc70db6d828defc61b9c6a0b1fedc715d159c3817adba83ca65ec4118582cf5",
+    "artifacts/native/cache/fenics/libffcx_forms_e760d49ac4d1a5980f84f65968ec555f4901dd7d.c.cached": "0348ab0e23d13385f8f8b00f9527ef1d601d7156ee5ef10a8797397fb2f72b00",
+    "artifacts/native/cache/fenics/libffcx_forms_e760d49ac4d1a5980f84f65968ec555f4901dd7d.cpython-311-x86_64-linux-gnu.so": "9af43a98a325600567635a98b1942d2fbde0ac2b170b950a9182394a8f4a5634",
+    "artifacts/native/cache/fenics/libffcx_forms_e760d49ac4d1a5980f84f65968ec555f4901dd7d.o": "466680c3beb106994da43949919ec07dc48bb9e640c1ce85f44e741fea26e734",
+    "artifacts/native/cache/fenics/libffcx_forms_f711f61318bd78c8cfbb7417f709c3c48d0f0e9b.c": "8283eedd6d5af84fc627f30d6a9599e7b59a43c2d584e1348704c07468d2c538",
+    "artifacts/native/cache/fenics/libffcx_forms_f711f61318bd78c8cfbb7417f709c3c48d0f0e9b.c.cached": "7b8366c6a5b8c4ce740f9fa3c8d3ca7d7980748552b86a45563ac1708d39eab5",
+    "artifacts/native/cache/fenics/libffcx_forms_f711f61318bd78c8cfbb7417f709c3c48d0f0e9b.cpython-311-x86_64-linux-gnu.so": "e785951c9d5419b10d1ba9c5b534154575dd6c48e06a18fd04c633545d6f16a0",
+    "artifacts/native/cache/fenics/libffcx_forms_f711f61318bd78c8cfbb7417f709c3c48d0f0e9b.o": "3b5d166d2a82aa2cbcb2d6f9fc03d26aaef25c66b35870691dc49ea871e6d72d",
+    "artifacts/native/cache/fenics/libffcx_forms_f74debf67f7b95d6d4f2d37662e8b648a2c933a2.c": "4a7681a4968b8afa8ad6e9693f5645d8f992b3741e03e49fb871d08e65fd1e29",
+    "artifacts/native/cache/fenics/libffcx_forms_f74debf67f7b95d6d4f2d37662e8b648a2c933a2.c.cached": "663cb3c6ed01d8879cc8c6c9b9cdda9f80bd6cc72db345926964561c312e00e9",
+    "artifacts/native/cache/fenics/libffcx_forms_f74debf67f7b95d6d4f2d37662e8b648a2c933a2.cpython-311-x86_64-linux-gnu.so": "e608d1582665fb4f543a7e1c04fffcdfe78e5ac0d6130e8955fbe9e9eb4d36b8",
+    "artifacts/native/cache/fenics/libffcx_forms_f74debf67f7b95d6d4f2d37662e8b648a2c933a2.o": "5287297509fdfca42f4a0a290aa78fb5dc78136f56eb586f72911098e1d9e1d3",
+    "artifacts/native/cache/fenics/libffcx_forms_f973a072c4a22b000727457d8663ce813fbc317f.c": "0f80dc0be18e0eeb64c61f626635256bb946833cc3a862f73f142fd52027c2fd",
+    "artifacts/native/cache/fenics/libffcx_forms_f973a072c4a22b000727457d8663ce813fbc317f.c.cached": "1784aecd2a3b7b21d79e9221dcfdde2f80cad9edaefb0c6197691ab032fb1a5a",
+    "artifacts/native/cache/fenics/libffcx_forms_f973a072c4a22b000727457d8663ce813fbc317f.cpython-311-x86_64-linux-gnu.so": "7ffcc9e36e907542740b4f98c349bd332cf473236456924f2af9347c0c7631b3",
+    "artifacts/native/cache/fenics/libffcx_forms_f973a072c4a22b000727457d8663ce813fbc317f.o": "6e3536dbc8310b6a6b4e2ff139afa40c5eff04e38f8b6da49aafd2911f5876cd",
+    "artifacts/native/completion.json": "4d6f38ade989c1a0bf2d093c0a9d994efe23fc86146d0f9c3cf8f07c76037487",
+    "artifacts/native/launch.json": "cd5ca9433b063639a7a193eac44fd92fee7cd1aec5b133a5a443193bc92253ec",
+    "artifacts/native/process.json": "ee8df165d0f7fc0e53d3b057275fdc0e030fdfcf1db99e6d70cd364911c9f470",
+    "artifacts/native/request.json": "38235b7025452b24816d651ad3288a3e54550d691a9ec7b738c887e7f36b3b54",
+    "artifacts/native/response.json": "aaf1359b2489f1913d539d7dad5b67b97a2beffb0dd927f0c4f280381e0d916a",
+    "artifacts/native/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native/stdout.log": "ecd3bd75a50a28cb288f0428ef6272faed5bdc4a7793149ff60636cf2b79e57b",
+    "artifacts/numerical_protocol.json": "7e918ac5c7196b5e2300e0a97b02d27dd2113508231e43163190087b9bcf9e83",
+    "artifacts/quality.json": "16562e1223a00078db16417d427a3dd9b13293abef4610e2bffa30395749ac27",
+    "artifacts/readback.json": "fe5fcdd5844f14ab12a1cdf3dcc79c2277c0efa74e097455a07d1da060f6b62b",
+    "artifacts/scientific_core.json": "518d7c852d1c344451cdef35e7db7b4e46bd97bb329ab64de0e0afe5e1f7eab8",
+    "artifacts/solution/effective_tensor.json": "6928ea952371349a7fd274e585427bdefe41d4084cbb2174fa9bd367676c9a52",
+    "artifacts/solution/x/fields.h5": "5fea3846ff3860b2ac190ca81bba9332a296906ceb2e970b09ed3a299d8e9c73",
+    "artifacts/solution/x/fields.vtu": "7f02b7666119a26b73009efa5aba3cdc5bcd133790ee45c238c789d7d9a5a7da",
+    "artifacts/solution/x/fields.xdmf": "60ef75656d2915a41ded3836b968d55909cd0852a7022a6bc3e59ec32faa9e05",
+    "artifacts/solution/x/metrics.json": "575f97dc8ee6e04bca3ee7be0a2fb5095bc0860c6a17a280ba493854dffd3801",
+    "artifacts/solution/x/periodic_constraints.npz": "fe8082734964307266e2673d3e271ed4b78b37106654052e2291f6df4c9d7307",
+    "artifacts/solution/y/fields.h5": "c2ae9408f2ab8ecc15b457aa34c6c706b126a5a09f5e4147c383d935e356c08e",
+    "artifacts/solution/y/fields.vtu": "df708ef72ffe3747fe31cf8f93eeb860d927d6dd92108bc7285eca5c430da49d",
+    "artifacts/solution/y/fields.xdmf": "60ef75656d2915a41ded3836b968d55909cd0852a7022a6bc3e59ec32faa9e05",
+    "artifacts/solution/y/metrics.json": "2ee14396d923491a6b2ef3fd114f099e614a1117ef43300c0fc44927d7bd3512",
+    "artifacts/solution/y/periodic_constraints.npz": "05e87775aa554ac64541cb520587ec12f8ca8a9fba3e05abdd159ae9f837d4ba",
+    "artifacts/sources.json": "a1eeba4e5ebfdda07bc795eb82156f87a56ec4e1820d045fe41e9db2e29fbee9",
+    "artifacts/unit_normalization.json": "40605491ef6c02ac4a1bba9ea6217bd93729f8c1844b8723c2aad1dd26e17f9e"
+  },
+  "shared_task_view": "passed",
+  "reads_preserve_files": true
+}

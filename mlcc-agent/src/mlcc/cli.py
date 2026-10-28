@@ -8,52 +8,57 @@ import os
 from pathlib import Path
 from typing import Sequence
 
-import numpy as np
 
 from .site_runner import RunnerError, runner_for_task
 from .tasks import load_task
 from .workflow import inspect_task
-from .studies import load_study, study_summary
-from .results import make_dft_result
-from .abacus_tasks import create_abacus_task, parse_abacus_task
-from .modeling import import_model_artifacts, read_model_artifacts
-from .method_tasks import inspect_site_upf_headers, inspect_site_nao_headers, qualify_abacus_configuration
-from .electronic import read_abacus_electronic_task, gaussian_dos
-from .elastic import plan_elastic_strains, analyze_elastic_tasks, calibrate_tensor_stress
-from .model_derivatives import derive_supercell_model, derive_defect_model
-from .defect_thermodynamics import (chemical_potential_region, formation_energy_terms,
-                                   binding_energy, neutral_formation_from_tasks)
-from .property_delivery import (
-    assess_design,
-    deliver_chemical_references,
-    deliver_potential_alignment,
-    deliver_polarization_energy,
-    deliver_polarization_strain,
-    deliver_defect_references,
-    deliver_electronic_properties,
-    deliver_p5_properties,
-    deliver_berry_polarization,
-    deliver_md_properties,
-    deliver_charge_properties,
-)
-from .berry_branch_review import (
-    consume_berry_branch_review,
-    review_berry_response_branches,
-)
-from .phonons import generate_phonon_displacement_plan, compute_harmonic_qpoints
-from .phonon_forces import collect_phonon_forces
-from .phonon_tasks import create_phonon_task
-from .lammps_tasks import create_lammps_task, parse_lammps_task
-from .md_trajectory import read_md_collection
-from .md_conditions import read_md_conditions
-from .md_sources import select_md_sources
-from .dielectric_response import (
-    aggregate_born_columns,
-    calculate_ionic_dielectric,
-    combine_dielectric_contributions,
-    read_pyatb_static_electronic,
-)
-from .phonon_gamma import compute_gamma_fixed_cell_hessian
+
+
+def _load_domain_commands():
+    """Load legacy scientific commands only when a domain command is invoked."""
+    global np, load_study, study_summary, make_dft_result, create_abacus_task, parse_abacus_task, import_model_artifacts, read_model_artifacts, inspect_site_upf_headers, inspect_site_nao_headers, qualify_abacus_configuration, read_abacus_electronic_task, gaussian_dos, plan_elastic_strains, analyze_elastic_tasks, calibrate_tensor_stress, derive_supercell_model, derive_defect_model, chemical_potential_region, formation_energy_terms, binding_energy, neutral_formation_from_tasks, assess_design, deliver_chemical_references, deliver_potential_alignment, deliver_polarization_energy, deliver_polarization_strain, deliver_defect_references, deliver_electronic_properties, deliver_p5_properties, deliver_berry_polarization, deliver_md_properties, deliver_charge_properties, consume_berry_branch_review, review_berry_response_branches, generate_phonon_displacement_plan, compute_harmonic_qpoints, collect_phonon_forces, create_phonon_task, create_lammps_task, parse_lammps_task, read_md_collection, read_md_conditions, select_md_sources, aggregate_born_columns, calculate_ionic_dielectric, combine_dielectric_contributions, read_pyatb_static_electronic, compute_gamma_fixed_cell_hessian
+    import numpy as np
+    from .studies import load_study, study_summary
+    from .results import make_dft_result
+    from .abacus_tasks import create_abacus_task, parse_abacus_task
+    from .modeling import import_model_artifacts, read_model_artifacts
+    from .method_tasks import inspect_site_upf_headers, inspect_site_nao_headers, qualify_abacus_configuration
+    from .electronic import read_abacus_electronic_task, gaussian_dos
+    from .elastic import plan_elastic_strains, analyze_elastic_tasks, calibrate_tensor_stress
+    from .model_derivatives import derive_supercell_model, derive_defect_model
+    from .defect_thermodynamics import (chemical_potential_region, formation_energy_terms,
+                                       binding_energy, neutral_formation_from_tasks)
+    from .property_delivery import (
+        assess_design,
+        deliver_chemical_references,
+        deliver_potential_alignment,
+        deliver_polarization_energy,
+        deliver_polarization_strain,
+        deliver_defect_references,
+        deliver_electronic_properties,
+        deliver_p5_properties,
+        deliver_berry_polarization,
+        deliver_md_properties,
+        deliver_charge_properties,
+    )
+    from .berry_branch_review import (
+        consume_berry_branch_review,
+        review_berry_response_branches,
+    )
+    from .phonons import generate_phonon_displacement_plan, compute_harmonic_qpoints
+    from .phonon_forces import collect_phonon_forces
+    from .phonon_tasks import create_phonon_task
+    from .lammps_tasks import create_lammps_task, parse_lammps_task
+    from .md_trajectory import read_md_collection
+    from .md_conditions import read_md_conditions
+    from .md_sources import select_md_sources
+    from .dielectric_response import (
+        aggregate_born_columns,
+        calculate_ionic_dielectric,
+        combine_dielectric_contributions,
+        read_pyatb_static_electronic,
+    )
+    from .phonon_gamma import compute_gamma_fixed_cell_hessian
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -475,10 +480,20 @@ def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
-        if args.action in ("list-scales", "describe-scale", "create-scale", "parse-scale"):
+        if args.action in ("list-capabilities", "create-task", "read-result", "list-scales", "describe-scale", "create-scale", "parse-scale"):
             from .scale_cli import dispatch
             print(json.dumps(dispatch(args), ensure_ascii=False, indent=2, allow_nan=False))
             return 0
+        if args.action in ("prepare", "transfer", "submit", "status", "query", "cancel", "collect"):
+            runner, task = runner_for_task(args.site, args.task)
+            result = getattr(runner, "query" if args.action == "status" else args.action)(task)
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0
+        if args.action == "resume-plan":
+            result = inspect_task(load_task(args.task))
+            print(json.dumps(result, ensure_ascii=False, indent=2))
+            return 0
+        _load_domain_commands()
         if args.action == "md-thermal-sources":
             from .thermal_stress_sources import build_md_thermal_sources
             result = build_md_thermal_sources(args.request, args.output_dir)

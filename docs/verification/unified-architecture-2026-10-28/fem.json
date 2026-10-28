@@ -1,0 +1,354 @@
+{
+  "module_id": "fem",
+  "task_id": "fem-unified-02",
+  "job_id": "689",
+  "scheduler_state": "COMPLETED",
+  "exit_code": "0:0",
+  "execution": {
+    "status": "succeeded",
+    "created_at": "2026-10-28T08:30:33.910144+00:00",
+    "updated_at": "2026-10-28T08:30:36.998648+00:00",
+    "backend_exit_code": 0,
+    "events": []
+  },
+  "quality": {
+    "numerical": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "mesh_semantics",
+          "message": "Nonempty CERAMIC/A/B/outer; exact exterior coverage, no overlaps/internal mislabeled facets.",
+          "status": "passed"
+        },
+        {
+          "id": "mesh_geometry",
+          "message": "Finite coordinates and nondegenerate P1 triangles; shape metrics recorded, shape threshold not assessed.",
+          "status": "passed"
+        },
+        {
+          "id": "linear_solver",
+          "message": "PETSc reason=4; finite assembled residual 2.12599e-21.",
+          "status": "passed"
+        },
+        {
+          "id": "field_finiteness",
+          "message": "Native finite arrays and VTU round-trip; Windows verifies file hashes, typed results and normalization.",
+          "status": "passed"
+        },
+        {
+          "id": "depth_units",
+          "message": "Explicit t and consistent total/per-depth Q/U/C. Model uses full stack; no extra layer multiplier.",
+          "status": "passed"
+        },
+        {
+          "id": "residual_acceptance",
+          "message": "Assembled residual recorded; no approved residual acceptance threshold.",
+          "status": "not_checked"
+        },
+        {
+          "id": "mesh_shape_acceptance",
+          "message": "Minimum normalized triangle shape recorded; no approved quality threshold.",
+          "status": "not_checked"
+        },
+        {
+          "id": "charge_balance",
+          "message": "Measured terminal relative imbalance=0.000239521793; no approved product tolerance.",
+          "status": "not_checked"
+        },
+        {
+          "id": "capacitance_consistency",
+          "message": "Measured raw-flux/energy relative difference=0.00372371102; no approved product tolerance.",
+          "status": "not_checked"
+        },
+        {
+          "id": "mesh_convergence",
+          "message": "A single run does not compare independently refined meshes.",
+          "status": "not_checked"
+        },
+        {
+          "id": "analytic_reference",
+          "message": "Analytical qualification is separate harness evidence, not automatically attached to this run.",
+          "status": "not_checked"
+        }
+      ]
+    },
+    "scientific": {
+      "status": "not_checked",
+      "checks": [
+        {
+          "id": "model_applicability",
+          "message": "No scientific owner sign-off on actual device/use conditions.",
+          "status": "not_checked"
+        },
+        {
+          "id": "material_provenance",
+          "message": "Parameter source retained; material validity at operating conditions is not independently verified.",
+          "status": "not_checked"
+        },
+        {
+          "id": "independent_device_reference",
+          "message": "No measured device reference supplied.",
+          "status": "not_checked"
+        }
+      ]
+    }
+  },
+  "results": {
+    "assumptions": [
+      "2D invariant cross section, explicit extruded depth; no finite-width edge correction",
+      "Single linear isotropic lossless dielectric; no external air domain",
+      "Ideal equipotential electrodes removed from dielectric; no metal volume mesh",
+      "Sharp-tip Emax is diagnostic, not a breakdown/safety criterion"
+    ],
+    "body_height_m": 6.400000000000001e-05,
+    "capacitance_energy_per_unit_depth_F_per_m": 1.2893122250166755e-05,
+    "capacitance_energy_total_F": 1.2893122250166755e-08,
+    "capacitance_methods_relative": 0.0037237110177685416,
+    "capacitance_raw_flux_total_F": 1.2845111988790372e-08,
+    "charge_balance_relative": 0.00023952179257693732,
+    "charge_per_unit_depth_C_per_m": {
+      "ELECTRODE_A": 0.00012845111988790372,
+      "ELECTRODE_B": -0.00012848189410149258
+    },
+    "charge_total_C": {
+      "ELECTRODE_A": 1.2845111988790371e-07,
+      "ELECTRODE_B": -1.2848189410149258e-07
+    },
+    "diagnostics_artifact": "artifacts/diagnostics.json",
+    "dof_count": 5354,
+    "electric_field_max_V_per_m": 2603958.753918159,
+    "energy_per_unit_depth_J_per_m": 0.0006446561125083377,
+    "energy_total_J": 6.446561125083377e-07,
+    "field_artifact": "artifacts/fields/fields.vtu",
+    "mesh_artifact": "artifacts/mesh/mesh.msh",
+    "mesh_cells": 7392,
+    "model": "linear_isotropic_lossless_2d",
+    "out_of_plane_thickness_m": 0.001,
+    "outer_displacement_flux_total_C": -4.247833273292972e-12,
+    "potential_max_V": 10.000000000000009,
+    "potential_min_V": 0.0,
+    "schema_version": "fea.electrostatics-output.v1"
+  },
+  "artifacts": [
+    {
+      "description": "Native scientific evidence: diagnostics.json",
+      "media_type": "application/json",
+      "path": "artifacts/diagnostics.json",
+      "size_bytes": 1496,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: fields.vtu",
+      "media_type": "application/xml",
+      "path": "artifacts/fields/fields.vtu",
+      "size_bytes": 230333,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: manifest.json",
+      "media_type": "application/json",
+      "path": "artifacts/fields/manifest.json",
+      "size_bytes": 400,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_field_magnitude.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_field_magnitude.png",
+      "size_bytes": 33101,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_field_magnitude_detail.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_field_magnitude_detail.png",
+      "size_bytes": 38733,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_potential.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_potential.png",
+      "size_bytes": 93395,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: electric_potential_detail.png",
+      "media_type": "image/png",
+      "path": "artifacts/images/electric_potential_detail.png",
+      "size_bytes": 261601,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: input.canonical-si.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.canonical-si.json",
+      "size_bytes": 704,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: input.normalized.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.normalized.json",
+      "size_bytes": 704,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: input.original.json",
+      "media_type": "application/json",
+      "path": "artifacts/input.original.json",
+      "size_bytes": 1977,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: mesh.msh",
+      "media_type": "application/vnd.gmsh",
+      "path": "artifacts/mesh/mesh.msh",
+      "size_bytes": 413257,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: mesh_report.json",
+      "media_type": "application/json",
+      "path": "artifacts/mesh/mesh_report.json",
+      "size_bytes": 1014,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: semantic_regions.json",
+      "media_type": "application/json",
+      "path": "artifacts/mesh/semantic_regions.json",
+      "size_bytes": 282,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: method_environment.json",
+      "media_type": "application/json",
+      "path": "artifacts/method_environment.json",
+      "size_bytes": 370,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: metrics.json",
+      "media_type": "application/json",
+      "path": "artifacts/metrics.json",
+      "size_bytes": 1441,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: scientific_core.json",
+      "media_type": "application/json",
+      "path": "artifacts/scientific_core.json",
+      "size_bytes": 779,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native scientific evidence: unit_normalization.json",
+      "media_type": "application/json",
+      "path": "artifacts/unit_normalization.json",
+      "size_bytes": 8488,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Deterministic checks with unassessed items explicitly not_checked",
+      "media_type": "application/json",
+      "path": "artifacts/quality.json",
+      "size_bytes": 2099,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Windows-verified native evidence hashes",
+      "media_type": "application/json",
+      "path": "artifacts/artifact_hashes.json",
+      "size_bytes": 1791,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "application/json",
+      "path": "artifacts/native/request.json",
+      "size_bytes": 992,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "application/json",
+      "path": "artifacts/native/launch.json",
+      "size_bytes": 921,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "application/json",
+      "path": "artifacts/native/response.json",
+      "size_bytes": 7354,
+      "evidence_kind": "real_computation"
+    },
+    {
+      "description": "Native launch/diagnostics; not independent scientific validation",
+      "media_type": "text/plain",
+      "path": "artifacts/native/stdout.log",
+      "size_bytes": 1833,
+      "evidence_kind": "real_computation"
+    }
+  ],
+  "file_sha256": {
+    "task.json": "6f9b828020a1b11b9d0ca4bdb5177fb5f250a5e18b392257e3874ecb909f76ab",
+    "scale-response.json": "34456e3081264a78d8953a6ea62c130b116ae53712f53291251c0965d5932e21",
+    "artifacts/artifact_hashes.json": "b26c5661dfcec86d018df38b1c442a83000ae5aea9a06d79946e6956947cfd09",
+    "artifacts/diagnostics.json": "524673765c43949e977ef1a3c36ed621ff886930233e31802e91a4a13534fbae",
+    "artifacts/fields/fields.vtu": "9fbcd7fbe808f66d2b1564aa87f37900ae3aba15e42b59b19ac99654125f53ef",
+    "artifacts/fields/manifest.json": "6da4e2244f88910a1829c75698a1f11ad321abbb16f9052950d5c2dd7d44db58",
+    "artifacts/images/electric_field_magnitude.png": "14f0fc43b68f65589d23fe0b448802017c5a6559a6b725e86968802ccdf6d5ee",
+    "artifacts/images/electric_field_magnitude_detail.png": "4cd71604b29de14afe1ad677128c6e53cecb0b106eb5873c394eb6b8d85df5b8",
+    "artifacts/images/electric_potential.png": "8c0ca8921b93249cb6dea4f269585adc6750f7796f079942a1befc0857bf3356",
+    "artifacts/images/electric_potential_detail.png": "5972a303f8d7eb292a427ec1231af98a8295f00a15fc6548ad6e9ea1bc946fe4",
+    "artifacts/input.canonical-si.json": "bf1513af00ea729eaef4ba451b0e266fc97e23a7c637bde64456b8366af5f9bc",
+    "artifacts/input.normalized.json": "bf1513af00ea729eaef4ba451b0e266fc97e23a7c637bde64456b8366af5f9bc",
+    "artifacts/input.original.json": "d114d78a7ecdc4a1852241692f8c4ff077a84d207bda54a5ba5c3a6d228389b7",
+    "artifacts/mesh/mesh.msh": "39607443b2d0dd0f10959cb6c3a364ff09a65963563431394240a49abc5f874c",
+    "artifacts/mesh/mesh_report.json": "847a4f8767d5e8538f3e0fe694119e29e5644796e4d9ee7b28358e1c78cab52a",
+    "artifacts/mesh/semantic_regions.json": "dd37863cfec9b72109e92cc31ec7408200750c99dd54857f2541deb1aea484d2",
+    "artifacts/method_environment.json": "96ad795fb6773bca9b27a29b741a45dac249add373a79fdb0822ae24d173e9f9",
+    "artifacts/metrics.json": "ad1b57defe7b2c049baf81a85510d63565b522e59a28d1ceb029f43707a695fb",
+    "artifacts/native/cache/fenics/libffcx_expressions_d337b8aa9625e1a709447b955473977f563eb1b2.c": "5d4dfe98dc3451886334040ea9cbb0b79c782c9068727b37dbe932df6dfdebad",
+    "artifacts/native/cache/fenics/libffcx_expressions_d337b8aa9625e1a709447b955473977f563eb1b2.c.cached": "b443d65739e297ee99017c4be9335019fa8d5462ac91b83ae0b503888931dd38",
+    "artifacts/native/cache/fenics/libffcx_expressions_d337b8aa9625e1a709447b955473977f563eb1b2.cpython-311-x86_64-linux-gnu.so": "a30d84247586080a41b13c930c172509dc568a791fd239a92ccc259b69e959c4",
+    "artifacts/native/cache/fenics/libffcx_expressions_d337b8aa9625e1a709447b955473977f563eb1b2.o": "7041fa28dd533bb5d548cc4f628afb9ba3b5a7670477763b15f43015eb067373",
+    "artifacts/native/cache/fenics/libffcx_forms_3557177de978e1079254081ee09f1ab4a6c23a2f.c": "55c8cf661b23d3063eda943108bef07dedbb5f20dedc6cfb96a024fa218354e1",
+    "artifacts/native/cache/fenics/libffcx_forms_3557177de978e1079254081ee09f1ab4a6c23a2f.c.cached": "b4aaf5389ddffe3652c69e6e4d8642ce59c2185d307d1b01f42a1cbdd8ecf8c4",
+    "artifacts/native/cache/fenics/libffcx_forms_3557177de978e1079254081ee09f1ab4a6c23a2f.cpython-311-x86_64-linux-gnu.so": "046e4ccee405597fd0313fcd430308d2718b62ad9f3271542b12a8ae55baeb3d",
+    "artifacts/native/cache/fenics/libffcx_forms_3557177de978e1079254081ee09f1ab4a6c23a2f.o": "b1362c19704e45d36ee68869c4e249c107baa81e7c41e70b676b35c3f7bf36b5",
+    "artifacts/native/cache/fenics/libffcx_forms_498801eb39c9446346d75573d5aa256e03756aee.c": "8057ca202974f6c4e25df5793c5b01c534ce275dc606fa3319d88886f2e6ab1e",
+    "artifacts/native/cache/fenics/libffcx_forms_498801eb39c9446346d75573d5aa256e03756aee.c.cached": "c7edd4de5a87fcdf196ef3b85bd8dedce65ce1983d9e9097b161f85a8b738c8d",
+    "artifacts/native/cache/fenics/libffcx_forms_498801eb39c9446346d75573d5aa256e03756aee.cpython-311-x86_64-linux-gnu.so": "c7ca531662d8907bd3d53a656717d253e44e48b394aececdda353a222e0e33fd",
+    "artifacts/native/cache/fenics/libffcx_forms_498801eb39c9446346d75573d5aa256e03756aee.o": "ca5bb39efab98cf4ba92080f8c9b91c30f64568163007f8e137d2a4d41d94b02",
+    "artifacts/native/cache/fenics/libffcx_forms_5b5d0e669606f29f5185e5b333f8a070685bf314.c": "b7672f3425afb1a7b8f21a2e5f16a5bf2c87f3769ca69142686965fc829814df",
+    "artifacts/native/cache/fenics/libffcx_forms_5b5d0e669606f29f5185e5b333f8a070685bf314.c.cached": "9563297af768b55dfc98aabedf4060433d935c3903849d3a078135c3e079a116",
+    "artifacts/native/cache/fenics/libffcx_forms_5b5d0e669606f29f5185e5b333f8a070685bf314.cpython-311-x86_64-linux-gnu.so": "c0cc1431239379c27d6c789ca6633db3849087bdb44673a9ed5513b827083d9a",
+    "artifacts/native/cache/fenics/libffcx_forms_5b5d0e669606f29f5185e5b333f8a070685bf314.o": "ed17003ea3b46e004d2dfe12d71e8bc74459343a0f9e70293bd7bc00bf9611e5",
+    "artifacts/native/cache/fenics/libffcx_forms_886bcd743bae00681c26ad866ef68a67fcd80726.c": "8a6256a13108a05544b74e1ae6d85af4215d2b29b010a29fe46448ccade918a9",
+    "artifacts/native/cache/fenics/libffcx_forms_886bcd743bae00681c26ad866ef68a67fcd80726.c.cached": "f041f396cc0c1cb18179cb537bc2bf2938a609b0f039ce7d8a78e4c30418379e",
+    "artifacts/native/cache/fenics/libffcx_forms_886bcd743bae00681c26ad866ef68a67fcd80726.cpython-311-x86_64-linux-gnu.so": "29fd61aee49e4523f9fd75e9a19d5f0964e231c95dcaf40c450da8dcef0c41b9",
+    "artifacts/native/cache/fenics/libffcx_forms_886bcd743bae00681c26ad866ef68a67fcd80726.o": "4a33bd5f970e04e2f9792f3b27fc984a9bc41a714b7472f36479d762e6a447d5",
+    "artifacts/native/cache/fenics/libffcx_forms_90f85687f26fae8f5fe045ab8b21dd613fb5644a.c": "a6b5ef8f469fb5582f59bd9711ce339d444c87e87d7a11a853f19b1eadcc7e97",
+    "artifacts/native/cache/fenics/libffcx_forms_90f85687f26fae8f5fe045ab8b21dd613fb5644a.c.cached": "a279cad80bedbf3f5e04ee5ceb0700bd8eb6a06c0e933efa7101474d3d5d5bca",
+    "artifacts/native/cache/fenics/libffcx_forms_90f85687f26fae8f5fe045ab8b21dd613fb5644a.cpython-311-x86_64-linux-gnu.so": "83b4ba301d31cc1c5e28233e01ba339f0605b2ce4b50b3c525d2c9c177f192d8",
+    "artifacts/native/cache/fenics/libffcx_forms_90f85687f26fae8f5fe045ab8b21dd613fb5644a.o": "15dfe37911695cecac3b6a901a2dab6e98067b05b4921e573ce9b4555e54302c",
+    "artifacts/native/cache/fenics/libffcx_forms_ad52172984e07c180d929003e573f454a7b45056.c": "1d7312c18146dc572f3eee34d0c62043b61229035c361be6a14b71248a48568d",
+    "artifacts/native/cache/fenics/libffcx_forms_ad52172984e07c180d929003e573f454a7b45056.c.cached": "5fcc11fae1c8324dbc279f2e5ad17fcc0f641c6f718a52c18624fcd23b717e30",
+    "artifacts/native/cache/fenics/libffcx_forms_ad52172984e07c180d929003e573f454a7b45056.cpython-311-x86_64-linux-gnu.so": "dcabbf987cc3ccd472ff4d8e6a3101290682e6c0e7989512087133d859edccb2",
+    "artifacts/native/cache/fenics/libffcx_forms_ad52172984e07c180d929003e573f454a7b45056.o": "5692a41ebb2ac60c7a5372963c3b8148b74ce1b8bb835a6ede1dea45ec7170e9",
+    "artifacts/native/cache/matplotlib/fontlist-v3.11.0.json": "f9c1e25bfb0c6ab19c183c2688d04e4efa47bbed889ebb63da36a2d714d0d9c8",
+    "artifacts/native/launch.json": "f0f7008ea2f7df1ef5fe8e408c0ccbc79c0aed9e82b6349062f512a7d7ad1b81",
+    "artifacts/native/request.json": "cfc7dd3ff2b0fb058e54937239ea5318be4b77f7d1678638bc27f946c7f65bd9",
+    "artifacts/native/response.json": "6e0f929d33878088364fdc079b5a44c22cdaabd4871cb1475f44f6113fe98b73",
+    "artifacts/native/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "artifacts/native/stdout.log": "4b38e1fcc0f42d0f067282ba93819422f2b183791d94c490214bc2595a448ce9",
+    "artifacts/quality.json": "016c06d6a5beaf28c99c70878721a2f70fef62a58869ea3927392c329d73c6cc",
+    "artifacts/scientific_core.json": "518d7c852d1c344451cdef35e7db7b4e46bd97bb329ab64de0e0afe5e1f7eab8",
+    "artifacts/unit_normalization.json": "35089437cc4bc99e9ba0f2a41bcdc5a776b26df85b138d8a437840c46cc46594"
+  },
+  "shared_task_view": "passed",
+  "reads_preserve_files": true
+}
