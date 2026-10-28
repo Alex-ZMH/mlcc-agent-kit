@@ -5,7 +5,9 @@ description: Prepare and interpret the fem electrostatics_2d operation for a par
 
 # 二维 MLCC 线性静电
 
-用于 `fem/electrostatics_2d`。固定入口是本模块 `adapter.py`，由 **Windows 公共框架**调用；只有科学建模、网格、求解、导出在已绑定的 WSL 环境运行。宿主可读的方法说明不等于已连接的 LLM/自动工具服务。
+本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-fem/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
+
+用于 `fem/electrostatics_2d`。固定入口是本模块 `adapter.py`，由公共 TaskRecord/SiteRunner 在 Slurm 分配中调用；科学建模、网格、求解、导出在宿主显式绑定的 native Linux 环境运行。宿主可读的方法说明不等于已连接的 LLM/自动工具服务。
 
 ## 输入与选择
 
@@ -19,9 +21,9 @@ description: Prepare and interpret the fem electrostatics_2d operation for a par
 
 ## 调用与失败
 
-使用 Windows `python -m mlcc preflight fem electrostatics_2d --input FILE`。部署由宿主提供 `MLCC_FEA_DEPLOYMENT`，不由用户科学输入或模型生成。ready 只说明结构/资源/已安装环境可用，不表示科学合格。实际 argv、路径映射及任务/产物管理由代码确定执行。
+使用顶层Skill的 `mlcc create-task --module fem --operation electrostatics_2d --arguments ARGS.json` 准备任务；领域预检在Slurm分配内执行。部署由宿主提供 `MLCC_FEA_DEPLOYMENT`，不由用户科学输入或模型生成。ready 只说明结构/资源/已安装环境可用，不表示科学合格。实际 argv、路径映射及任务/产物管理由代码确定执行。
 
-收到执行指令后通过 `run` 创建公共 queued task；宿主在 Windows 执行 `worker TASK_ID`。不能只排队就说计算完成。之后 `status/result/artifact` 都是只读查询，不重复求解；更改参数产生新任务。
+明确执行授权后沿prepare/transfer/submit执行；返回真实task/job。query查询调度、collect收集、read-result读取保存证据，不运行内层worker。不能只准备或提交就说计算完成；更改参数产生明确新任务。
 
 校验错误指出具体字段/单位/几何关系。BACKEND_UNAVAILABLE/DEPLOYMENT_NOT_CONFIGURED 报环境事实，不安装依赖或静默换后端。科学异常保留 native response/stderr 和原始首错。SCIENTIFIC_STATE_UNKNOWN 或公共 interrupted 表示通信/客户端中断，**不能声称 Linux 求解已停止**；保留任务、核对原生进程，禁止自动重提交。
 
@@ -40,6 +42,6 @@ description: Prepare and interpret the fem electrostatics_2d operation for a par
 
 `fem/electrostatics_2d_quantities` 使用 [独立schema](../../schemas/electrostatics.quantities.input.schema.json)；旧 `electrostatics_2d` 和SI schema保持兼容。新入口长度/电势字段不用 `_m`/`_V` 后缀，必须提供 `{value, unit, source:{kind, reference}}`，例如间隙 `{value:5,unit:"um",source:{kind:"user",reference:"设计输入"}}`。不得把mm数值直接填进旧 `_m` 字段。间隙数为整数，epsilon_r为无量纲物理参数，不附长度单位。
 
-Adapter通过唯一公共单位核心做确定性转换，再校验原SI模型；Agent不能自行计算换算结果来替代工具。缺单位或来源时澄清，不暗用全局单位、默认长度或推断材料。未知/维度冲突/非有限/多余字段拒绝。原始输入快照和 `input.original.json` 保留用户值；`input.canonical-si.json`、`unit_normalization.json` 保存实际SI输入与逐字段规则。WSL仅接收SI，不二次转换。
+Adapter通过唯一公共单位核心做确定性转换，再校验原SI模型；Agent不能自行计算换算结果来替代工具。缺单位或来源时澄清，不暗用全局单位、默认长度或推断材料。未知/维度冲突/非有限/多余字段拒绝。原始输入快照和 `input.original.json` 保留用户值；`input.canonical-si.json`、`unit_normalization.json` 保存实际SI输入与逐字段规则。科学进程仅接收SI，不二次转换。
 
 全部结果仍为SI，电荷C是库仑；总量与每深度量保持原语义。单位一致性通过不升级任何not_checked科学检查。部署与执行授权仍由宿主管理，不进入多单位科学输入。

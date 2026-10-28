@@ -5,7 +5,9 @@ description: Select and interpret MLCC two-dimensional electrothermal, AC-EQS an
 
 # 二维器件电热与电磁
 
-沿现有Windows Agent→Skill→固定Adapter→WSL科学环境→结构化结果链使用。不是另一套执行器；输入、单位、资源、状态和QC由代码决定。
+本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-fem/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
+
+沿Agent→领域Skill→TaskRecord/SiteRunner→Slurm内固定Adapter→显式科学环境→结构化结果链使用。不是另一套执行器；输入、单位、资源、状态和QC由代码决定。
 
 ## 选操作
 
@@ -19,7 +21,7 @@ description: Select and interpret MLCC two-dimensional electrothermal, AC-EQS an
 
 ## 输入与方法
 
-带单位用户输入优先选对应 `electrothermal_2d_quantities`、`ac_eqs_2d_quantities`、`electromagnetic_2d_quantities`。其严格schema和示例见[多单位交接](../../EXTENDED_UNITS_HANDOFF.md)，完整字段为 `{value,unit,source:{kind,reference}}`，units=`explicit_quantities`。Windows Adapter调用唯一公共normalize_fields；支持白名单中的mm/μm、kV、kHz/MHz、mA、S/cm、热导/对流单位和°C，不要求用户先换SI。绝对°C按公共偏移转K；温升输出仍为K。全部复分量单独带单位/source，current.convention固定rms；voltage_convention仍须明确rms/peak/dc，不能作为单位换算倍率。
+带单位用户输入优先选对应 `electrothermal_2d_quantities`、`ac_eqs_2d_quantities`、`electromagnetic_2d_quantities`。其严格schema和示例见[多单位交接](../../EXTENDED_UNITS_HANDOFF.md)，完整字段为 `{value,unit,source:{kind,reference}}`，units=`explicit_quantities`。Adapter调用唯一公共normalize_fields；支持白名单中的mm/μm、kV、kHz/MHz、mA、S/cm、热导/对流单位和°C，不要求用户先换SI。绝对°C按公共偏移转K；温升输出仍为K。全部复分量单独带单位/source，current.convention固定rms；voltage_convention仍须明确rms/peak/dc，不能作为单位换算倍率。
 
 旧三个SI操作保留严格SI后缀字段，不把typed对象塞进旧schema，不由LLM默算或丢单位。缺单位/来源时澄清；原始用户量值和canonical SI/quantity审计各自保存。仅SI副本进入既有科学内核，不能二次缩放；核心缺失、版本/白名单不支持或换算错误时拒绝，不改用私有换算。
 
@@ -32,7 +34,7 @@ description: Select and interpret MLCC two-dimensional electrothermal, AC-EQS an
 
 ## 执行与解释
 
-固定公共入口 `python -m mlcc preflight fem OP --input FILE`，由宿主绑定部署；显式授权后run/worker执行一次。部署细节见[运行说明](../../EXTENDED_GUIDE.md)，不得让LLM生成WSL命令、环境路径、资源限额或授权。缺依赖/非法输入应报告结构化错误；未知执行状态保留任务，不能自动重提或声称Linux已停止。
+固定公共入口 `mlcc create-task --module fem --operation OP --arguments ARGS.json`，由宿主绑定部署；创建不提交，执行授权后经prepare/transfer/submit一次，领域预检在Slurm内执行。部署与任务步骤见[公共生命周期](../../../../skills/references/task-lifecycle.md)，不得让LLM生成WSL命令、环境路径、资源限额或授权。缺依赖/非法输入应报告结构化错误；未知执行状态保留任务，不能自动重提或声称Linux已停止。
 
 结果见[输出schema](../../schemas/device.output.schema.json)。复数对为[实,虚]。Cp在AC-EQS是Im(Y)/ω；EM的capacitance_F是能量等效值，不能与Cp混为一谈。EM磁能L包含参考面内馈电/回流，不是商业ESL。空值表示未计算/不适用，不能解释为0；零功率热阻为null。
 

@@ -5,6 +5,8 @@ description: Prepare and interpret full static 2D/3D branch-local tangent dielec
 
 # Static tangent dielectric response
 
+本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-phase-field/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
+
 Select phase_field dielectric_tangent / dielectric_tangent_si for the complete static d< D >/dEbar tensor. It is extracted by UFL AD of the full coupled equilibrium and displacement functional, with two/three linear sensitivity directions. FD is optional independent nonlinear verification, never the extraction algorithm. Do not confuse this with an assumed matrix background coefficient, a dynamic P–E slope, device capacitance, finite-frequency complex dielectric or material εr.
 
 Preserve authoritative files unchanged. Explicitly supply synthetic quartic a/b/c/g/epsilon, initial state, dimension-matched mesh, nonempty bias loading_path, equilibrium tolerance, requested analytical/FD checks and source. Bias path inherits equilibrium branch states; it is not a time waveform. No dt, old-state, mobility, artificial pins or private require_stable bypass are accepted. Current profile is synthetic_tetragonal_quartic_v1, a<0,b>0,c>2b,g/epsilon>0, single MPI rank, reviewed real DOLFINx. Operational dense stability cap is 3300 total DOFs; do not coarsen inputs silently.

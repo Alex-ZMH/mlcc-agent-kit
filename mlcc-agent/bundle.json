@@ -2,17 +2,20 @@
   "schemaVersion": "matterai.bundle.v2",
   "name": "mlcc-agent",
   "title": "MLCC 多尺度计算能力包",
-  "version": "0.59.0",
-  "description": "独立 MLCC 能力包：可追溯模型、ABACUS 电子/弹性/缺陷、Phonopy 位移与原生力、LAMMPS 工程输入解析、设计适配和 Slurm/MCP。科学资格逐项验收。",
+  "version": "0.60.0",
+  "description": "MLCC 多尺度计算能力包：原子建模、DFT、MD、铁电相场、RVE、器件FEM与电路SPICE独立运行；共用可追溯任务与SSH/Slurm，性质与科学资格由各领域保留。",
   "agent": {
     "name": "mlcc",
     "entry": "agents/mlcc/AGENT.md",
     "skills": [
       "model-mlcc-structures",
       "run-mlcc-dft",
-      "compute-mlcc-properties",
       "run-mlcc-md",
-      "run-mlcc-scales"
+      "run-mlcc-phase-field",
+      "run-mlcc-rve",
+      "run-mlcc-fem",
+      "run-mlcc-spice",
+      "compute-mlcc-properties"
     ]
   },
   "mcpServers": [

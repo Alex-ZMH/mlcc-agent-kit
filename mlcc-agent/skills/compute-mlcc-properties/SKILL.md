@@ -1,9 +1,25 @@
 ---
 name: compute-mlcc-properties
-description: 从同源 ABACUS 模型组织 MLCC 铁电介电、磁性、声子热学和电子热电四条性质链，明确跨链输入、可观测量与器件外推范围。
+description: 导航和汇总已有多尺度结果及来源；保留原DFT/MD性质链，FEM、相场、RVE和SPICE的指标定义与后处理由对应模块提供。
 ---
 
-# 四条微观性质链
+# MLCC 多尺度性质与结果
+
+## 四个新模块的已有性质导航
+
+用户查看保存任务时，先用 `mlcc read-result --task TASK.json`，读取公共结果的execution/quality与专业results，再按返回artifacts打开必要文件。已有指标、张量、曲线与检查由模块计算，顶层不重算、不复制公式、不发起新任务。
+
+| 来源 | 已有结果 | 解释与操作说明 |
+| --- | --- | --- |
+| phase_field | 极化/电场、能量/演化与分支静态切线 | [相场Skill](../run-mlcc-phase-field/SKILL.md#已有性质与产物)，按所选操作再读深层方法 |
+| rve | 有效张量、有效材料文件、坐标及逐载荷场 | [RVE Skill](../run-mlcc-rve/SKILL.md#已有性质与产物) |
+| fem | 电容/电荷/能量、场、electrical/thermal结果 | [FEM Skill](../run-mlcc-fem/SKILL.md#已有性质与产物) |
+| spice | summary、metrics、曲线与原生证据 | [SPICE Skill](../run-mlcc-spice/SKILL.md#已有性质与产物) |
+
+保留单位、条件、模型/任务/job与检查状态，汇总仅引用实际保存文件。不同物理定义不能直接比较或合并；缺项先报告，不借用其他尺度补齐。四模块独立交付，本轮不强制进入下述原子模型Study交付器，不新增统一性质包或自动尺度传参。
+
+## 原有微观性质链与交付
+
 
 `compare-compositions --request <JSON> --output <比较产品JSON>`消费`mlcc.composition-comparison-request.v1`中的baseline、variants和selected_properties。每侧给出保存模型、产品、实际method文件与Study绑定；用保存模型谱系配对，调用共同方法比较接口保留共同/新增元素资源和方法差异。标量、3×3张量及显式Voigt/engineering-shear的6×6张量按声明单位、条件、坐标和逐侧组成归一；二阶张量可用显式旋转统一坐标，不支持的Voigt变换保留incomparable。缺真实掺杂物性或来源说明保留null与原因，裸总能不跨组成相减。`deliver-properties --study <baseline Study> --composition <比较产品JSON> --output <交付JSON>`交付完整保存比较；现有未收敛或未资格标记保留，不因此阻止可定义的差量。
 

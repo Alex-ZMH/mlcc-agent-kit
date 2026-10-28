@@ -1,6 +1,6 @@
 # MLCC Agent
 
-0.59.0候选将DFT、MD、phase_field、RVE、FEM、SPICE纳入同一能力目录与任务入口。嵌套compute框架已拆除，保留同事原有领域命令、TaskRecord和SiteRunner。使用 `mlcc list-capabilities` / `create-task` / `read-result`，见 [架构与交接](../docs/unified-architecture-2026-10-28.md)。完整交付包含modules、schemas和scientific_core；Zeus私有宿主仍需安装后验收。
+0.60.0候选提供DFT、MD、phase_field、RVE、FEM、SPICE六个独立运行Skill，同一个多尺度Agent按问题选择方法；深层Skill保留专业细节，properties仅补已有结果导航。见 [技能包装与验证](../docs/skill-packaging-2026-10-28.md) 与 [公共架构](../docs/unified-architecture-2026-10-28.md)。完整Bundle包含modules、schemas和scientific_core；私有Zeus宿主仍需安装后验收。
 
 新增源码入口：`charge-correction`、`charged-formation`、`charge-transitions`，均使用 `--request REQUEST.json --output NEW.json`。实际启用版本以 workspace 发布记录为准。
 

@@ -1,0 +1,57 @@
+{
+  "schema": "mlcc.skill-packaging-verification.v1",
+  "bundle_version": "0.60.0",
+  "agent_title": "MLCC 多尺度计算智能体",
+  "bound_skills": [
+    "model-mlcc-structures",
+    "run-mlcc-dft",
+    "run-mlcc-md",
+    "run-mlcc-phase-field",
+    "run-mlcc-rve",
+    "run-mlcc-fem",
+    "run-mlcc-spice",
+    "compute-mlcc-properties"
+  ],
+  "withdrawn_skill": "run-mlcc-scales",
+  "module_method_skill_count": 7,
+  "operation_coverage": {
+    "phase_field": 10,
+    "rve": 4,
+    "fem": 8,
+    "spice": 4
+  },
+  "checks": {
+    "binding_consistency": "passed",
+    "operation_coverage": "passed",
+    "local_links_and_anchors": "passed",
+    "documented_cli_parsing_without_execution": "passed",
+    "skill_creator_validation": {
+      "runtime": "local WSL Python with existing PyYAML",
+      "skills": {
+        "run-mlcc-phase-field": "passed",
+        "run-mlcc-rve": "passed",
+        "run-mlcc-fem": "passed",
+        "run-mlcc-spice": "passed",
+        "compute-mlcc-properties": "passed"
+      }
+    },
+    "dft_md_skills_preserved": {
+      "skills/run-mlcc-dft/SKILL.md": "ec742cb127b340c029917d41a7cb718e9d48958b46a642a0ccaab77a3cf53d46",
+      "skills/run-mlcc-md/SKILL.md": "678b52d168f65bdde83d5fec37b01ef9b38a517a9aa86a3424cd65b9cc9c50d9"
+    },
+    "packaging_tests": {
+      "count": 4,
+      "status": "passed"
+    },
+    "parent_framework_tests": {
+      "count": 119,
+      "status": "passed",
+      "runtime": "local WSL native filesystem; public sources/tests/schemas synchronized and hash-compared",
+      "mounted_run": "interrupted for slow filesystem I/O"
+    }
+  },
+  "scientific_code_changed": false,
+  "scientific_jobs_submitted": 0,
+  "llm_routing": "not_checked",
+  "private_zeus_host": "not_checked"
+}

@@ -1,0 +1,9 @@
+test_bundle_and_agent_bind_same_eight_real_skills (test_skill_packaging.SkillPackagingTests.test_bundle_and_agent_bind_same_eight_real_skills) ... ok
+test_documented_command_blocks_parse_without_backend_calls (test_skill_packaging.SkillPackagingTests.test_documented_command_blocks_parse_without_backend_calls) ... ok
+test_live_module_operations_are_documented_by_their_own_skill (test_skill_packaging.SkillPackagingTests.test_live_module_operations_are_documented_by_their_own_skill) ... ok
+test_skill_and_method_links_resolve_inside_bundle (test_skill_packaging.SkillPackagingTests.test_skill_and_method_links_resolve_inside_bundle) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 5.149s
+
+OK
