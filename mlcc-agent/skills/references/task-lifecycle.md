@@ -39,7 +39,9 @@ mlcc collect --site SITE.json --task TASK.json
 mlcc read-result --task TASK.json
 ```
 
-相应七个 MCP 工具可完成列表与生命周期操作；以宿主实际绑定为准，不虚构 create/read 的 MCP 名称。标准库客户端也可通过 Bundle 的固定 `tools/mlcc_scale.py` 启动相同动作。科学执行统一使用选定后端和 SSH/Slurm，不再运行内层 run/worker 队列。
+0.60.1 的对话入口优先使用实际绑定的 MCP：`mlcc_describe_scales(module_id, operation)` 读取契约，`mlcc_create_scale_task(module_id, operation, input, request)` 接收科学输入和任务请求对象，仅创建任务；站点来自运营配置，不接收用户指定的站点路径。按返回的 task_id 调用 prepare/transfer/submit/query/collect 生命周期工具，`mlcc_read_scale_result(task_id)` 读取保存结果。当前用户明确禁止提交时，只做创建、准备与只读核查，不能调用 submit。
+
+原有 CLI 命令用于已经安装 `mlcc` 的操作环境；不要在没有 CLI 的公网 Worker 上把命令文字当作已执行。标准库客户端也可通过 Bundle 的固定 `tools/mlcc_scale.py` 启动相同动作。科学执行统一使用选定后端和 Slurm，不再运行内层 run/worker 队列。
 
 提交后返回实际 task/job 与状态，不持续轮询。query 显式查询真实调度状态；collect 收集任务列明文件；read-result 仅验证和读取已保存结果，不推进计算、重新后处理或提交。缺结果时报告待查询/待收集/原错误，不能靠重新创建获得结果。更改科学参数需明确新任务，并保留原任务来源。
 

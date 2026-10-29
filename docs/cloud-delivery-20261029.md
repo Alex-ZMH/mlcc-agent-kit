@@ -1,60 +1,63 @@
-# Cloud delivery
+# Public deployment status · 2026-10-29
 
-This repository is the source distribution for the MLCC bundle. Runtime
-execution uses a remote Slurm site over SSH; the local Zeus web UI is not a
-runtime dependency and no localhost endpoint is part of the cloud contract.
+Read [the deployment checklist](../DEPLOY.md) before installing this candidate.
+The public baseline is 0.60.0. It is published, but its MCP process fails to
+start in the current cloud Worker. Version 0.60.1 is a repair candidate, not a
+publicly accepted release.
 
-Before using the template, configure an SSH alias on the operator machine. The
-private key and the actual host/user/port stay in `~/.ssh/config`:
+The compute site remains the existing **v100 + Slurm** installation. Public
+users access `https://agent.mattok.cn`; their computers are not compute workers.
+The cloud web server does not replace v100's scientific environments.
 
-```sshconfig
-Host mlcc-cloud
-    HostName <cloud-host>
-    User <cloud-user>
-    Port <cloud-ssh-port>
-    IdentityFile <private-key>
-```
+## Routes and runtime
 
-Verify access before running a task:
+The existing cloud Worker cannot reach the LAN-only v100 SSH alias. A proposed
+route is a Worker running on v100 that connects outward to the public host.
+That route is not deployed: v100 still needs the Worker Node/Codex runtime,
+registration and private operator configuration. It is not a chain of two
+Workers. The existing SSH transport remains the default for development.
 
-```powershell
-ssh mlcc-cloud 'hostname; id -un; command -v sbatch; scontrol version'
-scp -q .\mlcc-agent\bundle.json mlcc-cloud:/tmp/mlcc-bundle.json
-```
+For a Worker already running on v100, a private site may set
+`ssh.transport="local"`. The runner then performs file copies and invokes
+Slurm control commands locally. Numerical execution still belongs to Slurm;
+this setting does not start scientific programs directly.
 
-On the server, create the checkout and install the bundle into the selected
-Python environment:
+MLCC MCP requires Python >=3.12, `mcp==2.3.0` and `PyYAML==6.0.3`.
+The production cloud image currently selects Python 3.11/MCP 1.28.1 and fails
+at `from mcp.server import MCPServer`. The optional image extension in
+`scripts/runtime/` was built and tested in isolation; it has not replaced the
+production image. It depends on the operator's existing base image.
 
-```bash
-mkdir -p /home/v100/projects/mlcc
-cd /home/v100/projects/mlcc
-python -m pip install -e ./mlcc-agent
-```
+## Private site configuration
 
-Use [`configs/site.cloud.example.json`](../configs/site.cloud.example.json) as
-the site contract. Copy it to a private workspace configuration and keep the
-remote root, environment script, pseudopotential/orbital paths, and scheduler
-partition specific to that server. The bundle's runner submits with
-`sbatch --parsable`, reads state with `scontrol`, and collects only the paths
-listed by the task. It never starts a numerical process directly over SSH and
-does not silently fall back to localhost or another scheduler.
+Preserve the original v100 configuration and its engine environments. Keep
+VASP, ABACUS, LAMMPS, FEniCSX and ngspice paths and PP/NAO/model libraries
+outside this Git repository. Do not overwrite the older full v100 config
+with a four-scale-only template.
 
-The development endpoint `43.142.15.151:22022` accepted TCP connections during
-the 2026-10-29 check, but the available local SSH identity was rejected. A
-cloud deployment is therefore pending the operator's valid SSH identity; no
-credentials are stored in this repository.
+The candidate Bundle declares two required operator environment variables:
 
-## Four-scale evidence
+- `MLCC_SITE_CONFIG`: absolute path to the private site template.
+- `MLCC_WORKSPACE_ROOT`: the Worker's managed project-workspace root.
 
-The 0.60 candidate was exercised through the remote `v100` Slurm alias with
-four independent tasks: FEM job 702, phase-field job 703, RVE job 704, and
-SPICE job 705. Each reached `COMPLETED` with `ExitCode=0:0`, was collected, and
-passed the saved-result reader. The detailed local evidence remains under
-`workspace/reports/four-scale-workbench-20261028/` and is intentionally not
-committed with scientific output files.
+MCP resolves `zeus://workspace/current` to its project cwd and creates a
+project-local `configs/site.v100.json`. The remote root is isolated by the
+project path relative to the managed workspace root. An existing different
+project config is reported for explicit migration rather than overwritten.
+These variables must be supplied through the host's MCP environment allowlist.
 
-The same Agent bundle declares eight Skills: `model-mlcc-structures`,
-`run-mlcc-dft`, `run-mlcc-md`, `run-mlcc-phase-field`, `run-mlcc-rve`,
-`run-mlcc-fem`, `run-mlcc-spice`, and `compute-mlcc-properties`. This round
-added four new real Slurm lifecycles; existing modeling, DFT, MD, and property
-consumer evidence was reused without repeating calculations.
+The checked-in cloud template contains only the runner skeleton; it is not a
+complete scientific deployment. The operator must supply explicit engine and
+module bindings. Credentials and licensed pseudopotentials are not distributed.
+
+## Acceptance boundary
+
+This round prohibits new jobs. Isolated checks cover protocol, creation,
+batch-file preparation, local file transport and reading copies of saved
+results. They do not establish new scheduler execution or a public browser
+conversation. Actual submission and new scientific acceptance remain deferred.
+
+Historical jobs FEM 702, phase-field 703, RVE 704 and SPICE 705 completed and
+were read successfully. Their sanitized summary is in
+[the chain audit](public-chain-audit-20261029.md). Binding eight Skills is not
+proof that modeling, DFT, MD and properties also work through the public host.

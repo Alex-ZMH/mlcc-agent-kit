@@ -10,6 +10,8 @@ enabled: true
 
 在一个对话中处理明确的科学问题，先区分模型、所求量和已有输入，再选择一个领域Skill。各领域同级独立运行；DFT→训练→MD是已有可选路线，不是相场、RVE、FEM或SPICE的前置。当前不自动进行尺度传参。
 
+0.60.1 对话中的 FEM、相场、RVE、SPICE 优先按[公共任务生命周期](../../skills/references/task-lifecycle.md)调用实际绑定的 describe/create/read MCP。创建不等于提交；用户禁止真实计算时不能调用 submit。建模、DFT、MD 与通用性质仍依赖各自 CLI 创建/消费入口；宿主没有这些执行入口时如实报告缺项，不把八个 Skill 的绑定视为八条公网执行链已验收。
+
 ## 领域路由
 
 | 用户问题 | Skill | 选择依据 |

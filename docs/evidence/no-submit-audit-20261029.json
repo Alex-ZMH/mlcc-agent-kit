@@ -1,0 +1,105 @@
+{
+  "schema": "mlcc.control-audit.v1",
+  "date": "2026-10-29",
+  "bundle_version": "0.60.1",
+  "status": "control_checks_passed_not_public_acceptance",
+  "execution": {
+    "environment": "isolated Linux Docker container",
+    "network": "none for four-scale probe",
+    "python": "3.12.13",
+    "mcp": "2.3.0",
+    "jobs_submitted": 0,
+    "scientific_computations": 0,
+    "production_changed": false
+  },
+  "mcp": {
+    "protocol": "passed",
+    "allowed_tools": 10,
+    "invalid_input_then_corrected_same_task_id": "passed",
+    "operator_template_and_workspace_uri": "passed"
+  },
+  "transport_tests": {
+    "initial_run": {
+      "passed": 2,
+      "reason": "test expected prepared after transfer; corrected expectation only",
+      "failed": 1
+    },
+    "recheck": {
+      "failed": 0,
+      "passed": 2
+    },
+    "fixtures": "real temporary files and shell control; not scientific output"
+  },
+  "scales": [
+    {
+      "module_id": "fem",
+      "create": "passed",
+      "prepare": "passed",
+      "local_transfer": "passed",
+      "scheduler_job_id": null,
+      "read_saved_result": "passed",
+      "historical_task_id": "fem-20261029",
+      "historical_job_id": "702"
+    },
+    {
+      "module_id": "phase_field",
+      "create": "passed",
+      "prepare": "passed",
+      "local_transfer": "passed",
+      "scheduler_job_id": null,
+      "read_saved_result": "passed",
+      "historical_task_id": "p29",
+      "historical_job_id": "703"
+    },
+    {
+      "module_id": "rve",
+      "create": "passed",
+      "prepare": "passed",
+      "local_transfer": "passed",
+      "scheduler_job_id": null,
+      "read_saved_result": "passed",
+      "historical_task_id": "r29",
+      "historical_job_id": "704"
+    },
+    {
+      "module_id": "spice",
+      "create": "passed",
+      "prepare": "passed",
+      "local_transfer": "passed",
+      "scheduler_job_id": null,
+      "read_saved_result": "passed",
+      "historical_task_id": "spice-20261029",
+      "historical_job_id": "705"
+    }
+  ],
+  "tool_calls": [
+    "mlcc_describe_scales",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_transfer_calculation",
+    "mlcc_read_scale_result",
+    "mlcc_describe_scales",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_transfer_calculation",
+    "mlcc_read_scale_result",
+    "mlcc_describe_scales",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_transfer_calculation",
+    "mlcc_read_scale_result",
+    "mlcc_describe_scales",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_transfer_calculation",
+    "mlcc_read_scale_result"
+  ],
+  "forbidden_tools_called": [],
+  "not_verified": [
+    "new scheduler submit/query/collect on candidate",
+    "public multi-turn conversation",
+    "v100 outbound Worker deployment",
+    "modeling/DFT/MD/properties public CLI entrypoints",
+    "scientific qualification"
+  ]
+}

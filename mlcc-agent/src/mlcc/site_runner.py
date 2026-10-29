@@ -13,6 +13,7 @@ import posixpath
 from pathlib import Path
 import re
 import shlex
+import shutil
 import subprocess
 from typing import Any, Callable, Mapping, Sequence
 
@@ -66,6 +67,7 @@ class SiteConfig:
     ssh_program: str = "ssh"
     scp_program: str = "scp"
     scheduler: str = "slurm"
+    transport: str = "ssh"
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any]) -> "SiteConfig":
@@ -73,6 +75,9 @@ class SiteConfig:
         workspace = value["workspace"]
         runner = value["runner"]
         ssh_alias = ssh["alias"]
+        transport = ssh.get("transport", "ssh")
+        if not isinstance(transport, str) or transport not in {"ssh", "local"}:
+            raise ValueError(f"ssh.transport must be ssh or local, got {transport!r}")
         remote_root = workspace["remote_root"]
         local_workspace = workspace["local"]
         selected = runner["selected"]
@@ -85,6 +90,7 @@ class SiteConfig:
             ssh_alias=str(ssh_alias),
             remote_root=str(remote_root),
             local_workspace=Path(local_workspace),
+            transport=transport,
             default_partition=str(default_partition) if default_partition else None,
             remote_environment_script=(
                 str(remote_environment_script) if remote_environment_script else None
@@ -126,6 +132,13 @@ def _slurm_control_command(program: str, operation: str, job_id: str) -> str:
     return " ".join(pieces)
 
 
+def _copy_local_path(source: Path, destination: Path) -> None:
+    if source.is_dir():
+        shutil.copytree(source, destination, dirs_exist_ok=True)
+    else:
+        shutil.copy2(source, destination)
+
+
 class SiteRunner:
     """Prepare, transfer, submit, query, cancel and collect one task."""
 
@@ -152,6 +165,8 @@ class SiteRunner:
         return remote
 
     def _ssh_command(self, remote_command: str) -> list[str]:
+        if self.config.transport == "local":
+            return ["sh", "-c", remote_command]
         return [self.config.ssh_program, self.config.ssh_alias, remote_command]
 
     @classmethod
@@ -342,12 +357,23 @@ class SiteRunner:
                     unique_paths.append(item)
             transferred = [str(Path(item) if Path(item).is_absolute() else local_dir / item)
                            for item in unique_paths]
-            destination = f"{self.config.ssh_alias}:{remote_dir}/"
-            command = [self.config.scp_program, "-r", *transferred, destination]
-            result = self._run("transfer", command)
+            if self.config.transport == "local":
+                destination = str(Path(remote_dir))
+                command = ["local-copy", *transferred, destination]
+                try:
+                    for source in transferred:
+                        _copy_local_path(Path(source), Path(remote_dir) / Path(source).name)
+                except OSError as error:
+                    raise RunnerError("transfer", command, None, stderr=str(error)) from error
+                result = None
+            else:
+                destination = f"{self.config.ssh_alias}:{remote_dir}/"
+                command = [self.config.scp_program, "-r", *transferred, destination]
+                result = self._run("transfer", command)
             self._save_event(task, "transfer", command=command, sources=transferred,
-                             destination=destination, returncode=result.returncode,
-                             stdout=result.stdout, stderr=result.stderr)
+                             destination=destination, returncode=0 if result is None else result.returncode,
+                             stdout="" if result is None else result.stdout,
+                             stderr="" if result is None else result.stderr)
             task.set(status="transferred", transferred_files=transferred)
             save_task(task)
             return task.data
@@ -555,7 +581,15 @@ class SiteRunner:
                     f"{self.config.ssh_alias}:{remote_path}",
                     str(local_path),
                 ]
-                result = self._run("collect", command)
+                if self.config.transport == "local":
+                    command = ["local-copy", str(remote_path), str(local_path)]
+                    try:
+                        _copy_local_path(Path(remote_path), local_path)
+                    except OSError as error:
+                        raise RunnerError("collect", command, None, stderr=str(error)) from error
+                    result = None
+                else:
+                    result = self._run("collect", command)
                 collected.append(str(local_path))
                 self._save_event(
                     task,
@@ -563,9 +597,9 @@ class SiteRunner:
                     command=command,
                     remote_path=remote_path,
                     local_path=str(local_path),
-                    returncode=result.returncode,
-                    stdout=result.stdout,
-                    stderr=result.stderr,
+                    returncode=0 if result is None else result.returncode,
+                    stdout="" if result is None else result.stdout,
+                    stderr="" if result is None else result.stderr,
                 )
             task.set(collected_files=collected, collect_status="collected", collected_at=utc_now())
             save_task(task)

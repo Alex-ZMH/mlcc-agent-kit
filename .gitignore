@@ -5,6 +5,8 @@
 .env
 .env.*
 !.env.example
+账号密码.txt
+private/
 .codex/
 .zeus/
 .pytest_cache/

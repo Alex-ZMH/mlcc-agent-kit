@@ -1,0 +1,121 @@
+{
+  "system": "mlcc",
+  "delivery_label": "0.60.1-candidate",
+  "bundle_version": "0.60.1",
+  "candidate_status": "control_checks_passed_not_deployed",
+  "source": {
+    "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
+    "delivery_branch": "codex/cloud-delivery-20261029",
+    "delivery_baseline_commit": "5dbb0e44021aeb9799c6a412a0bcdcf9385739d7",
+    "runtime_reference": {
+      "branch": "integration/four-scale-compute-20261028",
+      "role": "development_reference_not_GitHub_delivery_branch"
+    },
+    "candidate_revision": "Git commit containing this manifest; resolve with git rev-parse HEAD"
+  },
+  "public_delivery": {
+    "published_baseline": "0.60.0",
+    "published_status": "installed_and_published_but_public_mcp_failed",
+    "candidate_status": "control_checks_passed_not_deployed",
+    "public_compute_status": "not_available",
+    "public_entrypoint": "https://agent.mattok.cn",
+    "localhost_dependency": {
+      "target_contract": false,
+      "currently_verified": false
+    }
+  },
+  "agent": {
+    "name": "mlcc",
+    "candidate_bundle_version": "0.60.1",
+    "skills": [
+      "model-mlcc-structures",
+      "run-mlcc-dft",
+      "run-mlcc-md",
+      "run-mlcc-phase-field",
+      "run-mlcc-rve",
+      "run-mlcc-fem",
+      "run-mlcc-spice",
+      "compute-mlcc-properties"
+    ],
+    "published_mcp_allowed_tools": [
+      "mlcc_list_tasks",
+      "mlcc_prepare_calculation",
+      "mlcc_transfer_calculation",
+      "mlcc_submit_calculation",
+      "mlcc_query_calculation",
+      "mlcc_cancel_calculation",
+      "mlcc_collect_calculation"
+    ],
+    "candidate_mcp_allowed_tools": [
+      "mlcc_list_tasks",
+      "mlcc_describe_scales",
+      "mlcc_create_scale_task",
+      "mlcc_read_scale_result",
+      "mlcc_prepare_calculation",
+      "mlcc_transfer_calculation",
+      "mlcc_submit_calculation",
+      "mlcc_query_calculation",
+      "mlcc_cancel_calculation",
+      "mlcc_collect_calculation"
+    ],
+    "candidate_mcp_required_env": [
+      "MLCC_SITE_CONFIG",
+      "MLCC_WORKSPACE_ROOT"
+    ],
+    "candidate_mcp_status": "manifest_and_control_checks_passed_not_deployed"
+  },
+  "execution_chain": {
+    "matterai_host": "independent_private_host_required_and_not_in_this_repository",
+    "agent_workspace_resolver": "host_side_fix_required_and_not_in_this_repository",
+    "public_worker": "deployed",
+    "v100_outbound_worker_route": "missing",
+    "v100": "existing_slurm_site_used_for_local_acceptance_only"
+  },
+  "evidence": {
+    "summary": "docs/public-chain-audit-20261029.md",
+    "four_scale_jobs": [
+      {
+        "module_id": "fem",
+        "operation": "electrostatics_2d_quantities",
+        "scheduler_job_id": "702",
+        "scheduler_state": "COMPLETED",
+        "exit_code": "0:0"
+      },
+      {
+        "module_id": "phase_field",
+        "operation": "vector_evolve_si",
+        "scheduler_job_id": "703",
+        "scheduler_state": "COMPLETED",
+        "exit_code": "0:0"
+      },
+      {
+        "module_id": "rve",
+        "operation": "homogenize_electrostatics_2d",
+        "scheduler_job_id": "704",
+        "scheduler_state": "COMPLETED",
+        "exit_code": "0:0"
+      },
+      {
+        "module_id": "spice",
+        "operation": "ac_impedance",
+        "scheduler_job_id": "705",
+        "scheduler_state": "COMPLETED",
+        "exit_code": "0:0"
+      }
+    ],
+    "status": "historical_acceptance_not_new_submission",
+    "raw_location": "local versions/0.60.0/evidence/four-scale-workbench-20261028; not committed",
+    "control_only_audit": "docs/evidence/no-submit-audit-20261029.json"
+  },
+  "repository_boundary": {
+    "contains": "MLCC-owned agent integration, modules, skills, schemas, CLI and adapters",
+    "requires": "an independently released MatterAI host and its workspace resolver",
+    "excludes": [
+      "MatterAI host source",
+      "upstream reference trees",
+      "credentials and SSH keys",
+      "site-specific scientific outputs",
+      "raw local acceptance logs"
+    ]
+  }
+}

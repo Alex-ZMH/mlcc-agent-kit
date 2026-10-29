@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+case "${1-}" in
+  */mlcc_mcp.py)
+    exec /opt/zeus-worker/venvs/mlcc-060/bin/python "$@"
+    ;;
+  */xps_tools.py)
+    exec /opt/zeus-worker/venvs/xps-041/bin/python "$@"
+    ;;
+  *)
+    exec /usr/bin/python3 "$@"
+    ;;
+esac

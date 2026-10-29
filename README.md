@@ -1,5 +1,11 @@
 # MLCC Agent
 
+Current source: **0.60.1 candidate**, not deployed. The public 0.60.0 baseline
+has a failing MCP path. Start with [DEPLOY.md](DEPLOY.md),
+[SYSTEM_MANIFEST.json](SYSTEM_MANIFEST.json) and the
+[public-chain audit](docs/public-chain-audit-20261029.md).
+Eight bound Skills do not establish eight working public computation paths.
+
 MLCC is a MatterAI-compatible agent and Python bundle for atomistic and multiscale
 workflow contracts around CaZrO3/BaTiO3 ceramics. The published repository contains
 the MLCC-owned bundle, domain functions, skills, CLI/MCP adapters, configuration

@@ -1,0 +1,9 @@
+FROM zeus-agent-runtime:0.1.5-xps041
+
+ENV UV_PYTHON_INSTALL_DIR=/opt/zeus-worker/python
+RUN uv python install 3.12 \
+    && uv venv --python 3.12 /opt/zeus-worker/venvs/mlcc-060 \
+    && uv pip install --python /opt/zeus-worker/venvs/mlcc-060/bin/python mcp==2.3.0 PyYAML==6.0.3 \
+    && chmod -R a+rX /opt/zeus-worker/python /opt/zeus-worker/venvs/mlcc-060
+COPY zeus-bundle-python /usr/local/bin/zeus-bundle-python
+RUN chmod 0755 /usr/local/bin/zeus-bundle-python

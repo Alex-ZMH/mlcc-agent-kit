@@ -1,6 +1,6 @@
 # MLCC Agent
 
-0.60.0候选提供建模、DFT、MD、phase_field、RVE、FEM、SPICE、properties八个Skill，同一个多尺度Agent按问题选择方法；深层Skill保留专业细节，properties仅补已有结果导航。见 [技能包装与验证](../docs/skill-packaging-2026-10-28.md) 与 [公共架构](../docs/unified-architecture-2026-10-28.md)。完整Bundle包含modules、schemas和scientific_core；私有Zeus宿主仍需安装后验收。
+0.60.1 candidate 是 MLCC Agent integration delivery 的工作区候选；当前 Bundle manifest 已为 0.60.1，但尚未部署，isolated control-only test 待完成。0.60.0 已安装/发布，但 public MCP 路径未通过。一个多尺度 Agent 声明八个 Skill：建模、DFT、MD、phase_field、RVE、FEM、SPICE 和 properties；新四尺度 MCP 只覆盖 phase_field、RVE、FEM、SPICE，建模/DFT/MD/properties 仍通过 CLI 创建或消费，尚未完成公网闭环。见 [技能包装与验证](../docs/skill-packaging-2026-10-28.md)、[公共架构](../docs/unified-architecture-2026-10-28.md) 与 [公网链路审计](../docs/public-chain-audit-20261029.md)。完整 Bundle 包含 modules、schemas 和 scientific_core；MatterAI 宿主与 workspace resolver 是独立部署依赖，公网 Worker 已部署但 v100 outbound-worker 路由仍缺失，因此尚未形成公网计算可用性。
 
 新增源码入口：`charge-correction`、`charged-formation`、`charge-transitions`，均使用 `--request REQUEST.json --output NEW.json`。实际启用版本以 workspace 发布记录为准。
 
@@ -73,8 +73,8 @@ mlcc dielectric --born BORN.json [--electronic ELECTRONIC.json] [--ionic IONIC.j
 
 ## 内容与接入
 
-- agents/mlcc/AGENT.md：领域角色、四项 Skill 和科学边界。
-- skills/：建模、VASP→ABACUS、四性质、LAMMPS 四个职责单元。
+- agents/mlcc/AGENT.md：领域角色、八个 Skill 和科学边界。
+- skills/：八个 Agent Skill；模块内的 method Skill 只在选定领域中加载。
 - harness/cases/：行为/真实集成案例定义。schemaVersion 使用平台声明的 matterai.case.v2；其余字段是本项目约定，当前未实现案例执行器。
 - bundle.json：精确版本、权威 skills 列表与 MLCC MCP 声明，risk=networked。
 - src/mlcc/：当前领域函数与薄调度适配器；tools/mlcc_mcp.py 为便携启动器。
@@ -84,7 +84,7 @@ mlcc dielectric --born BORN.json [--electronic ELECTRONIC.json] [--ionic IONIC.j
 
 ## 计算顺序
 
-0.4.1 增加 Study 条件读取、只读续接判断、显式结果依赖门、ABACUS 结果交付和同几何截断对照。它们是实际 Python/CLI 函数，七个 MCP 工具仍负责执行生命周期；`mlcc_list_tasks` 另外返回 `next_action`。续接建议不自动提交，未知提交须核对原始作业。
+0.4.1 增加 Study 条件读取、只读续接判断、显式结果依赖门、ABACUS 结果交付和同几何截断对照。已发布 0.60.0 的七个 MCP 工具负责执行既有生命周期；`mlcc_list_tasks` 另外返回 `next_action`。0.60.1 candidate 已在 manifest 中加入四尺度 create/read/describe 工具，但尚待 isolated control-only test、宿主接入和公网路由验证，不能把工作区改动当成公网能力。续接建议不自动提交，未知提交须核对原始作业。
 
 ```text
 mlcc study-plan --study <明确的study.json>
@@ -115,7 +115,7 @@ mlcc create-abacus --study <study.json> --model <model目录> --method <method.j
 mlcc parse-abacus --task <task.json> --site <site.json>
 ```
 
-创建只写输入，随后通过已有七个 MCP/CLI 生命周期动作执行 Slurm 任务。解析要求已保存原生 COMPLETED/0:0，另行判断电子与离子收敛。方法显式指定泛函、自旋、逐元素初始磁矩、占据、展宽、截断、电子阈值、三方向 kpoints、设备/求解器与赝势标识；站点提供程序/MPI/赝势路径。没有 Ni 科学默认值。固定占据及多元素输入经单测，尚无本批真实数值资格。
+创建只写输入，随后通过已发布七个 MCP/CLI 生命周期动作执行 Slurm 任务。candidate manifest 已同步十个 MCP 工具和两个 requiredEnv，但尚待 isolated control-only test、宿主接入和 v100 路由验证。解析要求已保存原生 COMPLETED/0:0，另行判断电子与离子收敛。方法显式指定泛函、自旋、逐元素初始磁矩、占据、展宽、截断、电子阈值、三方向 kpoints、设备/求解器与赝势标识；站点提供程序/MPI/赝势路径。没有 Ni 科学默认值。固定占据及多元素输入经单测，尚无本批真实数值资格。
 
 结果交付核对 task_id、Study、原生科学日志及计算条件；不能把静态参考重标为有限温度 MD 或已施加目标外压。应变生成/比较是直接领域函数；只有同方法的真实完整三点证据才能验收，函数单测不代替应力标定或 Cij。
 
@@ -129,7 +129,7 @@ mlcc import-model --request <import-request.json> --output <新模型目录>
 
 不自动选择晶相或标准化重排。显式 `basis_transform` 要给出整数 unimodular 分数坐标矩阵、平移、目标晶胞和来源说明；实现检查周期晶格等价及右手笛卡尔旋转。含三维磁矩或动量矢量的非恒等旋转当前明确拒绝。身份导入保留其原方向数据。导入只建立未弛豫结构，不代表目标温度平衡态、掺杂生成能力或生产资格。
 
-科学任务创建时，Study 的材料、晶相和模型 ID/版本须匹配所选模型；解析使用任务中保存的模型路径。七个 MCP 生命周期工具保持不变，模型导入使用 Python/CLI 入口。
+科学任务创建时，Study 的材料、晶相和模型 ID/版本须匹配所选模型；解析使用任务中保存的模型路径。已发布 MCP 的七个生命周期工具保持不变；candidate 的四尺度工具尚未成为公网契约，模型导入使用 Python/CLI 入口。
 
 ## 0.7.0 方法输入与公共电子/弹性切片
 
@@ -148,7 +148,7 @@ mlcc elastic-analyze --reference-task <任务目录> --strained-tasks <任务目
 
 弹性规划采用工程 Voigt 顺序 xx/yy/zz/yz/xz/xy，剪切张量分量为 gamma/2，保持分数坐标与 atom_id。每个幅值产生六方向正负扰动，另有参考态；规划不提交任务。请求可通过 `create-abacus` 的 `input_transformation.kind=voigt_strain` 生成固定胞 SCF 原生输入。0.7.0 仅有分析门；0.8.0 增加以下张量标定协议，旧三点数据的 Cij 仍为 null。
 
-所有新报告拒绝覆盖已有路径，历史任务/result 保持不变。七个 MCP 继续负责调度生命周期，新增领域功能通过上述 Python/CLI 调用，不另建调度服务。
+所有新报告拒绝覆盖已有路径，历史任务/result 保持不变。已发布七个 MCP 负责调度生命周期；新增四尺度工具须随 candidate manifest 和独立 MatterAI host 一起发布，不另建调度服务。
 
 ## 0.8.0 模型派生、张量标定和交付
 

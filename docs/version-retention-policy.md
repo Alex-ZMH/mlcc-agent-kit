@@ -1,3 +1,16 @@
+## Current delivery context — 2026-10-29
+
+The current delivery target is the `0.60.1-candidate` MLCC integration. The
+working-tree Bundle manifest is `0.60.1`; the GitHub delivery baseline is
+`codex/cloud-delivery-20261029` at `5dbb0e4`. The candidate is not deployed and
+isolation/control-only verification is still pending. The public Worker is
+deployed, but the outbound-worker route on v100 is missing. No production cut
+or real end-to-end submission is authorized in this round.
+
+The entries below are historical records frozen through 2026-10-27. Their
+0.57/0.56 values are retained for provenance and must not be read as the
+current 0.60.1 target state.
+
 2026-10-26当前0.57已启用冻结，0.56回退，源码0.57冻结（不自动创建0.58）。J5缺失的MSD/两seed统计/NEB占据事件已由安装副本job633 COMPLETED/0:0、7秒完成：3项新检查、9参数、3同Study交付；请求CPU1、实际分配CPU2、GPU0/2GiB。当前J1–J6领域参数JSON阶段工程交付完成，原失败/未决和科学资格false保留，不宣称全项目或材料生产完成。0.55三个精确软件目录先登记后退役，科学文件和共享环境保留；本地已留存源包/安装包及633结果。所有实现交回root，当前无新实现/数值范围，不重复577–633或旧计算。以workspace/reports/saved-md-parameters-v001/integration-v057/release-acceptance.json及workspace/reports/domain-json-stage-completion-v001/report.md为准。以下为历史。
 
 2026-10-26当前0.56已启用冻结（唯一安装632 COMPLETED/0:0），0.55回退，live源码0.57。J4 622–624、J5 625和J6准备626/三卡SCF627–629/消费631首次工程demo已完成，三SCF原生电子收敛、15参数与同Study/比较交付已回传本地。630原路径错误FAILED1:0及631保存host解析复用保留；method_confounded=true的元数据覆盖限制和科学资格false如实保留。0.54三个精确纯软件副本已退役，科学输入输出/证据/共享环境保留。原实施、第三及Luna已交回，源码所有权root；不重复622–632或旧计算，从原队列实际缺失且输入就绪功能继续，未分配新数值范围。以workspace/reports/bto-dy-ho-scf-j6-v001/integration-v056/release-acceptance.json为准。以下为历史。
