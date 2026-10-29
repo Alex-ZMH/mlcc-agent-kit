@@ -1,0 +1,294 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "rve.effective-material.v1"
+    },
+    "dimension": {
+      "const": 2
+    },
+    "physics": {
+      "const": "electrostatics"
+    },
+    "rve_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "mesh_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "tensor": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "tensor_unit": {
+      "const": "F/m"
+    },
+    "phase_fractions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1.000000001
+      }
+    },
+    "region_mapping": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "tag": {
+            "type": "integer"
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "grain_id": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "material_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "orientation_rad": {
+            "type": [
+              "number",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "tag",
+          "role",
+          "grain_id",
+          "material_id",
+          "orientation_rad"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "materials": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "representation": {
+            "type": "string",
+            "enum": [
+              "isotropic",
+              "tensor"
+            ]
+          },
+          "scalar": {
+            "type": "number"
+          },
+          "tensor": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              },
+              "minItems": 2,
+              "maxItems": 2
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "applicability": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          }
+        },
+        "required": [
+          "representation",
+          "applicability"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "material_sources": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "reference": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            }
+          },
+          "required": [
+            "kind",
+            "reference"
+          ],
+          "additionalProperties": false
+        }
+      }
+    },
+    "source_audit_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+    },
+    "boundary_condition": {
+      "type": "string",
+      "enum": [
+        "periodic",
+        "affine_dirichlet"
+      ]
+    },
+    "pore_model": {
+      "type": "string",
+      "enum": [
+        "explicit",
+        "insulating_cavity"
+      ]
+    },
+    "loads": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "direction": {
+            "type": "string",
+            "enum": [
+              "x",
+              "y"
+            ]
+          },
+          "G": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "drive_unit": {
+            "const": "V/m"
+          },
+          "mean_field": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "mean_flux": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "micro_work_density": {
+            "type": "number"
+          },
+          "macro_work_density": {
+            "type": "number"
+          },
+          "field_artifact": {
+            "type": "string",
+            "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+          },
+          "metrics_artifact": {
+            "type": "string",
+            "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+          }
+        },
+        "required": [
+          "direction",
+          "G",
+          "drive_unit",
+          "mean_field",
+          "mean_flux",
+          "micro_work_density",
+          "macro_work_density",
+          "field_artifact",
+          "metrics_artifact"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "coordinates_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+    },
+    "verification_status": {
+      "const": "PASS"
+    },
+    "applicability": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      }
+    },
+    "material_calibration": {
+      "const": "not_checked"
+    },
+    "statistical_representativity": {
+      "const": "not_checked"
+    }
+  },
+  "required": [
+    "schema_version",
+    "dimension",
+    "physics",
+    "rve_id",
+    "mesh_id",
+    "tensor",
+    "tensor_unit",
+    "phase_fractions",
+    "region_mapping",
+    "materials",
+    "material_sources",
+    "source_audit_artifact",
+    "boundary_condition",
+    "pore_model",
+    "loads",
+    "coordinates_artifact",
+    "verification_status",
+    "applicability",
+    "limitations",
+    "material_calibration",
+    "statistical_representativity"
+  ],
+  "additionalProperties": false
+}

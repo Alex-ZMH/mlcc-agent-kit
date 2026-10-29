@@ -1,0 +1,41 @@
+{
+  "schema_version": "phase_field.tangent-input.v1",
+  "operation": "dielectric_tangent",
+  "units": "dimensionless",
+  "model_profile": "synthetic_tetragonal_quartic_v1",
+  "dimension": 2,
+  "cells": [
+    64,
+    2
+  ],
+  "parameters": {
+    "a": -0.5,
+    "b": 0.25,
+    "c": 1.5,
+    "g": 0.5,
+    "epsilon": 1.0
+  },
+  "boundary_condition": "all_surface_voltage",
+  "initial_condition": {
+    "kind": "wall_90xy"
+  },
+  "loading_path": [
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "equilibrium_atol": 1e-12,
+  "verification": {
+    "finite_difference": false,
+    "analytical": false
+  },
+  "output": {
+    "images": true
+  },
+  "source": {
+    "kind": "synthetic_test",
+    "reference": "Reviewed ferroelectric_tangent_poc V0.3-delivery-fix.1; synthetic quartic, no material calibration"
+  },
+  "wall_half_length": 8.0
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "phase_field.vector-input.v1",
+  "operation": "vector_steady",
+  "model_profile": "synthetic_tetragonal_quartic_v1",
+  "units": "dimensionless",
+  "dimension": 2,
+  "cells": [
+    64,
+    2
+  ],
+  "parameters": {
+    "a": -0.5,
+    "b": 0.25,
+    "c": 1.5,
+    "g": 0.5,
+    "epsilon": 1.0,
+    "mobility": 1.0
+  },
+  "boundary_condition": "all_surface_voltage",
+  "initial_condition": {
+    "kind": "wall_90xy",
+    "width_factor": 1.5
+  },
+  "field_protocol": {
+    "kind": "constant",
+    "value": [
+      0.0,
+      0.0
+    ]
+  },
+  "evolution": {
+    "end": 0.0,
+    "dt": 0.1,
+    "max_steps": 16,
+    "max_halvings": 6
+  },
+  "output": {
+    "images": true
+  },
+  "source": {
+    "kind": "synthetic_test",
+    "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+  }
+}

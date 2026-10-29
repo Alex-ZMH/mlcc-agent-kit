@@ -1,0 +1,19 @@
+{
+  "model": "unchanged synthetic vector V0.3 a=-0.5 b=0.25 c=1.5 g=0.5 epsilon=1",
+  "equilibrium_free_residual": 1e-10,
+  "linear_relative_residual": 1e-9,
+  "analytic_tensor_relative_error": 1e-8,
+  "FD_tensor_relative_error": 0.001,
+  "FD_component_absolute_error": 0.001,
+  "FD_component_scaled_relative_error": 0.01,
+  "FD_component_relative_floor": 0.001,
+  "mean_field_absolute_error": 1e-10,
+  "decomposition_absolute_error": 1e-10,
+  "reciprocity_relative_error": 1e-8,
+  "mesh_relative_tensor_change": 0.01,
+  "tolerance_relative_tensor_change": 1e-6,
+  "FD_amplitudes": [0.002,0.001,0.0005],
+  "FD_wall_amplitudes": [0.00002,0.00001,0.000005],
+  "FD_wall_amplitude_reason": "Development batch retains FAIL at 0.002/0.001/0.0005: soft but positive finite-wall mode gives large curvature and errors decrease towards second order. Use smaller independent perturbations to enter the local tangent regime; acceptance tolerances and physical model unchanged.",
+  "rationale": "Dimensionless local benchmark protocol: absolute/relative component tests retain small cross terms; FD centered truncation should decrease quadratically until nonlinear tolerance floor. Mesh criterion 1 percent for stated finite specimen; all raw errors retained. Near-zero reduced-energy modes are classified, never regularized by BE or artificial internal pins. These gates establish numerical consistency only, not material validity."
+}

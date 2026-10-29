@@ -1,0 +1,16 @@
+{
+  "scope": "Numerical qualification of synthetic 2D linear elliptic RVE, not material calibration",
+  "mean_field_Hill_Mandel_weak_residual": 1e-08,
+  "PBC_fluctuation": 1e-10,
+  "weak_periodic_reaction_antiperiodicity": 1e-08,
+  "analytic_tensor": 1e-08,
+  "tensor_symmetry": 1e-08,
+  "independent_assembly_matrix": 1e-12,
+  "independent_solution_per_LG": 1e-10,
+  "last_grid_tensor_change": 0.005,
+  "ellipse_90deg_tensor_rotation": 0.005,
+  "same_seed_replay": 1e-12,
+  "pure_geometric_scale_tensor": 1e-10,
+  "flux_interpretation": "P1 gradient/DG0 flux: raw pointwise flux is a diagnostic with no exact local Hdiv conservation claim",
+  "statistics": "3 seeds per 4/9/16 grains; exploratory, no representativity acceptance"
+}

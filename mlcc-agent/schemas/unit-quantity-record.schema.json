@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "mlcc.quantity.v1"
+    },
+    "kind": {
+      "type": "string",
+      "minLength": 1
+    },
+    "dimension": {
+      "type": "string",
+      "minLength": 1
+    },
+    "original": {
+      "type": "object",
+      "properties": {
+        "representation": {},
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "source": {
+          "type": "object"
+        },
+        "bare_unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "representation",
+        "value",
+        "unit",
+        "source",
+        "bare_unit"
+      ],
+      "additionalProperties": false
+    },
+    "normalized": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "conversion": {
+      "type": "object",
+      "properties": {
+        "core_version": {
+          "const": "1.0.0"
+        },
+        "unit_key": {
+          "type": "string",
+          "minLength": 1
+        },
+        "factor": {
+          "type": "number"
+        },
+        "offset": {
+          "type": "number"
+        },
+        "rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "unit_origin": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "identity",
+            "converted"
+          ]
+        }
+      },
+      "required": [
+        "core_version",
+        "unit_key",
+        "factor",
+        "offset",
+        "rule",
+        "unit_origin",
+        "status"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "kind",
+    "dimension",
+    "original",
+    "normalized",
+    "conversion"
+  ],
+  "additionalProperties": false
+}

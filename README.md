@@ -23,6 +23,21 @@ mlcc --help
 Site paths and Slurm settings belong in local configuration templates under
 [`configs/`](configs/); do not put credentials in those files.
 
+## Cloud server layout
+
+The published bundle is designed to run against an authorized remote Slurm
+server. It does not require the local Zeus web UI or a localhost API. Use an
+SSH config alias for the cloud host and keep the private key, username, port,
+and host-key policy outside this repository. The portable template is
+[`configs/site.cloud.example.json`](configs/site.cloud.example.json), and the
+setup and verification steps are in
+[`docs/cloud-delivery-20261029.md`](docs/cloud-delivery-20261029.md).
+
+The public endpoint recorded during development (`43.142.15.151:22022`) was
+reachable at the TCP layer, but the available local credentials were rejected
+by SSH. The repository therefore records the cloud route as requiring an
+operator-provided SSH identity; it does not claim a deployed cloud checkout.
+
 ## v100 server layout
 
 The supported development site is the existing SSH alias `v100`. A checkout can

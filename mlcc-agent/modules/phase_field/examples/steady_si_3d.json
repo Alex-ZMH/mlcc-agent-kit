@@ -1,0 +1,85 @@
+{
+  "operation": "steady_si",
+  "dimension": 3,
+  "model_profile": "lgd_scalar_y_v03",
+  "units": "SI",
+  "mesh": {
+    "nx": 8,
+    "ny": 4,
+    "nz": 4
+  },
+  "g": {
+    "value": 0.0005,
+    "unit": "J*m^3/C^2",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+    }
+  },
+  "epsilon": {
+    "value": 0.001,
+    "unit": "F/m",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+    }
+  },
+  "applied_E": {
+    "value": 120.0,
+    "unit": "V/m",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+    }
+  },
+  "initial": {
+    "kind": "uniform",
+    "value": {
+      "value": 1.0,
+      "unit": "C/m^2",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    }
+  },
+  "output": {
+    "rt0": true,
+    "images": true,
+    "history": "all_accepted"
+  },
+  "reference_scales": {
+    "length": {
+      "value": 0.001,
+      "unit": "m",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "polarization": {
+      "value": 1.0,
+      "unit": "C/m^2",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "time": {
+      "value": 0.001,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "energy_density": {
+      "value": 1000.0,
+      "unit": "J/m^3",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    }
+  }
+}

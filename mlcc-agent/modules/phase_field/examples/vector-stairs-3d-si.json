@@ -1,0 +1,262 @@
+{
+  "schema_version": "phase_field.vector-input.v1",
+  "operation": "vector_evolve_si",
+  "model_profile": "synthetic_tetragonal_quartic_v1",
+  "units": "SI",
+  "dimension": 3,
+  "cells": [
+    2,
+    2,
+    2
+  ],
+  "boundary_condition": "all_surface_voltage",
+  "initial_condition": {
+    "kind": "uniform",
+    "values": [
+      {
+        "value": 0.8,
+        "unit": "C/m^2",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      },
+      {
+        "value": 0.1,
+        "unit": "C/m^2",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      },
+      {
+        "value": 0.1,
+        "unit": "C/m^2",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      }
+    ]
+  },
+  "field_protocol": {
+    "kind": "stairs",
+    "times": [
+      {
+        "value": 0.0,
+        "unit": "s",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      },
+      {
+        "value": 0.0002,
+        "unit": "s",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      },
+      {
+        "value": 0.0004,
+        "unit": "s",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+        }
+      }
+    ],
+    "values": [
+      [
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        }
+      ],
+      [
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        {
+          "value": 500.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        }
+      ],
+      [
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        {
+          "value": 0.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        },
+        {
+          "value": -500.0,
+          "unit": "V/m",
+          "source": {
+            "kind": "synthetic_test",
+            "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+          }
+        }
+      ]
+    ]
+  },
+  "evolution": {
+    "end": {
+      "value": 0.0006,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "dt": {
+      "value": 5e-05,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "max_steps": 32,
+    "max_halvings": 6
+  },
+  "output": {
+    "images": true
+  },
+  "source": {
+    "kind": "synthetic_test",
+    "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+  },
+  "reference_scales": {
+    "length": {
+      "value": 0.001,
+      "unit": "m",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "polarization": {
+      "value": 1.0,
+      "unit": "C/m^2",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "time": {
+      "value": 0.001,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "energy_density": {
+      "value": 1000.0,
+      "unit": "J/m^3",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    }
+  },
+  "reduced_parameters": {
+    "a": {
+      "value": -0.5,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "b": {
+      "value": 0.25,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "c": {
+      "value": 1.5,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    },
+    "mobility": {
+      "value": 1.0,
+      "unit": "1",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+      }
+    }
+  },
+  "g": {
+    "value": 0.0005,
+    "unit": "J*m^3/C^2",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+    }
+  },
+  "epsilon": {
+    "value": 0.001,
+    "unit": "F/m",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Frozen experiments/ferroelectric_vector_poc V0.3; explicit uncalibrated reference scales for SI views"
+    }
+  }
+}

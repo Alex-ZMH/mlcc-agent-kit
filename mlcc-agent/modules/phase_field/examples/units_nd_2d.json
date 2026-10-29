@@ -1,0 +1,34 @@
+{
+  "operation": "evolve",
+  "dimension": 2,
+  "model_profile": "lgd_scalar_y_v03",
+  "units": "dimensionless",
+  "mesh": {
+    "nx": 8,
+    "ny": 4
+  },
+  "g": 0.5,
+  "epsilon": 1.0,
+  "applied_E": 0.12,
+  "initial": {
+    "kind": "nucleus",
+    "center": [
+      0.0,
+      2.0
+    ],
+    "radii": [
+      2.8,
+      1.1
+    ]
+  },
+  "output": {
+    "rt0": true,
+    "images": true,
+    "history": "all_accepted"
+  },
+  "evolution": {
+    "end": 0.15,
+    "dt": 0.05,
+    "max_halvings": 2
+  }
+}

@@ -1,0 +1,284 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fem.ac_eqs-input.v1",
+  "title": "ac_eqs_2d",
+  "description": "Explicit SI fields; one case, one-way steady heat, no arbitrary backend commands.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "fem.ac_eqs-input.v1"
+    },
+    "analysis": {
+      "type": "string",
+      "const": "ac_eqs"
+    },
+    "units": {
+      "type": "string",
+      "const": "SI"
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "body_length_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "active_gap_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 79
+        },
+        "dielectric_gap_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "electrode_thickness_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "electrode_overlap_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "left_margin_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "right_margin_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "top_cover_m": {
+          "type": "number",
+          "minimum": 0
+        },
+        "bottom_cover_m": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "body_length_m",
+        "active_gap_count",
+        "dielectric_gap_m",
+        "electrode_thickness_m",
+        "electrode_overlap_m",
+        "left_margin_m",
+        "right_margin_m",
+        "top_cover_m",
+        "bottom_cover_m"
+      ],
+      "additionalProperties": false
+    },
+    "out_of_plane_thickness_m": {
+      "type": "number",
+      "minimum": 0
+    },
+    "mesh": {
+      "type": "object",
+      "properties": {
+        "target_size_m": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "target_size_m"
+      ],
+      "additionalProperties": false
+    },
+    "source_reference": {
+      "type": "string",
+      "minLength": 1
+    },
+    "thermal": {
+      "type": "object",
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "ceramic_k_W_per_m_K": {
+          "type": "number",
+          "minimum": 0
+        },
+        "Ni_k_W_per_m_K": {
+          "type": "number",
+          "minimum": 0
+        },
+        "ambient_K": {
+          "type": "number",
+          "minimum": 0
+        },
+        "boundary_kind": {
+          "type": "string",
+          "enum": [
+            "dirichlet",
+            "robin"
+          ]
+        },
+        "convection_h_W_per_m2_K": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_reference": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "enabled",
+        "ceramic_k_W_per_m_K",
+        "Ni_k_W_per_m_K",
+        "ambient_K",
+        "boundary_kind",
+        "convection_h_W_per_m2_K",
+        "source_reference"
+      ],
+      "additionalProperties": false
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "field_data": {
+          "type": "boolean",
+          "const": true
+        },
+        "field_images": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field_data",
+        "field_images"
+      ],
+      "additionalProperties": false
+    },
+    "frequency_Hz": {
+      "type": "number",
+      "minimum": 0
+    },
+    "voltage_convention": {
+      "type": "string",
+      "enum": [
+        "dc",
+        "rms",
+        "peak"
+      ]
+    },
+    "potentials": {
+      "type": "object",
+      "properties": {
+        "terminal_a_real_V": {
+          "type": "number"
+        },
+        "terminal_a_imag_V": {
+          "type": "number"
+        },
+        "terminal_b_real_V": {
+          "type": "number"
+        },
+        "terminal_b_imag_V": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "terminal_a_real_V",
+        "terminal_a_imag_V",
+        "terminal_b_real_V",
+        "terminal_b_imag_V"
+      ],
+      "additionalProperties": false
+    },
+    "materials": {
+      "type": "object",
+      "properties": {
+        "ceramic_lower": {
+          "type": "object",
+          "properties": {
+            "eps_r": {
+              "type": "number",
+              "minimum": 0
+            },
+            "sigma_S_m": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tan_delta": {
+              "type": "number",
+              "minimum": 0
+            },
+            "source_reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "eps_r",
+            "sigma_S_m",
+            "tan_delta",
+            "source_reference"
+          ],
+          "additionalProperties": false
+        },
+        "ceramic_upper": {
+          "type": "object",
+          "properties": {
+            "eps_r": {
+              "type": "number",
+              "minimum": 0
+            },
+            "sigma_S_m": {
+              "type": "number",
+              "minimum": 0
+            },
+            "tan_delta": {
+              "type": "number",
+              "minimum": 0
+            },
+            "source_reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "eps_r",
+            "sigma_S_m",
+            "tan_delta",
+            "source_reference"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ceramic_lower",
+        "ceramic_upper"
+      ],
+      "additionalProperties": false
+    },
+    "dielectric_layout": {
+      "type": "string",
+      "enum": [
+        "uniform",
+        "half_height_layered"
+      ]
+    }
+  },
+  "required": [
+    "schema_version",
+    "analysis",
+    "units",
+    "geometry",
+    "out_of_plane_thickness_m",
+    "mesh",
+    "source_reference",
+    "thermal",
+    "outputs",
+    "frequency_Hz",
+    "voltage_convention",
+    "potentials",
+    "materials",
+    "dielectric_layout"
+  ],
+  "additionalProperties": false
+}

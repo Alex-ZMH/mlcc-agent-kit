@@ -1,0 +1,538 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fem.electrostatics-quantities-input.v1",
+  "title": "MLCC 2D electrostatics with explicit quantities",
+  "description": "Explicit quantity containers normalized by the unique shared MLCC units core before the unchanged SI scientific kernel.",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "fem.electrostatics-quantities-input.v1"
+    },
+    "model": {
+      "const": "linear_isotropic_lossless_2d"
+    },
+    "units": {
+      "const": "explicit_quantities"
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "body_length": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "active_gap_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 79
+        },
+        "dielectric_gap": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "electrode_thickness": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "electrode_overlap": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "left_margin": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "right_margin": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "top_cover": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "bottom_cover": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "body_length",
+        "active_gap_count",
+        "dielectric_gap",
+        "electrode_thickness",
+        "electrode_overlap",
+        "left_margin",
+        "right_margin",
+        "top_cover",
+        "bottom_cover"
+      ],
+      "additionalProperties": false
+    },
+    "material": {
+      "type": "object",
+      "properties": {
+        "relative_permittivity": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_reference": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "relative_permittivity",
+        "source_reference"
+      ],
+      "additionalProperties": false
+    },
+    "potentials": {
+      "type": "object",
+      "properties": {
+        "terminal_a": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "terminal_b": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "terminal_a",
+        "terminal_b"
+      ],
+      "additionalProperties": false
+    },
+    "mesh": {
+      "type": "object",
+      "properties": {
+        "target_size": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number"
+            },
+            "unit": {
+              "type": "string",
+              "minLength": 1
+            },
+            "source": {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "kind",
+                "reference"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "value",
+            "unit",
+            "source"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "target_size"
+      ],
+      "additionalProperties": false
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "field_data": {
+          "type": "boolean",
+          "const": true
+        },
+        "field_images": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "field_data",
+        "field_images"
+      ],
+      "additionalProperties": false
+    },
+    "out_of_plane_thickness": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "type": "string",
+              "minLength": 1
+            },
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "reference"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "source"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "model",
+    "units",
+    "geometry",
+    "out_of_plane_thickness",
+    "material",
+    "potentials",
+    "mesh",
+    "outputs"
+  ],
+  "additionalProperties": false
+}

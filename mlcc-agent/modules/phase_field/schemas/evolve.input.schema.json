@@ -1,0 +1,189 @@
+{
+  "type": "object",
+  "properties": {
+    "operation": {
+      "type": "string",
+      "const": "evolve"
+    },
+    "dimension": {
+      "type": "integer",
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "model_profile": {
+      "type": "string",
+      "const": "lgd_scalar_y_v03"
+    },
+    "units": {
+      "type": "string",
+      "const": "dimensionless"
+    },
+    "mesh": {
+      "type": "object",
+      "properties": {
+        "nx": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 48
+        },
+        "ny": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 12
+        },
+        "nz": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 12
+        }
+      },
+      "required": [
+        "nx",
+        "ny"
+      ],
+      "additionalProperties": false
+    },
+    "g": {
+      "type": "number",
+      "minimum": 1e-12
+    },
+    "epsilon": {
+      "type": "number",
+      "minimum": 1e-12
+    },
+    "applied_E": {
+      "type": "number"
+    },
+    "initial": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "uniform",
+            "wall",
+            "nucleus",
+            "random"
+          ]
+        },
+        "value": {
+          "type": "number"
+        },
+        "width": {
+          "type": "number",
+          "minimum": 1e-12
+        },
+        "center": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "wall_center": {
+          "type": "number"
+        },
+        "radii": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 1e-12
+          },
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "zcenter": {
+          "type": "number"
+        },
+        "zradius": {
+          "type": "number",
+          "minimum": 1e-12
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4294967295
+        },
+        "modes": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 8
+        },
+        "amplitude": {
+          "type": "number",
+          "minimum": 1e-12
+        },
+        "reference": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "evolution": {
+      "type": "object",
+      "properties": {
+        "end": {
+          "type": "number",
+          "minimum": 1e-12
+        },
+        "dt": {
+          "type": "number",
+          "minimum": 1e-12,
+          "maximum": 0.999999
+        },
+        "max_halvings": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 7
+        }
+      },
+      "required": [
+        "end",
+        "dt",
+        "max_halvings"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "rt0": {
+          "type": "boolean"
+        },
+        "images": {
+          "type": "boolean"
+        },
+        "history": {
+          "type": "string",
+          "const": "all_accepted"
+        }
+      },
+      "required": [
+        "rt0",
+        "images",
+        "history"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "operation",
+    "dimension",
+    "model_profile",
+    "units",
+    "mesh",
+    "g",
+    "epsilon",
+    "applied_E",
+    "initial",
+    "evolution",
+    "output"
+  ],
+  "additionalProperties": false
+}

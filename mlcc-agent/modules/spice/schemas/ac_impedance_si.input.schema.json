@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "properties": {
+    "models": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]{0,60}$"
+          },
+          "model_version": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9_.-]{1,60}$"
+          },
+          "source": {
+            "type": "string",
+            "enum": [
+              "synthetic",
+              "manual"
+            ]
+          },
+          "capacitance_F": {
+            "type": "number",
+            "minimum": 0
+          },
+          "esr_ohm": {
+            "type": "number",
+            "minimum": 0
+          },
+          "esl_H": {
+            "type": "number",
+            "minimum": 0
+          },
+          "leakage_resistance_ohm": {
+            "type": [
+              "number",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "validated_conditions": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              },
+              "temperature": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              },
+              "dc_bias": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 200,
+                "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+              }
+            },
+            "required": [],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "model_name",
+          "model_version",
+          "source",
+          "capacitance_F",
+          "esr_ohm",
+          "esl_H",
+          "leakage_resistance_ohm",
+          "validated_conditions"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "maxItems": 8
+    },
+    "points_per_decade": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 1600
+    },
+    "fmin_Hz": {
+      "type": "number",
+      "minimum": 0
+    },
+    "fmax_Hz": {
+      "type": "number",
+      "minimum": 0
+    },
+    "single_frequency": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "models",
+    "points_per_decade",
+    "fmin_Hz",
+    "fmax_Hz",
+    "single_frequency"
+  ],
+  "additionalProperties": false
+}

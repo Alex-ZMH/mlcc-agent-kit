@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "fea.electrostatics-input.v1.draft",
+  "title": "Unregistered draft: MLCC 2D linear electrostatics input",
+  "description": "Design only. Positive finite values and geometry relations require deterministic preflight. No defaults are injected.",
+  "type": "object",
+  "properties": {
+    "schema_version": {"const": "fea.electrostatics-input.v1"},
+    "model": {"const": "linear_isotropic_lossless_2d"},
+    "units": {"const": "SI"},
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "body_length_m": {"type": "number", "minimum": 0},
+        "active_gap_count": {"type": "integer", "minimum": 1, "maximum": 79},
+        "dielectric_gap_m": {"type": "number", "minimum": 0},
+        "electrode_thickness_m": {"type": "number", "minimum": 0},
+        "electrode_overlap_m": {"type": "number", "minimum": 0},
+        "left_margin_m": {"type": "number", "minimum": 0},
+        "right_margin_m": {"type": "number", "minimum": 0},
+        "top_cover_m": {"type": "number", "minimum": 0},
+        "bottom_cover_m": {"type": "number", "minimum": 0}
+      },
+      "required": ["body_length_m", "active_gap_count", "dielectric_gap_m", "electrode_thickness_m", "electrode_overlap_m", "left_margin_m", "right_margin_m", "top_cover_m", "bottom_cover_m"],
+      "additionalProperties": false
+    },
+    "out_of_plane_thickness_m": {"type": "number", "minimum": 0},
+    "material": {
+      "type": "object",
+      "properties": {
+        "relative_permittivity": {"type": "number", "minimum": 0},
+        "source_reference": {"type": "string", "minLength": 1}
+      },
+      "required": ["relative_permittivity", "source_reference"],
+      "additionalProperties": false
+    },
+    "potentials": {
+      "type": "object",
+      "properties": {
+        "terminal_a_V": {"type": "number"},
+        "terminal_b_V": {"type": "number"}
+      },
+      "required": ["terminal_a_V", "terminal_b_V"],
+      "additionalProperties": false
+    },
+    "mesh": {
+      "type": "object",
+      "properties": {"target_size_m": {"type": "number", "minimum": 0}},
+      "required": ["target_size_m"],
+      "additionalProperties": false
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "field_data": {"type": "boolean", "const": true},
+        "field_images": {"type": "boolean"}
+      },
+      "required": ["field_data", "field_images"],
+      "additionalProperties": false
+    }
+  },
+  "required": ["schema_version", "model", "units", "geometry", "out_of_plane_thickness_m", "material", "potentials", "mesh", "outputs"],
+  "additionalProperties": false
+}

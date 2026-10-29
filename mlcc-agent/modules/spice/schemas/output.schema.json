@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "properties": {
+    "analysis": {
+      "type": "string",
+      "enum": [
+        "ac",
+        "tran"
+      ]
+    },
+    "samples": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "metrics_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "curve_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readback_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "plot_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "minimum_impedance_ohm": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "sampled_minimum_frequency_Hz": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "minimum_voltage_V": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "droop_V": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "overshoot_V": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "finite_window_cap_RMS_A": {
+          "type": [
+            "number",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "minimum_impedance_ohm",
+        "sampled_minimum_frequency_Hz",
+        "minimum_voltage_V",
+        "droop_V",
+        "overshoot_V",
+        "finite_window_cap_RMS_A"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "analysis",
+    "samples",
+    "metrics_artifact",
+    "curve_artifact",
+    "readback_artifact",
+    "plot_artifact",
+    "summary"
+  ],
+  "additionalProperties": false
+}

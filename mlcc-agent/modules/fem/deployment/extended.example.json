@@ -1,0 +1,12 @@
+{
+  "schema_version": "fem.deployment.v2",
+  "wsl_executable": "C:/Windows/System32/wsl.exe",
+  "distribution": "Ubuntu-24.04",
+  "python": "/home/zhaoxiang/miniconda3/envs/fenicsx-env/bin/python",
+  "windows_root": "D:/Zhaoxiang/code/mlcc-main",
+  "linux_root": "/mnt/d/Zhaoxiang/code/mlcc-main",
+  "timeout_seconds": 240,
+  "threads": 1,
+  "max_cells": 150000,
+  "profile": "device_extended_v1"
+}

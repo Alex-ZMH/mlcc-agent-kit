@@ -1,5 +1,7 @@
 # MLCC Agent
 
+0.60.0候选提供建模、DFT、MD、phase_field、RVE、FEM、SPICE、properties八个Skill，同一个多尺度Agent按问题选择方法；深层Skill保留专业细节，properties仅补已有结果导航。见 [技能包装与验证](../docs/skill-packaging-2026-10-28.md) 与 [公共架构](../docs/unified-architecture-2026-10-28.md)。完整Bundle包含modules、schemas和scientific_core；私有Zeus宿主仍需安装后验收。
+
 新增源码入口：`charge-correction`、`charged-formation`、`charge-transitions`，均使用 `--request REQUEST.json --output NEW.json`。实际启用版本以 workspace 发布记录为准。
 
 `charge-correction` 请求 schema 为 `mlcc.charge-correction-request.v1`，字段为 `correction_id`、`host_electronic_path`、`defect_electronic_path`、`descriptor_path`、`host_potential_path`、`defect_potential_path`、`parameters`。参数包含整数 `q`（正值移除电子）、`defect_frac_coords`、`dielectric:{value,unit:"dimensionless",source}`、`q_model:{beta,gamma,expnorm,unit:"Bohr"}`、`integration:{energy_cutoff_eV,mad_tol,step}`、`sampling:{policy:"midpoint_after_defect_shift",axes:[0,1,2],width_angstrom}`。固定后端为 pymatgen-analysis-defects 2026.3.20 的标量 FNV，显式保存图像能、轴向/平均对齐位移、q 乘数、对齐能和总修正；不平均介电张量、不自动定位缺陷。路径相对请求文件解析，明确缺失的势或参数写 null。

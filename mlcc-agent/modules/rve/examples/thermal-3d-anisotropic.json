@@ -1,0 +1,123 @@
+{
+  "schema_version": "rve.thermal-3d-input.v1",
+  "geometry": {
+    "kind": "homogeneous",
+    "physical_lengths": [
+      {
+        "value": 10,
+        "unit": "µm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+        }
+      },
+      {
+        "value": 10,
+        "unit": "µm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+        }
+      },
+      {
+        "value": 10,
+        "unit": "µm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+        }
+      }
+    ],
+    "pore_fraction": 0.0
+  },
+  "normalized_h": 0.28,
+  "materials": [
+    {
+      "region_tag": "10",
+      "representation": "tensor",
+      "tensor": [
+        [
+          {
+            "value": 4.900930182483744,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          },
+          {
+            "value": 1.2507486009948074,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          },
+          {
+            "value": -1.1522315790306161,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          }
+        ],
+        [
+          {
+            "value": 1.2507486009948074,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          },
+          {
+            "value": 3.6972878223271888,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          },
+          {
+            "value": -0.2829770298574697,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          }
+        ],
+        [
+          {
+            "value": -1.1522315790306161,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          },
+          {
+            "value": -0.28297702985746953,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          },
+          {
+            "value": 1.9017819951890669,
+            "unit": "W/(m K)",
+            "source": {
+              "kind": "synthetic_test",
+              "reference": "experiments/rve_3d_poc/results/final/core/rotated_tensor/thermal/effective_tensor.json"
+            }
+          }
+        ]
+      ],
+      "applicability": "linear static 3D, fixed temperature, no calibrated BaTiO3 recipe"
+    }
+  ],
+  "boundary_condition": "periodic",
+  "pore_model": "explicit"
+}

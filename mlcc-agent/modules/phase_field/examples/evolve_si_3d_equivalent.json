@@ -1,0 +1,148 @@
+{
+  "operation": "evolve_si",
+  "dimension": 3,
+  "model_profile": "lgd_scalar_y_v03",
+  "units": "SI",
+  "mesh": {
+    "nx": 8,
+    "ny": 4,
+    "nz": 4
+  },
+  "g": {
+    "value": 0.0005,
+    "unit": "V*m^3/C",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+    }
+  },
+  "epsilon": {
+    "value": 1000000000.0,
+    "unit": "pF/m",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+    }
+  },
+  "applied_E": {
+    "value": 0.12,
+    "unit": "kV/m",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+    }
+  },
+  "initial": {
+    "kind": "nucleus",
+    "center": [
+      {
+        "value": 0.0,
+        "unit": "mm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+        }
+      },
+      {
+        "value": 2.0,
+        "unit": "mm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+        }
+      }
+    ],
+    "radii": [
+      {
+        "value": 2.8,
+        "unit": "mm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+        }
+      },
+      {
+        "value": 1.1,
+        "unit": "mm",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+        }
+      }
+    ],
+    "zcenter": {
+      "value": 0.0,
+      "unit": "mm",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "zradius": {
+      "value": 1.0,
+      "unit": "mm",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    }
+  },
+  "output": {
+    "rt0": true,
+    "images": true,
+    "history": "all_accepted"
+  },
+  "evolution": {
+    "end": {
+      "value": 0.15,
+      "unit": "ms",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "dt": {
+      "value": 0.05,
+      "unit": "ms",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "max_halvings": 2
+  },
+  "reference_scales": {
+    "length": {
+      "value": 1.0,
+      "unit": "mm",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "polarization": {
+      "value": 100.0,
+      "unit": "uC/cm^2",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "time": {
+      "value": 1.0,
+      "unit": "ms",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    },
+    "energy_density": {
+      "value": 1.0,
+      "unit": "kJ/m^3",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "Synthetic unit-mapping acceptance only; not material calibration/default"
+      }
+    }
+  }
+}

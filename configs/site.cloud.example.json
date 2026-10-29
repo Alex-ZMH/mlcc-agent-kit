@@ -1,0 +1,18 @@
+{
+  "status": "operator_configured_cloud_slurm_site",
+  "ssh": {
+    "alias": "mlcc-cloud",
+    "transfer": "scp",
+    "automatic_route_fallback": false
+  },
+  "workspace": {
+    "local": "./workspace",
+    "remote_root": "/home/v100/projects/mlcc"
+  },
+  "runner": {
+    "selected": "slurm",
+    "slurm": {
+      "default_partition": "cpu"
+    }
+  }
+}

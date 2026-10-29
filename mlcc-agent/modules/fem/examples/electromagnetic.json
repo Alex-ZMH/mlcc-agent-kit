@@ -1,0 +1,67 @@
+{
+  "schema_version": "fem.electromagnetic-input.v1",
+  "analysis": "electromagnetic",
+  "units": "SI",
+  "geometry": {
+    "body_length_m": 0.0012,
+    "active_gap_count": 1,
+    "dielectric_gap_m": 5e-06,
+    "electrode_thickness_m": 2e-06,
+    "electrode_overlap_m": 0.0008,
+    "left_margin_m": 0.0002,
+    "right_margin_m": 0.0002,
+    "top_cover_m": 1e-05,
+    "bottom_cover_m": 1e-05
+  },
+  "out_of_plane_thickness_m": 0.001,
+  "mesh": {
+    "target_size_m": 2e-06
+  },
+  "source_reference": "Synthetic experiment qualification geometry; not a calibrated device",
+  "thermal": {
+    "enabled": true,
+    "ceramic_k_W_per_m_K": 3.0,
+    "Ni_k_W_per_m_K": 90.0,
+    "ambient_K": 300.0,
+    "boundary_kind": "dirichlet",
+    "convection_h_W_per_m2_K": 0.0,
+    "source_reference": "Synthetic experiment thermal coefficients and end cooling; not an installation calibration"
+  },
+  "outputs": {
+    "field_data": true,
+    "field_images": true
+  },
+  "frequency_Hz": 1000000.0,
+  "current": {
+    "real_A_rms": 0.1,
+    "imag_A_rms": 0.0
+  },
+  "port": {
+    "model": "closed_guided_Ex_Ey_Hz",
+    "bus_width_m": 2e-05,
+    "feed_air_m": 4e-05,
+    "bottom_air_m": 1e-05,
+    "source_reference": "Synthetic closed guided reference plane; no board-level deembedding"
+  },
+  "mu_r": 1,
+  "materials": {
+    "ceramic": {
+      "eps_r": 1500.0,
+      "sigma_S_m": 0.0001,
+      "tan_delta": 0.01,
+      "source_reference": "Synthetic passive linear experiment parameter; validity not_checked"
+    },
+    "Ni": {
+      "eps_r": 1.0,
+      "sigma_S_m": 10000000.0,
+      "tan_delta": 0.0,
+      "source_reference": "Synthetic finite conductor; not measured Ni"
+    },
+    "air": {
+      "eps_r": 1.0,
+      "sigma_S_m": 0.0,
+      "tan_delta": 0.0,
+      "source_reference": "Ideal lossless air approximation"
+    }
+  }
+}

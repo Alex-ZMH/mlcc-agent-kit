@@ -1,0 +1,12 @@
+{
+  "schema_version": "spice.deployment.native.v1",
+  "transport": "native_linux",
+  "python": "/home/v100/miniforge3/envs/spice/bin/python",
+  "ngspice": "/home/v100/miniforge3/envs/spice/bin/ngspice",
+  "linux_root": "/home/v100/projects/mlcc-runtime/releases/REPLACE_WITH_TEMP_RELEASE",
+  "solver_timeout_seconds": 120,
+  "client_timeout_seconds": 150,
+  "max_ac_samples": 21000,
+  "max_transient_samples": 100000,
+  "max_branches": 8
+}

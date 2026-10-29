@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "phase_field.vector-result.v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "phase_field.vector-result.v1"
+    },
+    "operation": {
+      "type": "string",
+      "enum": [
+        "vector_steady",
+        "vector_evolve",
+        "vector_steady_si",
+        "vector_evolve_si"
+      ]
+    },
+    "dimension": {
+      "type": "integer",
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "model_profile": {
+      "const": "synthetic_tetragonal_quartic_v1"
+    },
+    "units": {
+      "type": "string",
+      "enum": [
+        "dimensionless",
+        "SI"
+      ]
+    },
+    "solver_dimensionless": {
+      "type": "object",
+      "properties": {
+        "final": {
+          "type": "object"
+        },
+        "resources": {
+          "type": "object"
+        },
+        "mesh_id": {
+          "type": "string"
+        },
+        "time": {
+          "type": "object",
+          "properties": {
+            "completed": {
+              "type": "number"
+            },
+            "accepted_steps": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "rejected_steps": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "stationary_solved": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "completed",
+            "accepted_steps",
+            "rejected_steps",
+            "stationary_solved"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "final",
+        "resources",
+        "mesh_id",
+        "time"
+      ],
+      "additionalProperties": false
+    },
+    "results_si": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "unit_mapping": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^artifacts/"
+      },
+      "minItems": 1,
+      "maxItems": 500
+    }
+  },
+  "required": [
+    "schema_version",
+    "operation",
+    "dimension",
+    "model_profile",
+    "units",
+    "solver_dimensionless",
+    "results_si",
+    "unit_mapping",
+    "artifact_refs"
+  ],
+  "additionalProperties": false
+}

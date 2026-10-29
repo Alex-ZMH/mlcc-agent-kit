@@ -1,0 +1,32 @@
+{
+  "schema_version": "fea.electrostatics-input.v1",
+  "model": "linear_isotropic_lossless_2d",
+  "units": "SI",
+  "geometry": {
+    "body_length_m": 0.0012,
+    "active_gap_count": 6,
+    "dielectric_gap_m": 5e-06,
+    "electrode_thickness_m": 2e-06,
+    "electrode_overlap_m": 0.0008,
+    "left_margin_m": 0.0002,
+    "right_margin_m": 0.0002,
+    "top_cover_m": 1e-05,
+    "bottom_cover_m": 1e-05
+  },
+  "out_of_plane_thickness_m": 0,
+  "material": {
+    "relative_permittivity": 1500,
+    "source_reference": "Source example mlcc_2d.yaml; synthetic qualification input, material applicability not_checked"
+  },
+  "potentials": {
+    "terminal_a_V": 10,
+    "terminal_b_V": 0
+  },
+  "mesh": {
+    "target_size_m": 5e-06
+  },
+  "outputs": {
+    "field_data": true,
+    "field_images": true
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "rve.deployment.native.v1",
+  "transport": "native_linux",
+  "python": "/home/v100/miniforge3/envs/fenicsx/bin/python",
+  "linux_root": "/home/v100/projects/mlcc-runtime/releases/REPLACE_WITH_TEMP_RELEASE",
+  "timeout_seconds": 240,
+  "threads": 1,
+  "max_cells_2d": 90000,
+  "max_cells_3d": 180000
+}

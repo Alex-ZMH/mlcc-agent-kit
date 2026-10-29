@@ -855,6 +855,18 @@ def inspect_task(task: TaskRecord) -> dict[str, Any]:
                 "review_original_error",
                 "the scheduler reached COMPLETED without the required native exit code 0:0",
             )
+        if data.get("engine") == "scale_compute" or data.get("execution_protocol") == "mlcc.adapter.v1":
+            if data.get("collect_status") != "collected":
+                return _decision(task, "collect", "scale outputs must be explicitly collected before interpretation")
+            from .scale_tasks import read_scale_result
+            try:
+                delivery = read_scale_result(task.path)
+            except (OSError, ValueError, KeyError) as error:
+                return _decision(task, "review_original_error", str(error))
+            result = delivery['result']
+            return _decision(task, "completed" if result['execution']['status'] == 'succeeded' else "review_original_error",
+                             "read the original scale execution and QC independently; no scientific status is upgraded",
+                             result_file=data.get('result_file'), execution=result['execution'], quality=result['quality'])
         if data.get("engine") == "lammps":
             if data.get("schema") == _LAMMPS_NEB_TASK_SCHEMA:
                 engineering = _lammps_neb_result(task)
@@ -1150,7 +1162,7 @@ def task_chain_snapshot(task_paths: Sequence[str | Path]) -> list[dict[str, Any]
         task_path = Path(task_path_value)
         task = load_task(task_path)
         workspace = task_path.parent.parent.parent
-        model_path = workspace / "models" / task.data["model_id"] / task.data["model_version"]
+        model_path = (workspace / "models" / task.data["model_id"] / task.data["model_version"]) if task.data.get("model_id") and task.data.get("model_version") else None
         method_path = task_path.parent / "method.json"
         result_path = _result_path(task)
         decision = inspect_task(task)
@@ -1158,12 +1170,13 @@ def task_chain_snapshot(task_paths: Sequence[str | Path]) -> list[dict[str, Any]
             {
                 "task_id": task.task_id,
                 "task_path": str(task_path),
-                "model_id": task.data["model_id"],
-                "model_version": task.data["model_version"],
-                "method_set": task.data["method_set"],
-                "model_path": str(model_path),
+                "model_id": task.data.get("model_id"),
+                "model_version": task.data.get("model_version"),
+                "method_set": task.data.get("method_set"),
+                "model_path": str(model_path) if model_path else None,
                 "method_path": str(method_path),
-                "model_exists": model_path.is_dir(),
+                "model_exists": model_path.is_dir() if model_path else False,
+                "module_id": task.data.get("module_id"), "operation": task.data.get("operation"),
                 "method_exists": method_path.is_file(),
                 "job_id": task.scheduler_job_id,
                 "scheduler_state": task.data.get("scheduler_state"),

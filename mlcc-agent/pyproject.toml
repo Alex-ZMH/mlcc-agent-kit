@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mlcc-agent"
-version = "0.57.0"
+version = "0.60.0"
 description = "MLCC Slurm task adapter and scientific workflow contracts"
 requires-python = ">=3.12"
 dependencies = [

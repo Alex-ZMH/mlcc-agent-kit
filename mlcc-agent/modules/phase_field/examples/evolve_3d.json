@@ -1,0 +1,31 @@
+{
+  "operation": "evolve",
+  "dimension": 3,
+  "model_profile": "lgd_scalar_y_v03",
+  "units": "dimensionless",
+  "mesh": {
+    "nx": 24,
+    "ny": 6,
+    "nz": 6
+  },
+  "g": 0.5,
+  "epsilon": 1.0,
+  "applied_E": 0.0,
+  "initial": {
+    "kind": "random",
+    "seed": 11,
+    "modes": 3,
+    "amplitude": 0.05,
+    "reference": 0.0
+  },
+  "output": {
+    "rt0": false,
+    "images": true,
+    "history": "all_accepted"
+  },
+  "evolution": {
+    "end": 2.0,
+    "dt": 0.05,
+    "max_halvings": 2
+  }
+}

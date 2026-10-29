@@ -1,0 +1,108 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "rve.result.v1"
+    },
+    "dimension": {
+      "const": 3
+    },
+    "physics": {
+      "const": "electrostatics"
+    },
+    "rve_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "mesh_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
+    },
+    "tensor": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 3,
+        "maxItems": 3
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "tensor_unit": {
+      "const": "F/m"
+    },
+    "boundary_condition": {
+      "type": "string",
+      "enum": [
+        "periodic",
+        "affine_dirichlet"
+      ]
+    },
+    "pore_model": {
+      "type": "string",
+      "enum": [
+        "explicit",
+        "insulating_cavity"
+      ]
+    },
+    "cells": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "load_count": {
+      "const": 3
+    },
+    "effective_material_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+    },
+    "readback_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+    },
+    "coordinate_artifact": {
+      "type": "string",
+      "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+    },
+    "load_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^artifacts/[A-Za-z0-9_./-]+$"
+      },
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "numerical_status": {
+      "const": "PASS"
+    },
+    "scientific_applicability": {
+      "const": "not_checked"
+    }
+  },
+  "required": [
+    "schema_version",
+    "dimension",
+    "physics",
+    "rve_id",
+    "mesh_id",
+    "tensor",
+    "tensor_unit",
+    "boundary_condition",
+    "pore_model",
+    "cells",
+    "load_count",
+    "effective_material_artifact",
+    "readback_artifact",
+    "coordinate_artifact",
+    "load_fields",
+    "numerical_status",
+    "scientific_applicability"
+  ],
+  "additionalProperties": false
+}

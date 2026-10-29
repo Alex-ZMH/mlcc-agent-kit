@@ -1,0 +1,245 @@
+{
+  "type": "object",
+  "properties": {
+    "operation": {
+      "type": "string",
+      "enum": [
+        "steady",
+        "evolve"
+      ]
+    },
+    "dimension": {
+      "type": "integer",
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "polarization_components": {
+      "type": "integer",
+      "const": 1
+    },
+    "polarization_axis": {
+      "type": "string",
+      "const": "y"
+    },
+    "model_profile": {
+      "type": "string",
+      "const": "lgd_scalar_y_v03"
+    },
+    "units": {
+      "type": "string",
+      "const": "dimensionless"
+    },
+    "mesh": {
+      "type": "object",
+      "properties": {
+        "cells": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "dofs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "P_dofs": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "phi_dofs": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "cells",
+        "dofs",
+        "P_dofs",
+        "phi_dofs"
+      ],
+      "additionalProperties": false
+    },
+    "environment": {
+      "type": "object"
+    },
+    "time": {
+      "type": "object",
+      "properties": {
+        "completed": {
+          "type": "number",
+          "minimum": 0
+        },
+        "accepted_steps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rejected_steps": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "nonlinear_solves": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "max_accepted_residual": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "completed",
+        "accepted_steps",
+        "rejected_steps",
+        "nonlinear_solves",
+        "max_accepted_residual"
+      ],
+      "additionalProperties": false
+    },
+    "fields": {
+      "type": "object",
+      "properties": {
+        "P": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "mean": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "additionalProperties": false
+        },
+        "phi": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "mean": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "additionalProperties": false
+        },
+        "E_magnitude": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            },
+            "mean": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "min",
+            "max",
+            "mean"
+          ],
+          "additionalProperties": false
+        },
+        "P_gradient_rms": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "initial_P_gradient_rms": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          },
+          "minItems": 2,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "P",
+        "phi",
+        "E_magnitude",
+        "P_gradient_rms",
+        "initial_P_gradient_rms"
+      ],
+      "additionalProperties": false
+    },
+    "electric_enthalpy": {
+      "type": "number"
+    },
+    "wall": {
+      "type": "object",
+      "properties": {
+        "centerline_unique_x": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "meaning": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "centerline_unique_x",
+        "meaning"
+      ],
+      "additionalProperties": false
+    },
+    "gauss": {
+      "type": "object"
+    },
+    "readback": {
+      "type": "object"
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "maxItems": 100
+    }
+  },
+  "required": [
+    "operation",
+    "dimension",
+    "polarization_components",
+    "polarization_axis",
+    "model_profile",
+    "units",
+    "mesh",
+    "environment",
+    "time",
+    "fields",
+    "electric_enthalpy",
+    "wall",
+    "gauss",
+    "readback",
+    "artifact_refs"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "phase_field.dielectric_tangent.input.v1",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "phase_field.tangent-input.v1"
+    },
+    "operation": {
+      "type": "string",
+      "const": "dielectric_tangent"
+    },
+    "units": {
+      "type": "string",
+      "const": "dimensionless"
+    },
+    "model_profile": {
+      "type": "string",
+      "const": "synthetic_tetragonal_quartic_v1"
+    },
+    "dimension": {
+      "type": "integer",
+      "enum": [
+        2,
+        3
+      ]
+    },
+    "cells": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 128
+      },
+      "minItems": 2,
+      "maxItems": 3
+    },
+    "boundary_condition": {
+      "type": "string",
+      "const": "all_surface_voltage"
+    },
+    "initial_condition": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "uniform",
+            "wall_180",
+            "wall_90xy",
+            "wall_90xz"
+          ]
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2,
+          "maxItems": 3
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "wall_half_length": {
+      "type": "number",
+      "minimum": 0
+    },
+    "loading_path": {
+      "type": "array",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 3
+      },
+      "minItems": 1,
+      "maxItems": 100
+    },
+    "equilibrium_atol": {
+      "type": "number",
+      "maximum": 1e-08,
+      "minimum": 0
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "finite_difference": {
+          "type": "boolean"
+        },
+        "analytical": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "finite_difference",
+        "analytical"
+      ],
+      "additionalProperties": false
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "images": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "images"
+      ],
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "synthetic_test",
+            "manual"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "reference"
+      ],
+      "additionalProperties": false
+    },
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "a": {
+          "type": "number"
+        },
+        "b": {
+          "type": "number"
+        },
+        "c": {
+          "type": "number"
+        },
+        "g": {
+          "type": "number"
+        },
+        "epsilon": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "a",
+        "b",
+        "c",
+        "g",
+        "epsilon"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "schema_version",
+    "operation",
+    "units",
+    "model_profile",
+    "dimension",
+    "cells",
+    "boundary_condition",
+    "initial_condition",
+    "loading_path",
+    "equilibrium_atol",
+    "verification",
+    "output",
+    "source",
+    "parameters"
+  ],
+  "additionalProperties": false
+}

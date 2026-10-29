@@ -1,0 +1,116 @@
+{
+  "schema_version": "fem.electrostatics-quantities-input.v1",
+  "model": "linear_isotropic_lossless_2d",
+  "units": "explicit_quantities",
+  "geometry": {
+    "body_length": {
+      "value": 1.2,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:body_length_m"
+      }
+    },
+    "active_gap_count": 6,
+    "dielectric_gap": {
+      "value": 0.005,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:dielectric_gap_m"
+      }
+    },
+    "electrode_thickness": {
+      "value": 0.002,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:electrode_thickness_m"
+      }
+    },
+    "electrode_overlap": {
+      "value": 0.8,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:electrode_overlap_m"
+      }
+    },
+    "left_margin": {
+      "value": 0.2,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:left_margin_m"
+      }
+    },
+    "right_margin": {
+      "value": 0.2,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:right_margin_m"
+      }
+    },
+    "top_cover": {
+      "value": 0.01,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:top_cover_m"
+      }
+    },
+    "bottom_cover": {
+      "value": 0.01,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:bottom_cover_m"
+      }
+    }
+  },
+  "material": {
+    "relative_permittivity": 1500,
+    "source_reference": "Source example mlcc_2d.yaml; synthetic qualification input, material applicability not_checked"
+  },
+  "potentials": {
+    "terminal_a": {
+      "value": 0.01,
+      "unit": "kV",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:terminal_a_V"
+      }
+    },
+    "terminal_b": {
+      "value": 0.0,
+      "unit": "kV",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:terminal_b_V"
+      }
+    }
+  },
+  "mesh": {
+    "target_size": {
+      "value": 0.005,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "synthetic normal.json:mesh.target_size"
+      }
+    }
+  },
+  "outputs": {
+    "field_data": true,
+    "field_images": true
+  },
+  "out_of_plane_thickness": {
+    "value": 1.0,
+    "unit": "mm",
+    "source": {
+      "kind": "user",
+      "reference": "synthetic normal.json:out_of_plane_thickness"
+    }
+  }
+}

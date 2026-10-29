@@ -1,0 +1,22 @@
+{
+  "models": [
+    {
+      "model_name": "single_rlc",
+      "model_version": "1.0.0",
+      "source": "synthetic",
+      "capacitance_F": 1e-08,
+      "esr_ohm": 0.05,
+      "esl_H": 5e-10,
+      "leakage_resistance_ohm": null,
+      "validated_conditions": {
+        "type": "synthetic_linear_demo_only",
+        "temperature": "fixed, unspecified calibration",
+        "dc_bias": "constant C; no DC-bias law"
+      }
+    }
+  ],
+  "points_per_decade": 400,
+  "fmin_Hz": 1000.0,
+  "fmax_Hz": 10000000000.0,
+  "single_frequency": false
+}

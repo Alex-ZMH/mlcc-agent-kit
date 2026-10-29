@@ -1,0 +1,114 @@
+{
+  "schema_version": "mlcc.module.v1",
+  "id": "spice",
+  "title": "SPICE / constant linear RLC circuits",
+  "description": "ngspice constant linear RLC AC and finite-pulse transient, explicit SI and shared-UNIT quantity inputs",
+  "version": "0.2.1",
+  "interface_version": "1.0",
+  "kind": "scientific",
+  "implementation": "implemented",
+  "adapter": {
+    "entry": "adapter.py"
+  },
+  "dependencies": [],
+  "operations": {
+    "ac_impedance_si": {
+      "description": "Explicit SI compatibility: single/parallel constant RLC, AC impedance/phase and sampled extrema",
+      "input_schema": "schemas/ac_impedance_si.input.schema.json",
+      "output_schema": "schemas/output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 180,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "native_readback",
+          "circuit_reference",
+          "power_energy",
+          "unit_admission",
+          "sampling_sensitivity"
+        ],
+        "scientific": [
+          "material_calibration",
+          "device_applicability",
+          "periodic_steady_state"
+        ]
+      }
+    },
+    "transient_si": {
+      "description": "Explicit SI compatibility: finite-source, finite-edge single pulse, optional MLCC",
+      "input_schema": "schemas/transient_si.input.schema.json",
+      "output_schema": "schemas/output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 180,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "native_readback",
+          "circuit_reference",
+          "power_energy",
+          "unit_admission",
+          "sampling_sensitivity"
+        ],
+        "scientific": [
+          "material_calibration",
+          "device_applicability",
+          "periodic_steady_state"
+        ]
+      }
+    },
+    "ac_impedance": {
+      "description": "Structured quantities through unique shared UNIT: single/parallel constant RLC, AC impedance/phase and sampled extrema",
+      "input_schema": "schemas/ac_impedance.input.schema.json",
+      "output_schema": "schemas/output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 180,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "native_readback",
+          "circuit_reference",
+          "power_energy",
+          "unit_admission",
+          "sampling_sensitivity"
+        ],
+        "scientific": [
+          "material_calibration",
+          "device_applicability",
+          "periodic_steady_state"
+        ]
+      }
+    },
+    "transient": {
+      "description": "Structured quantities through unique shared UNIT: finite-source, finite-edge single pulse, optional MLCC",
+      "input_schema": "schemas/transient.input.schema.json",
+      "output_schema": "schemas/output.schema.json",
+      "execution": "queued",
+      "timeout_seconds": 180,
+      "evidence_kinds": [
+        "real_computation"
+      ],
+      "required_checks": {
+        "numerical": [
+          "native_readback",
+          "circuit_reference",
+          "power_energy",
+          "unit_admission",
+          "sampling_sensitivity"
+        ],
+        "scientific": [
+          "material_calibration",
+          "device_applicability",
+          "periodic_steady_state"
+        ]
+      }
+    }
+  },
+  "engine": "ngspice",
+  "task_provider": "mlcc.spice_tasks:create_task"
+}

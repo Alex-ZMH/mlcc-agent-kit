@@ -1,0 +1,21 @@
+{
+  "scope": "synthetic constant linear RLC, ngspice 41, no calibrated commercial MLCC",
+  "fixed_before_first_numerical_acceptance": true,
+  "ac_complex_relative_error": 1e-8,
+  "ac_current_absolute_error_A": 1e-9,
+  "srf_interpolated_relative_error": 2e-5,
+  "srf_sampled_frequency_relative_error": 0.003,
+  "exact_resonance_esr_relative_error": 1e-8,
+  "phase_endpoint_distance_deg": 2.0,
+  "RC_reference_max_error_V": 2e-5,
+  "transient_KCL_relative_error": 1e-6,
+  "initial_operating_point_error_V": 1e-7,
+  "transient_fine_metric_change_V": 0.0005,
+  "transient_fine_RMS_relative_change": 0.005,
+  "transient_energy_relative_error": 0.003,
+  "parallel_peak_fine_frequency_relative_change": 0.01,
+  "parallel_peak_fine_amplitude_relative_change": 0.01,
+  "damped_peak_ratio_max": 0.8,
+  "replay_relative_error": 1e-12,
+  "basis": "Linear algebra double precision supports strict AC checks; finite ramp RC Gear2 error assessed against independent closed form. Integration method changed from trapezoidal after a recorded timestep-collapse failure, without relaxing tolerances or dropping line inductance. Finite AC peak sampling and adaptive transient timestep errors are distinct from algebraic error. No industrial acceptance thresholds."
+}

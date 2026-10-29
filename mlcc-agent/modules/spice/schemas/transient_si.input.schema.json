@@ -1,0 +1,157 @@
+{
+  "type": "object",
+  "properties": {
+    "model": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "model_name": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_]{0,60}$"
+        },
+        "model_version": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_.-]{1,60}$"
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "synthetic",
+            "manual"
+          ]
+        },
+        "capacitance_F": {
+          "type": "number",
+          "minimum": 0
+        },
+        "esr_ohm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "esl_H": {
+          "type": "number",
+          "minimum": 0
+        },
+        "leakage_resistance_ohm": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "validated_conditions": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+            },
+            "temperature": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+            },
+            "dc_bias": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+            },
+            "note": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 200,
+              "pattern": "^[^\\r\\n\\x00-\\x1f]+$"
+            }
+          },
+          "required": [],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "model_name",
+        "model_version",
+        "source",
+        "capacitance_F",
+        "esr_ohm",
+        "esl_H",
+        "leakage_resistance_ohm",
+        "validated_conditions"
+      ],
+      "additionalProperties": false
+    },
+    "circuit": {
+      "type": "object",
+      "properties": {
+        "supply_V": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_resistance_ohm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "line_inductance_H": {
+          "type": "number",
+          "minimum": 0
+        },
+        "baseline_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "step_A": {
+          "type": "number",
+          "minimum": 0
+        },
+        "delay_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rise_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "hold_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "fall_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "stop_s": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "supply_V",
+        "source_resistance_ohm",
+        "line_inductance_H",
+        "baseline_A",
+        "step_A",
+        "delay_s",
+        "rise_s",
+        "hold_s",
+        "fall_s",
+        "stop_s"
+      ],
+      "additionalProperties": false
+    },
+    "maxstep_s": {
+      "type": "number",
+      "minimum": 0
+    }
+  },
+  "required": [
+    "model",
+    "circuit",
+    "maxstep_s"
+  ],
+  "additionalProperties": false
+}

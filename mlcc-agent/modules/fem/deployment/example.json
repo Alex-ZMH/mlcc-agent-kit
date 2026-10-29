@@ -1,0 +1,11 @@
+{
+  "schema_version": "fea.deployment.v1",
+  "wsl_executable": "C:/Windows/System32/wsl.exe",
+  "distribution": "Ubuntu-24.04",
+  "python": "/home/zhaoxiang/miniconda3/envs/fenicsx-env/bin/python",
+  "windows_root": "D:/Zhaoxiang/code/mlcc-main",
+  "linux_root": "/mnt/d/Zhaoxiang/code/mlcc-main",
+  "timeout_seconds": 90,
+  "threads": 1,
+  "max_cells": 50000
+}

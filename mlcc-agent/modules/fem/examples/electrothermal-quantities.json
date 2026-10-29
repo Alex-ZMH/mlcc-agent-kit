@@ -1,0 +1,205 @@
+{
+  "schema_version": "fem.electrothermal-quantities-input.v1",
+  "analysis": "electrothermal",
+  "units": "explicit_quantities",
+  "geometry": {
+    "body_length": {
+      "value": 1.2,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.body_length_m"
+      }
+    },
+    "active_gap_count": 6,
+    "dielectric_gap": {
+      "value": 0.005,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.dielectric_gap_m"
+      }
+    },
+    "electrode_thickness": {
+      "value": 0.002,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.electrode_thickness_m"
+      }
+    },
+    "electrode_overlap": {
+      "value": 0.8,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.electrode_overlap_m"
+      }
+    },
+    "left_margin": {
+      "value": 0.2,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.left_margin_m"
+      }
+    },
+    "right_margin": {
+      "value": 0.2,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.right_margin_m"
+      }
+    },
+    "top_cover": {
+      "value": 0.01,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.top_cover_m"
+      }
+    },
+    "bottom_cover": {
+      "value": 0.01,
+      "unit": "mm",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: geometry.bottom_cover_m"
+      }
+    }
+  },
+  "mesh": {
+    "target_size": {
+      "value": 5.0,
+      "unit": "um",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: mesh.target_size"
+      }
+    }
+  },
+  "source_reference": "Synthetic experiment qualification geometry; not a calibrated device",
+  "thermal": {
+    "enabled": true,
+    "boundary_kind": "dirichlet",
+    "source_reference": "Synthetic experiment thermal coefficients and end cooling; not an installation calibration",
+    "ceramic_k": {
+      "value": 3.0,
+      "unit": "W/(m K)",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: thermal.ceramic_k"
+      }
+    },
+    "Ni_k": {
+      "value": 90.0,
+      "unit": "W/(m K)",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: thermal.Ni_k"
+      }
+    },
+    "convection_h": {
+      "value": 0.0,
+      "unit": "W/(m^2 K)",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: thermal.convection_h"
+      }
+    },
+    "ambient": {
+      "value": 26.85,
+      "unit": "°C",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: thermal.ambient"
+      }
+    }
+  },
+  "outputs": {
+    "field_data": true,
+    "field_images": true
+  },
+  "voltage_convention": "dc",
+  "potentials": {
+    "terminal_a_real": {
+      "value": 0.01,
+      "unit": "kV",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: potentials.terminal_a_real_V"
+      }
+    },
+    "terminal_a_imag": {
+      "value": 0.0,
+      "unit": "kV",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: potentials.terminal_a_imag_V"
+      }
+    },
+    "terminal_b_real": {
+      "value": 0.0,
+      "unit": "kV",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: potentials.terminal_b_real_V"
+      }
+    },
+    "terminal_b_imag": {
+      "value": 0.0,
+      "unit": "kV",
+      "source": {
+        "kind": "user",
+        "reference": "Equivalent synthetic electrothermal.json: potentials.terminal_b_imag_V"
+      }
+    }
+  },
+  "materials": {
+    "ceramic_lower": {
+      "eps_r": 1500.0,
+      "tan_delta": 0.0,
+      "source_reference": "Synthetic passive linear experiment parameter; validity not_checked",
+      "sigma": {
+        "value": 1e-06,
+        "unit": "S/cm",
+        "source": {
+          "kind": "user",
+          "reference": "Equivalent synthetic electrothermal.json: materials.ceramic_lower.sigma"
+        }
+      }
+    },
+    "ceramic_upper": {
+      "eps_r": 1500.0,
+      "tan_delta": 0.0,
+      "source_reference": "Synthetic passive linear experiment parameter; validity not_checked",
+      "sigma": {
+        "value": 1e-06,
+        "unit": "S/cm",
+        "source": {
+          "kind": "user",
+          "reference": "Equivalent synthetic electrothermal.json: materials.ceramic_upper.sigma"
+        }
+      }
+    }
+  },
+  "dielectric_layout": "uniform",
+  "loss_model": "dc",
+  "out_of_plane_thickness": {
+    "value": 1.0,
+    "unit": "mm",
+    "source": {
+      "kind": "user",
+      "reference": "Equivalent synthetic electrothermal.json: depth"
+    }
+  },
+  "frequency": {
+    "value": 0.0,
+    "unit": "kHz",
+    "source": {
+      "kind": "user",
+      "reference": "Equivalent synthetic electrothermal.json: frequency"
+    }
+  }
+}

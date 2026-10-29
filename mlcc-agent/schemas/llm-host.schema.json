@@ -1,0 +1,35 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "mlcc.llm-host.v1"
+    },
+    "provider": {
+      "const": "codex_exec"
+    },
+    "codex_command": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "const": "gpt-6.1-sol"
+    },
+    "reasoning_effort": {
+      "const": "low"
+    },
+    "timeout_seconds": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 300
+    }
+  },
+  "required": [
+    "schema_version",
+    "provider",
+    "codex_command",
+    "model",
+    "reasoning_effort",
+    "timeout_seconds"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,125 @@
+{
+  "model": {
+    "model_name": "decap_rlc",
+    "model_version": "1.0.0",
+    "source": "synthetic",
+    "capacitance_F": {
+      "value": 1e-06,
+      "unit": "F",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "esr_ohm": {
+      "value": 0.02,
+      "unit": "ohm",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "esl_H": {
+      "value": 6e-10,
+      "unit": "H",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "leakage_resistance_ohm": null,
+    "validated_conditions": {
+      "type": "synthetic_linear_demo_only"
+    }
+  },
+  "circuit": {
+    "supply_V": {
+      "value": 3.3,
+      "unit": "V",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "source_resistance_ohm": {
+      "value": 0.08,
+      "unit": "ohm",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "line_inductance_H": {
+      "value": 5e-09,
+      "unit": "H",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "baseline_A": {
+      "value": 0.1,
+      "unit": "A",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "step_A": {
+      "value": 1.0,
+      "unit": "A",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "delay_s": {
+      "value": 5e-06,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "rise_s": {
+      "value": 2e-08,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "hold_s": {
+      "value": 1.5e-05,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "fall_s": {
+      "value": 2e-08,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    },
+    "stop_s": {
+      "value": 3e-05,
+      "unit": "s",
+      "source": {
+        "kind": "synthetic_test",
+        "reference": "spice_poc explicit synthetic baseline"
+      }
+    }
+  },
+  "maxstep_s": {
+    "value": 1.25e-09,
+    "unit": "s",
+    "source": {
+      "kind": "synthetic_test",
+      "reference": "spice_poc explicit synthetic baseline"
+    }
+  }
+}

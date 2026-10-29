@@ -1,0 +1,282 @@
+{
+  "schema_version": "rve.electrostatics-2d-input.v1",
+  "geometry": {
+    "kind": "polycrystal",
+    "physical_lengths": [
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+        }
+      },
+      {
+        "value": 10,
+        "unit": "um",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture: implicit length expanded explicitly"
+        }
+      }
+    ],
+    "pore_fraction": 0.0,
+    "grain_count": 9,
+    "seed": 11,
+    "normalized_gb_width": 0.04,
+    "normalized_shell": 0.04,
+    "jitter": 0.7
+  },
+  "normalized_h": 0.1,
+  "materials": [
+    {
+      "region_tag": "3000",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 1.5,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "100",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 9.600000000000001,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "200",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "101",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 12.96,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "201",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "102",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 11.040000000000001,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "202",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "103",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 14.400000000000002,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "203",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "104",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 12.48,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "204",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "105",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 10.56,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "205",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "106",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 13.920000000000002,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "206",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "107",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 12.0,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "207",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "108",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 10.080000000000002,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    },
+    {
+      "region_tag": "208",
+      "representation": "isotropic",
+      "scalar": {
+        "value": 3,
+        "unit": "1",
+        "source": {
+          "kind": "synthetic_test",
+          "reference": "experiments/rve_poc/cases.py and stages.py synthetic fixture"
+        }
+      },
+      "applicability": "Synthetic static qualification, fixed thermal reference 300 K; not calibrated material"
+    }
+  ],
+  "boundary_condition": "periodic",
+  "pore_model": "explicit"
+}
