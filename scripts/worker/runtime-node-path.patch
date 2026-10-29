@@ -1,0 +1,40 @@
+--- a/apps/worker/src/runtime-adapter.ts
++++ b/apps/worker/src/runtime-adapter.ts
+@@ -54,7 +54,7 @@
+ const DEFAULT_WORKER_EXECUTABLE_PATH = '/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin'
+ const WORKER_CODEX_ENVIRONMENT_KEYS = ['OPENAI_API_KEY', 'OPENAI_BASE_URL', 'ZEUS_CODEX_COMMAND'] as const
+ const CODEX_MODEL_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:/+-]*$/
+-const WORKER_BUNDLE_NODE_PATH = '/usr/local/bin/node'
++const WORKER_BUNDLE_NODE_PATH = process.execPath
+ const WORKER_KNOWLEDGE_MCP_SCRIPT_PATH = fileURLToPath(
+   new URL('../../../.zeus/mcp-servers/knowledge_graph.cjs', import.meta.url),
+ )
+--- a/apps/worker/src/runtime-adapter.test.ts
++++ b/apps/worker/src/runtime-adapter.test.ts
+@@ -818,7 +818,7 @@
+     },
+     {
+       name: 'node_tools',
+-      command: '/usr/local/bin/node',
++      command: process.execPath,
+       args: ['/operator/catalog/materials_bundle/1.2.3/mcp/tool.mjs', '--stdio'],
+       allowedTools: ['read'],
+     },
+@@ -863,7 +863,7 @@
+   })
+   assert.deepEqual(servers[1], {
+     name: 'knowledge_graph',
+-    command: '/usr/local/bin/node',
++    command: process.execPath,
+     args: [fileURLToPath(new URL('../../../.zeus/mcp-servers/knowledge_graph.cjs', import.meta.url))],
+     allowedTools: [
+       'knowledge_libraries',
+@@ -917,7 +917,7 @@
+     ZEUS_RESEARCH_TOOL_URL: 'https://control.example.test/v1/agent-research/tools',
+     ZEUS_RESEARCH_TOOL_TOKEN: token,
+   })
+-  assert.equal(servers[1]?.command, '/usr/local/bin/node')
++  assert.equal(servers[1]?.command, process.execPath)
+   assert.match(servers[1]?.args?.[0] ?? '', /research_workbench\.cjs$/)
+   assert.equal(prepared.input.context?.some(message => message.content.includes('research_snapshot')), true)
+   assert.equal(prepared.input.context?.some(message => message.content.includes('research_knowledge_catalog')), true)

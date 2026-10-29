@@ -12,6 +12,7 @@ from typing import Any, Sequence
 from mcp.server import MCPServer
 
 from . import contracts
+from .public_operations import create_operation_task, describe_operations
 from .scale_tasks import create_scale_task, describe_scales, read_scale_result
 from .site_runner import SiteRunner, runner_for_task
 from .tasks import TaskRecord, load_task
@@ -122,7 +123,7 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         name="mlcc-agent",
         title="MLCC Slurm runner",
         description="Explicit Slurm task lifecycle for the MLCC project.",
-        version="0.15.0",
+        version="0.60.1",
     )
 
     @server.tool(
@@ -145,6 +146,48 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
                 }
             )
         return {"tasks": tasks}
+
+    @server.tool(
+        name="mlcc_describe_operations",
+        title="Describe MLCC operations",
+        description="Describe all registered Skills and CLI operations without importing scientific runtimes.",
+        structured_output=True,
+    )
+    def describe_operations_tool(
+        skill_id: str | None = None,
+        operation: str | None = None,
+    ) -> dict[str, Any]:
+        return describe_operations(skill_id, operation)
+
+    @server.tool(
+        name="mlcc_create_operation_task",
+        title="Create MLCC operation task",
+        description="Stage one allowlisted MLCC operation for a v100-local Slurm task without executing it.",
+        structured_output=True,
+    )
+    def create_operation_task_tool(
+        operation: str,
+        arguments: dict[str, Any],
+        request: dict[str, Any],
+    ) -> dict[str, Any]:
+        return create_operation_task(
+            operation=operation,
+            arguments=arguments,
+            request=request,
+            site_path=site,
+            workspace=root,
+        )
+
+    @server.tool(
+        name="mlcc_read_result",
+        title="Read MLCC result",
+        description="Read one saved MLCC result envelope without parsing or starting a calculation.",
+        structured_output=True,
+    )
+    def read_result_tool(task_id: str) -> dict[str, Any]:
+        from .task_service import read_result
+
+        return read_result(_task_path(root, task_id))
 
     @server.tool(
         name="mlcc_describe_scales",

@@ -5,6 +5,8 @@ description: 为 MLCC 打通 VASP 真实执行与产物链，再迁移到 ABACUS
 
 # VASP 接线与 ABACUS 生产迁移
 
+公网调用先走[统一操作入口](../references/public-operations.md)；统一入口只创建宿主绑定的未提交任务，DFT 方法、引擎和科学资格仍按本 Skill 的显式配置与边界处理。
+
 `create-neutral-defect-pair`以`--method`指定宿主方法，可用`--defect-method`显式指定包含新增元素资源的变体方法。共同元素的PP/NAO与共同物理设置经共享领域函数比较，新增元素资源单列；不再要求两侧元素集合完全相同。`--chemical-reference`可省略，省略时只生成未提交的两侧输入，形成能的化学参考保持缺项。创建不提交数值任务，TaskRecord的scheduler_job_id仍为null；真实执行继续走既有Slurm生命周期。
 
 0.32在计算站点经Slurm用`inspect-nao --method ... --site ... --output NEW.json`生成既有NAO快照。方法显式选择numerical_orbital_library的name/version/functional/pairing_source/pseudopotential_map；读取选择的轨道头、库说明和元素UPF映射，输出供既有qualify-method/create-abacus消费。不扫描、不换资源、不把库声明当NAO原生XC或材料生产资格；保存的原生结果仍绑定原TaskRecord/job，不借用给未执行的新任务。

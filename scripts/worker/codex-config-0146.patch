@@ -1,0 +1,28 @@
+--- a/packages/codex-runtime/src/codex-model-capabilities.ts
++++ b/packages/codex-runtime/src/codex-model-capabilities.ts
+@@ -74,7 +74,6 @@
+   return {
+     model_context_window: CODEX_QWEN_CONTEXT_WINDOW,
+     model_auto_compact_token_limit: CODEX_QWEN_AUTO_COMPACT_TOKEN_LIMIT,
+-    model_supports_reasoning_summaries: true,
+   }
+ }
+ 
+--- a/packages/codex-runtime/src/codex-app-server-runtime.test.ts
++++ b/packages/codex-runtime/src/codex-app-server-runtime.test.ts
+@@ -806,7 +806,6 @@
+   assert.deepEqual(threadParams.config, {
+     model_context_window: 1_000_000,
+     model_auto_compact_token_limit: 800_000,
+-    model_supports_reasoning_summaries: true,
+   })
+   const turnParams = client.callsFor('turn/start')[0]?.params as Record<string, unknown>
+   assert.equal(turnParams.model, 'qwen3.8-max')
+@@ -828,7 +827,6 @@
+   assert.deepEqual(resumeParams.config, {
+     model_context_window: 1_000_000,
+     model_auto_compact_token_limit: 800_000,
+-    model_supports_reasoning_summaries: true,
+   })
+   assert.equal((client.callsFor('turn/start')[1]?.params as Record<string, unknown>).effort, 'medium')
+ })

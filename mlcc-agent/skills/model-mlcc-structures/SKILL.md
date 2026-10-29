@@ -5,6 +5,8 @@ description: 从已选择的晶相构建显式超胞、多元素占位与补偿�
 
 # 显式原子建模
 
+公网调用先走[统一操作入口](../references/public-operations.md)；统一入口只路由到本 Skill 已有 CLI/模块实现，不替用户选择晶相、补偿、位点或科学方法。
+
 `plan-configurations --request <JSON> --models-output <新根目录> --output <集合JSON>`消费`mlcc.composition-configurations-request.v1`：`composition_request`沿用M1计量/子晶格/补偿，`max_configurations`是显式数量上限，每个`configurations`成员给出configuration_id、seed、新Study/reference/child身份。PCG64按稳定排序的允许位点无放回分配，固定补偿位点先保留；保存算法、库版本、seed、候选池和实际位点。不同seed可能重复构型，不重抽或冒称SQS。集合经`deliver-properties --composition`绑定父Study；各子build沿用自身Study交付。
 
 `import-sqs --request <JSON> --models-output <新根目录> --output <build JSON>`调用外部构型导入，schema为`mlcc.sqs-import-request.v1`，也含`composition_request`。外部格式、逐source_index到父atom ID/重复像/子晶格映射和Å容差必须显式；保留实际外部晶胞、坐标与原始来源/相关函数/停止信息。缺质量证据保持not_evaluated，格式工程样本不能声明真实SQS优化。导入返回现有M1 build，直接使用同Study `deliver-properties --composition`，不运行SQS搜索器。两入口的模型生成与数值检查均经Slurm，合同见`docs/composition-configurations-m4-v001.md`。

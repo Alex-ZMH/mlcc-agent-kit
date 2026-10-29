@@ -5,6 +5,8 @@ description: Select and interpret MLCC two-dimensional electrothermal, AC-EQS an
 
 # 二维器件电热与电磁
 
+公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-fem/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 沿Agent→领域Skill→TaskRecord/SiteRunner→Slurm内固定Adapter→显式科学环境→结构化结果链使用。不是另一套执行器；输入、单位、资源、状态和QC由代码决定。

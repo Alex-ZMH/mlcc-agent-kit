@@ -5,6 +5,8 @@ description: Prepare and interpret independent 2D/3D static electrostatic or the
 
 # 静态 RVE 方法
 
+公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-rve/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 操作为 homogenize_electrostatics_2d、homogenize_thermal_2d、homogenize_electrostatics_3d、homogenize_thermal_3d。选定维度和物理，2D 实际 x/y 两载荷与 2×2 张量；3D x/y/z 三载荷与 3×3 张量。请求不改变部署、不指定 shell/解释器。

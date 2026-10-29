@@ -32,6 +32,9 @@
       ],
       "allowedTools": [
         "mlcc_list_tasks",
+        "mlcc_describe_operations",
+        "mlcc_create_operation_task",
+        "mlcc_read_result",
         "mlcc_describe_scales",
         "mlcc_create_scale_task",
         "mlcc_read_scale_result",

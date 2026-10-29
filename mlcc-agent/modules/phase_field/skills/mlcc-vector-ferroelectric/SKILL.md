@@ -5,6 +5,8 @@ description: Prepare and interpret full-vector 2D/3D LGD phase_field vector_stea
 
 # Full-vector ferroelectric method
 
+公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-phase-field/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 Use module `phase_field`, operations `vector_steady`, `vector_evolve`, `vector_steady_si`, `vector_evolve_si`. These are additive to the four scalar operations, whose fixed scalar-y physics, RT0 and input contracts remain separate. Prefer an authoritative provided input file unchanged; clarify missing parameters, units and sources. Do not substitute synthetic example parameters for actual material input.

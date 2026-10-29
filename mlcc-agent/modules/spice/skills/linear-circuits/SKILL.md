@@ -3,6 +3,8 @@ name: spice-linear-circuits
 description: Controlled native ngspice AC impedance (single or parallel RLC) and finite-source single-pulse transient.
 ---
 
+公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-spice/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 Use the host-bound operation: `spice.ac_impedance_si` / `spice.transient_si` accept explicit SI numbers (F, ohm, H, Hz, V, A, s); `spice.ac_impedance` / `spice.transient` accept structured value/unit/source quantities. Shared UNIT core1.0.0/catalog1.2.0 provides capacitance/F, resistance/ohm and inductance/H. Preserve the authorized representation; the deterministic Adapter invokes the unique shared core and retains its audit. Do not convert values mentally, drop user units, use F/m as F, or switch operations in a bound session. UNIT admission and SI/quantity native equivalence have Main acceptance evidence; they do not grant scientific or per-task sampling acceptance.

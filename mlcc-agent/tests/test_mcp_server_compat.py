@@ -130,6 +130,9 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
             tool_names = {tool["name"] for tool in listed["result"]["tools"]}
             assert tool_names == {
                 "mlcc_list_tasks",
+                "mlcc_describe_operations",
+                "mlcc_create_operation_task",
+                "mlcc_read_result",
                 "mlcc_describe_scales",
                 "mlcc_create_scale_task",
                 "mlcc_read_scale_result",

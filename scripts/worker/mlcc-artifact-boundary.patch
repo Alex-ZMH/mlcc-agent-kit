@@ -1,0 +1,141 @@
+--- a/apps/worker/src/artifact-harvest.ts
++++ b/apps/worker/src/artifact-harvest.ts
+@@ -108,6 +108,11 @@
+   maxResults?: number
+ }>
+ 
++export function isInternalControlPath(relativePath: string): boolean {
++  const path = relativePath.startsWith('project/') ? relativePath.slice(8) : relativePath
++  return path === 'configs/site.v100.json' || /^tasks\/[^/]+\/payload(?:\/|$)/u.test(path)
++}
++
+ function safeResultMimeType(relativePath: string): string | null {
+   return scientificResultArtifactMimeType(relativePath) ??
+     SAFE_RESULT_MIME_TYPES[extname(relativePath).toLowerCase()] ?? null
+@@ -116,8 +121,8 @@
+ /**
+  * Returns whether a file belongs to the default user-result surface.
+  *
+- * The snapshot still records internal files so an assistant can explicitly
+- * reference a retained file when that is intentional.  The automatic changed
++ * MLCC control files are omitted from the snapshot entirely; other internal
++ * files remain referenceable when that is intentional.  The automatic changed
+  * file sweep uses this predicate to avoid publishing journals, scratch, and
+  * native lineage metadata as ordinary results.  Public reports, authored
+  * JSON/CSV, SVGs, and trajectory preview files remain eligible.
+@@ -207,6 +212,7 @@
+ 
+ function pathMayBeVisited(segments: readonly string[]): boolean {
+   if (segments.length > MAX_RESULT_PATH_DEPTH) return false
++  if (isInternalControlPath(segments.join('/'))) return false
+   if (
+     isInsideModelingOutputs(segments) ||
+     isModelingOutputsPrefix(segments) ||
+--- a/apps/worker/src/artifact-harvest.test.ts
++++ b/apps/worker/src/artifact-harvest.test.ts
+@@ -214,6 +214,34 @@
+   }])
+ })
+ 
++test('hides MLCC control files while retaining ordinary task results', async (t) => {
++  const root = await mkdtemp(join(tmpdir(), 'zeus-worker-mlcc-control-visibility-'))
++  t.after(() => rm(root, { recursive: true, force: true }))
++  const before = await captureResultFileSnapshot(root)
++  const internal = [
++    'configs/site.v100.json',
++    'project/configs/site.v100.json',
++    'tasks/task-01/payload/manifest.json',
++    'project/tasks/task-01/payload/schema.json',
++  ]
++  const publicResults = [
++    'tasks/task-01/operation-result.json',
++    'project/tasks/task-01/result.json',
++  ]
++  for (const path of [...internal, ...publicResults]) {
++    await mkdir(join(root, path, '..'), { recursive: true })
++    await writeFile(join(root, path), path)
++  }
++
++  assert.deepEqual((await findChangedResultFiles(root, before)).map((entry) => entry.relativePath), [...publicResults].sort())
++  assert.deepEqual(await findReferencedResultFiles(root, internal.map((path) => `"${path}"`).join(' ')), [])
++  assert.deepEqual(await findReferencedResultFiles(root, `请读取 "${publicResults[0]}"。`), [{
++    relativePath: publicResults[0],
++    displayName: 'operation-result.json',
++    mimeType: 'application/json',
++  }])
++})
++
+ test('does not auto-publish task requests or structure registration records as result files', async (t) => {
+   const root = await mkdtemp(join(tmpdir(), 'zeus-worker-reaction-visibility-'))
+   t.after(() => rm(root, { recursive: true, force: true }))
+--- a/apps/worker/src/worker.ts
++++ b/apps/worker/src/worker.ts
+@@ -44,6 +44,7 @@
+   MAX_ASSISTANT_REFERENCE_TEXT_CHARS,
+   MAX_HARVESTED_ARTIFACTS,
+   captureResultFileSnapshot,
++  isInternalControlPath,
+   selectChangedResultFiles,
+   selectReferencedResultFiles,
+ } from './artifact-harvest'
+@@ -399,6 +400,7 @@
+   if (event.artifact.kind !== 'file') return undefined
+   const relativePath = artifactRelativePath(workspacePath, event.artifact.title)
+   if (relativePath === null) return null
++  if (isInternalControlPath(relativePath)) return undefined
+   const displayName = relativePath.split('/').at(-1) ?? ''
+   return {
+     relativePath,
+--- a/apps/worker/src/worker.test.ts
++++ b/apps/worker/src/worker.test.ts
+@@ -3773,6 +3773,50 @@
+   assert.deepEqual(manifests.map((manifest) => manifest.relativePath), ['outputs/plot.png'])
+ })
+ 
++test('skips MLCC control paths from direct artifact events while retaining task results', async (t) => {
++  const claimed = invocation({ invocationId: 'invocation_mlcc_control_artifacts' })
++  const workspacePath = await artifactWorkspace(t)
++  const fixture = clientFixture([claimed])
++  const manifests: any[] = []
++  const uploaded: string[] = []
++  fixture.client.prepareArtifactUpload = async (request) => {
++    manifests.push(request.manifest)
++    return { upload: { uploadReference: 'A'.repeat(43), state: 'prepared', artifact: request.manifest } }
++  }
++  fixture.client.uploadArtifact = async (request) => {
++    uploaded.push(await uploadedText(request.bytes))
++    const manifest = manifests[uploaded.length - 1]!
++    return { artifact: { ...manifest, state: 'verified' } }
++  }
++  const publicPath = 'tasks/task-01/result.json'
++  const localRuntime = writingRuntime(
++    async () => {
++      await mkdir(join(workspacePath, 'tasks', 'task-01'), { recursive: true })
++      await writeFile(join(workspacePath, publicPath), 'public task result')
++    },
++    [
++      artifactEvent(claimed, 'configs/site.v100.json', 'site_config'),
++      artifactEvent(claimed, 'project/configs/site.v100.json', 'project_site_config'),
++      artifactEvent(claimed, 'tasks/task-01/payload/execute.py', 'task_payload'),
++      artifactEvent(claimed, 'project/tasks/task-01/payload/execute.py', 'project_task_payload'),
++      artifactEvent(claimed, publicPath, 'task_result'),
++      { type: 'run.completed', runId: claimed.lease.runId, summary: 'control paths skipped', at: NOW },
++    ],
++  )
++  const worker = daemon(fixture.client, adapter(async (claim) => ({
++    runtime: localRuntime,
++    input: { ...inputFor(claim), workspacePath },
++  })))
++
++  await worker.runOnce()
++
++  assert.deepEqual(uploaded, ['public task result'])
++  assert.deepEqual(manifests.map((manifest) => manifest.relativePath), [publicPath])
++  assert.deepEqual(fixture.completions.map((request: any) => request.terminal), [{
++    status: 'completed', result: { summary: 'control paths skipped' },
++  }])
++})
++
+ test('skips unsupported, infrastructure, hidden, registry, and symlink paths during filesystem harvest', async (t) => {
+   const claimed = invocation({ invocationId: 'invocation_auto_exclusions' })
+   const workspacePath = await artifactWorkspace(t)

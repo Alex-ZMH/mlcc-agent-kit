@@ -1,63 +1,121 @@
-# Public deployment status · 2026-10-29
+# Public deployment status — 2026-10-29
 
-Read [the deployment checklist](../DEPLOY.md) before installing this candidate.
-The public baseline is 0.60.0. It is published, but its MCP process fails to
-start in the current cloud Worker. Version 0.60.1 is a repair candidate, not a
-publicly accepted release.
+Read [the deployment boundary](../DEPLOY.md) before operating this candidate.
+The former `0.60.0` catalog publication was cancelled while its enabled
+deployment and historical pins remain unchanged. `0.60.1` is published and
+visible/hireable in the catalog; its public control round passed without
+submitting compute.
 
-The compute site remains the existing **v100 + Slurm** installation. Public
-users access `https://agent.mattok.cn`; their computers are not compute workers.
-The cloud web server does not replace v100's scientific environments.
+The intended public control plane is `https://agent.mattok.cn`. The v100 site
+remains the existing Slurm installation and retains its engine environments.
+The candidate route is a user-level outbound Worker on v100, not a localhost
+service and not a second cloud-to-LAN SSH hop.
 
-## Routes and runtime
+## Observed v100 readiness
 
-The existing cloud Worker cannot reach the LAN-only v100 SSH alias. A proposed
-route is a Worker running on v100 that connects outward to the public host.
-That route is not deployed: v100 still needs the Worker Node/Codex runtime,
-registration and private operator configuration. It is not a chain of two
-Workers. The existing SSH transport remains the default for development.
+The 2026-10-29 readiness run was deliberately control-only:
 
-For a Worker already running on v100, a private site may set
-`ssh.transport="local"`. The runner then performs file copies and invokes
-Slurm control commands locally. Numerical execution still belongs to Slurm;
-this setting does not start scientific programs directly.
+- Node `22.23.2`, Codex `0.146.0`, Python `3.12.3` and MCP `2.3.0` were
+  installed in the v100 user directory. The Worker healthcheck output was
+  `1`.
+- The existing scientific environment had `numpy`, `ase`, `scipy`, `phonopy`,
+  `phonors`, `symfc`, `h5py` and `pymatgen`; it was preserved unchanged.
+  Dependencies were read-only migrated from the verified Docker SDK. A PyPI
+  installation attempt encountered an index timeout.
+- The private Worker runtime changed one Node path from
+  `/usr/local/bin/node` to `process.execPath`; typecheck passed, 39 cases passed
+  initially, and the remaining case passed a targeted recheck after correcting
+  its hard-coded expectation. A complete final 40-case rerun was not performed.
+  No other runtime adapter changed.
+- The candidate MCP surface has 13 tools. Its catalog has 8 top-level Skills,
+  7 nested module-method routes and 114 CLI routes. The public catalog returned
+  all 15 Skills; individual Skill filters passed in the v100 probe. Four
+  generic operation-contract reads, four scale-contract reads, eight public
+  `*-0601` tasks created and prepared, and six historical `mlcc_read_result`
+  calls completed. All prepared task job IDs were `null`; no Slurm or
+  scientific job was submitted.
+- Seven Linux control tests passed, including the executor no-Slurm guard.
 
-MLCC MCP requires Python >=3.12, `mcp==2.3.0` and `PyYAML==6.0.3`.
-The production cloud image currently selects Python 3.11/MCP 1.28.1 and fails
-at `from mcp.server import MCPServer`. The optional image extension in
-`scripts/runtime/` was built and tested in isolation; it has not replaced the
-production image. It depends on the operator's existing base image.
+The approved target and deployment are now active: server pairing credentials
+are effective, `zeus.service` is active, the v100 user-level
+`mlcc-worker.service` is started, and the database heartbeat is online. Five
+repaired public calls completed, and the same thread/provider session continued
+successfully across a Worker restart. No scientific computation was submitted.
+
+## Publication and validation state
+
+User confirmation has been received and `target_mlcc_v100` was created. The LF
+metadata fix was applied before publication. Under the immutable-store rule,
+the same unpublished deployment ID advanced from revision 2 to final revision 3.
+The current state is:
+
+| Item | State |
+| --- | --- |
+| New target created | yes: `target_mlcc_v100` |
+| Server pairing credentials | effective |
+| `zeus.service` | active |
+| v100 Worker daemon | `mlcc-worker.service` started |
+| Database heartbeat | online |
+| `0.60.1` candidate published | yes; catalog visible/hireable |
+| Candidate deployment revision | final revision `3` |
+| Public control round | five repaired calls completed |
+| Same-thread cross-Worker continuation | succeeded; `public_second_turn_verified=true` |
+| Existing `0.60.0` deployment and durable session pins | enabled/unchanged; catalog publication cancelled |
+
+The six historical result reads completed with statuses `DFT489=`
+`raw_charged_scf_unqualified`, `MD45=` `executed_engineering_fixture` and the
+four continuum results=`not_checked`. The four generic scientific inputs remain
+`deferred_not_input_ready`; real `submit`, `query` and `collect` execution is
+deferred this round, not undeveloped. Because only one same-name record may be
+published, an old conversation must start a new conversation to select
+`0.60.1`; do not claim that an old conversation continued on the new revision.
+
+The initial continuum read used JSON-only copies and failed. Restoring the
+original payload/schema/artifacts directories made all four reads succeed; the
+original task/result records were unchanged and this did not reveal a source
+portability bug.
 
 ## Private site configuration
 
-Preserve the original v100 configuration and its engine environments. Keep
-VASP, ABACUS, LAMMPS, FEniCSX and ngspice paths and PP/NAO/model libraries
-outside this Git repository. Do not overwrite the older full v100 config
-with a four-scale-only template.
+The candidate Bundle declares two operator environment variables:
 
-The candidate Bundle declares two required operator environment variables:
-
-- `MLCC_SITE_CONFIG`: absolute path to the private site template.
+- `MLCC_SITE_CONFIG`: absolute path to the private v100 site template.
 - `MLCC_WORKSPACE_ROOT`: the Worker's managed project-workspace root.
 
-MCP resolves `zeus://workspace/current` to its project cwd and creates a
-project-local `configs/site.v100.json`. The remote root is isolated by the
-project path relative to the managed workspace root. An existing different
-project config is reported for explicit migration rather than overwritten.
-These variables must be supplied through the host's MCP environment allowlist.
+For a Worker running on v100, the private site uses `ssh.transport="local"`
+to invoke local Slurm control. Keep VASP, ABACUS, LAMMPS, FEniCSX and ngspice
+paths, PP/NAO/model libraries, credentials and scheduler details outside Git.
+Do not overwrite the existing full v100 configuration with a four-scale-only
+template. The Worker configuration must be supplied through the host's
+allowlisted environment keys and must not be copied into this repository.
 
-The checked-in cloud template contains only the runner skeleton; it is not a
-complete scientific deployment. The operator must supply explicit engine and
-module bindings. Credentials and licensed pseudopotentials are not distributed.
+The candidate contains no runtime binary, private host configuration or secret.
+The candidate carries three small source patches:
 
-## Acceptance boundary
+1. `runtime-node-path.patch` resolves Node through `process.execPath`.
+2. `codex-config-0146.patch` removes the rejected native
+   `model_supports_reasoning_summaries` override while retaining the catalog
+   `supports_reasoning_summaries` capability.
+3. `mlcc-artifact-boundary.patch` makes two entry points skip
+   `configs/site.v100.json` and `tasks/*/payload`, including an optional
+   `project/` prefix.
 
-This round prohibits new jobs. Isolated checks cover protocol, creation,
-batch-file preparation, local file transport and reading copies of saved
-results. They do not establish new scheduler execution or a public browser
-conversation. Actual submission and new scientific acceptance remain deferred.
+The targeted Codex config test passed, two artifact-boundary targeted tests
+passed and final Worker typecheck passed. The initial Node-path suite remains
+39 passes plus one targeted corrected pass, not a complete final 40-case rerun.
+The initial public error was the old native
+`model_supports_reasoning_summaries` override being rejected by Codex 0.146;
+the config patch removes only that native setting and retains the catalog
+`supports_reasoning_summaries` capability.
 
-Historical jobs FEM 702, phase-field 703, RVE 704 and SPICE 705 completed and
-were read successfully. Their sanitized summary is in
-[the chain audit](public-chain-audit-20261029.md). Binding eight Skills is not
-proof that modeling, DFT, MD and properties also work through the public host.
+## Four-scale records and evidence
+
+FEM 702, phase-field 703, RVE 704 and SPICE 705 are historical completed jobs
+whose saved results were read during the control probe. They are not new
+submissions from this candidate. The v100 all-Skill control evidence is kept in
+`workspace/reports/public-mlcc-eight-skill-20261029/`; second-turn control
+material is in `workspace/reports/public-mlcc-second-turn-20261029/`.
+
+The public control round and cross-Worker continuation are verified. Fresh real
+scientific `submit/query/collect` execution remains deferred with no new job;
+the release status is **public control passed; no compute submitted**.

@@ -5,6 +5,8 @@ description: Prepare and interpret full static 2D/3D branch-local tangent dielec
 
 # Static tangent dielectric response
 
+公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-phase-field/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 Select phase_field dielectric_tangent / dielectric_tangent_si for the complete static d< D >/dEbar tensor. It is extracted by UFL AD of the full coupled equilibrium and displacement functional, with two/three linear sensitivity directions. FD is optional independent nonlinear verification, never the extraction algorithm. Do not confuse this with an assumed matrix background coefficient, a dynamic P–E slope, device capacitance, finite-frequency complex dielectric or material εr.

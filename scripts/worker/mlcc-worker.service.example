@@ -1,0 +1,13 @@
+[Unit]
+Description=MLCC v100 outbound Worker
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/projects/mlcc/public-worker/current
+ExecStart=%h/projects/mlcc/public-worker/current/bin/node --env-file=%h/projects/mlcc/public-worker/config/worker.env --import tsx apps/worker/src/main.ts
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

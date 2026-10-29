@@ -1,0 +1,667 @@
+{
+  "schema": "mlcc.all-skill-acceptance.v1",
+  "date": "2026-10-29",
+  "bundle_version": "0.60.1",
+  "status": "public_control_passed_no_compute",
+  "mcp_tools": 13,
+  "top_level_skills": 8,
+  "nested_skills": 7,
+  "cli_operations": 114,
+  "skills": [
+    {
+      "id": "model-mlcc-structures",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "run-mlcc-dft",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "run-mlcc-md",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "run-mlcc-phase-field",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "run-mlcc-rve",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "run-mlcc-fem",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "run-mlcc-spice",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "compute-mlcc-properties",
+      "scope": "top_level",
+      "route": "passed"
+    },
+    {
+      "id": "mlcc-linear-electrostatics",
+      "scope": "nested",
+      "route": "passed"
+    },
+    {
+      "id": "mlcc-device-coupling",
+      "scope": "nested",
+      "route": "passed"
+    },
+    {
+      "id": "mlcc-scalar-ferroelectric",
+      "scope": "nested",
+      "route": "passed"
+    },
+    {
+      "id": "mlcc-tangent-dielectric",
+      "scope": "nested",
+      "route": "passed"
+    },
+    {
+      "id": "mlcc-vector-ferroelectric",
+      "scope": "nested",
+      "route": "passed"
+    },
+    {
+      "id": "mlcc-static-rve",
+      "scope": "nested",
+      "route": "passed"
+    },
+    {
+      "id": "spice-linear-circuits",
+      "scope": "nested",
+      "route": "passed"
+    }
+  ],
+  "tasks": [
+    {
+      "skill": "model",
+      "operation": "import-model",
+      "task_id": "control-model-0601",
+      "status": "prepared",
+      "scheduler_job_id": null,
+      "science_input_validation": "deferred_to_Slurm"
+    },
+    {
+      "skill": "dft",
+      "operation": "create-abacus",
+      "task_id": "control-dft-0601",
+      "status": "prepared",
+      "scheduler_job_id": null,
+      "science_input_validation": "deferred_to_Slurm"
+    },
+    {
+      "skill": "md",
+      "operation": "create-lammps",
+      "task_id": "control-md-0601",
+      "status": "prepared",
+      "scheduler_job_id": null,
+      "science_input_validation": "deferred_to_Slurm"
+    },
+    {
+      "skill": "properties",
+      "operation": "deliver-properties",
+      "task_id": "control-properties-0601",
+      "status": "prepared",
+      "scheduler_job_id": null,
+      "science_input_validation": "deferred_to_Slurm"
+    },
+    {
+      "skill": "fem",
+      "operation": "electrostatics_2d_quantities",
+      "task_id": "control-fem-0601",
+      "status": "prepared",
+      "scheduler_job_id": null
+    },
+    {
+      "skill": "phase_field",
+      "operation": "vector_evolve_si",
+      "task_id": "control-phase_field-0601",
+      "status": "prepared",
+      "scheduler_job_id": null
+    },
+    {
+      "skill": "rve",
+      "operation": "homogenize_electrostatics_2d",
+      "task_id": "control-rve-0601",
+      "status": "prepared",
+      "scheduler_job_id": null
+    },
+    {
+      "skill": "spice",
+      "operation": "ac_impedance",
+      "task_id": "control-spice-0601",
+      "status": "prepared",
+      "scheduler_job_id": null
+    }
+  ],
+  "saved_results": [
+    {
+      "task_id": "fem-20261029",
+      "job_id": "702",
+      "status": "read"
+    },
+    {
+      "task_id": "p29",
+      "job_id": "703",
+      "status": "read"
+    },
+    {
+      "task_id": "r29",
+      "job_id": "704",
+      "status": "read"
+    },
+    {
+      "task_id": "spice-20261029",
+      "job_id": "705",
+      "status": "read"
+    }
+  ],
+  "tool_calls": [
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_describe_operations",
+    "mlcc_create_operation_task",
+    "mlcc_prepare_calculation",
+    "mlcc_describe_operations",
+    "mlcc_create_operation_task",
+    "mlcc_prepare_calculation",
+    "mlcc_describe_operations",
+    "mlcc_create_operation_task",
+    "mlcc_prepare_calculation",
+    "mlcc_describe_operations",
+    "mlcc_create_operation_task",
+    "mlcc_prepare_calculation",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_read_result",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_read_result",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_read_result",
+    "mlcc_create_scale_task",
+    "mlcc_prepare_calculation",
+    "mlcc_read_result"
+  ],
+  "jobs_submitted": 0,
+  "scientific_computations": 0,
+  "linux_control_tests": {
+    "passed": 7,
+    "failed": 0
+  },
+  "runtime": {
+    "codex": "0.146.0",
+    "mcp": "2.3.0",
+    "node": "22.23.2",
+    "worker_healthcheck_output": 1,
+    "python": "3.12.3"
+  },
+  "production": {
+    "gate": "operator_approval_granted_and_applied",
+    "worker_started": true,
+    "server_environment_switched": true,
+    "target_created": true,
+    "candidate_published": true,
+    "second_turn_verified": true
+  },
+  "limitations": [
+    "CLI argument shape is checked at task creation; four generic input cases remain deferred_not_input_ready",
+    "No new submit/query/collect or scientific execution was tested",
+    "All new scheduler_job_id values remain null",
+    "Saved scientific statuses remain unqualified or not_checked"
+  ],
+  "saved_atomistic_results": [
+    {
+      "task_id": "p4-czo-vo8-q2-pot-scf11-v001",
+      "engine": "abacus",
+      "historical_scheduler_job_id": "489",
+      "schema": "mlcc.task-result-view.v1",
+      "status": "read",
+      "scientific_status": "raw_charged_scf_unqualified"
+    },
+    {
+      "task_id": "p10-ni-lammps-nve100-v001",
+      "engine": "lammps",
+      "historical_scheduler_job_id": "45",
+      "schema": "mlcc.task-result-view.v1",
+      "status": "read",
+      "scientific_status": "executed_engineering_fixture"
+    }
+  ],
+  "final_candidate_mcp_read": {
+    "status": "passed",
+    "server_info": {
+      "description": "Explicit Slurm task lifecycle for the MLCC project.",
+      "name": "mlcc-agent",
+      "title": "MLCC Slurm runner",
+      "version": "0.60.1"
+    },
+    "tools": 13,
+    "skills": 15,
+    "operations": 114,
+    "saved_results": [
+      {
+        "task_id": "fem-20261029",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "p29",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "r29",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "spice-20261029",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "p4-czo-vo8-q2-pot-scf11-v001",
+        "status": "read",
+        "scientific_status": "raw_charged_scf_unqualified"
+      },
+      {
+        "task_id": "p10-ni-lammps-nve100-v001",
+        "status": "read",
+        "scientific_status": "executed_engineering_fixture"
+      }
+    ],
+    "jobs_submitted": 0,
+    "scientific_computations": 0
+  },
+  "public_control_acceptance": {
+    "schema": "mlcc.public-control-acceptance.v1",
+    "bundle_version": "0.60.1",
+    "deployment_revision": 3,
+    "status": "passed",
+    "tasks": [
+      {
+        "task_id": "public-modeling-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-dft-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-md-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-properties-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-fem-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-phase-field-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-rve-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      },
+      {
+        "task_id": "public-spice-0601",
+        "status": "prepared",
+        "scheduler_job_id": null
+      }
+    ],
+    "tool_call_counts": {
+      "mlcc_describe_operations": 5,
+      "mlcc_describe_scales": 6,
+      "exec_command": 4,
+      "mlcc_create_operation_task": 4,
+      "mlcc_create_scale_task": 4,
+      "mlcc_prepare_calculation": 8,
+      "mlcc_read_result": 10,
+      "mlcc_read_scale_result": 1
+    },
+    "tool_calls": [
+      {
+        "at": "2026-10-29T13:55:15.075Z",
+        "name": "mlcc_describe_operations"
+      },
+      {
+        "at": "2026-10-29T13:57:37.464Z",
+        "name": "mlcc_describe_operations"
+      },
+      {
+        "at": "2026-10-29T13:57:46.953Z",
+        "name": "mlcc_describe_operations"
+      },
+      {
+        "at": "2026-10-29T13:57:50.682Z",
+        "name": "mlcc_describe_operations"
+      },
+      {
+        "at": "2026-10-29T13:57:59.091Z",
+        "name": "mlcc_describe_operations"
+      },
+      {
+        "at": "2026-10-29T13:58:08.078Z",
+        "name": "mlcc_describe_scales"
+      },
+      {
+        "at": "2026-10-29T13:58:13.003Z",
+        "name": "mlcc_describe_scales"
+      },
+      {
+        "at": "2026-10-29T13:58:25.873Z",
+        "name": "mlcc_describe_scales"
+      },
+      {
+        "at": "2026-10-29T13:58:37.388Z",
+        "name": "mlcc_describe_scales"
+      },
+      {
+        "at": "2026-10-29T13:58:42.87Z",
+        "name": "mlcc_describe_scales"
+      },
+      {
+        "at": "2026-10-29T13:58:46.818Z",
+        "name": "mlcc_describe_scales"
+      },
+      {
+        "at": "2026-10-29T14:12:42.605Z",
+        "name": "exec_command"
+      },
+      {
+        "at": "2026-10-29T14:12:48.804Z",
+        "name": "exec_command"
+      },
+      {
+        "at": "2026-10-29T14:13:05.992Z",
+        "name": "mlcc_create_operation_task"
+      },
+      {
+        "at": "2026-10-29T14:13:22.304Z",
+        "name": "mlcc_create_operation_task"
+      },
+      {
+        "at": "2026-10-29T14:13:35.268Z",
+        "name": "mlcc_create_operation_task"
+      },
+      {
+        "at": "2026-10-29T14:13:41.804Z",
+        "name": "mlcc_create_operation_task"
+      },
+      {
+        "at": "2026-10-29T14:14:04.29Z",
+        "name": "mlcc_create_scale_task"
+      },
+      {
+        "at": "2026-10-29T14:14:32.208Z",
+        "name": "mlcc_create_scale_task"
+      },
+      {
+        "at": "2026-10-29T14:14:48.701Z",
+        "name": "mlcc_create_scale_task"
+      },
+      {
+        "at": "2026-10-29T14:15:04.497Z",
+        "name": "mlcc_create_scale_task"
+      },
+      {
+        "at": "2026-10-29T14:15:11.049Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-modeling-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:15.538Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-dft-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:22.133Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-md-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:26.747Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-properties-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:42.731Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-fem-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:47.69Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-phase-field-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:51.58Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-rve-0601"
+      },
+      {
+        "at": "2026-10-29T14:15:56.006Z",
+        "name": "mlcc_prepare_calculation",
+        "task_id": "public-spice-0601"
+      },
+      {
+        "at": "2026-10-29T14:18:08Z",
+        "name": "mlcc_read_result",
+        "task_id": "fem-20261029"
+      },
+      {
+        "at": "2026-10-29T14:18:17.2Z",
+        "name": "exec_command"
+      },
+      {
+        "at": "2026-10-29T14:18:44.724Z",
+        "name": "exec_command"
+      },
+      {
+        "at": "2026-10-29T14:19:07.551Z",
+        "name": "mlcc_read_result",
+        "task_id": "p29"
+      },
+      {
+        "at": "2026-10-29T14:19:13.03Z",
+        "name": "mlcc_read_result",
+        "task_id": "r29"
+      },
+      {
+        "at": "2026-10-29T14:19:17.72Z",
+        "name": "mlcc_read_result",
+        "task_id": "spice-20261029"
+      },
+      {
+        "at": "2026-10-29T14:19:23.434Z",
+        "name": "mlcc_read_result",
+        "task_id": "p4-czo-vo8-q2-pot-scf11-v001"
+      },
+      {
+        "at": "2026-10-29T14:19:28.528Z",
+        "name": "mlcc_read_result",
+        "task_id": "p10-ni-lammps-nve100-v001"
+      },
+      {
+        "at": "2026-10-29T14:19:41.864Z",
+        "name": "mlcc_read_scale_result",
+        "task_id": "fem-20261029"
+      },
+      {
+        "at": "2026-10-29T14:23:19.818Z",
+        "name": "mlcc_read_result",
+        "task_id": "fem-20261029"
+      },
+      {
+        "at": "2026-10-29T14:23:34.2Z",
+        "name": "mlcc_read_result",
+        "task_id": "p29"
+      },
+      {
+        "at": "2026-10-29T14:23:39.107Z",
+        "name": "mlcc_read_result",
+        "task_id": "r29"
+      },
+      {
+        "at": "2026-10-29T14:23:44.688Z",
+        "name": "mlcc_read_result",
+        "task_id": "spice-20261029"
+      }
+    ],
+    "saved_results": [
+      {
+        "task_id": "p4-czo-vo8-q2-pot-scf11-v001",
+        "status": "read",
+        "scientific_status": "raw_charged_scf_unqualified"
+      },
+      {
+        "task_id": "p10-ni-lammps-nve100-v001",
+        "status": "read",
+        "scientific_status": "executed_engineering_fixture"
+      },
+      {
+        "task_id": "fem-20261029",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "p29",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "r29",
+        "status": "read",
+        "scientific_status": "not_checked"
+      },
+      {
+        "task_id": "spice-20261029",
+        "status": "read",
+        "scientific_status": "not_checked"
+      }
+    ],
+    "jobs_submitted": 0,
+    "scientific_computations": 0,
+    "science_input_validation": "four_generic_cases_deferred_not_input_ready",
+    "limitations": [
+      "No new Slurm submit/query/collect or scientific execution was tested",
+      "Native scientific input readiness and production qualification remain separate"
+    ]
+  },
+  "production_snapshot": {
+    "bundle_version": "0.60.1",
+    "deployment_revision": 3,
+    "candidate_published": true,
+    "old_deployment_enabled": true,
+    "old_catalog_published": false,
+    "worker": {
+      "id": "worker_mlcc_v100_01",
+      "execution_target_id": "target_mlcc_v100",
+      "last_heartbeat_at": "2026-10-29T22:29:44.016+08:00"
+    },
+    "invocations": [
+      {
+        "id": "invocation_16825efdbe9c48c28feb36c1d0a14bdc",
+        "status": "failed",
+        "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+        "run_id": "run_85d623a17eca4389bafdd8ee53ab2995"
+      },
+      {
+        "id": "invocation_dc27d58b423b40b18a03550d5134ff1f",
+        "status": "completed",
+        "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+        "run_id": "run_2d6972ac8e194503b6ff32e4604289e1"
+      },
+      {
+        "id": "invocation_7d41753f5f33436db53e04a55f781473",
+        "status": "completed",
+        "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+        "run_id": "run_7d9d40cfd7754f34b42e4a9dd005b52f"
+      },
+      {
+        "id": "invocation_af7426fd5dd84d0f9d1525bffcb9358b",
+        "status": "completed",
+        "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+        "run_id": "run_ae9236025d264ac4ad6bf95cda8135bf"
+      },
+      {
+        "id": "invocation_51503b698b8b4a829e5a915ec48cc515",
+        "status": "completed",
+        "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+        "run_id": "run_3eb5cc0be66f4df9b6dc40a2b45bb6a6"
+      },
+      {
+        "id": "invocation_fde820ecdd224baab1077a7445a7cb77",
+        "status": "completed",
+        "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+        "run_id": "run_c7754b5b83a44a5c918794cc0b6a9088"
+      }
+    ]
+  },
+  "runtime_fixes": [
+    {
+      "patch": "runtime-node-path.patch",
+      "typecheck": "passed",
+      "initial_passed": 39,
+      "initial_failed": 1,
+      "corrected_targeted_passed": 1
+    },
+    {
+      "patch": "codex-config-0146.patch",
+      "reason": "Codex 0.146 rejected model_supports_reasoning_summaries config override",
+      "targeted_passed": 1,
+      "catalog_supports_reasoning_summaries": "preserved"
+    },
+    {
+      "patch": "mlcc-artifact-boundary.patch",
+      "reason": "Observed internal site config was harvested as a user artifact",
+      "targeted_passed": 2,
+      "final_worker_typecheck": "passed"
+    }
+  ],
+  "saved_evidence_copy_issue": {
+    "initial": "Four continuum records were copied without required payload schemas and artifacts; saved reads failed",
+    "resolution": "Copied the complete unchanged saved task directories; all four reads then passed",
+    "task_identities_and_results_modified": false,
+    "scientific_calculations": 0
+  }
+}

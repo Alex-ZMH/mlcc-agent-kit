@@ -2,27 +2,62 @@
 
 ## Scope and conclusion
 
-This audit covers the MLCC GitHub integration delivery only. The repository is
-not the MatterAI host source, and it does not replace the independently released
-host runtime, workspace resolver or outbound Worker.
+This audit covers the MLCC GitHub integration delivery and its control-only
+v100 readiness evidence. The repository is not the MatterAI host source and
+does not replace the independently released host runtime, workspace resolver
+or outbound Worker.
 
-The checked-in candidate Bundle is `0.60.1`. The GitHub delivery baseline is
-branch `codex/cloud-delivery-20261029` at `5dbb0e4`; the runtime
-`integration/four-scale-compute-20261028` branch is only a development reference.
-The candidate manifest now contains ten MCP tools and the required
-`MLCC_SITE_CONFIG` and `MLCC_WORKSPACE_ROOT` variables, but it is not deployed
-and its isolated control-only test passed. The `0.60.0` baseline was
-installed/published, while its public MCP path failed. Therefore the current
-public-compute status is **not available**.
+The `0.60.1` candidate Bundle contains 13 MCP tools. The public catalog returned
+all 15 Skills; individual Skill filters passed in the v100 probe. Four generic
+operation-contract reads, four scale-contract reads, eight public `*-0601` tasks
+created and prepared, and six historical `mlcc_read_result` calls completed.
+User approval is complete:
+`target_mlcc_v100` was created, the server pairing is active, `zeus.service` is
+active, the v100 `mlcc-worker.service` is started with an online database
+heartbeat, and the candidate is published. The LF metadata fix produced final
+deployment revision 3 from the same unpublished deployment ID's revision 2.
+Five repaired public calls completed, and the same thread/provider session
+continued successfully across a Worker restart. Current status is **public
+control passed; no compute submitted**. This is not a claim of scientific
+execution or production qualification.
 
-The v100 records below prove an earlier engineering lifecycle. They do not prove
-that a public user can currently create or submit a new computation.
+## Control-only evidence
 
-## Evidence verification
+The 2026-10-29 v100 check used the user-level runtime and preserved the
+existing scientific environment:
 
-The query-final and read-result records in the local acceptance archive were
-checked for task identity, operation, scheduler state, exit code and result-view
-schema:
+| Check | Result |
+| --- | --- |
+| Node / Codex | `22.23.2` / `0.146.0` |
+| Python / MCP | `3.12.3` / `2.3.0` |
+| Worker healthcheck | output `1` |
+| Scientific environment | `numpy`, `ase`, `scipy`, `phonopy`, `phonors`, `symfc`, `h5py`, `pymatgen` present; unchanged |
+| Worker runtime | one Node path changed to `process.execPath`; typecheck passed |
+| Worker cases | 39 initial passes + one targeted pass after correcting the Node-path expectation; no complete final 40-case rerun; other runtimes unchanged |
+| Candidate MCP | 13 tools |
+| Skill routes | 8 top-level + 7 nested = 15; all v100 control routes passed |
+| CLI catalog | 114 routes |
+| Task controls | 8 create/prepare checks passed |
+| Historical reads | six `mlcc_read_result` calls completed: DFT489 `raw_charged_scf_unqualified`, MD45 `executed_engineering_fixture`, four continuum results `not_checked` |
+| New scheduler IDs | all `null` |
+| Slurm/scientific submission | none |
+| Linux control tests | 7 passed, including the no-Slurm executor guard |
+| Public control calls | 5 repaired calls completed; same thread/provider session survived Worker restart |
+| Deployment target | `target_mlcc_v100` created; server pairing active |
+| Services | `zeus.service` active; `mlcc-worker.service` started; DB heartbeat online |
+| Candidate publication | `0.60.1` visible/hireable; final deployment revision `3` |
+| Public model validation | Control round completed; no real scientific execution |
+
+MCP dependencies were read-only migrated from the verified Docker SDK. A PyPI
+installation attempt encountered an index timeout. No scientific environment
+was changed. The evidence files are retained locally under
+`workspace/reports/public-mlcc-eight-skill-20261029/` and
+`workspace/reports/public-mlcc-second-turn-20261029/`; private runtime files,
+credentials and raw host configuration are not copied into GitHub.
+
+## Historical result records
+
+The following records were read without submitting a new job:
 
 | Task | Module | Operation | Scheduler job | State | Exit | Result view | Scientific status |
 | --- | --- | --- | ---: | --- | --- | --- | --- |
@@ -31,94 +66,93 @@ schema:
 | `r29` | `rve` | `homogenize_electrostatics_2d` | 704 | `COMPLETED` | `0:0` | `mlcc.task-result-view.v1` | `not_checked` |
 | `spice-20261029` | `spice` | `ac_impedance` | 705 | `COMPLETED` | `0:0` | `mlcc.task-result-view.v1` | `not_checked` |
 
-These are historical acceptance artifacts, not new submissions by the 0.60.1
-candidate. The raw archive is local under
-`versions/0.60.0/evidence/four-scale-workbench-20261028/` and is deliberately
-not part of this Git repository. It contains site-specific paths, runtime
-details and host-side material. A future public release may publish only a
-sanitized summary.
+These are engineering records, not public acceptance or material qualification.
 
-## Why the public MCP path is not accepted
+The initial continuum read used JSON-only copies and failed. Restoring the
+original payload/schema/artifacts directories made all four reads succeed; the
+original task/result records were unchanged and this did not reveal a source
+portability bug.
 
-The published `0.60.0` Bundle manifest allowed seven lifecycle tools only:
+## Why the public chain is still open
 
-`mlcc_list_tasks`, `mlcc_prepare_calculation`, `mlcc_transfer_calculation`,
-`mlcc_submit_calculation`, `mlcc_query_calculation`,
-`mlcc_cancel_calculation`, and `mlcc_collect_calculation`.
+The former `0.60.0` catalog publication was cancelled while its deployment
+remains enabled and historical pins remain unchanged. The candidate's 13-tool
+surface and active v100 route have now been published, and the public control
+round completed across the Worker restart. Real `submit`, `query` and `collect`
+execution was not performed in this round; it is deferred, not undeveloped.
 
-The published MCP server also treated the `zeus://workspace/current` arguments
-as ordinary paths and did not expose the four-scale create/read/describe tools.
-The candidate source and Bundle manifest now contain the ten-tool surface and
-two required environment variables, but the candidate is not deployed and the
-isolated control-only test passed. It must not be described as a deployed public
-fix yet. The cloud image's Python 3.11/MCP 1.28.1 cannot import `MCPServer`;
-an isolated Python 3.12.13/MCP 2.3.0 image passed the protocol check. That image
-has not replaced the production Worker.
-
-The four-scale probe called describe/create/prepare/transfer/read for each
-module. It copied files within an isolated container with networking disabled
-and read copies of the original 702–705 result directories. New task job IDs
-remained null. No submit, query, cancel or collect tool was invoked by that
-probe. See [sanitized evidence](evidence/no-submit-audit-20261029.json).
+The v100 route is designed as an outbound user-level Worker. A private site
+configuration can use `ssh.transport="local"` to control Slurm locally on v100;
+this is not a localhost requirement and does not start a computation by itself.
+The existing full v100 engine environments remain the source of truth.
 
 ## Version and ownership boundary
 
 | Item | Current fact | Release implication |
 | --- | --- | --- |
-| `bundle.json` / `pyproject.toml` | `0.60.1` | Manifest and isolated controls verified; public deployment remains. |
-| Published baseline | `0.60.0` | Installed/published baseline whose public MCP path failed. |
-| GitHub delivery baseline | `codex/cloud-delivery-20261029` / `5dbb0e4` | Source-distribution baseline, not the runtime integration branch. |
-| Candidate label | `0.60.1-candidate` | Not deployed and not cut to production. |
-| Historical enabled source | `0.57` | Retained for provenance; not the candidate or public target. |
-| MatterAI host | Independent private runtime | Must carry the workspace-resolver and replacement-thread MCP fixes separately. |
-| Public Worker | Deployed | The missing piece is the outbound-worker route on v100. |
-| v100 outbound-worker route | Missing | No public user path is available yet. |
-| v100 | Existing SSH/Slurm engineering site | Its historical jobs do not establish public compute availability. |
-| localhost | Not required by target contract | Current public-chain verification is not passed. |
+| Candidate Bundle | `0.60.1`, 13 MCP tools | Published; multi-turn validation incomplete |
+| Candidate status | `public_control_passed_no_compute` | Published; control validation passed with no compute |
+| Published baseline | `0.60.0` | Catalog unpublished; deployment enabled; historical pins unchanged |
+| GitHub delivery baseline | `codex/cloud-delivery-20261029` / `5dbb0e4` | Source-distribution baseline |
+| MatterAI host | Independent private runtime | Workspace-resolver release remains separate |
+| Public Worker | Candidate `0.60.1` deployed | Five public control calls completed |
+| v100 outbound route | Target created; Worker started; heartbeat online | Cross-Worker continuation passed |
+| localhost | Not required by target contract | Public control accepted; compute deferred |
 
-This GitHub repository contains MLCC-owned agent integration: modules, Skills,
-schemas, CLI and adapters. It intentionally excludes MatterAI host source,
-upstream reference trees, credentials, SSH keys, private site configuration and
-raw scientific/runtime output.
+The repository intentionally excludes MatterAI host source, upstream reference
+trees, credentials, SSH keys, private site configuration, runtime binaries and
+raw scientific/runtime output. The existing `0.60.0` target and durable
+session pins are not retargeted.
 
-The Skill boundary is asymmetric. The new MCP surface covers only the four
-scales below; modeling, DFT, MD and properties still require CLI creation or
-consumption and have not completed a public conversational loop:
+## Skill boundary
 
-| Skill | Current invocation surface | Public closed loop |
+The candidate catalog binds the same eight top-level Skills: modeling, DFT, MD,
+phase field, RVE, FEM, SPICE and properties. It also exposes seven nested
+module-method routes, for 15 Skill routes total, and 114 CLI catalog entries.
+All 15 passed on the v100 and public control paths. This does not qualify a
+scientific computation or material result.
+
+| Skill group | Control-path status | Public closed loop |
 | --- | --- | --- |
-| modeling | CLI create/consume | not verified |
-| DFT | CLI create/consume | not verified |
-| MD | CLI create/consume | not verified |
-| properties | CLI create/consume | not verified |
-| phase field | candidate MCP create/read/describe | not deployed |
-| RVE | candidate MCP create/read/describe | not deployed |
-| FEM | candidate MCP create/read/describe | not deployed |
-| SPICE | candidate MCP create/read/describe | not deployed |
+| modeling, DFT, MD, properties | public/v100 control calls passed | scientific execution deferred |
+| phase field, RVE, FEM, SPICE | public/v100 control calls passed | scientific execution deferred |
 
 ## Complete deployment gap list
 
-- [x] Review the candidate source changes; resolve the revision through Git.
-- [x] Synchronize `mlcc-agent/bundle.json` with ten candidate MCP tools and the
-      two required environment variables in the working tree.
-- [x] Run the real MCP entry in an isolated fixture workspace, including
-      initialize/list, four describe/create/prepare/transfer/read sequences.
-      This is not a host Bundle-install or public-browser acceptance.
-- [ ] Release the independent MatterAI host workspace-resolver fix and test
-      replacement-thread MCP capability loading on the public host.
-- [ ] Configure and verify the missing outbound-worker route on v100; the
-      public Worker is already deployed.
-- [ ] Configure Worker registration, private v100/site paths and existing
-      engine environments outside Git. The local Worker route does not need
-      a new cloud-to-LAN SSH identity.
-- [ ] Obtain separate user authorization before any real end-to-end job. That
-      acceptance is deferred; do not submit a job in this round or relabel jobs
-      702–705 as a new public run.
-- [ ] Publish the catalog candidate only after the isolated test, host fix and
-      v100 route checks pass; the public production cut is deferred this round.
-- [x] Include a sanitized evidence summary and retain raw evidence locally.
-- [x] Mark older 0.57/0.56 operational documents as historical so they cannot
-      be mistaken for the 0.60.1 target state.
+- [x] Review candidate source and Bundle manifest; synchronize the 13-tool
+      candidate MCP surface and required environment variables.
+- [x] Verify v100 user-level runtimes, Worker healthcheck and typecheck without
+      starting the daemon.
+- [x] Confirm the public catalog returned all 15 Skills; individual Skill
+      filters passed in the v100 probe. Four generic operation-contract reads,
+      four scale-contract reads, eight public `*-0601` tasks created and
+      prepared, and six historical result reads passed; all prepared scheduler
+      IDs remained null.
+- [x] Run seven Linux control tests, including the no-Slurm executor guard.
+- [x] Obtain the required user confirmation and create `target_mlcc_v100`.
+- [x] Activate server pairing, `zeus.service`, `mlcc-worker.service` and the
+      database heartbeat. Existing `0.60.0` pins remain unchanged.
+- [ ] Release the independent MatterAI workspace-resolver fix and verify
+      replacement-thread MCP loading on the public host.
+- [x] Apply the LF metadata fix and publish candidate deployment revision 3;
+      ordinary users can see/hire the candidate.
+- [x] Complete five repaired public calls and verify same-thread continuation
+      across the Worker restart.
+- [ ] Submit/query/collect a real computation; deferred in this round with no
+      new Slurm/scientific job, not an undeveloped API.
+- [ ] Provide four generic scientific inputs when they become ready; current
+      status is `deferred_not_input_ready`.
 
-Until every applicable gate is closed, release status remains **not publicly
-available**.
+The three runtime patches are `runtime-node-path.patch`,
+`codex-config-0146.patch` and `mlcc-artifact-boundary.patch`; targeted config
+and artifact tests passed, final Worker typecheck passed, and the Node-path
+suite remains 39 initial passes plus one targeted corrected pass. An old
+conversation must be recreated to select `0.60.1` because only one same-name
+record can be published.
+
+The initial public error was the old native
+`model_supports_reasoning_summaries` override being rejected by Codex 0.146;
+the config patch removes only that native setting and retains the catalog
+`supports_reasoning_summaries` capability.
+
+Release status is **public control passed; no compute submitted**.

@@ -10,7 +10,20 @@ enabled: true
 
 在一个对话中处理明确的科学问题，先区分模型、所求量和已有输入，再选择一个领域Skill。各领域同级独立运行；DFT→训练→MD是已有可选路线，不是相场、RVE、FEM或SPICE的前置。当前不自动进行尺度传参。
 
-0.60.1 对话中的 FEM、相场、RVE、SPICE 优先按[公共任务生命周期](../../skills/references/task-lifecycle.md)调用实际绑定的 describe/create/read MCP。创建不等于提交；用户禁止真实计算时不能调用 submit。建模、DFT、MD 与通用性质仍依赖各自 CLI 创建/消费入口；宿主没有这些执行入口时如实报告缺项，不把八个 Skill 的绑定视为八条公网执行链已验收。
+0.60.1 对话中的所有 Skill 统一从[公网操作入口](../../skills/references/public-operations.md)读取动态 catalog、创建宿主绑定任务或读取已有结果。四尺度模块的 describe/create/read 仍复用模块 ops；创建不等于提交。建模、DFT、MD 与通用性质也必须走同一入口或其已绑定 CLI 实现；宿主没有执行入口时如实报告缺项，不把八个 Skill 的绑定视为八条公网执行链已验收。
+
+## 公网统一操作入口
+
+公网请求只使用以下三个已绑定入口：
+
+- `mlcc_describe_operations(skill_id?, operation?)`：动态列出 8 个顶层 Skill、7 个模块方法 Skill 以及 114 个 CLI catalog 条目，并返回所选 operation 的输入 schema。catalog 是能力说明，不是求解器或科学验收证明。
+- `mlcc_create_operation_task(operation, arguments, request)`：按 CLI parser 的 schema 创建 v100-local Slurm 控制任务。`site`、`workspace` 和站点资源由宿主注入，参数中的路径必须保持在项目工作区；Worker 只负责控制与回传，不在 Worker 上运行科学数值。
+- `mlcc_read_result(task_id)`：只读取已有 TaskRecord 和保存的 execution、quality、专业结果及 artifacts，不重算、不补缺项。
+
+本轮联调只验证 catalog、create、prepare、必要 copy 和 read，新任务的
+`scheduler_job_id` 保持 `null`，不调用 `submit`。这是当前验证策略，不是永久关闭产品能力；
+submit/query/cancel/collect 仍由既有生命周期和用户/租户权限决定。详细顺序和四尺度旧 ops
+复用关系见[公网操作入口](../../skills/references/public-operations.md)。
 
 ## 领域路由
 

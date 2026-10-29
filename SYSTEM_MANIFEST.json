@@ -2,7 +2,7 @@
   "system": "mlcc",
   "delivery_label": "0.60.1-candidate",
   "bundle_version": "0.60.1",
-  "candidate_status": "control_checks_passed_not_deployed",
+  "candidate_status": "public_control_passed_no_compute",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
     "delivery_branch": "codex/cloud-delivery-20261029",
@@ -15,14 +15,44 @@
   },
   "public_delivery": {
     "published_baseline": "0.60.0",
-    "published_status": "installed_and_published_but_public_mcp_failed",
-    "candidate_status": "control_checks_passed_not_deployed",
-    "public_compute_status": "not_available",
+    "published_status": "catalog_unpublished_deployment_enabled_true_historical_pins_unchanged",
+    "published_baseline_issue": "catalog_publication_cancelled_deployment_enabled_true",
+    "published_baseline_deployment_enabled": true,
+    "historical_pins_unchanged": true,
+    "candidate_status": "public_control_passed_no_compute",
+    "public_compute_status": "no_compute_submitted",
     "public_entrypoint": "https://agent.mattok.cn",
+    "registration_status": "approved_target_created",
+    "catalog_visibility": "published_visible_to_regular_users",
+    "candidate_deployment_revision": 3,
+    "immutable_store_update": "same_unpublished_deployment_id_revision_2_to_3_after_lf_metadata_fix",
+    "public_control_status": "five_repaired_calls_completed",
+    "public_first_turn_status": "completed",
+    "public_second_turn_status": "verified",
+    "same_thread_cross_worker_restart": "succeeded",
+    "conversation_selection_rule": "old_conversations_require_new_conversation_to_select_0.60.1",
     "localhost_dependency": {
       "target_contract": false,
       "currently_verified": false
     }
+  },
+  "operator_approval": {
+    "status": "granted",
+    "target_id": "target_mlcc_v100",
+    "reason": "User confirmation received and target registration completed",
+    "target_created": true,
+    "server_environment_switched": true,
+    "server_pairing_credentials_active": true,
+    "zeus_service_active": true,
+    "worker_daemon_started": true,
+    "worker_service": "mlcc-worker.service",
+    "database_heartbeat_online": true,
+    "candidate_published": true,
+    "public_second_turn_verified": true,
+    "public_control_calls_completed": 5,
+    "same_thread_cross_worker_restart": true,
+    "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+    "provider_session": "01a187f1…"
   },
   "agent": {
     "name": "mlcc",
@@ -48,6 +78,9 @@
     ],
     "candidate_mcp_allowed_tools": [
       "mlcc_list_tasks",
+      "mlcc_describe_operations",
+      "mlcc_create_operation_task",
+      "mlcc_read_result",
       "mlcc_describe_scales",
       "mlcc_create_scale_task",
       "mlcc_read_scale_result",
@@ -58,21 +91,161 @@
       "mlcc_cancel_calculation",
       "mlcc_collect_calculation"
     ],
+    "candidate_mcp_tool_count": 13,
     "candidate_mcp_required_env": [
       "MLCC_SITE_CONFIG",
       "MLCC_WORKSPACE_ROOT"
     ],
-    "candidate_mcp_status": "manifest_and_control_checks_passed_not_deployed"
+    "candidate_skill_route_counts": {
+      "top_level_skills": 8,
+      "nested_module_method_routes": 7,
+      "total_skill_routes": 15,
+      "cli_routes": 114
+    },
+    "candidate_mcp_status": "public_control_passed_no_compute"
   },
   "execution_chain": {
     "matterai_host": "independent_private_host_required_and_not_in_this_repository",
     "agent_workspace_resolver": "host_side_fix_required_and_not_in_this_repository",
-    "public_worker": "deployed",
-    "v100_outbound_worker_route": "missing",
-    "v100": "existing_slurm_site_used_for_local_acceptance_only"
+    "public_worker": "deployed_candidate_0.60.1",
+    "v100_outbound_worker_route": "active_target_created_worker_started_heartbeat_online",
+    "v100": "systemd_mlcc_worker_active_db_heartbeat_online",
+    "v100_registration_target": "target_mlcc_v100_created",
+    "v100_server_environment": "paired_credentials_active_zeus_service_active",
+    "v100_worker_daemon": "mlcc-worker.service_started",
+    "transport": "local_slurm_control",
+    "public_validation": "five_calls_completed_same_thread_cross_worker_restart_succeeded_no_compute"
+  },
+  "control_only_evidence": {
+    "v100_runtime": {
+      "node": "22.23.2",
+      "codex": "0.146.0",
+      "python": "3.12.3",
+      "mcp": "2.3.0",
+      "worker_healthcheck_output": 1,
+      "scientific_environment_packages_present": [
+        "numpy",
+        "ase",
+        "scipy",
+        "phonopy",
+        "phonors",
+        "symfc",
+        "h5py",
+        "pymatgen"
+      ],
+      "scientific_environment_modified": false
+    },
+    "worker_runtime_patch": {
+      "node_executable_resolution": "process.execPath",
+      "typecheck": "passed",
+      "worker_cases_total": 40,
+      "other_runtimes_changed": false,
+      "test_runs": {
+        "corrected_targeted_recheck": {
+          "passed": 1,
+          "failed": 0
+        },
+        "initial": {
+          "passed": 39,
+          "failed": 1
+        }
+      }
+    },
+    "mcp_control": {
+      "candidate_tool_count": 13,
+      "top_level_skill_routes": 8,
+      "nested_skill_routes": 7,
+      "total_skill_routes": 15,
+      "cli_routes": 114,
+      "all_v100_skill_routes": "passed",
+      "v100_individual_skill_describe_calls": 15,
+      "public_full_skill_directory_calls": 1,
+      "generic_operation_contract_reads": 4,
+      "scale_contract_reads": 4,
+      "public_tasks_created_and_prepared": 8,
+      "public_task_create_calls": 8,
+      "public_task_prepare_calls": 8,
+      "public_task_prepare_status": "all_prepared",
+      "historical_reads": [
+        "702",
+        "703",
+        "704",
+        "705"
+      ],
+      "additional_saved_reads": [
+        "DFT489",
+        "MD45"
+      ],
+      "historical_result_read_count": 6,
+      "historical_result_status": {
+        "DFT489": "raw_charged_scf_unqualified",
+        "MD45": "executed_engineering_fixture",
+        "fem_702": "not_checked",
+        "phase_field_703": "not_checked",
+        "rve_704": "not_checked",
+        "spice_705": "not_checked"
+      },
+      "continuum_read_recovery": "restored_original_payload_schema_artifacts_after_json_only_copy_failure; original_task_result_unchanged; no_source_portability_bug",
+      "initial_public_error": "codex_0.146_rejected_native_model_supports_reasoning_summaries_override",
+      "new_scheduler_job_ids": null,
+      "slurm_submitted": false,
+      "scientific_compute_submitted": false,
+      "real_submit_query_collect": "deferred_this_round",
+      "generic_scientific_inputs": "deferred_not_input_ready"
+    },
+    "linux_control_tests": 7,
+    "executor_no_slurm_guard": "passed_in_linux_control_tests",
+    "deployment": {
+      "target_created": true,
+      "server_pairing_credentials_active": true,
+      "zeus_service": "active",
+      "worker_service": "mlcc-worker.service",
+      "worker_service_status": "started",
+      "database_heartbeat": "online",
+      "candidate_published": true,
+      "candidate_deployment_revision": 3,
+      "public_control_calls_completed": 5,
+      "same_thread_cross_worker_restart": "succeeded",
+      "public_first_turn": "completed",
+      "public_second_turn": "verified"
+    }
+  },
+  "source_patches": [
+    {
+      "name": "runtime-node-path.patch",
+      "change": "resolve Node through process.execPath"
+    },
+    {
+      "name": "codex-config-0146.patch",
+      "change": "remove rejected native model_supports_reasoning_summaries override; retain catalog supports_reasoning_summaries"
+    },
+    {
+      "name": "mlcc-artifact-boundary.patch",
+      "change": "two entry points skip configs/site.v100.json and tasks/*/payload with optional project/ prefix"
+    }
+  ],
+  "software_checks": {
+    "codex_config_targeted_test": "passed",
+    "artifact_boundary_targeted_tests": 2,
+    "worker_typecheck": "passed",
+    "node_path_suite": "39_initial_passes_plus_one_targeted_corrected_pass_not_full_40_rerun",
+    "private_packages": [
+      "worker-runtime-final.tar.gz",
+      "mcp-sdk.tar.gz"
+    ],
+    "runtime_base_rebuilt_source_test_files": 6
   },
   "evidence": {
     "summary": "docs/public-chain-audit-20261029.md",
+    "public_control_calls": {
+      "count": 5,
+      "status": "all_completed",
+      "thread_id": "thread_a81202520ca34d75979c62e23f997575",
+      "provider_session": "01a187f1…",
+      "cross_worker_restart": "succeeded"
+    },
+    "v100_control_evidence": "workspace/reports/public-mlcc-eight-skill-20261029/v100-all-skill-control.json",
+    "second_turn_control_evidence": "workspace/reports/public-mlcc-second-turn-20261029/delivery.json",
     "four_scale_jobs": [
       {
         "module_id": "fem",
@@ -103,9 +276,10 @@
         "exit_code": "0:0"
       }
     ],
-    "status": "historical_acceptance_not_new_submission",
+    "status": "public_control_passed_no_compute_historical_reads_no_new_submission",
     "raw_location": "local versions/0.60.0/evidence/four-scale-workbench-20261028; not committed",
-    "control_only_audit": "docs/evidence/no-submit-audit-20261029.json"
+    "control_only_audit": "docs/evidence/no-submit-audit-20261029.json",
+    "all_skill_control_summary": "docs/evidence/all-skill-control-20261029.json"
   },
   "repository_boundary": {
     "contains": "MLCC-owned agent integration, modules, skills, schemas, CLI and adapters",
@@ -114,6 +288,8 @@
       "MatterAI host source",
       "upstream reference trees",
       "credentials and SSH keys",
+      "private host configuration",
+      "runtime binaries",
       "site-specific scientific outputs",
       "raw local acceptance logs"
     ]

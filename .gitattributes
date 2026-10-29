@@ -1,0 +1,5 @@
+mlcc-agent/**/AGENT.md text eol=lf
+mlcc-agent/**/SKILL.md text eol=lf
+# Unified diffs use a space to mark blank context lines.
+scripts/worker/*.patch text eol=lf -whitespace
+scripts/worker/*.service.example text eol=lf

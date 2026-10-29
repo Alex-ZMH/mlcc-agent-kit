@@ -5,6 +5,8 @@ description: 导航和汇总已有多尺度结果及来源；保留原DFT/MD性�
 
 # MLCC 多尺度性质与结果
 
+公网调用先走[统一操作入口](../references/public-operations.md)；本 Skill 只读取已有结果，统一入口不复制性质公式或改变来源、单位和资格边界。
+
 ## 四个新模块的已有性质导航
 
 用户查看保存任务时，先用 `mlcc read-result --task TASK.json`，读取公共结果的execution/quality与专业results，再按返回artifacts打开必要文件。已有指标、张量、曲线与检查由模块计算，顶层不重算、不复制公式、不发起新任务。

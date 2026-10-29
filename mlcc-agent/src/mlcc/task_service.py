@@ -22,6 +22,26 @@ def read_result(task_path, **kwargs):
         delivery=read_adapter_result(task_path)
         return {**delivery,'schema':'mlcc.task-result-view.v1','task_id':task.task_id,
                 'module_id':task.data.get('module_id'),'engine':task.data.get('engine')}
+    if task.data.get('execution_protocol')=='mlcc.operation.v1':
+        from .contracts import read_json
+        path=task.data.get('result_file')
+        if not path or not Path(path).is_file():
+            raise ValueError('No saved operation result; prepare and execute the task first')
+        result=read_json(Path(path))
+        if result.get('schema') != 'mlcc.operation-result.v1':
+            raise ValueError('Unsupported saved operation result schema')
+        if result.get('operation') != task.data['operation']:
+            raise ValueError('Saved operation result operation differs')
+        if result.get('task_id') != task.task_id:
+            raise ValueError('Saved operation result identity differs')
+        if not task.scheduler_job_id or result.get('scheduler_job_id') != task.scheduler_job_id:
+            raise ValueError('Saved operation result scheduler identity differs')
+        return {'schema':'mlcc.task-result-view.v1','task_id':task.task_id,
+                'module_id':task.data.get('module_id') or task.data.get('operation'),
+                'skill_ids':task.data.get('skill_ids'),'engine':task.data.get('engine'),
+                'result':result,
+                'scientific_status':result.get('scientific_status',
+                    task.data.get('scientific_status','not_calculated'))}
     module={'abacus':'dft','lammps':'md'}.get(task.data.get('engine'))
     if not module: raise ValueError('No registered result reader')
     from .workflow import inspect_task

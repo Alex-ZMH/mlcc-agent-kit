@@ -5,6 +5,8 @@ description: 根据明确给定的线性 RLC、漏电及源/负载参数运行 n
 
 # MLCC 电路响应计算
 
+公网调用先走[统一操作入口](../references/public-operations.md)；四个 SPICE operation 的 describe/create/read 仍复用本模块既有 ops，不自动从材料、FEM 或其他尺度猜测 RLC 参数。
+
 使用 `module_id=spice`，处理给定电路参数的频响或单脉冲问题。根据器件几何求场或提取响应时选择 FEM；本入口不自动从其他尺度抽取 C/ESR/ESL。
 
 ## 选择操作

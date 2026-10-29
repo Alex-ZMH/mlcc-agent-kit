@@ -5,6 +5,8 @@ description: 根据明确器件几何、材料和边界条件，选择并执行 
 
 # MLCC 器件有限元计算
 
+公网调用先走[统一操作入口](../references/public-operations.md)；四类 FEM operation 的 describe/create/read 仍复用本模块既有 ops，不把 catalog 展示当作求解或数值验收。
+
 使用 `module_id=fem`。用户希望由几何和材料求电容、场、损耗或温升时使用本 Skill；给定 RLC 参数求电路波形时选择 `run-mlcc-spice`。独立计算无需先运行 DFT、MD、相场或 RVE。
 
 ## 选择操作

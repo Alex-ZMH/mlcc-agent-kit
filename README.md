@@ -1,74 +1,102 @@
 # MLCC Agent
 
-Current source: **0.60.1 candidate**, not deployed. The public 0.60.0 baseline
-has a failing MCP path. Start with [DEPLOY.md](DEPLOY.md),
+This is the **0.60.1 candidate**. It is published and visible/hireable in the
+catalog, and its public control round passed without submitting compute. This
+is not a claim of scientific execution or production qualification. The former
+`0.60.0` catalog publication was cancelled while its enabled deployment and
+historical pins remain unchanged.
+
+Start with [DEPLOY.md](DEPLOY.md),
 [SYSTEM_MANIFEST.json](SYSTEM_MANIFEST.json) and the
 [public-chain audit](docs/public-chain-audit-20261029.md).
-Eight bound Skills do not establish eight working public computation paths.
 
-MLCC is a MatterAI-compatible agent and Python bundle for atomistic and multiscale
-workflow contracts around CaZrO3/BaTiO3 ceramics. The published repository contains
-the MLCC-owned bundle, domain functions, skills, CLI/MCP adapters, configuration
-templates, and design documentation.
+MLCC is a MatterAI-compatible agent and Python bundle for atomistic and
+multiscale workflow contracts around CaZrO3/BaTiO3 ceramics. This repository
+contains the MLCC-owned bundle, domain functions, 8 top-level Skills plus 7
+nested module-method routes (15 total), CLI/MCP adapters, configuration
+templates and design documentation.
 
-Scientific run products, v100 site data, local Zeus state, credentials, downloaded
-upstream trees, and generated evidence remain outside this repository. They are
-referenced by paths or Study records when needed and are not part of the source
-distribution.
+## What was verified
+
+- v100 user-level Node `22.23.2`, Codex `0.146.0`, Python `3.12.3` and MCP
+  `2.3.0` were present; the Worker healthcheck returned `1`.
+- The existing scientific environment already had `numpy`, `ase`, `scipy`,
+  `phonopy`, `phonors`, `symfc`, `h5py` and `pymatgen`. It was not changed.
+- The candidate Bundle exposes 13 MCP tools, 8 top-level Skill routes, 7
+  nested module-method routes and 114 CLI catalog routes. The public catalog
+  returned all 15 Skills; individual Skill filters passed in the v100 probe.
+  Four generic operation-contract reads, four scale-contract reads, eight
+  public `*-0601` tasks created and prepared, and six historical
+  `mlcc_read_result` calls completed. Prepared task job IDs were all `null`.
+- Five repaired public calls completed, and the same thread/provider session
+  continued successfully across a Worker restart. No Slurm command or
+  scientific computation was submitted. Seven Linux control tests passed.
+- The Worker runtime has three small source patches: Node resolution through
+  `process.execPath`; removal of the rejected native
+  `model_supports_reasoning_summaries` override while retaining the catalog
+  capability; and artifact-boundary handling for site config and task payloads
+  at two entry points. The targeted config test passed, both artifact-boundary
+  tests passed, and final Worker typecheck passed. The Node-path suite remains
+  39 initial passes plus one targeted corrected pass, not a complete final
+  40-case rerun.
+
+These checks establish the candidate public control path and current Worker
+deployment, not scientific execution or material qualification.
 
 ## Package
 
-The installable bundle is in [`mlcc-agent/`](mlcc-agent/). It exposes the `mlcc`
-CLI and the `mlcc` MCP server declared in `mlcc-agent/bundle.json`.
+The installable bundle is in [`mlcc-agent/`](mlcc-agent/). It exposes the
+`mlcc` CLI and MCP server declared in `mlcc-agent/bundle.json`.
 
 ```powershell
 python -m pip install -e .\mlcc-agent
 mlcc --help
 ```
 
-Site paths and Slurm settings belong in local configuration templates under
-[`configs/`](configs/); do not put credentials in those files.
+The candidate requires these operator-provided environment variables:
 
-## Cloud server layout
+- `MLCC_SITE_CONFIG`: absolute path to the private site configuration.
+- `MLCC_WORKSPACE_ROOT`: the Worker's managed project-workspace root.
 
-The published bundle is designed to run against an authorized remote Slurm
-server. It does not require the local Zeus web UI or a localhost API. Use an
-SSH config alias for the cloud host and keep the private key, username, port,
-and host-key policy outside this repository. The portable template is
-[`configs/site.cloud.example.json`](configs/site.cloud.example.json), and the
-setup and verification steps are in
-[`docs/cloud-delivery-20261029.md`](docs/cloud-delivery-20261029.md).
+Do not place credentials, SSH keys, licensed pseudopotentials, runtime
+binaries, scientific outputs or full private host configuration in this
+repository.
 
-The public endpoint recorded during development (`43.142.15.151:22022`) was
-reachable at the TCP layer, but the available local credentials were rejected
-by SSH. The repository therefore records the cloud route as requiring an
-operator-provided SSH identity; it does not claim a deployed cloud checkout.
+## Cloud and v100 boundary
 
-## v100 server layout
+The intended public control plane is `https://agent.mattok.cn`. A v100-local
+Worker uses `ssh.transport="local"` to control the existing Slurm site; it is
+not a localhost dependency and it does not replace the public host. The
+approved `target_mlcc_v100` exists, server pairing credentials are active,
+`zeus.service` is active, the user-level `mlcc-worker.service` is running and
+the database heartbeat is online.
 
-The supported development site is the existing SSH alias `v100`. A checkout can
-be transferred to `/home/v100/projects/mlcc`; the site-specific executable and
-pseudopotential/orbital paths are recorded in
-[`configs/site.v100.example.json`](configs/site.v100.example.json). Slurm job
-templates and runtime preparation scripts are under [`scripts/`](scripts/).
+The LF metadata fix was applied before publication. The same unpublished
+deployment ID advanced from revision 2 to final revision 3 under the immutable
+store rule. Five repaired public calls completed, including the same
+thread/provider session continuing across a Worker restart. Because only one
+same-name record may be published, an old conversation must start a new
+conversation to select `0.60.1`; do not claim an old conversation continued on
+the new revision.
 
-Typical setup on the server is:
+The six historical results retain their domain status: DFT489 is
+`raw_charged_scf_unqualified`, MD45 is `executed_engineering_fixture`, and the
+four continuum results are `not_checked`. The four generic scientific inputs
+remain `deferred_not_input_ready`; real submit/query/collect execution is
+deferred this round, not undeveloped.
 
-```bash
-mkdir -p /home/v100/projects/mlcc
-cd /home/v100/projects/mlcc
-python -m pip install -e ./mlcc-agent
-sbatch scripts/admin/slurm-gpu-smoke.sbatch
-```
+The initial continuum read used JSON-only copies and failed. Restoring the
+original payload/schema/artifacts directories made all four reads succeed; the
+original task/result records were unchanged and this did not reveal a source
+portability bug.
 
-The repository supplies paths and templates so another authorized v100 user can
-reproduce the setup. Access to the server, pseudopotential libraries, model
-files, and private scientific results remains governed by the site's existing
-permissions; no credentials are stored here.
+See [`scripts/worker/README.md`](scripts/worker/README.md) for the current
+Worker boundary and safe checks.
 
-## Scope
+## Scientific data boundary
 
-The repository records engineering input/output contracts, provenance, units,
-atom mappings, and explicit unresolved states. Numerical jobs and scientific
-postprocessing run on the configured v100 Slurm site; this repository does not
-contain the resulting private trajectories or model weights.
+Numerical jobs and scientific postprocessing belong on the configured v100
+Slurm site. Scientific run products, private site data, local Zeus state,
+credentials, downloaded upstream trees and generated evidence remain outside
+this source distribution. The four historical jobs 702–705 are engineering
+records only; their scientific status remains `not_checked`.

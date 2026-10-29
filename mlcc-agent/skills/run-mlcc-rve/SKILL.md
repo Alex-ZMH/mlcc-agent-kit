@@ -5,6 +5,8 @@ description: 根据明确微结构和材料输入执行独立二维/三维静态
 
 # MLCC 静态 RVE 均质化
 
+公网调用先走[统一操作入口](../references/public-operations.md)；四个 RVE operation 的 describe/create/read 仍复用本模块既有 ops，不自动接入 FEM 或替换材料、组织和边界。
+
 使用 `module_id=rve`。问题是“给定组织的等效材料响应”时选择本 Skill；畴演化选择相场，器件边界/几何响应选择 FEM。不自动消费其他尺度的张量。
 
 ## 选择操作
