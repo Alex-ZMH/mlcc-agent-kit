@@ -2,12 +2,14 @@
   "system": "mlcc",
   "delivery_label": "0.60.2-candidate",
   "bundle_version": "0.60.2",
-  "candidate_status": "source_ready_awaiting_slurm_776_by_user_direction",
+  "candidate_status": "published_public_read_only_acceptance_passed_with_776_user_waiver",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
     "delivery_branch": "codex/cloud-delivery-20261029",
     "base_commit": "1c4d19d431b301951b8ddc6181b18d2d94f1fb7b",
-    "candidate_revision": "Git commit containing this manifest"
+    "candidate_revision": "Git commit containing this manifest",
+    "runtime_bundle_commit": "b3d3a41",
+    "resource_generator_commit": "ef490a8"
   },
   "public_delivery": {
     "entrypoint": "https://agent.mattok.cn",
@@ -15,11 +17,14 @@
     "worker_id": "worker_mlcc_v100_01",
     "deployment_id": "deployment_mlcc_v100_0_60_2",
     "deployment_revision": 4,
-    "published": false,
-    "ordinary_two_turn_status": "pending",
+    "published": true,
+    "ordinary_two_turn_status": "passed",
     "rollback_version": "0.60.1",
     "localhost_dependency": false,
-    "published_version_at_preparation": "0.60.1"
+    "published_version_at_preparation": "0.60.1",
+    "supplemental_Bh_correction_turn": "completed",
+    "worker_healthcheck": 1,
+    "worker_active": true
   },
   "agent": {
     "name": "mlcc",
@@ -40,7 +45,7 @@
     "catalog_elements": 118,
     "ais381_pseudopotentials": 83,
     "ais381_paired_efficiency_orbitals": 83,
-    "coverage": "pending_installed_catalog_acceptance",
+    "coverage": "117_installed_UPF_elements_83_paired_NAO_Og_missing",
     "scientific_qualification": false,
     "material_jobs_submitted": 0,
     "polling_enabled": false,
@@ -51,18 +56,21 @@
     },
     "source_gaps": {
       "Og": "no_verified_author_NC_UPF"
-    }
+    },
+    "installed_UPF_elements": 117,
+    "installed_paired_NAO_elements": 83
   },
   "software_checks": {
     "initial_job": "768",
     "initial_status": "37 missing-fixture failures and 13 passes retained",
     "method_job": "770",
     "method_status": "42 passed after staging 8 specific input fixtures; no full workspace link",
-    "resource_library_id_and_redaction": "Slurm776_pending; user explicitly chose to keep scheduler queue, no bypass",
+    "resource_library_id_and_redaction": "Slurm776_pending_user_waived_release_gate;not_executed_or_passed",
     "numerical_acceptance_completed_jobs": [
       "768_partial",
       "770_42_passed"
-    ]
+    ],
+    "Bh_regression": "saved_not_executed;actual_private_catalog_and_public_read_corrected"
   },
   "changes": [
     "Operator site template refreshes existing projects at MCP startup",
@@ -76,7 +84,8 @@
   "evidence": {
     "current": "docs/abacus-library-20261030.md",
     "previous_public_release": "docs/evidence/public-0601-verification-history.md",
-    "private_raw": "workspace/reports/abacus-library-20261030 (operator workspace, not distributed)"
+    "private_raw": "workspace/reports/abacus-library-20261030 (operator workspace, not distributed)",
+    "public_resource_acceptance": "docs/evidence/abacus-resource-status-20261030.json"
   },
   "boundaries": {
     "numerical_execution": "v100 via existing Slurm runner",

@@ -1,11 +1,25 @@
 # v100 Worker operator boundary
 
-This directory documents the candidate's user-level v100 Worker. It is an
-operator guide, not a launcher. The current state is **published; public
-control passed; no compute submitted**. The approved target exists,
-`mlcc-worker.service` is started and its database heartbeat is online. Do not
-submit a scientific calculation from this candidate without separate
-authorization.
+This directory documents the 0.60.2 user-level v100 Worker. It is an operator
+guide, not a launcher. `deployment_mlcc_v100_0_60_2` revision 4 is published;
+the Worker healthcheck is `1`, the service is active and its database heartbeat
+is online. The 0.60.1 catalog is unpublished but remains enabled for rollback.
+Two consecutive ordinary-user read-only turns passed in the same thread and
+Codex provider session on revision 4. A third turn confirmed the Bh metadata
+correction after the Worker resource update. All three runs completed; their
+four tool calls used only `mlcc_describe_dft_resources` and created zero
+`task.json` files. No material calculation has been submitted.
+
+The required private resource registration reports 117 available UPF elements,
+83 paired NAO resources and `Og` missing. Slurm job 776 was explicitly exempted
+as a release precondition because the v100 node was occupied; it remains
+`PENDING`, was not cancelled or bypassed, and is not a pass result.
+
+The latest private catalog metadata correction records Bh as Z=107, `nc=10`,
+`nv=8`, with 4f core and 5f valence; Tm remains Z=69, `nc=10`, `nv=4`, with
+4f core. The metadata-only correction was applied in generator commit
+`ef490a8`; it added no solver or test job. See [`docs/abacus-library-20261030.md`](../../docs/abacus-library-20261030.md)
+for the detailed resource and qualification limits.
 
 ## Observed prerequisites
 
@@ -77,12 +91,20 @@ npm run test --workspace @zeus/worker
 npm --silent run healthcheck --workspace @zeus/worker
 ```
 
-Do not restart `npm start` or systemd merely to repeat validation. Do not run
-`sbatch`, `scontrol`, or any submit, query, collect or scientific command while
-this candidate is in the validation round. The v100 control probe intentionally
-left all new scheduler job IDs `null`.
+Do not restart `npm start` or systemd merely to repeat validation. The completed
+read-only acceptance did not run `sbatch`, `scontrol`, submit, query, collect or
+scientific commands; it intentionally left the new task count at zero. This
+control result is not authorization for a material calculation.
 
 ## Publication and validation state
+
+The current 0.60.2 publication uses the existing `target_mlcc_v100` and
+`worker_mlcc_v100_01`. The operator must retain the 0.60.1 configuration and
+enabled deployment for rollback. The ordinary-user two-round read-only
+acceptance is complete and passed; do not extend that result to material
+calculation or scientific qualification.
+
+### Historical 0.60.1 publication record
 
 Apply `runtime-node-path.patch` to the matching host release, not the read-only
 upstream reference tree. The private Worker package includes both scoped stdio
@@ -114,7 +136,7 @@ must start a new conversation to select `0.60.1`; do not claim that an old
 conversation continued on the new revision. A real computation requires
 separate authorization.
 
-## Evidence
+### Historical 0.60.1 evidence
 
 The sanitized control evidence is retained at
 `workspace/reports/public-mlcc-eight-skill-20261029/` and

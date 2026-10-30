@@ -100,8 +100,38 @@ is required for this upgrade.
 
 ## Acceptance and remaining work
 
+0.60.2 is published at the public service as deployment revision 4. The existing
+v100 Worker is active, its healthcheck returns `1`, and 0.60.1 is retained for
+rollback. The installed catalog contains 117 available UPF elements and 83
+paired NAOs; Og remains missing. ABACUS remains the default engine.
+
+Two consecutive turns through the ordinary-user workbench completed in the
+same thread and Codex provider session. They made three actual
+`mlcc_describe_dft_resources` calls, covering the installed summary,
+Ba/Ti/Na/Ca/Tm/O and Po/Rn/U/Bh/Og. No task records or scheduler calls were
+created. The second turn exposed a parser defect in ONCVPSP's fixed-width
+reference header: `Bh107.00` was split at the wrong columns. Commit `ef490a8`
+fixes the generator, retaining the original header while reading Bh Z=107,
+nc=10/nv=8, 4f core and 5f valence. The regenerated private catalog is
+`registered-public-v002`; the original response is retained as discovery
+evidence. A third read-only turn in the same conversation completed after the
+Worker resource update and returned the corrected native fields. Across all
+three turns there are four resource calls and zero task/scheduler calls.
+Tm's nc=10/nv=4 and frozen 4f treatment are unchanged.
+
+Slurm 768 retains its initial 13 passes and 37 missing-fixture failures; 770
+completed with 42 passes after staging eight specific input fixtures. Slurm 776
+remains pending because the node is occupied by another customer's job. The
+user explicitly waived 776 as a release precondition on 2026-10-30. Its test
+suite was not run directly, cancelled or counted as passed. Required resource
+registration read files and materialized JSON only. The new Bh regression test
+is saved for later execution, without submitting another software job.
+
+Current sanitized evidence is in
+[`evidence/abacus-resource-status-20261030.json`](evidence/abacus-resource-status-20261030.json).
+
 Acceptance consists of focused software checks, actual installed resource
-inspection, and two consecutive ordinary-user conversations in the same thread.
+inspection, and two consecutive ordinary-user turns in the same thread.
 Save both completed runs, resource tool calls/results, publication and Worker
 metadata, screenshots and a zero-material-submission assertion. Preserve the
 initial missing-fixture failure and any failed downloads separately.

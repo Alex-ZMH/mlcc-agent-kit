@@ -1,29 +1,143 @@
 {
-  "schema": "mlcc.abacus-library-preparation.v1",
+  "schema": "mlcc.abacus-library-public-acceptance.v1",
+  "observed_at": "2026-10-30T03:38:32.363Z",
   "bundle": "0.60.2",
-  "status": "prepared_not_published",
+  "deployment_revision": 4,
+  "status": "published_public_read_only_acceptance_passed_with_776_user_waiver",
+  "public_entrypoint": "https://agent.mattok.cn",
+  "runtime_bundle_commit": "b3d3a41",
+  "resource_generator_commit": "ef490a8",
+  "rollback_version": "0.60.1",
+  "worker": {
+    "active": true,
+    "healthcheck": 1,
+    "last_heartbeat_at": "2026-10-30T03:38:32.052Z"
+  },
+  "resource_registration": {
+    "elements": 118,
+    "available": 117,
+    "missing": 1,
+    "unqualified": 0,
+    "ais381_pseudopotentials": 83,
+    "ais381_orbitals": 83,
+    "supplement_pseudopotentials": 34,
+    "scientific_qualification": false,
+    "no_calculation": true
+  },
   "resource_files": {
     "AIS381_UPF": 83,
     "AIS381_paired_NAO": 83,
     "supplement_UPF": 34,
-    "total_elements_with_saved_UPF": 117
+    "total_installed_UPF_elements": 117
   },
   "missing": {
-    "Og": "no_verified_author_NC_UPF"
+    "Og": "no_verified_author_NC_UPF_or_paired_NAO"
+  },
+  "public_acceptance": {
+    "route": "ordinary_user_workbench",
+    "required_consecutive_turns": 2,
+    "required_turn_statuses": [
+      "completed",
+      "completed"
+    ],
+    "same_thread": true,
+    "same_provider_session": true,
+    "supplemental_Bh_correction_turn": "completed",
+    "tool_calls": [
+      {
+        "turn": 1,
+        "name": "mlcc_describe_dft_resources",
+        "arguments": {},
+        "result_received": true
+      },
+      {
+        "turn": 1,
+        "name": "mlcc_describe_dft_resources",
+        "arguments": {
+          "elements": [
+            "Ba",
+            "Ti",
+            "Na",
+            "Ca",
+            "Tm",
+            "O"
+          ]
+        },
+        "result_received": true
+      },
+      {
+        "turn": 2,
+        "name": "mlcc_describe_dft_resources",
+        "arguments": {
+          "elements": [
+            "Po",
+            "Rn",
+            "U",
+            "Bh",
+            "Og"
+          ]
+        },
+        "result_received": true
+      },
+      {
+        "turn": 3,
+        "name": "mlcc_describe_dft_resources",
+        "arguments": {
+          "elements": [
+            "Bh"
+          ]
+        },
+        "result_received": true
+      }
+    ],
+    "task_json_count": 0,
+    "scheduler_tool_calls": 0
+  },
+  "Bh_correction": {
+    "original_response_retained": true,
+    "source": "native PP_INPUTFILE",
+    "evidence": {
+      "header": [
+        "Bh107.00",
+        "10",
+        "8",
+        "4",
+        "both"
+      ],
+      "element": "Bh",
+      "atomic_number": 107.0,
+      "nc": 10,
+      "nv": 8,
+      "f_rows": [
+        {
+          "n": 4,
+          "l": 3,
+          "f": 14.0,
+          "configuration_row": 10,
+          "treatment": "core"
+        },
+        {
+          "n": 5,
+          "l": 3,
+          "f": 14.0,
+          "configuration_row": 14,
+          "treatment": "valence"
+        }
+      ]
+    },
+    "regression_test": "saved_not_executed_no_new_software_job"
   },
   "software_checks": {
     "768": "13 passes;37 missing-fixture failures retained",
-    "770": "42 passes after staging 8 specific input fixtures",
-    "776": "pending; all compute CPUs allocated to another job"
+    "770": "COMPLETED0:0;42 passes after staging 8 specific input fixtures",
+    "776": "PENDING;user waived release prerequisite;not cancelled/not directly executed/not passed"
   },
-  "public_two_turn_acceptance": "pending",
-  "public_baseline": "0.60.1",
   "material_jobs_submitted": 0,
+  "polling_enabled": false,
+  "scientific_qualification": false,
   "resource_sources": [
     "https://www.aissquare.com/datasets/detail?pageType=datasets&id=381",
     "https://github.com/PseudoDojo/ONCVPSP-PBE-SR",
     "https://github.com/gmatteo/pseudos_ac_she"
-  ],
-  "Bh_manual_download": "explicitly approved one attempt; succeeded, 366069 bytes; NC PBE scalar native header",
-  "queue_policy": "user chose to keep Slurm776 waiting; no direct execution and no cancellation"
+  ]
 }
