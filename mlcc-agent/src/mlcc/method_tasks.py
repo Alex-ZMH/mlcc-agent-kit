@@ -9,7 +9,7 @@ import shlex
 import subprocess
 from typing import Any, Mapping
 
-from .method_inputs import parse_nao_header, parse_upf_header, qualify_method_inputs
+from .method_inputs import normalize_functional, parse_nao_header, parse_upf_header, qualify_method_inputs
 from .modeling import read_model_artifacts
 from .tasks import utc_now
 
@@ -60,9 +60,39 @@ def method_numerical_orbitals(config, site) -> dict[str, str]:
 
 
 def inspect_site_upf_headers(method_path, site_path):
-    """Read selected native headers over SSH, without running a solver."""
+    """Read selected native headers from the configured site, without a solver."""
     config, site = _load(method_path), _load(site_path)
     selected = method_pseudopotentials(config, site)
+    transport = site.get("ssh", {}).get("transport", "ssh")
+    if transport == "local":
+        raw = {}
+        for element, filename in selected.items():
+            source = Path(filename)
+            text = source.read_text(encoding="utf-8")
+            root = re.search(r"<UPF\b[^>]*>", text)
+            header = re.search(r"<PP_HEADER\b[^>]*>", text, re.S)
+            if root is None or header is None:
+                raise ValueError(f"UPF {source} is missing a native UPF or PP_HEADER tag")
+            raw[element] = {
+                "source_path": str(source),
+                "native_excerpt": root.group(0) + "\n" + header.group(0),
+            }
+        headers = {
+            element: parse_upf_header(record["native_excerpt"], record["source_path"])
+            for element, record in raw.items()
+        }
+        return {
+            "schema": "mlcc.upf-header-snapshot.v1",
+            "observed_at": utc_now(),
+            "ssh_alias": site["ssh"]["alias"],
+            "transport": "local",
+            "method_set": config["method_set"],
+            "headers": headers,
+            "native_excerpts": raw,
+            "command": ["local-read", *[str(path) for path in selected.values()]],
+            "stderr": "",
+            "numerical_jobs": [],
+        }
     script = """import json, re, sys
 from pathlib import Path
 selected = json.loads(sys.argv[1])
@@ -97,7 +127,18 @@ def inspect_site_nao_headers(method_path, site_path):
     config, site = _load(method_path), _load(site_path)
     if config["basis_type"] != "lcao":
         raise ValueError("NAO header inspection requires an explicit LCAO method")
-    library = config["numerical_orbital_library"]
+    library_id = config.get("numerical_orbital_library_id")
+    if library_id is not None:
+        if not isinstance(library_id, str) or not library_id.strip():
+            raise ValueError("numerical_orbital_library_id must be a non-empty registered library ID")
+        library_id = library_id.strip()
+        abacus = site.get("abacus")
+        libraries = abacus.get("numerical_orbital_libraries") if isinstance(abacus, Mapping) else None
+        if not isinstance(libraries, Mapping) or library_id not in libraries:
+            raise ValueError(f"site.abacus.numerical_orbital_libraries is missing {library_id!r}")
+        library = libraries[library_id]
+    else:
+        library = config["numerical_orbital_library"]
     if not isinstance(library, Mapping):
         raise ValueError("numerical_orbital_library must be a mapping")
     required_library_fields = ("name", "version", "functional", "pairing_source", "pseudopotential_map")
@@ -111,9 +152,9 @@ def inspect_site_nao_headers(method_path, site_path):
         if not isinstance(library[name], str) or not library[name].strip():
             raise ValueError(f"numerical_orbital_library.{name} must be a non-empty path or value")
 
-    declared_functional = library["functional"].strip().upper()
-    method_functional = str(config["science"]["dft_functional"]).strip().upper()
-    if declared_functional != "PBE" or method_functional != "PBE":
+    declared_functional = library["functional"].strip()
+    method_functional = str(config["science"]["dft_functional"]).strip()
+    if normalize_functional(declared_functional) != "PBE" or method_functional.upper() != "PBE":
         raise ValueError("numerical-orbital library and science.dft_functional must both declare PBE")
 
     method_file = Path(method_path).resolve()
@@ -176,7 +217,7 @@ def inspect_site_nao_headers(method_path, site_path):
             "paired_pseudopotential_source": str(pseudopotential_path),
         }
 
-    return {
+    snapshot = {
         "schema": "mlcc.nao-header-snapshot.v1",
         "ssh_alias": site["ssh"]["alias"],
         "method_set": config["method_set"],
@@ -194,6 +235,9 @@ def inspect_site_nao_headers(method_path, site_path):
         "inspection": "explicit_native_files_read_on_configured_site",
         "numerical_jobs": [],
     }
+    if library_id is not None:
+        snapshot["library_id"] = library_id
+    return snapshot
 
 
 def check_method_configuration(model, config, site, method_path):

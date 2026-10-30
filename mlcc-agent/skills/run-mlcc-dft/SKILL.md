@@ -1,13 +1,27 @@
 ---
 name: run-mlcc-dft
-description: 为 MLCC 打通 VASP 真实执行与产物链，再迁移到 ABACUS；定义任务、MPI 环境、物理对照与一致的生产标注，不自动回退引擎。
+description: 以 ABACUS 为 MLCC 默认生产 DFT 引擎，保留用户明确要求的 VASP 对照与执行链；定义任务、MPI 环境、物理对照与一致的生产标注，不自动回退或混用引擎。
 ---
 
-# VASP 接线与 ABACUS 生产迁移
+# ABACUS 生产 DFT 与 VASP 显式对照
 
-公网调用先走[统一操作入口](../references/public-operations.md)；统一入口只创建宿主绑定的未提交任务，DFT 方法、引擎和科学资格仍按本 Skill 的显式配置与边界处理。
+公网调用先走[统一操作入口](../references/public-operations.md)；统一入口支持宿主绑定任务的完整生命周期，DFT 方法、引擎和科学资格仍按本 Skill 的显式配置与边界处理。生产默认 `engine=abacus`；只有用户明确指定 VASP 时才使用 `engine=vasp`，不自动 fallback、不跨方法混用原始标签。
 
-`create-neutral-defect-pair`以`--method`指定宿主方法，可用`--defect-method`显式指定包含新增元素资源的变体方法。共同元素的PP/NAO与共同物理设置经共享领域函数比较，新增元素资源单列；不再要求两侧元素集合完全相同。`--chemical-reference`可省略，省略时只生成未提交的两侧输入，形成能的化学参考保持缺项。创建不提交数值任务，TaskRecord的scheduler_job_id仍为null；真实执行继续走既有Slurm生命周期。
+创建任务前，先调用 `mlcc_describe_dft_resources(elements?)`：省略 `elements` 时查看运行时周期表摘要，
+再传入模型所需元素读取详情；摘要若显示 118 项，只表示目录检查范围，不表示 118 项均可用。
+任务只引用详情返回的已注册 `selected[].pseudopotentials[].id` 与
+`selected[].orbitals[].id`，不猜路径或文件名。
+LCAO 方法可用 `numerical_orbital_library_id` 绑定轨道详情的 `library_id`，由站点提供配套说明和映射路径。
+Og 来源缺失、f-core/f-valence
+限制和其他资源状态以目录实际返回为准。随后核对模型、晶相、组成整数计数、占位、电子补偿/电荷、
+自旋和目标性质。缺少必要项时一次列出并停在创建前，不编造占位输入或宣称 ready；已记录执行授权
+的同一任务不重复索要提交许可。安装资源可用、输入兼容、数值收敛和材料科学资格分别记录，工程开发
+不因材料尚未具备生产资格而阻断，也不自动追加收敛矩阵。P4mm 与浓度整数约束必须保留；报告中的
+Na/Tm 与对话中的 Ca/Tm 冲突时先澄清，不能擅自替换组成；若 Ca/Na 选择或浓度具体数值缺失，
+只追问这些必要输入，不重新申请已有的执行授权。Na/Tm 电子补偿不预判必然金属或 `gap=0`，
+也不把 Tm 在计算前固定为“只能 3+”；保留实际 f-core/价电子资源限制，并以原生结果为准。
+
+`create-neutral-defect-pair`以`--method`指定宿主方法，可用`--defect-method`显式指定包含新增元素资源的变体方法。共同元素的PP/NAO与共同物理设置经共享领域函数比较，新增元素资源单列；不再要求两侧元素集合完全相同。`--chemical-reference`可省略，省略时只生成未提交的两侧输入，形成能的化学参考保持缺项。创建阶段不提交数值任务，TaskRecord的`scheduler_job_id`仍为null；完成授权后真实执行继续走既有Slurm生命周期。
 
 0.32在计算站点经Slurm用`inspect-nao --method ... --site ... --output NEW.json`生成既有NAO快照。方法显式选择numerical_orbital_library的name/version/functional/pairing_source/pseudopotential_map；读取选择的轨道头、库说明和元素UPF映射，输出供既有qualify-method/create-abacus消费。不扫描、不换资源、不把库声明当NAO原生XC或材料生产资格；保存的原生结果仍绑定原TaskRecord/job，不借用给未执行的新任务。
 
@@ -29,15 +43,15 @@ description: 为 MLCC 打通 VASP 真实执行与产物链，再迁移到 ABACUS
 
 当前入口为 `mlcc <动作> --site <私有站点JSON> --task <任务JSON>`。先完成输入传输再提交；已有提交记录的任务不重提。查询保留 scontrol 原始终态，收集仅包含任务列明的产物。Windows 生成的 VASP 输入和 batch script 明确使用 LF。修正失败后使用新任务号并关联原始错误。
 
-先用一个标明用途的小模型跑 VASP 弛豫/SCF，回读结构、E/F/应力和收敛证据。POTCAR 在授权计算站组装，不写入能力包或公开产物。工程 fixture 不代表用户选相确认。
+先用一个标明用途的小模型按当前选择的引擎执行弛豫/SCF，默认使用 ABACUS；只有用户明确要求 VASP 时才执行 VASP。回读结构、E/F/应力和收敛证据。VASP 的 POTCAR 在授权计算站组装，不写入能力包或公开产物。工程 fixture 不代表用户选相确认。
 
-迁移先用完全相同几何做 ABACUS 单点，再独立弛豫；核对泛函、自旋、价电子范围、色散、k 密度、基组和约束。比较相对能、位移力、应变应力、结构等任务相关量，不跨赝势比较裸总能。统一单位、应力符号/张量顺序和原子排序。
+只有用户明确要求 VASP 对照时，才用完全相同几何分别执行 VASP 与 ABACUS，并核对泛函、自旋、价电子范围、色散、k 密度、基组和约束。比较相对能、位移力、应变应力、结构等任务相关量，不跨赝势比较裸总能。统一单位、应力符号/张量顺序和原子排序。
 
 VASP 与 ABACUS 可用不同 MPI 实现，分别显式设置环境。不能把另一程序环境的 mpirun 或交互 .bashrc 当成可移植启动方法。
 
 0.10.0 的 Berry 候选 CLI 为 `create-berry-reference --study --model --method --site --request`、`create-berry-nscf --reference-task --method --site --request` 和 `parse-berry --task`；创建只写输入，仍须经过同一 Slurm prepare/transfer/submit/query/collect 生命周期。参考 SCF 显式输出 `out_chg=1`，NSCF 从真实参考电荷读取 `init_chg=file`，并保留 `berry_phase=1`、显式方向和对角化阈值。该候选严格限定 ABACUS 3.10.1 PW、nspin=1、fixed、非 SOC、共线和 `symmetry=-1`，Berry nspin=2 不放行；普通 SCF/relax 的自旋能力不受影响。单方向解析只返回未解缠分支，科学/数值/生产资格均为 false，不声称 Born、DFPT、有限场或介电结果。
 
-CPU小规模Berry原生证据可复用；独立GPU修复构建已完成原生执行和解析链，但GPU/CPU数值比较失败仍未归因，不授予科学资格。支持GPU时继续优先GPU，不自动切CPU、不重复既有CPU兼容任务。输入生成、SCF电荷或Slurm COMPLETED本身不构成Berry科学资格。基于实际安装版本逐项验证有限场、Born/介电、SOC/U与力/应力；缺功能明确报告，不假设最新文档适用于本站。迁移验收后后续DFT固定ABACUS，VASP留只读对照；训练标签按engine/method_set分开。所有站点路径、赝势和材料选择必须由显式配置提供。
+CPU小规模Berry原生证据可复用；独立GPU修复构建已完成原生执行和解析链，但GPU/CPU数值比较失败仍未归因，不授予科学资格。支持GPU时继续优先GPU，不自动切CPU、不重复既有CPU兼容任务。输入生成、SCF电荷或Slurm COMPLETED本身不构成Berry科学资格。基于实际安装版本逐项验证有限场、Born/介电、SOC/U与力/应力；缺功能明确报告，不假设最新文档适用于本站。生产 DFT 固定以 ABACUS 为默认；用户明确要求的 VASP 结果只作为独立 method/provenance 记录，不自动替代 ABACUS 或互相混用。训练标签按engine/method_set分开。所有站点路径、赝势和材料选择必须由显式配置提供。
 
 中性缺陷任务对使用 `create-neutral-defect-pair`，完整参数见README。只连接显式宿主/缺陷模型、各自Study、两个SCF请求及同方法化学势来源，不选位点/相/掺杂，不自动提交。带电模型仍不能进入该中性入口。真实计算完成后使用 `neutral-formation` 读取原生任务；输入生成检查不代表形成能已验收。
 

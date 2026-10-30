@@ -145,6 +145,23 @@ def test_parse_upf_header_does_not_guess_non_pbe_functional():
     assert parsed["functional_is_pbe"] is False
 
 
+def test_native_upf_pbe_token_passes_full_method_qualification(tmp_path):
+    headers, paths = _observed_headers(tmp_path)
+    for element, header in list(headers.items()):
+        raw = header["raw_header"].replace('functional="PBE"', 'functional="SLA PW PBX PBC"')
+        headers[element] = parse_upf_header(
+            f'<UPF version="2.0.1">{raw}</UPF>',
+            paths[element],
+        )
+
+    report = qualify_method_inputs(_model(), _config(), headers, paths)
+
+    assert report["input_qualified"] is True
+    assert report["checks"]["pbe_functional"]["passed"] is True
+    assert all(header["functional"] == "SLA PW PBX PBC" for header in headers.values())
+    assert all(header["functional_normalized"] == "PBE" for header in headers.values())
+
+
 @pytest.mark.parametrize(
     "text,match",
     [

@@ -31,6 +31,17 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
     with TemporaryDirectory() as temporary:
         workspace = Path(temporary) / "workspace"
         workspace.mkdir()
+        from mlcc.abacus_library import PERIODIC_TABLE
+
+        catalog_path = Path(temporary) / "abacus-library.json"
+        catalog_path.write_text(json.dumps({
+            "schema": "mlcc.abacus-library.v1",
+            "version": "test-v1",
+            "elements": [{
+                "symbol": symbol, "atomic_number": number, "status": "missing",
+                "pseudopotentials": [], "orbitals": [], "issues": [],
+            } for number, symbol in enumerate(PERIODIC_TABLE, 1)],
+        }), encoding="utf-8")
         template_path = Path(temporary) / "site-template.json"
         template_path.write_text(
             json.dumps(
@@ -38,6 +49,7 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
                     "ssh": {"alias": "test-no-network"},
                     "workspace": {"local": "ignored", "remote_root": "/remote/mlcc"},
                     "runner": {"selected": "slurm", "slurm": {}},
+                    "abacus": {"resource_catalog": str(catalog_path)},
                     "scales": {
                         "runtime_python": "/usr/bin/python3",
                         "modules": {
@@ -130,6 +142,7 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
             tool_names = {tool["name"] for tool in listed["result"]["tools"]}
             assert tool_names == {
                 "mlcc_list_tasks",
+                "mlcc_describe_dft_resources",
                 "mlcc_describe_operations",
                 "mlcc_create_operation_task",
                 "mlcc_read_result",
@@ -143,6 +156,14 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
                 "mlcc_cancel_calculation",
                 "mlcc_collect_calculation",
             }
+            resources = _request(process, {
+                "jsonrpc": "2.0", "id": 8, "method": "tools/call",
+                "params": {"name": "mlcc_describe_dft_resources", "arguments": {"elements": ["Tm", "Og"]}},
+            })
+            resource_result = resources["result"]["structuredContent"]
+            assert len(resource_result["elements"]) == 118
+            assert [item["symbol"] for item in resource_result["selected"]] == ["Tm", "Og"]
+            assert resource_result["selected"][1]["status"] == "missing"
 
             task_list = _request(
                 process,
@@ -236,3 +257,24 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
         finally:
             process.terminate()
             process.wait(timeout=5)
+
+
+def test_operator_template_refreshes_existing_project_site(tmp_path, monkeypatch):
+    from mlcc.mcp_server import _materialize_site_config
+
+    workspace = tmp_path / "project" / "thread"
+    (workspace / "configs").mkdir(parents=True)
+    target = workspace / "configs" / "site.v100.json"
+    target.write_text(json.dumps({"abacus": {"pseudopotential_files": {"O-old": "/old/O.upf"}}}))
+    template = tmp_path / "operator-site.json"
+    template.write_text(json.dumps({
+        "workspace": {"local": "ignored", "remote_root": "/remote/mlcc"},
+        "abacus": {"resource_catalog": "/private/library-v2.json"},
+    }))
+    monkeypatch.setenv("MLCC_WORKSPACE_ROOT", str(tmp_path))
+
+    assert _materialize_site_config(str(template), workspace) == target
+    updated = json.loads(target.read_text())
+    assert updated["abacus"]["resource_catalog"] == "/private/library-v2.json"
+    assert updated["workspace"]["local"] == str(workspace)
+    assert updated["workspace"]["remote_root"] == "/remote/mlcc/project/thread"

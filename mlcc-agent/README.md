@@ -1,6 +1,6 @@
 # MLCC Agent
 
-0.60.1 candidate 是 MLCC Agent integration delivery 的工作区候选；当前 Bundle manifest 已为 0.60.1，但尚未部署，isolated control-only test 待完成。0.60.0 已安装/发布，但 public MCP 路径未通过。一个多尺度 Agent 声明八个 Skill：建模、DFT、MD、phase_field、RVE、FEM、SPICE 和 properties；新四尺度 MCP 只覆盖 phase_field、RVE、FEM、SPICE，建模/DFT/MD/properties 仍通过 CLI 创建或消费，尚未完成公网闭环。见 [技能包装与验证](../docs/skill-packaging-2026-10-28.md)、[公共架构](../docs/unified-architecture-2026-10-28.md) 与 [公网链路审计](../docs/public-chain-audit-20261029.md)。完整 Bundle 包含 modules、schemas 和 scientific_core；MatterAI 宿主与 workspace resolver 是独立部署依赖，公网 Worker 已部署但 v100 outbound-worker 路由仍缺失，因此尚未形成公网计算可用性。
+0.60.2 候选新增 ABACUS 资源查询和 AIS381 赝势/配套轨道接入，默认生产 DFT 使用 ABACUS，只有用户明确要求才选择 VASP。当前部署与验收状态以根目录 SYSTEM_MANIFEST.json 和 docs/abacus-library-20261030.md 为准。既有八个顶层 Skill、七个模块方法和 114 个 CLI 操作继续保留，MCP 共 14 个工具。下文按版本保留历史能力说明，不能代替当前部署状态。
 
 新增源码入口：`charge-correction`、`charged-formation`、`charge-transitions`，均使用 `--request REQUEST.json --output NEW.json`。实际启用版本以 workspace 发布记录为准。
 

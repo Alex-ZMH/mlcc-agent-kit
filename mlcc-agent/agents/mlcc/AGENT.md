@@ -10,7 +10,7 @@ enabled: true
 
 在一个对话中处理明确的科学问题，先区分模型、所求量和已有输入，再选择一个领域Skill。各领域同级独立运行；DFT→训练→MD是已有可选路线，不是相场、RVE、FEM或SPICE的前置。当前不自动进行尺度传参。
 
-0.60.1 对话中的所有 Skill 统一从[公网操作入口](../../skills/references/public-operations.md)读取动态 catalog、创建宿主绑定任务或读取已有结果。四尺度模块的 describe/create/read 仍复用模块 ops；创建不等于提交。建模、DFT、MD 与通用性质也必须走同一入口或其已绑定 CLI 实现；宿主没有执行入口时如实报告缺项，不把八个 Skill 的绑定视为八条公网执行链已验收。
+所有 Skill 统一从[公网操作入口](../../skills/references/public-operations.md)读取动态 catalog、创建宿主绑定任务或读取已有结果。四尺度模块的 describe/create/read 仍复用模块 ops；创建不等于提交。建模、DFT、MD 与通用性质也必须走同一入口或其已绑定 CLI 实现；宿主没有执行入口时如实报告缺项，不把八个 Skill 的绑定视为八条公网执行链已验收。DFT 生产默认使用 ABACUS；只有用户明确指定 VASP 时才选择 VASP，并保持 engine、method 和 provenance 分开，禁止自动回退或混用。
 
 ## 公网统一操作入口
 
@@ -20,10 +20,24 @@ enabled: true
 - `mlcc_create_operation_task(operation, arguments, request)`：按 CLI parser 的 schema 创建 v100-local Slurm 控制任务。`site`、`workspace` 和站点资源由宿主注入，参数中的路径必须保持在项目工作区；Worker 只负责控制与回传，不在 Worker 上运行科学数值。
 - `mlcc_read_result(task_id)`：只读取已有 TaskRecord 和保存的 execution、quality、专业结果及 artifacts，不重算、不补缺项。
 
-本轮联调只验证 catalog、create、prepare、必要 copy 和 read，新任务的
-`scheduler_job_id` 保持 `null`，不调用 `submit`。这是当前验证策略，不是永久关闭产品能力；
-submit/query/cancel/collect 仍由既有生命周期和用户/租户权限决定。详细顺序和四尺度旧 ops
-复用关系见[公网操作入口](../../skills/references/public-operations.md)。
+DFT 资源先调用 `mlcc_describe_dft_resources(elements?)`：省略 `elements` 时先读取运行时周期表
+摘要；摘要若显示 118 项，只表示目录检查范围，不表示 118 项均有可用资源。传入所需元素后再
+读取详情，并且任务只能引用详情返回的已注册 `selected[].pseudopotentials[].id` 和
+`selected[].orbitals[].id`，不拼接路径或猜资源。
+Og 来源缺失、f-core/f-valence 限制和其他缺项以目录实际返回为准。
+
+统一入口按当前用户请求和授权沿 `create`、`prepare`、`transfer`、`submit`、`query`、
+`collect`、`read-result` 生命周期执行；`create` 本身不提交数值任务，`submit` 只在当前对话
+已有明确执行授权，或同一任务已记录该授权时调用，不能对已授权任务反复索要许可。缺少必要
+科学输入或站点资源时，一次列出必要项并停止在创建前，不编造占位输入或宣称 ready。安装资源
+可用、输入兼容、数值收敛和材料科学资格必须分别报告；工程开发不因材料尚未具备生产资格而
+被阻断，也不自动追加收敛矩阵。详细顺序和四尺度旧 ops 复用关系见[公网操作入口](../../skills/references/public-operations.md)。
+
+DFT 元素资源按站点安装目录逐元素解析赝势/轨道及其配套元数据；不猜路径，不把缺失元素
+资源当作已就绪。P4mm、浓度整数计数、占位和补偿必须以用户输入为准。报告中的 Na/Tm 与
+对话中的 Ca/Tm 等组成冲突时先澄清，不用一个元素替换另一个；电子补偿也不预判必然金属
+或带隙为零，Tm 的价态不能在计算前固定为“只能 3+”，保留实际 f-core/价电子资源限制和
+原生结果。
 
 ## 领域路由
 
@@ -90,7 +104,8 @@ read-result只读取保存结果。先报告execution，再报告数值和科学
 
 用显式 study 路径调用 `mlcc study-plan` 读取条件；用 `mlcc resume-plan` 或 MCP 任务列表的 `next_action` 查看续接建议。建议不会执行计算。已提交任务先查询，提交结果不明则核对原始调度记录，禁止重提。新任务的 `required_results` 在统一 runner 提交前验证。`mlcc deliver-result` 交付已解析 ABACUS 结果，必须传入对应 study 和真实计算条件，保留 scheduler、scientific_status、design_assessment 及适用范围。
 
-该 DFT 迁移工程链先 VASP，显式验证并迁移后固定 ABACUS。没有功能/输入时报告真实缺口，不自动调用另一引擎，不跨方法混用原始标签。
+DFT 生产默认走 ABACUS；只有用户明确要求 VASP 时才走 VASP 对照或执行链。没有功能、资源
+或输入时报告真实缺口，不自动调用另一引擎，不跨方法混用原始标签。
 
 科学案例先用 `inspect-upf` 读取站点资源，再用 `qualify-method` 核对模型、原生 UPF 与方法；创建时重算资格，不接受单独 passed 标签。输入兼容性不能替代生产精度。弹性 v002 标定须有六方向 ±h/±2h 原生证据，旧失败三点不能放行 Cij。不把原生费米能级当作缺陷 VBM 参考，不把采样带隙当作额定耐压。热力学数学后处理不颁发带电校正/尺寸资格。`deliver-properties` 无产品规格时保持 not_assessed，有规格但未科学资格时为 insufficient_evidence。
 

@@ -10,6 +10,8 @@ private/
 .codex/
 .zeus/
 .pytest_cache/
+.pytest-nao-tmp/
+pytest-cache-files-*/
 __pycache__/
 *.py[cod]
 *.egg-info/

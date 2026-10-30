@@ -1,3 +1,29 @@
+# MLCC 0.60.2 public resource upgrade
+
+The candidate adds AIS381-first ABACUS resources and a read-only resource query.
+The previous accepted public version is 0.60.1. Current publication and
+ordinary-user acceptance are recorded in `SYSTEM_MANIFEST.json`; preparation
+alone is not a completed deployment.
+
+Use the existing `target_mlcc_v100` and paired `worker_mlcc_v100_01`. Install
+`mlcc-agent` as a new immutable catalog version, activate only that version,
+and register revision 4 as `deployment_mlcc_v100_0_60_2`. Keep 0.60.1 Bundle,
+activation, site config and Worker config for rollback. Existing conversation
+pins are not retargeted: select the new version in a new conversation.
+
+Resource installation and verification are described in
+[ABACUS resource deployment](docs/abacus-library-20261030.md). Resource files,
+private catalog paths and credentials stay on the compute site. No server/Web
+release or paired credential replacement is needed. Acquire the existing
+production deployment lock before changing Worker activation or catalog
+publication, and check active MLCC invocations before restarting the Worker.
+
+The acceptance requires two consecutive calls in the same ordinary-user
+conversation, native resource tool traces, publication/Worker metadata and
+saved screenshots. This release must submit **zero material calculations**.
+
+<!-- 0.60.1 historical deployment record -->
+
 # MLCC 0.60.1 candidate deployment boundary
 
 This directory is the MLCC-owned integration delivery. It is not a copy of the

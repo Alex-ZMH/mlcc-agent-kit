@@ -159,3 +159,43 @@ def test_normal_czo_creation_retains_average_j_non_soc_and_nonproduction_labels(
     assert "noncolin             0" in input_text
     assert len(list(paths["tasks"].iterdir())) == 1
 
+
+def test_inspect_site_upf_headers_reads_local_transport_without_ssh(tmp_path, monkeypatch):
+    from mlcc.method_tasks import inspect_site_upf_headers
+
+    upf_path = tmp_path / "O.upf"
+    upf_path.write_text(
+        '<UPF version="2.0.1"><PP_HEADER element="O" pseudo_type="NC" '
+        'relativistic="scalar" is_ultrasoft="F" is_paw="F" has_so="F" '
+        'functional="SLA PW PBX PBC" z_valence="6"/></UPF>',
+        encoding="utf-8",
+    )
+    method_path = tmp_path / "method.json"
+    method_path.write_text(
+        json.dumps({
+            "method_set": "local-upf",
+            "element_order": ["O"],
+            "pseudopotential_ids": {"O": "O-local"},
+        }),
+        encoding="utf-8",
+    )
+    site_path = tmp_path / "site.json"
+    site_path.write_text(
+        json.dumps({
+            "ssh": {"alias": "local-site", "transport": "local"},
+            "abacus": {"pseudopotential_files": {"O-local": str(upf_path)}},
+        }),
+        encoding="utf-8",
+    )
+
+    def fail_if_called(*args, **kwargs):
+        raise AssertionError("local UPF inspection must not invoke subprocess.run")
+
+    monkeypatch.setattr("mlcc.method_tasks.subprocess.run", fail_if_called)
+    snapshot = inspect_site_upf_headers(method_path, site_path)
+
+    assert snapshot["transport"] == "local"
+    assert snapshot["command"][0] == "local-read"
+    assert snapshot["headers"]["O"]["functional"] == "SLA PW PBX PBC"
+    assert snapshot["headers"]["O"]["functional_normalized"] == "PBE"
+

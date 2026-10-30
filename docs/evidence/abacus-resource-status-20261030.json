@@ -1,0 +1,28 @@
+{
+  "schema": "mlcc.abacus-library-preparation.v1",
+  "bundle": "0.60.2",
+  "status": "prepared_not_published",
+  "resource_files": {
+    "AIS381_UPF": 83,
+    "AIS381_paired_NAO": 83,
+    "supplement_UPF": 33,
+    "total_elements_with_saved_UPF": 116
+  },
+  "missing": {
+    "Bh": "previous_source_download_timeout; explicit_manual_download_permission_pending",
+    "Og": "no_verified_author_NC_UPF"
+  },
+  "software_checks": {
+    "768": "13 passes;37 missing-fixture failures retained",
+    "770": "42 passes after staging 8 specific input fixtures",
+    "776": "pending; all compute CPUs allocated to another job"
+  },
+  "public_two_turn_acceptance": "pending",
+  "public_baseline": "0.60.1",
+  "material_jobs_submitted": 0,
+  "resource_sources": [
+    "https://www.aissquare.com/datasets/detail?pageType=datasets&id=381",
+    "https://github.com/PseudoDojo/ONCVPSP-PBE-SR",
+    "https://github.com/gmatteo/pseudos_ac_she"
+  ]
+}

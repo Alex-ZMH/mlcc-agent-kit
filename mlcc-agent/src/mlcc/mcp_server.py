@@ -12,6 +12,7 @@ from typing import Any, Sequence
 from mcp.server import MCPServer
 
 from . import contracts
+from .abacus_library import describe_abacus_resources
 from .public_operations import create_operation_task, describe_operations
 from .scale_tasks import create_scale_task, describe_scales, read_scale_result
 from .site_runner import SiteRunner, runner_for_task
@@ -77,10 +78,6 @@ def _materialize_site_config(template_value: str, workspace: Path) -> Path:
 
     target = workspace / "configs" / "site.v100.json"
     target.parent.mkdir(parents=True, exist_ok=True)
-    if target.exists():
-        if contracts.read_json(target) != template:
-            raise ValueError(f"project site config already differs: {target}")
-        return target
     target.write_text(contracts.dumps(template), encoding="utf-8")
     return target
 
@@ -123,7 +120,7 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         name="mlcc-agent",
         title="MLCC Slurm runner",
         description="Explicit Slurm task lifecycle for the MLCC project.",
-        version="0.60.1",
+        version="0.60.2",
     )
 
     @server.tool(
@@ -146,6 +143,15 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
                 }
             )
         return {"tasks": tasks}
+
+    @server.tool(
+        name="mlcc_describe_dft_resources",
+        title="Describe installed ABACUS resources",
+        description="Read the installed periodic-table resource catalog and selected-element PP/NAO metadata; availability is not scientific qualification.",
+        structured_output=True,
+    )
+    def describe_dft_resources_tool(elements: list[str] | None = None) -> dict[str, Any]:
+        return describe_abacus_resources(site, elements)
 
     @server.tool(
         name="mlcc_describe_operations",
