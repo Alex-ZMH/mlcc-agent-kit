@@ -51,8 +51,10 @@ def _f_electrons(text: str, source: Path) -> dict[str, Any]:
     if not lines:
         return empty("no rows")
     first = lines[0].split()
+    # ONCVPSP's fixed-width header joins the symbol and Z for three-digit elements.
+    reference_header = re.sub(r"^([A-Z][a-z]?)(?=\d)", r"\1 ", lines[0]).split()
     try:
-        element, atomic_number, nc, nv = first[0], float(first[1]), int(first[2]), int(first[3])
+        element, atomic_number, nc, nv = reference_header[0], float(reference_header[1]), int(reference_header[2]), int(reference_header[3])
     except (IndexError, TypeError, ValueError):
         return empty("invalid native header")
     rows = []

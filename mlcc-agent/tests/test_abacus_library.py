@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+import runpy
 import subprocess
 import sys
 
@@ -17,6 +18,38 @@ _PBE_HEADER = (
     '<PP_HEADER element="O" pseudo_type="NC" relativistic="scalar" '
     'is_ultrasoft="F" is_paw="F" has_so="F" functional="PBE" z_valence="6"/>'
 )
+
+
+def test_native_bh_reference_header_keeps_core_valence_boundary():
+    parser = runpy.run_path(str(Path(__file__).resolve().parents[2] / "scripts/resources/build_abacus_catalog.py"))["_f_electrons"]
+    configuration = """<PP_INPUTFILE>
+Bh107.00   10    8       4      both
+1 0 2.00
+2 0 2.00
+2 1 6.00
+3 0 2.00
+3 1 6.00
+3 2 10.00
+4 0 2.00
+4 1 6.00
+4 2 10.00
+4 3 14.00
+5 0 2.00
+5 1 6.00
+5 2 10.00
+5 3 14.00
+6 0 2.00
+6 1 6.00
+6 2 5.00
+7 0 2.00
+</PP_INPUTFILE>"""
+    result = parser(configuration, Path("Bh-5spdf.upf"))
+
+    assert result["evidence"]["element"] == "Bh"
+    assert result["evidence"]["atomic_number"] == 107
+    assert (result["nc"], result["nv"]) == (10, 8)
+    assert [(row["n"], row["treatment"]) for row in result["f_rows"]] == [(4, "core"), (5, "valence")]
+    assert result["evidence"]["header"][0] == "Bh107.00"
 
 
 def _pseudopotential(element: str, *, compatible: bool = True, f_treatment: str = "unknown") -> dict:
