@@ -2,7 +2,7 @@
   "system": "mlcc",
   "delivery_label": "0.60.2-candidate",
   "bundle_version": "0.60.2",
-  "candidate_status": "source_ready_public_upgrade_awaiting_metadata_check_authorization",
+  "candidate_status": "source_ready_awaiting_slurm_776_by_user_direction",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
     "delivery_branch": "codex/cloud-delivery-20261029",
@@ -44,13 +44,12 @@
     "scientific_qualification": false,
     "material_jobs_submitted": 0,
     "polling_enabled": false,
-    "source_files_available_elements": 116,
+    "source_files_available_elements": 117,
     "available_files_breakdown": {
       "AIS381": 83,
-      "author_supplements": 33
+      "author_supplements": 34
     },
     "source_gaps": {
-      "Bh": "manual_download_approval_pending_after_timeout",
       "Og": "no_verified_author_NC_UPF"
     }
   },
@@ -59,7 +58,7 @@
     "initial_status": "37 missing-fixture failures and 13 passes retained",
     "method_job": "770",
     "method_status": "42 passed after staging 8 specific input fixtures; no full workspace link",
-    "resource_library_id_and_redaction": "Slurm776_pending_full_node_allocation; direct_control_check_needs_explicit_approval",
+    "resource_library_id_and_redaction": "Slurm776_pending; user explicitly chose to keep scheduler queue, no bypass",
     "numerical_acceptance_completed_jobs": [
       "768_partial",
       "770_42_passed"
@@ -71,7 +70,8 @@
     "Standard UPF PBE component spelling accepted without changing native values",
     "v100 local UPF inspection avoids loopback SSH",
     "Registered NAO library ID resolves pairing files on the compute site",
-    "Removed fixed no-submit rollout rule from public SOP; task authorization and missing scientific inputs still govern execution"
+    "Removed fixed no-submit rollout rule from public SOP; task authorization and missing scientific inputs still govern execution",
+    "AIS381 tungsten NAO metadata retains its native g channel"
   ],
   "evidence": {
     "current": "docs/abacus-library-20261030.md",

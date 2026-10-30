@@ -2,10 +2,28 @@ import json
 from pathlib import Path
 
 from mlcc.method_tasks import inspect_site_nao_headers
+from mlcc.method_inputs import parse_nao_header
 
 
 def _write_json(path: Path, value: dict) -> None:
     path.write_text(json.dumps(value, indent=2) + "\n", encoding="utf-8")
+
+
+def test_native_ais381_w_header_retains_g_channel():
+    native = """Element                     W
+Energy Cutoff(Ry)           100
+Radius Cutoff(a.u.)         8
+Lmax                        4
+Number of Sorbital-->       4
+Number of Porbital-->       2
+Number of Dorbital-->       2
+Number of Forbital-->       2
+Number of Gorbital-->       1
+SUMMARY  END
+"""
+    header = parse_nao_header(native, "W_gga_8au_100Ry_4s2p2d2f1g.orb")
+    assert header["lmax"] == 4
+    assert header["radial_counts"] == {"s": 4, "p": 2, "d": 2, "f": 2, "g": 1}
 
 
 def test_inspect_nao_uses_registered_site_library_id(tmp_path):

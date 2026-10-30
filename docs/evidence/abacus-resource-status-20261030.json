@@ -5,11 +5,10 @@
   "resource_files": {
     "AIS381_UPF": 83,
     "AIS381_paired_NAO": 83,
-    "supplement_UPF": 33,
-    "total_elements_with_saved_UPF": 116
+    "supplement_UPF": 34,
+    "total_elements_with_saved_UPF": 117
   },
   "missing": {
-    "Bh": "previous_source_download_timeout; explicit_manual_download_permission_pending",
     "Og": "no_verified_author_NC_UPF"
   },
   "software_checks": {
@@ -24,5 +23,7 @@
     "https://www.aissquare.com/datasets/detail?pageType=datasets&id=381",
     "https://github.com/PseudoDojo/ONCVPSP-PBE-SR",
     "https://github.com/gmatteo/pseudos_ac_she"
-  ]
+  ],
+  "Bh_manual_download": "explicitly approved one attempt; succeeded, 366069 bytes; NC PBE scalar native header",
+  "queue_policy": "user chose to keep Slurm776 waiting; no direct execution and no cancellation"
 }

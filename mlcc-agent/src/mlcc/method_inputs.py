@@ -52,7 +52,7 @@ _NAO_RADIUS_RE = re.compile(
 )
 _NAO_LMAX_RE = re.compile(r"^\s*Lmax\s+(?P<value>\d+)\s*$", re.IGNORECASE)
 _NAO_RADIAL_RE = re.compile(
-    r"^\s*Number\s+of\s+(?P<orbital>[spdf])\s*orbital(?:s)?\s*[-=]*>\s*(?P<count>\d+)\s*$",
+    r"^\s*Number\s+of\s+(?P<orbital>[spdfg])\s*orbital(?:s)?\s*[-=]*>\s*(?P<count>\d+)\s*$",
     re.IGNORECASE,
 )
 
@@ -276,7 +276,7 @@ def qualify_lcao_orbitals(
             _issue(f"NAO radial orbital counts for {element} are required")
         else:
             max_nonzero = -1
-            angular = {"s": 0, "p": 1, "d": 2, "f": 3}
+            angular = {"s": 0, "p": 1, "d": 2, "f": 3, "g": 4}
             for orbital, count in counts.items():
                 label = str(orbital).lower()
                 if label not in angular or isinstance(count, bool) or not isinstance(count, (int, np.integer)) or int(count) < 0:
