@@ -1,51 +1,91 @@
-# MLCC 0.60.2 public resource upgrade
+# MLCC 0.60.3 deployment
 
-The 0.60.2 deployment adds AIS381-first ABACUS resources and a read-only
-resource query. `deployment_mlcc_v100_0_60_2` revision 4 is published at the
-public service. The 0.60.1 catalog is unpublished but remains enabled as the
-rollback version. Two consecutive ordinary-user read-only turns passed in the
-same thread and Codex provider session on revision 4. A third turn confirmed the
-Bh metadata correction after the Worker resource update. All three runs
-completed; their four tool calls used only `mlcc_describe_dft_resources` and
-created zero `task.json` files.
+Deployment deployment_mlcc_v100_0_60_3 revision 5 is published; Worker active
+and readiness=1. 21 software checks passed locally and 21 in the actual
+MCP2.3.0 interpreter. Public missing-field feedback passed; the consecutive
+create/read turns completed with one defined task and scheduler_job_id=null.
+An earlier 17m16s model-only turn is retained as cancelled and not counted as
+passed. Rollback target: 0.60.2.
 
-The published release uses the existing `target_mlcc_v100` and paired
-`worker_mlcc_v100_01`; `mlcc-agent` is installed as an immutable catalog
-version and activated as revision 4 of `deployment_mlcc_v100_0_60_2`. Keep the
-0.60.1 Bundle,
-activation, site config and Worker config for rollback. Existing conversation
-pins are not retargeted: select the new version in a new conversation.
+## Request contract
 
-Resource installation and verification are described in
-[ABACUS resource deployment](docs/abacus-library-20261030.md). Resource files,
-private catalog paths and credentials stay on the compute site. No server/Web
-release or paired credential replacement is needed. Acquire the existing
-production deployment lock before changing Worker activation or catalog
-publication, and check active MLCC invocations before restarting the Worker.
+`mlcc_create_scale_task` now exposes the request schema at the MCP tool
+boundary and converts known caller validation failures into visible
+`ToolError` messages. The tool arguments are separate: `module_id`,
+`operation`, `input`, and `request`. The request must use
+`mlcc.scale-task-request.v1`:
 
-The ordinary-user acceptance required two consecutive calls in the same
-conversation, native resource tool traces, publication/Worker metadata and
-saved screenshots; that read-only acceptance is now passed. This release must
-submit **zero material calculations**.
+```json
+{
+  "schema": "mlcc.scale-task-request.v1",
+  "task_id": "rve-control-20261102-01",
+  "resource_request": {
+    "nodes": 1,
+    "ntasks": 1,
+    "cpus_per_task": 1,
+    "mem_mib": 2048,
+    "time": "00:05:00",
+    "partition": "cpu"
+  }
+}
+```
 
-The required private resource registration has produced 117 available UPF
-elements, 83 paired NAO resources and an `Og` missing record. This is metadata
-registration, not a material calculation. Slurm job 776 was explicitly exempted
-as a release precondition because the v100 node was occupied; it remains
-`PENDING`, was not cancelled or bypassed, and is not counted as passed.
+`study_ref` is optional. Missing `task_id`, a wrong schema, and unsupported
+module/operation selections now expose the validation reason. When
+`mlcc_describe_scales` receives a module without a valid operation, it reports
+the supported operations instead of returning an opaque failure. A valid create
+only stages a `task.json` (`status=defined`, `scheduler_job_id=null`); it does
+not prepare, submit, query, collect, or run a scientific calculation.
 
-The latest private catalog metadata correction records Bh as Z=107, `nc=10`,
-`nv=8`, with 4f core and 5f valence; Tm remains Z=69, `nc=10`, `nv=4`, with
-4f core. This metadata-only correction was applied in generator commit
-`ef490a8`; it added no solver or test job. See [the ABACUS resource boundary](docs/abacus-library-20261030.md) for
-the detailed resource and qualification limits.
+## Release status and deployment boundary
 
-The v100 Worker healthcheck is `1`; the Worker is active and its database
-heartbeat is online. The existing `target_mlcc_v100` and
-`worker_mlcc_v100_01` remain the execution target and pairing.
+- 21 pure-software checks passed in each environment; publication and public
+  create/read acceptance are complete.
+- No material calculation has been submitted by this candidate.
+- The host permits only one enabled `mlcc-agent` version. After the reviewed publication,
+  0.60.3/rev5 is the single active deployment; 0.60.2/rev4 remains
+  installed and recoverable as the rollback version, not simultaneously enabled.
+  Existing conversation pins are not automatically migrated, and continued
+  online calls from an old conversation are not promised. A new conversation
+  must select the repaired version. The existing task/job 842, its binding,
+  task record, scheduler state, Slurm processes, and scientific files remain
+  untouched.
+- The existing `target_mlcc_v100` and paired `worker_mlcc_v100_01` remain in
+  use. `registered-public-v002`, ABACUS defaults, and the AIS381-first resource
+  catalog remain unchanged.
+- No MatterAI host code change, credential update, or new framework is needed.
 
-<!-- 0.60.1 historical deployment record: the following section is retained for
-     rollback/provenance and is not current 0.60.2 acceptance evidence. -->
+The deployment operator must acquire the existing production lock, verify no
+active MLCC invocations before restarting the Worker, install the immutable
+0.60.3 Bundle, run local checks and a real stdio probe, restart only the Worker,
+verify heartbeat/online inventory, and publish through the existing operator
+catalog API. Server/Web was not changed by this release. Existing conversation
+pins are never retargeted, and continued online calls from an old conversation
+are not promised after the single-version switch; a new conversation selects
+the newly published version.
+
+The 0.60.2 material and public acceptance record below is historical for this
+candidate. It is retained for provenance and rollback, not as 0.60.3 evidence.
+
+## Historical 0.60.2 public resource upgrade
+
+The 0.60.2 deployment added AIS381-first ABACUS resources and a read-only
+resource query. `deployment_mlcc_v100_0_60_2` revision 4 was published at the
+public service, with the 0.60.1 catalog unpublished but retained for rollback.
+Two ordinary-user read-only turns and a supplemental Bh metadata read completed
+on revision 4; they used only `mlcc_describe_dft_resources` and created no
+`task.json` files.
+
+The 0.60.2 deployment used the existing `target_mlcc_v100` and paired
+`worker_mlcc_v100_01`. Its private resource registration recorded 117 available
+UPF elements, 83 paired NAO resources, and Og as missing. The
+`registered-public-v002` site, AIS381 resource source, ABACUS default, and
+metadata-only Bh correction remain unchanged in the 0.60.3 candidate.
+
+Slurm job 776 was explicitly exempted from the 0.60.2 release precondition and
+remained `PENDING`; it was not cancelled or bypassed. The 0.60.2 Worker
+healthcheck output was `1` and its database heartbeat was online. These are
+historical observations, not 0.60.3 publication evidence.
 
 ## Historical 0.60.1 candidate deployment boundary
 

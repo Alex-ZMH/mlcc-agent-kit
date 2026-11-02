@@ -1,0 +1,86 @@
+{
+  "schema": "mlcc.task-create-repair-acceptance.v1",
+  "observed_at": "2026-11-02T08:21:20.989Z",
+  "bundle_version": "0.60.3",
+  "revision": 5,
+  "status": "published_create_error_and_consecutive_create_read_verified",
+  "source_commit": "a1878c7866ab4953567d2dd9b3a7856c53056e69",
+  "public_entrypoint": "https://agent.mattok.cn",
+  "rollback_version": "0.60.2",
+  "single_active_version_required_by_host": true,
+  "worker": {
+    "active": true,
+    "readiness": 1,
+    "last_heartbeat_at": "2026-11-02T08:21:20.771Z"
+  },
+  "software_checks": {
+    "local": 21,
+    "actual_public_MCP_2_3_0_interpreter": 21,
+    "scope": "pure software: stdio protocol, offline task lifecycle and operation routes; no solver/Slurm"
+  },
+  "public_acceptance": {
+    "route": "ordinary_user_workbench",
+    "same_thread": true,
+    "same_provider_session": true,
+    "invocation_statuses": [
+      "completed",
+      "cancelled",
+      "completed",
+      "completed"
+    ],
+    "last_two_consecutive_turns": [
+      "completed",
+      "completed"
+    ],
+    "expected_missing_field_error": "Error executing tool mlcc_create_scale_task: request: missing task_id; task request schema is mlcc.scale-task-request.v1",
+    "calls": [
+      {
+        "tool": "mlcc_create_scale_task",
+        "outcome": "expected_input_error"
+      },
+      {
+        "tool": "mlcc_describe_scales",
+        "outcome": "success"
+      },
+      {
+        "tool": "mlcc_create_scale_task",
+        "outcome": "success"
+      },
+      {
+        "tool": "mlcc_list_tasks",
+        "outcome": "success"
+      },
+      {
+        "tool": "mlcc_list_tasks",
+        "outcome": "success"
+      }
+    ],
+    "task": {
+      "task_id": "validation-only-rve-create-20261102",
+      "status": "defined",
+      "scheduler_job_id": null,
+      "scientific_status": "not_calculated"
+    },
+    "scheduler_tool_calls": 0
+  },
+  "long_reasoning_record": {
+    "invocation": 2,
+    "duration": "17m16s",
+    "status": "cancelled",
+    "cancelled_by": "operator stopped own acceptance run",
+    "tool_calls": 0,
+    "task_created": false,
+    "not_counted_as_passed": true,
+    "recovery": "shorter explicit file-staging instruction; one task created and next turn read it",
+    "model_settings_changed": false
+  },
+  "boundaries": {
+    "material_jobs_submitted": 0,
+    "existing_job_842_modified": false,
+    "host_code_changed": false,
+    "credentials_changed": false,
+    "site_resources_changed": false,
+    "polling_enabled": false
+  },
+  "remaining_limit": "old pinned conversations are not migrated; start a new conversation for 0.60.3"
+}

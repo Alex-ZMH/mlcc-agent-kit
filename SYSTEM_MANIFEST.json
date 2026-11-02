@@ -2,13 +2,13 @@
   "system": "mlcc",
   "delivery_label": "0.60.3-candidate",
   "bundle_version": "0.60.3",
-  "candidate_status": "software_verified_awaiting_native_and_public_acceptance",
+  "candidate_status": "published_create_error_and_consecutive_create_read_verified",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
     "delivery_branch": "codex/cloud-delivery-20261029",
     "base_commit": "e20452dce7f0709e2f34ff6ffe1a66f6437d522e",
     "candidate_revision": "Git commit containing this manifest",
-    "runtime_bundle_commit": "Git commit frozen for this candidate",
+    "runtime_bundle_commit": "a1878c7866ab4953567d2dd9b3a7856c53056e69",
     "resource_generator_commit": "ef490a8"
   },
   "public_delivery": {
@@ -17,11 +17,15 @@
     "worker_id": "worker_mlcc_v100_01",
     "deployment_id": "deployment_mlcc_v100_0_60_3",
     "deployment_revision": 5,
-    "published": false,
-    "ordinary_two_turn_status": "pending",
+    "published": true,
+    "ordinary_two_turn_status": "passed_last_two_create_then_read",
     "rollback_version": "0.60.2",
     "localhost_dependency": false,
-    "published_version_at_preparation": "0.60.2"
+    "published_version_at_preparation": "0.60.2",
+    "worker_healthcheck": 1,
+    "worker_active": true,
+    "interrupted_acceptance_runs": 1,
+    "old_conversation_policy": "pins_unchanged_start_new_conversation_for_repair"
   },
   "agent": {
     "name": "mlcc",
@@ -68,7 +72,10 @@
       "770_42_passed"
     ],
     "Bh_regression": "saved_not_executed;actual_private_catalog_and_public_read_corrected",
-    "create_error_control_regression": "21 passed; actual stdio MCP, offline task lifecycle and public-operation routes; no numerical solver or Slurm"
+    "create_error_control_regression": "21 passed; actual stdio MCP, offline task lifecycle and public-operation routes; no numerical solver or Slurm",
+    "native_create_error_control_regression": "21 passed in actual public MCP2.3.0 interpreter; pure software only",
+    "create_error_public_acceptance": "expected field error; one defined/jobnull task; next turn read; zero scheduler calls",
+    "historical_slurm_776_observation_date": "2026-10-30; not rechecked by this repair"
   },
   "changes": [
     "Publish one shared platform task-request schema through MCP and scale descriptions",
@@ -81,7 +88,8 @@
     "current": "docs/task-create-errors-20261102.md",
     "previous_public_release": "docs/abacus-library-20261030.md",
     "private_raw": "workspace/reports/rve-create-failure-20261102 (operator workspace, not distributed)",
-    "public_resource_acceptance": "docs/evidence/abacus-resource-status-20261030.json"
+    "public_resource_acceptance": "docs/evidence/abacus-resource-status-20261030.json",
+    "public_task_create_acceptance": "docs/evidence/task-create-repair-20261102.json"
   },
   "boundaries": {
     "numerical_execution": "v100 via existing Slurm runner",

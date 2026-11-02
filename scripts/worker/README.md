@@ -1,27 +1,70 @@
-# v100 Worker operator boundary
+# v100 Worker · 0.60.3
 
-This directory documents the 0.60.2 user-level v100 Worker. It is an operator
-guide, not a launcher. `deployment_mlcc_v100_0_60_2` revision 4 is published;
-the Worker healthcheck is `1`, the service is active and its database heartbeat
-is online. The 0.60.1 catalog is unpublished but remains enabled for rollback.
-Two consecutive ordinary-user read-only turns passed in the same thread and
-Codex provider session on revision 4. A third turn confirmed the Bh metadata
-correction after the Worker resource update. All three runs completed; their
-four tool calls used only `mlcc_describe_dft_resources` and created zero
-`task.json` files. No material calculation has been submitted.
+Deployment deployment_mlcc_v100_0_60_3 revision 5 is published and active;
+readiness=1. 0.60.2 is retained for rollback. The public missing-field check
+and subsequent create/read turns passed; the synthetic task remains defined
+with scheduler_job_id=null. One model-only 17m16s run was manually stopped
+and retained as cancelled. It is not included in the passed checks.
 
-The required private resource registration reports 117 available UPF elements,
-83 paired NAO resources and `Og` missing. Slurm job 776 was explicitly exempted
-as a release precondition because the v100 node was occupied; it remains
-`PENDING`, was not cancelled or bypassed, and is not a pass result.
+This release repairs the visible error path for `mlcc_create_scale_task`.
+`module_id`, `operation`, and scientific `input` are separate tool arguments;
+`request` must be a `mlcc.scale-task-request.v1` object containing `schema`,
+`task_id`, and `resource_request`:
 
-The latest private catalog metadata correction records Bh as Z=107, `nc=10`,
-`nv=8`, with 4f core and 5f valence; Tm remains Z=69, `nc=10`, `nv=4`, with
-4f core. The metadata-only correction was applied in generator commit
-`ef490a8`; it added no solver or test job. See [`docs/abacus-library-20261030.md`](../../docs/abacus-library-20261030.md)
-for the detailed resource and qualification limits.
+```json
+{
+  "schema": "mlcc.scale-task-request.v1",
+  "task_id": "rve-control-20261102-01",
+  "resource_request": {
+    "nodes": 1,
+    "ntasks": 1,
+    "cpus_per_task": 1,
+    "mem_mib": 2048,
+    "time": "00:05:00",
+    "partition": "cpu"
+  }
+}
+```
 
-## Observed prerequisites
+Missing `task_id`, a wrong schema, and unsupported module/operation selections
+are returned as visible validation `ToolError` messages. A module-only
+`mlcc_describe_scales` call reports the supported operations. A valid create
+only stages a defined task with `scheduler_job_id=null`; it does not submit a
+calculation.
+
+21 pure-software checks passed locally and in the actual MCP2.3.0 interpreter. The host permits only one enabled `mlcc-agent` version, so
+0.60.3/rev5 is the single active deployment. 0.60.2/rev4
+remains installed and recoverable as rollback, not simultaneously enabled.
+Existing conversation pins are not automatically migrated, and continued online
+calls from an old conversation are not promised after the switch. Users must
+start a new conversation to obtain the repaired version. The existing task/job
+842, its binding, task record, scheduler state, Slurm processes, and scientific
+files are not changed. No material calculation is submitted by this candidate.
+
+The existing `target_mlcc_v100`, paired `worker_mlcc_v100_01`,
+`registered-public-v002` site configuration, ABACUS default, and AIS381-first
+resource catalog remain unchanged. No MatterAI host code change, credential
+update, or new framework is needed. This is an operator guide, not a launcher.
+
+## Historical 0.60.2 Worker record
+
+The following material records the already published 0.60.2 Worker state for
+rollback and provenance only. It is not 0.60.3 publication evidence.
+
+The 0.60.2 user-level v100 Worker used `deployment_mlcc_v100_0_60_2` revision 4;
+its healthcheck output was `1`, the service was active, and the database
+heartbeat was online. The 0.60.1 catalog was unpublished but retained for that
+release's rollback. Two ordinary-user read-only turns and a supplemental Bh
+metadata read completed without creating `task.json` files.
+
+The historical private resource registration reported 117 available UPF
+elements, 83 paired NAO resources and `Og` missing. Slurm job 776 was explicitly
+exempted as a release precondition, remained `PENDING`, and was not cancelled or
+bypassed. The metadata-only Bh correction was applied in generator commit
+`ef490a8` without a solver or test job. See [`docs/abacus-library-20261030.md`](../../docs/abacus-library-20261030.md)
+for the resource and qualification limits.
+
+### Historical 0.60.2 observed prerequisites
 
 The v100 user directory contained:
 
@@ -54,7 +97,7 @@ initial passes plus one targeted corrected pass, not a complete final 40-case
 rerun. Private report packages are outside GitHub: `worker-runtime-final.tar.gz`
 and `mcp-sdk.tar.gz`; the runtime base was rebuilt from six source/test files.
 
-## Private configuration
+## Private configuration boundary
 
 Values must be supplied by the operator on v100 and must not be committed:
 
@@ -75,8 +118,9 @@ contains only the two MLCC keys `MLCC_SITE_CONFIG` and
 control the existing Slurm installation.
 
 Do not copy credentials, private host configuration, runtime binaries or the
-full scientific environment into GitHub. Keep the existing `0.60.0` target and
-durable session pins unchanged.
+full scientific environment into GitHub. Keep `target_mlcc_v100`, the
+0.60.2/rev4 rollback configuration, and durable session pins unchanged; do not
+attempt to enable two same-name Bundle versions at once.
 
 ## Safe checks only
 
@@ -96,7 +140,7 @@ read-only acceptance did not run `sbatch`, `scontrol`, submit, query, collect or
 scientific commands; it intentionally left the new task count at zero. This
 control result is not authorization for a material calculation.
 
-## Publication and validation state
+## Historical 0.60.2 publication and validation state
 
 The current 0.60.2 publication uses the existing `target_mlcc_v100` and
 `worker_mlcc_v100_01`. The operator must retain the 0.60.1 configuration and

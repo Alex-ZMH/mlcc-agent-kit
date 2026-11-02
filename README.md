@@ -1,16 +1,52 @@
 # MLCC Agent
 
-This is the **0.60.2** source and deployment record for the public service at
-[agent.mattok.cn](https://agent.mattok.cn). Publication and acceptance status are
-recorded in [SYSTEM_MANIFEST.json](SYSTEM_MANIFEST.json). Deployment
-`deployment_mlcc_v100_0_60_2` revision 4 is published and its v100 Worker is
-active. The previous 0.60.1 catalog is unpublished but remains enabled as the
-rollback version.
-Two consecutive ordinary-user read-only turns passed in the same thread and
-Codex provider session on deployment revision 4. A third turn confirmed the Bh
-metadata correction after the Worker resource update. All three runs completed;
-their four tool calls used only `mlcc_describe_dft_resources` and created zero
-`task.json` files.
+0.60.3 revision 5 is published at https://agent.mattok.cn. The Worker is active
+and its native readiness check returns 1. Ordinary-user verification returned
+a concrete missing-task_id error, then created one synthetic validation task
+and read it in the next turn: defined, scheduler_job_id=null. 0.60.2 is kept
+for rollback. See [acceptance evidence](docs/evidence/task-create-repair-20261102.json).
+
+One earlier acceptance turn was stopped after 17m16s of model reasoning with
+zero tool calls; it is retained as cancelled, not counted as passed. Model
+settings were not changed. The subsequent create/read turns both completed.
+
+This release fixes the four-scale task-creation failure that previously showed
+only a generic MCP error. `mlcc_create_scale_task` now advertises and validates
+the request object at the tool boundary. `module_id`, `operation`, and
+scientific `input` are separate tool arguments; `request` is a
+`mlcc.scale-task-request.v1` object with the following required shape:
+
+```json
+{
+  "schema": "mlcc.scale-task-request.v1",
+  "task_id": "rve-control-20261102-01",
+  "resource_request": {
+    "nodes": 1,
+    "ntasks": 1,
+    "cpus_per_task": 1,
+    "mem_mib": 2048,
+    "time": "00:05:00",
+    "partition": "cpu"
+  }
+}
+```
+
+`study_ref` is optional. Missing `task_id`, a wrong request schema, or an
+unsupported module/operation is reported as a visible `ToolError` with the
+validation reason. `mlcc_describe_scales` also reports the supported operations
+when a module is selected without a valid operation. A valid create call only
+stages `task.json` with `status=defined` and `scheduler_job_id=null`; it does
+not prepare, submit, or run a calculation.
+
+21 pure-software checks passed locally and the same 21 passed in the actual
+public MCP2.3.0 interpreter. No material calculation was submitted. The host
+allows only one enabled `mlcc-agent` version at a time, so 0.60.3 is
+the single active version; 0.60.2/rev4 remains installed as
+the rollback version, not a simultaneously enabled version. Existing
+conversation pins are not automatically migrated, and their continued online
+tool use after the switch is not promised. Users must start a new conversation
+to obtain the repaired version. The existing task/job 842, its binding, task
+record, scheduler state, Slurm processes, and scientific files are not changed.
 
 ABACUS is the default production DFT engine. VASP is selected only when the
 customer explicitly requests it. The resource library prefers
@@ -29,8 +65,8 @@ The latest private catalog metadata correction records Bh as Z=107, `nc=10`,
 [`docs/abacus-library-20261030.md`](docs/abacus-library-20261030.md).
 
 The separate Slurm 776 resource check was explicitly exempted as a release
-precondition because the v100 node was occupied. Job 776 remains `PENDING`; it
-was not cancelled or bypassed, and its pending record is not a pass result.
+precondition because the v100 node was occupied. Job 776 was recorded as `PENDING` on 2026-10-30; it
+was not rechecked, cancelled or bypassed by this repair, and is not a pass result.
 
 The repository contains the MLCC bundle, eight top-level Skills and seven
 nested method routes, 114 CLI operation routes, and 14 MCP tools. The added
@@ -56,7 +92,10 @@ Credentials, licensed VASP data, private site configuration, resource binaries,
 and scientific outputs remain outside this source repository. The MatterAI host
 and Worker are independent releases; their retained patch sources are in
 [scripts/worker](scripts/worker/README.md). Existing scientific environments are
-preserved. [0.60.1 verification history](docs/evidence/public-0601-verification-history.md)
-records the earlier control tests separately from this release.
+preserved. The 0.60.2 content and its public two-turn evidence are historical
+for this candidate. The 0.60.3 plan keeps the existing
+`registered-public-v002` site configuration and the AIS381-first ABACUS resource
+catalog unchanged; it needs no MatterAI host code change, credential update, or
+new framework. The rollback target is 0.60.2/rev4.
 
-Source folder: `versions/0.60.2-candidate` in the local MLCC workspace.
+Source folder: `versions/0.60.3-candidate` in the local MLCC workspace.
