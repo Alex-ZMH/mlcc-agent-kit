@@ -6,15 +6,17 @@ import argparse
 import os
 from pathlib import Path
 from pathlib import PurePosixPath
-import re
-from typing import Any, Sequence
+from typing import Annotated, Any, Sequence
 
 from mcp.server import MCPServer
+from mcp.server.mcpserver.exceptions import ToolError
+from pydantic import Field
 
 from . import contracts
 from .abacus_library import describe_abacus_resources
 from .public_operations import create_operation_task, describe_operations
-from .scale_tasks import create_scale_task, describe_scales, read_scale_result
+from .scale_tasks import (ScaleInputError, create_scale_task_from_data, describe_scales,
+                          read_scale_result, scale_task_request_schema)
 from .site_runner import SiteRunner, runner_for_task
 from .tasks import TaskRecord, load_task
 from .workflow import inspect_task
@@ -91,26 +93,6 @@ def _resolve_site(site_path: str | Path, workspace: Path) -> Path:
     return Path(site_path).expanduser().resolve()
 
 
-def _stage_scale_documents(
-    workspace: Path,
-    input_data: dict[str, Any],
-    request: dict[str, Any],
-) -> tuple[Path, Path]:
-    task_id = request.get("task_id")
-    if not isinstance(task_id, str) or not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,95}", task_id):
-        raise ValueError("request.task_id must be a single readable directory name")
-    task_path = workspace / "tasks" / task_id
-    if task_path.exists():
-        raise FileExistsError(f"MCP task already exists: {task_id}")
-    input_path = workspace / "inputs" / f"{task_id}.json"
-    request_path = workspace / "requests" / f"{task_id}.json"
-    input_path.parent.mkdir(parents=True, exist_ok=True)
-    request_path.parent.mkdir(parents=True, exist_ok=True)
-    input_path.write_text(contracts.dumps(input_data), encoding="utf-8")
-    request_path.write_text(contracts.dumps(request), encoding="utf-8")
-    return input_path, request_path
-
-
 def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
     """Build the stdio server for one private site and workspace."""
 
@@ -120,7 +102,7 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         name="mlcc-agent",
         title="MLCC Slurm runner",
         description="Explicit Slurm task lifecycle for the MLCC project.",
-        version="0.60.2",
+        version="0.60.3",
     )
 
     @server.tool(
@@ -205,28 +187,31 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         module_id: str | None = None,
         operation: str | None = None,
     ) -> dict[str, Any]:
-        return describe_scales(module_id, operation)
+        try:
+            return describe_scales(module_id, operation)
+        except ScaleInputError as exc:
+            raise ToolError(str(exc)) from exc
 
     @server.tool(
         name="mlcc_create_scale_task",
         title="Create MLCC scale task",
-        description="Validate and stage one FEM, phase-field, RVE, or SPICE task without submitting it.",
+        description="Validate and stage one FEM, phase-field, RVE, or SPICE task without submitting it. request uses the platform task schema; module_id, operation and scientific input are separate arguments.",
         structured_output=True,
     )
     def create_scale_task_tool(
         module_id: str,
         operation: str,
         input: dict[str, Any],
-        request: dict[str, Any],
+        request: Annotated[dict[str, Any], Field(json_schema_extra=scale_task_request_schema())],
     ) -> dict[str, Any]:
-        input_path, request_path = _stage_scale_documents(root, input, request)
-        return create_scale_task(
-            module_id=module_id,
-            operation=operation,
-            input_path=input_path,
-            site_path=site,
-            request_path=request_path,
-        )
+        # The advertised schema and adapter share one validation before any staging.
+        try:
+            return create_scale_task_from_data(
+                module_id=module_id, operation=operation, input_data=input,
+                request=request, site_path=site, workspace=root,
+            )
+        except ScaleInputError as exc:
+            raise ToolError(str(exc)) from exc
 
     @server.tool(
         name="mlcc_read_scale_result",

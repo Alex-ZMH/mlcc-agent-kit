@@ -17,6 +17,14 @@ from .capabilities import describe
 MODULES = frozenset(m['id'] for m in describe()['modules'] if m.get('schema_version') == 'mlcc.module.v1')
 
 
+class ScaleInputError(ValueError):
+    """A caller-supplied scale selection or scientific/task input is invalid."""
+
+
+def scale_task_request_schema():
+    return contracts.read_json(COMPUTE_ROOT / 'schemas/scale-task-request.schema.json')
+
+
 def _absolute_posix(value):
     if not isinstance(value, str) or not value.startswith('/') or '\\' in value or any(ord(c) < 32 for c in value):
         raise ValueError('Host executable/root paths must be absolute POSIX strings')
@@ -30,16 +38,16 @@ def describe_scales(module_id=None, operation=None):
     registry = ModuleContracts(COMPUTE_ROOT)
     if module_id is not None:
         if module_id not in MODULES:
-            raise ValueError('Unsupported scale')
+            raise ScaleInputError('Unsupported scale: select fem, phase_field, rve, or spice')
         module = registry.load(module_id)
         if operation not in module.manifest['operations']:
-            raise ValueError('Select one supported operation')
+            raise ScaleInputError('Select one supported operation: ' + ', '.join(module.manifest['operations']))
         op = module.manifest['operations'][operation]
         return {'schema': 'mlcc.scale-operation.v1', 'module_id': module_id,
                 'version': module.manifest['version'], 'operation': operation, 'contract': op,
-                'input_schema': module.schemas[op['input_schema']],
+                'input_schema': module.schemas[op['input_schema']], 'task_request_schema': scale_task_request_schema(),
                 'output_schema': module.schemas[op['output_schema']], 'backend_availability': 'not_checked'}
-    return {'schema': 'mlcc.scale-catalog.v1', 'modules': [
+    return {'schema': 'mlcc.scale-catalog.v1', 'task_request_schema': scale_task_request_schema(), 'modules': [
         {'id': name, 'version': (module := registry.load(name)).manifest['version'],
          'operations': module.manifest['operations'],
          'backend_availability': 'not_checked',
@@ -47,37 +55,46 @@ def describe_scales(module_id=None, operation=None):
 
 
 def create_scale_task(*, module_id, operation, input_path, site_path, request_path):
+    payload = contracts.read_json(Path(input_path))
+    request = contracts.read_json(Path(request_path))
+    module, op = _validate_scale_inputs(module_id, operation, payload, request)
+    return _stage_scale_task(module, op, operation, payload, request, input_path, site_path)
+
+
+def create_scale_task_from_data(*, module_id, operation, input_data, request, site_path, workspace):
+    module, op = _validate_scale_inputs(module_id, operation, input_data, request)
+    task_id = request['task_id']
+    if (workspace / 'tasks' / task_id).exists():
+        raise ScaleInputError(f'Task already exists: {task_id}; inspect the existing task instead of recreating it')
+    input_path = workspace / 'inputs' / f'{task_id}.json'
+    request_path = workspace / 'requests' / f'{task_id}.json'
+    for path, value in ((input_path, input_data), (request_path, request)):
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(contracts.dumps(value), encoding='utf-8')
+    return _stage_scale_task(module, op, operation, input_data, request, input_path, site_path)
+
+
+def _validate_scale_inputs(module_id, operation, payload, request):
     if module_id not in MODULES:
-        raise ValueError('Supported scales: fem, phase_field, rve, spice')
+        raise ScaleInputError('Supported scales: fem, phase_field, rve, spice')
     module = ModuleContracts(COMPUTE_ROOT).load(module_id)
     if operation not in module.manifest['operations']:
-        raise ValueError('Unknown operation for the selected scale')
+        raise ScaleInputError('Select one supported operation: ' + ', '.join(module.manifest['operations']))
     op = module.manifest['operations'][operation]
-    payload = contracts.read_json(Path(input_path))
-    contracts.validate(payload, module.schemas[op['input_schema']])
-    site, request = (contracts.read_json(Path(p)) for p in (site_path, request_path))
-    if set(request) - {'schema', 'task_id', 'resource_request', 'study_ref'} or request.get('schema') != 'mlcc.scale-task-request.v1':
-        raise ValueError('Invalid scale task request fields/schema')
-    task_id = request['task_id']
-    if not isinstance(task_id, str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,95}', task_id):
-        raise ValueError('task_id must be a single readable directory name')
-    resources = request['resource_request']
-    if not isinstance(resources, dict) or not resources or resources.get('ntasks') != 1 or type(resources.get('ntasks')) is not int:
-        raise ValueError('Explicit resources with ntasks=1 required by current scale kernels')
-    # Existing kernels are serial. Budgets remain explicit host inputs.
-    if any(isinstance(v, str) and ('\n' in v or '\r' in v) for v in resources.values()):
-        raise ValueError('Resource values must not contain batch-script directives')
-    allowed_resources = {'partition', 'account', 'ntasks', 'nodes', 'cpus_per_task', 'mem_mib', 'time'}
-    if set(resources) - allowed_resources or not {'cpus_per_task', 'mem_mib', 'time'} <= resources.keys():
-        raise ValueError('Explicit CPU, memory and time budgets required; unsupported resource keys')
-    for key in ('cpus_per_task', 'mem_mib'):
-        if type(resources[key]) is not int or resources[key] <= 0:
-            raise ValueError('Positive integer CPU/memory budgets required')
-    if ('nodes' in resources and type(resources['nodes']) is not int) or resources.get('nodes', 1) != 1:
-        raise ValueError('Current scale kernels require one node')
-    for key in ('partition', 'account', 'time'):
-        if key in resources and (not isinstance(resources[key], str) or not re.fullmatch(r'[A-Za-z0-9_:.-]+', resources[key])):
-            raise ValueError('Invalid explicit Slurm ' + key)
+    try:
+        contracts.validate(request, scale_task_request_schema(), path='request')
+        contracts.validate(payload, module.schemas[op['input_schema']], path='input')
+    except contracts.FrameworkError as exc:
+        if exc.code != 'CONTRACT_ERROR':
+            raise
+        raise ScaleInputError(f'{exc}; task request schema is mlcc.scale-task-request.v1') from exc
+    return module, op
+
+
+def _stage_scale_task(module, op, operation, payload, request, input_path, site_path):
+    module_id = module.id
+    task_id, resources = request['task_id'], request['resource_request']
+    site = contracts.read_json(Path(site_path))
     engine = module.manifest['engine']
     if 'scales' in site and engine in site:
         raise ValueError('Select one explicit backend configuration; legacy scales and engine binding conflict')

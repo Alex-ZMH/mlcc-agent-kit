@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "description": "Platform task creation request. Scientific input and module/operation are separate tool arguments.",
+  "required": ["schema", "task_id", "resource_request"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"type": "string", "const": "mlcc.scale-task-request.v1"},
+    "task_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}(?![\\s\\S])"},
+    "study_ref": {"type": "string"},
+    "resource_request": {
+      "type": "object",
+      "required": ["ntasks", "cpus_per_task", "mem_mib", "time"],
+      "additionalProperties": false,
+      "properties": {
+        "ntasks": {"type": "integer", "const": 1},
+        "nodes": {"type": "integer", "const": 1},
+        "cpus_per_task": {"type": "integer", "minimum": 1},
+        "mem_mib": {"type": "integer", "minimum": 1},
+        "partition": {"type": "string", "pattern": "^[A-Za-z0-9_:.-]+(?![\\s\\S])"},
+        "account": {"type": "string", "pattern": "^[A-Za-z0-9_:.-]+(?![\\s\\S])"},
+        "time": {"type": "string", "pattern": "^[A-Za-z0-9_:.-]+(?![\\s\\S])"}
+      }
+    }
+  }
+}

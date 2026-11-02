@@ -1,30 +1,27 @@
 {
   "system": "mlcc",
-  "delivery_label": "0.60.2-candidate",
-  "bundle_version": "0.60.2",
-  "candidate_status": "published_public_read_only_acceptance_passed_with_776_user_waiver",
+  "delivery_label": "0.60.3-candidate",
+  "bundle_version": "0.60.3",
+  "candidate_status": "software_verified_awaiting_native_and_public_acceptance",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
     "delivery_branch": "codex/cloud-delivery-20261029",
-    "base_commit": "1c4d19d431b301951b8ddc6181b18d2d94f1fb7b",
+    "base_commit": "e20452dce7f0709e2f34ff6ffe1a66f6437d522e",
     "candidate_revision": "Git commit containing this manifest",
-    "runtime_bundle_commit": "b3d3a41",
+    "runtime_bundle_commit": "Git commit frozen for this candidate",
     "resource_generator_commit": "ef490a8"
   },
   "public_delivery": {
     "entrypoint": "https://agent.mattok.cn",
     "execution_target": "target_mlcc_v100",
     "worker_id": "worker_mlcc_v100_01",
-    "deployment_id": "deployment_mlcc_v100_0_60_2",
-    "deployment_revision": 4,
-    "published": true,
-    "ordinary_two_turn_status": "passed",
-    "rollback_version": "0.60.1",
+    "deployment_id": "deployment_mlcc_v100_0_60_3",
+    "deployment_revision": 5,
+    "published": false,
+    "ordinary_two_turn_status": "pending",
+    "rollback_version": "0.60.2",
     "localhost_dependency": false,
-    "published_version_at_preparation": "0.60.1",
-    "supplemental_Bh_correction_turn": "completed",
-    "worker_healthcheck": 1,
-    "worker_active": true
+    "published_version_at_preparation": "0.60.2"
   },
   "agent": {
     "name": "mlcc",
@@ -70,21 +67,20 @@
       "768_partial",
       "770_42_passed"
     ],
-    "Bh_regression": "saved_not_executed;actual_private_catalog_and_public_read_corrected"
+    "Bh_regression": "saved_not_executed;actual_private_catalog_and_public_read_corrected",
+    "create_error_control_regression": "21 passed; actual stdio MCP, offline task lifecycle and public-operation routes; no numerical solver or Slurm"
   },
   "changes": [
-    "Operator site template refreshes existing projects at MCP startup",
-    "Read-only installed ABACUS resource metadata and native header provenance",
-    "Standard UPF PBE component spelling accepted without changing native values",
-    "v100 local UPF inspection avoids loopback SSH",
-    "Registered NAO library ID resolves pairing files on the compute site",
-    "Removed fixed no-submit rollout rule from public SOP; task authorization and missing scientific inputs still govern execution",
-    "AIS381 tungsten NAO metadata retains its native g channel"
+    "Publish one shared platform task-request schema through MCP and scale descriptions",
+    "Validate request and scientific input once before any input/task staging",
+    "Return anticipated input errors as ToolError with field-level details; keep internal faults private",
+    "Preserve valid CLI/MCP create and existing Slurm lifecycle without retries or submission",
+    "Document create envelope separately from the internal execution envelope"
   ],
   "evidence": {
-    "current": "docs/abacus-library-20261030.md",
-    "previous_public_release": "docs/evidence/public-0601-verification-history.md",
-    "private_raw": "workspace/reports/abacus-library-20261030 (operator workspace, not distributed)",
+    "current": "docs/task-create-errors-20261102.md",
+    "previous_public_release": "docs/abacus-library-20261030.md",
+    "private_raw": "workspace/reports/rve-create-failure-20261102 (operator workspace, not distributed)",
     "public_resource_acceptance": "docs/evidence/abacus-resource-status-20261030.json"
   },
   "boundaries": {

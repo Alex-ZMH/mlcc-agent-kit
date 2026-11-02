@@ -29,6 +29,29 @@ catalog 中的 114 个命令。目录是运行时事实，不在 Agent 文档中
 `arguments`；`route=existing_mcp` 或 `existing_mcp_lifecycle` 时按 `mcp_tool`
 指定工具的 MCP input schema 调用，不能把 CLI 参数直接传给该 MCP 工具。
 
+四尺度的 `mlcc_describe_scales(module_id, operation)` 同时返回科学 `input_schema`
+和平台 `task_request_schema`。创建工具 `mlcc_create_scale_task` 的 `request` 严格使用后者：
+
+```json
+{
+  "schema": "mlcc.scale-task-request.v1",
+  "task_id": "NEW_READABLE_TASK_ID",
+  "resource_request": {
+    "nodes": 1,
+    "ntasks": 1,
+    "cpus_per_task": 1,
+    "mem_mib": 2048,
+    "time": "00:05:00"
+  },
+  "study_ref": "USER_STUDY_REFERENCE"
+}
+```
+
+资源预算由实际任务确定，示例不构成材料或提交授权。`module_id`、`operation`、`input`
+是创建工具的独立参数；`platform_task_id` 和 `mlcc.scale-execution-request.v1` 属于
+内部执行信封，不能填入创建 `request`。输入错误按返回的字段原因修正，不通过改科学
+参数猜测恢复，也不自动循环重试。已有任务先读取，不重复创建或提交。
+
 顶层 Skill 为：
 
 - `model-mlcc-structures`
