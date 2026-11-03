@@ -14,7 +14,8 @@ from pydantic import Field
 
 from . import contracts
 from .abacus_library import describe_abacus_resources
-from .public_operations import create_operation_task, describe_operations
+from .public_operations import (OperationInputError, create_operation_task,
+                                describe_operations, operation_task_request_schema)
 from .scale_tasks import (ScaleInputError, create_scale_task_from_data, describe_scales,
                           read_scale_result, scale_task_request_schema)
 from .site_runner import SiteRunner, runner_for_task
@@ -102,7 +103,7 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         name="mlcc-agent",
         title="MLCC Slurm runner",
         description="Explicit Slurm task lifecycle for the MLCC project.",
-        version="0.60.5",
+        version="0.60.6",
     )
 
     @server.tool(
@@ -145,7 +146,10 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         skill_id: str | None = None,
         operation: str | None = None,
     ) -> dict[str, Any]:
-        return describe_operations(skill_id, operation)
+        try:
+            return describe_operations(skill_id, operation)
+        except OperationInputError as exc:
+            raise ToolError(str(exc)) from exc
 
     @server.tool(
         name="mlcc_create_operation_task",
@@ -156,15 +160,18 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
     def create_operation_task_tool(
         operation: str,
         arguments: dict[str, Any],
-        request: dict[str, Any],
+        request: Annotated[dict[str, Any], Field(json_schema_extra=operation_task_request_schema())],
     ) -> dict[str, Any]:
-        return create_operation_task(
-            operation=operation,
-            arguments=arguments,
-            request=request,
-            site_path=site,
-            workspace=root,
-        )
+        try:
+            return create_operation_task(
+                operation=operation,
+                arguments=arguments,
+                request=request,
+                site_path=site,
+                workspace=root,
+            )
+        except OperationInputError as exc:
+            raise ToolError(str(exc)) from exc
 
     @server.tool(
         name="mlcc_read_result",

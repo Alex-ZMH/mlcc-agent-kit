@@ -1,0 +1,22 @@
+{
+  "version": "0.60.6",
+  "base_bundle": "0.60.5",
+  "developer_backup_commit": "5718e1839d9e27f3e83361e25a7ba1c14f16350f",
+  "rollback_version": "0.60.5",
+  "status": "software_verified_publication_pending",
+  "change_scope": [
+    "operation input errors and public contracts",
+    "CLI SystemExit failure-result preservation",
+    "focused regression tests and current release evidence"
+  ],
+  "module_versions": {
+    "fem": "0.4.3",
+    "phase_field": "0.4.1",
+    "rve": "0.1.5",
+    "spice": "0.2.1"
+  },
+  "scientific_kernels_changed": false,
+  "existing_task_payloads": "not modified",
+  "historical_manifests": "RELEASE_MLCC_0605.json and RELEASE_RVE_0604.json are frozen historical records",
+  "evidence": "../docs/evidence/operation-entry-repair-20261103.json"
+}

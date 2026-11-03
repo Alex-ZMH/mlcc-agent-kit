@@ -1,3 +1,20 @@
+# MLCC 0.60.6 candidate
+
+This candidate repairs operation-task input errors and missing executor failure
+results on top of developer-delivered 0.60.5. The unmodified developer source
+is backed up at commit `5718e18` on `codex/developer-0605-backup-20261103`.
+Current validation and publication status are in [SYSTEM_MANIFEST.json](SYSTEM_MANIFEST.json).
+21 distinct protocol/staging checks and five executor cases passed remotely.
+Slurm 884 completed in seven seconds; the isolated candidate Worker readiness
+check returns 1. The public service remains 0.60.5/revision 7 because the
+existing production SSH authentication is currently unavailable. No production
+activation or Worker restart has been performed.
+
+See [repair details](docs/operation-entry-repair-20261103.md). No user material task is submitted
+by the repair; original jobs 880/881 and their payloads are preserved.
+
+## Historical 0.60.3 release record
+
 # MLCC 0.60.3 deployment
 
 Deployment deployment_mlcc_v100_0_60_3 revision 5 is published; Worker active

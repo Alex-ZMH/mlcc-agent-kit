@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "description": "Platform task creation request for one allowlisted CLI operation. Scientific CLI arguments are separate from this envelope.",
+  "required": ["task_id", "resource_request"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "mlcc.operation-task-request.v1"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9_-]{0,95}$"
+    },
+    "study_ref": {
+      "type": "string"
+    },
+    "required_results": {
+      "type": "array"
+    },
+    "resource_request": {
+      "type": "object",
+      "required": ["cpus_per_task", "mem_mib", "time"],
+      "additionalProperties": false,
+      "properties": {
+        "partition": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "account": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "ntasks": {"type": "integer", "const": 1},
+        "nodes": {"type": "integer", "const": 1},
+        "cpus_per_task": {"type": "integer", "minimum": 1},
+        "mem_mib": {"type": "integer", "minimum": 1},
+        "time": {
+          "oneOf": [
+            {"type": "integer", "const": 0},
+            {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"}
+          ]
+        },
+        "gres": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "gpus": {"type": ["integer", "string"]},
+        "gpus_per_task": {"type": ["integer", "string"]},
+        "constraint": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "hint": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "job_name": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "stdout_log": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"},
+        "stderr_log": {"type": "string", "pattern": "^[A-Za-z0-9_:.%/@+,-]+$"}
+      }
+    }
+  }
+}

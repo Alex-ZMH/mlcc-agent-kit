@@ -21,6 +21,14 @@ DFT 资源查询使用已注册的 `mlcc_describe_dft_resources(elements?)`。�
 LCAO 方法的 `numerical_orbital_library_id` 使用轨道详情返回的 `library_id`；库说明与
 PP 映射路径由宿主站点解析，用户无需提供服务器私有路径。效率轨道的未占据态用途限制保留。
 
+## 建模控制任务与科学输入
+
+`mlcc_create_operation_task.request` 使用 `mlcc.operation-task-request.v1`，包含 `task_id` 和显式 `resource_request`；可选 `study_ref`、`required_results`。正确的 `schema` 可填写，不能把 `mlcc.operation-request.v1` 或四尺度请求信封填到这里。`arguments` 的键使用 CLI dest 名，例如 `request`、`parent`、`output`，不带 `--`。
+
+对 `import-model`、`derive-supercell`、`derive-defect`，按 operation 查询目录会同时返回 `request_file_contract`，说明 `arguments.request` 文件的必填字段和约束。该文件与控制任务外壳分别填写；导入字段为 `source_path`，并须保留明确相和来源。创建只校验控制参数，不读取结构或运行科学预检。
+
+执行失败会保存 `operation-result.json` 中的原始 CLI 错误、退出码及 stderr；先 collect 再 read-result。调度 FAILED 和领域未计算分别保留；不要把执行器在无分配环境下的拒绝误认为原作业缺少 Slurm 分配。
+
 ## 能力目录
 
 `mlcc_describe_operations()` 动态汇总 8 个顶层 Skill、7 个模块方法 Skill 和 CLI

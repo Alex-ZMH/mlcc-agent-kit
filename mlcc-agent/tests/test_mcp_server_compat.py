@@ -50,6 +50,8 @@ def _assert_tool_error(response: dict[str, object], *terms: str) -> None:
     assert detail.strip() not in {
         "Error executing tool mlcc_create_scale_task",
         "Error executing tool mlcc_describe_scales",
+        "Error executing tool mlcc_create_operation_task",
+        "Error executing tool mlcc_describe_operations",
     }
     assert all(term.lower() in detail.lower() for term in terms), detail
 
@@ -90,8 +92,9 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
         template_path.write_text(
             json.dumps(
                 {
-                    "ssh": {"alias": "test-no-network"},
+                    "ssh": {"alias": "test-no-network", "transport": "local"},
                     "workspace": {"local": "ignored", "remote_root": "/remote/mlcc"},
+                    "python": {"remote_executable": "/usr/bin/python3"},
                     "runner": {"selected": "slurm", "slurm": {}},
                     "abacus": {"resource_catalog": str(catalog_path)},
                     "scales": {
@@ -168,6 +171,7 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
                 },
             )
             assert initialized["result"]["serverInfo"]["name"] == "mlcc-agent"
+            assert initialized["result"]["serverInfo"]["version"] == "0.60.6"
 
             process.stdin.write(
                 json.dumps(
@@ -225,6 +229,125 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
             assert "study_ref" in request_properties
             assert "platform_task_id" not in request_properties
             assert "mlcc.scale-execution-request.v1" not in json.dumps(request_schema)
+            operation_tool = next(
+                tool for tool in listed["result"]["tools"]
+                if tool["name"] == "mlcc_create_operation_task"
+            )
+            operation_schema = operation_tool["inputSchema"]
+            assert isinstance(operation_schema, dict)
+            operation_request_schema = _resolve_schema(
+                operation_schema["properties"]["request"], operation_schema
+            )
+            assert {"task_id", "resource_request"} <= set(operation_request_schema["required"])
+            assert operation_request_schema["properties"]["schema"]["const"] == (
+                "mlcc.operation-task-request.v1"
+            )
+
+            missing_operation_task_id = _request(process, {
+                "jsonrpc": "2.0", "id": 13, "method": "tools/call",
+                "params": {
+                    "name": "mlcc_create_operation_task",
+                    "arguments": {
+                        "operation": "import-model",
+                        "arguments": {
+                            "request": "inputs/model.json",
+                            "output": "models/imported",
+                        },
+                        "request": {
+                            "schema": "mlcc.operation-task-request.v1",
+                            "resource_request": {
+                                "cpus_per_task": 1,
+                                "mem_mib": 512,
+                                "time": "00:05:00",
+                            },
+                        },
+                    },
+                },
+            })
+            _assert_tool_error(missing_operation_task_id, "request", "task_id")
+            _assert_no_staged_documents(workspace, "missing-operation-task-id")
+
+            invalid_operation_argument = _request(process, {
+                "jsonrpc": "2.0", "id": 14, "method": "tools/call",
+                "params": {
+                    "name": "mlcc_create_operation_task",
+                    "arguments": {
+                        "operation": "electronic-dos",
+                        "arguments": {
+                            "task": "inputs/task.json",
+                            "emin": "not-a-number",
+                            "emax": "1",
+                            "sigma": "0.1",
+                            "points": "10",
+                            "output": "results/dos.json",
+                        },
+                        "request": {
+                            "schema": "mlcc.operation-task-request.v1",
+                            "task_id": "invalid-operation-argument",
+                            "resource_request": {
+                                "cpus_per_task": 1,
+                                "mem_mib": 512,
+                                "time": "00:05:00",
+                            },
+                        },
+                    },
+                },
+            })
+            _assert_tool_error(invalid_operation_argument, "invalid float", "emin")
+            _assert_no_staged_documents(workspace, "invalid-operation-argument")
+
+            invalid_operation_schema = _request(process, {
+                "jsonrpc": "2.0", "id": 15, "method": "tools/call",
+                "params": {
+                    "name": "mlcc_create_operation_task",
+                    "arguments": {
+                        "operation": "import-model",
+                        "arguments": {
+                            "request": "inputs/model.json",
+                            "output": "models/imported",
+                        },
+                        "request": {
+                            "schema": "mlcc.operation-execution-request.v1",
+                            "task_id": "invalid-operation-schema",
+                            "resource_request": {
+                                "cpus_per_task": 1,
+                                "mem_mib": 512,
+                                "time": "00:05:00",
+                            },
+                        },
+                    },
+                },
+            })
+            _assert_tool_error(
+                invalid_operation_schema, "schema", "mlcc.operation-task-request.v1"
+            )
+            _assert_no_staged_documents(workspace, "invalid-operation-schema")
+
+            traversal_operation_argument = _request(process, {
+                "jsonrpc": "2.0", "id": 16, "method": "tools/call",
+                "params": {
+                    "name": "mlcc_create_operation_task",
+                    "arguments": {
+                        "operation": "import-model",
+                        "arguments": {
+                            "request": "../inputs/model.json",
+                            "output": "models/imported",
+                        },
+                        "request": {
+                            "schema": "mlcc.operation-task-request.v1",
+                            "task_id": "traversal-operation-argument",
+                            "resource_request": {
+                                "cpus_per_task": 1,
+                                "mem_mib": 512,
+                                "time": "00:05:00",
+                            },
+                        },
+                    },
+                },
+            })
+            _assert_tool_error(traversal_operation_argument, "request", "UNSAFE_PATH")
+            _assert_no_staged_documents(workspace, "traversal-operation-argument")
+
             resources = _request(process, {
                 "jsonrpc": "2.0", "id": 8, "method": "tools/call",
                 "params": {"name": "mlcc_describe_dft_resources", "arguments": {"elements": ["Tm", "Og"]}},
@@ -366,6 +489,37 @@ def test_mcp_stdio_initialize_tools_list_and_list_tasks() -> None:
             )
             _assert_tool_error(extra_field, "request", "platform_task_id")
             _assert_no_staged_documents(workspace, "mcp-extra-field")
+
+            operation_created = _request(process, {
+                "jsonrpc": "2.0", "id": 17, "method": "tools/call",
+                "params": {
+                    "name": "mlcc_create_operation_task",
+                    "arguments": {
+                        "operation": "import-model",
+                        "arguments": {
+                            "request": "inputs/model.json",
+                            "output": "models/imported",
+                        },
+                        "request": {
+                            "schema": "mlcc.operation-task-request.v1",
+                            "task_id": "mcp-operation-create",
+                            "resource_request": {
+                                "cpus_per_task": 1,
+                                "mem_mib": 512,
+                                "time": "00:05:00",
+                            },
+                        },
+                    },
+                },
+            })
+            assert operation_created["result"]["isError"] is not True
+            operation_data = operation_created["result"]["structuredContent"]
+            assert operation_data["task_id"] == "mcp-operation-create"
+            assert operation_data["status"] == "defined"
+            assert operation_data["scheduler_job_id"] is None
+            assert not (
+                workspace / "tasks" / "mcp-operation-create" / "operation-result.json"
+            ).exists()
 
             created = _request(
                 process,

@@ -1,0 +1,62 @@
+{
+  "import-model": {
+    "argument": "request",
+    "format": "JSON file; source_path is resolved relative to this file",
+    "required": ["source_path", "source_reference", "model_id", "version", "material", "phase_requested"],
+    "properties": {
+      "source_path": {"type": "string", "description": "Existing CIF, POSCAR/CONTCAR or extxyz file. The field is source_path."},
+      "source_reference": {"type": "string", "description": "Explicit provenance of the supplied structure"},
+      "model_id": {"type": "string"},
+      "version": {"type": "string"},
+      "material": {"type": "string"},
+      "phase_requested": {"type": "string", "description": "User-selected phase; do not infer it from a material name"},
+      "source_format": {"enum": ["cif", "poscar", "extxyz"]},
+      "source_index": {"type": "integer", "minimum": 0},
+      "source_version": {"type": "string"},
+      "fixture": {"type": "boolean"},
+      "fixture_purpose": {"type": "string", "description": "Required when fixture is true"}
+    },
+    "example": {
+      "source_path": "selected-structure.cif",
+      "source_reference": "USER_SUPPLIED_STRUCTURE_REFERENCE",
+      "model_id": "USER_SELECTED_MODEL_ID",
+      "version": "v001",
+      "material": "USER_SELECTED_MATERIAL",
+      "phase_requested": "USER_SELECTED_PHASE"
+    },
+    "notes": ["All required strings must be non-empty.", "Multiple blocks or frames require explicit source_index.", "output is a CLI argument naming a new directory; it is not a request field.", "This describes the existing domain input contract. Structure reading, geometry validation and generation run only inside Slurm."]
+  },
+  "derive-supercell": {
+    "argument": "request",
+    "format": "JSON file; parent and output are separate CLI arguments",
+    "required": ["model_id", "version", "repeat_matrix"],
+    "properties": {
+      "model_id": {"type": "string"},
+      "version": {"type": "string"},
+      "repeat_matrix": {"type": "array", "description": "Explicit 3 by 3 integer matrix with positive determinant"},
+      "study_id": {"type": "string"}
+    },
+    "notes": ["Use a saved three-dimensional periodic, neutral parent model and a new child identity.", "repeat_matrix must come from the selected scientific task; no supercell size is inferred.", "Exact supercells repeat existing occupancies and do not resample dopants."]
+  },
+  "derive-defect": {
+    "argument": "request",
+    "format": "JSON file; parent and output are separate CLI arguments",
+    "required": ["model_id", "version", "charge_state", "operations"],
+    "properties": {
+      "model_id": {"type": "string"},
+      "version": {"type": "string"},
+      "charge_state": {"type": "integer", "description": "Explicit total charge; no default or compensation inference"},
+      "study_id": {"type": "string"},
+      "operations": {
+        "type": "array",
+        "minItems": 1,
+        "items": {"oneOf": [
+          {"required": ["kind", "atom_id"], "properties": {"kind": {"const": "vacancy"}, "atom_id": {"type": "integer", "minimum": 0}}},
+          {"required": ["kind", "atom_id", "new_element"], "properties": {"kind": {"const": "substitution"}, "atom_id": {"type": "integer", "minimum": 0}, "new_element": {"type": "string"}}},
+          {"required": ["kind", "new_atom_id", "element", "frac_coords"], "properties": {"kind": {"const": "interstitial"}, "new_atom_id": {"type": "integer", "minimum": 0}, "element": {"type": "string"}, "frac_coords": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "number"}}}}
+        ]}
+      }
+    },
+    "notes": ["Operations are ordered and refer to saved atom_id values, not array indices.", "compensation and random_seed are unsupported here; use explicitly selected operations.", "Charge metadata does not establish that a charged DFT method is executable or qualified."]
+  }
+}

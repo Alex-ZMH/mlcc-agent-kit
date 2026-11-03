@@ -1,0 +1,112 @@
+{
+  "schema": "mlcc.operation-entry-repair.v1",
+  "date": "2026-11-03",
+  "version": "0.60.6",
+  "status": "software_verified_publication_pending",
+  "base_version": "0.60.5",
+  "developer_backup_commit": "5718e1839d9e27f3e83361e25a7ba1c14f16350f",
+  "original_jobs": {
+    "880": "FAILED/1:0;2s;empty logs;result absent",
+    "881": "FAILED/1:0;1s;empty logs;result absent"
+  },
+  "original_tasks_modified": false,
+  "local_software_tests": {
+    "distinct_passed": 6,
+    "final_changed_protocol_file": "2 passed after moving positive create behind negative assertions"
+  },
+  "slurm_regression": {
+    "job_882": {
+      "status": "FAILED/1:0",
+      "passed": 20,
+      "failed": 1,
+      "failure": "test ordering assertion; positive task existed before a later no-task assertion",
+      "executor_ran": false
+    },
+    "job_883": {
+      "status": "FAILED/1:0",
+      "protocol_failed_case_recheck": "passed",
+      "executor_ran": false,
+      "failure": "acceptance harness supplied absolute request path to relative-only API"
+    },
+    "job_884": {
+      "status": "COMPLETED/0:0",
+      "runtime_seconds": 7,
+      "executor_checks_passed": 5,
+      "cpu_requested": 1,
+      "cpu_allocated": 2,
+      "gpu": 0,
+      "memory_mib": 2048,
+      "walltime": "00:10:00"
+    },
+    "distinct_protocol_and_staging_tests_passed": 21,
+    "no_repeat_of_20_passing_tests": true
+  },
+  "public_activation": {
+    "status": "not_performed",
+    "current_version": "0.60.5",
+    "current_revision": 7,
+    "reason": "production SSH authentication unavailable; awaiting existing management connection"
+  },
+  "material_jobs_submitted": 0,
+  "private_raw_evidence": "operator workspace/reports/operation-entry-repair-20261103",
+  "executor_results": [
+    {
+      "task_id": "invalid-import",
+      "operation": "import-model",
+      "exit_code": 1,
+      "status": "failed",
+      "error": {
+        "type": "CLI_EXIT",
+        "exit_code": 1,
+        "message": "model import requires source_path"
+      },
+      "stderr": "model import requires source_path\n",
+      "scheduler_job_id": "884"
+    },
+    {
+      "task_id": "incomplete-import",
+      "operation": "import-model",
+      "exit_code": 1,
+      "status": "failed",
+      "error": {
+        "type": "CLI_EXIT",
+        "exit_code": 1,
+        "message": "model import requires source_reference"
+      },
+      "stderr": "model import requires source_reference\n",
+      "scheduler_job_id": "884"
+    },
+    {
+      "task_id": "valid-import",
+      "operation": "import-model",
+      "exit_code": 0,
+      "status": "succeeded",
+      "error": null,
+      "stderr": "",
+      "scheduler_job_id": "884"
+    },
+    {
+      "task_id": "valid-supercell",
+      "operation": "derive-supercell",
+      "exit_code": 0,
+      "status": "succeeded",
+      "error": null,
+      "stderr": "",
+      "scheduler_job_id": "884"
+    },
+    {
+      "task_id": "valid-defect",
+      "operation": "derive-defect",
+      "exit_code": 0,
+      "status": "succeeded",
+      "error": null,
+      "stderr": "",
+      "scheduler_job_id": "884"
+    }
+  ],
+  "candidate_worker_readiness": 1,
+  "production_worker_restarted": false,
+  "original_material_tasks_retried": false,
+  "mcp_version": "2.3.0",
+  "initial_sbatch_rejection": "CRLF in verification script; no job created; converted to LF before job882"
+}

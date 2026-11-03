@@ -42,14 +42,25 @@ def test_catalog_is_dynamic_and_does_not_import_scientific_runtimes() -> None:
     nested = [skill for skill in catalog["skills"] if skill["scope"] == "nested"]
     assert all(skill["operations"] and skill["module_operation_routes"] for skill in nested)
     assert all("arguments" not in row for row in catalog["operations"])
+    assert all("request_file_contract" not in row for row in catalog["operations"])
     assert "operation=<name>" in catalog["operation_arguments_note"]
     assert "MCP tool's input schema" in catalog["arguments_contract"]
+    request_schema = catalog["task_request_schema"]
+    assert request_schema["required"] == ["task_id", "resource_request"]
+    assert request_schema["properties"]["schema"]["const"] == "mlcc.operation-task-request.v1"
     detail = describe_operations(operation="create-abacus")
     assert detail["operations"][0]["arguments"]
+    model_contracts = {
+        "import-model": {"source_path", "source_reference", "model_id", "version", "material", "phase_requested"},
+        "derive-supercell": {"model_id", "version", "repeat_matrix"},
+        "derive-defect": {"model_id", "version", "charge_state", "operations"},
+    }
+    for operation, required in model_contracts.items():
+        model_detail = describe_operations(operation=operation)
+        contract = model_detail["operations"][0]["request_file_contract"]
+        assert required <= set(contract["required"])
     assert "numpy" not in sys.modules
     assert "ase" not in sys.modules
-
-
 def test_read_result_only_reads_a_saved_control_envelope(tmp_path: Path) -> None:
     workspace = tmp_path / "workspace"
     workspace.mkdir()
@@ -125,8 +136,6 @@ def test_executor_requires_slurm_without_loading_scientific_runtime(
     assert not (tmp_path / "operation-output.json").exists()
     assert "numpy" not in sys.modules
     assert "ase" not in sys.modules
-
-
 def test_remaining_skill_operations_create_and_prepare_without_execution(tmp_path: Path) -> None:
     workspace = tmp_path / "workspace"
     workspace.mkdir()

@@ -1,31 +1,15 @@
 {
   "system": "mlcc",
-  "delivery_label": "0.60.3-candidate",
-  "bundle_version": "0.60.3",
-  "candidate_status": "published_create_error_and_consecutive_create_read_verified",
+  "delivery_label": "0.60.6-candidate",
+  "bundle_version": "0.60.6",
+  "candidate_status": "software_verified_publication_pending",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
-    "delivery_branch": "codex/cloud-delivery-20261029",
-    "base_commit": "e20452dce7f0709e2f34ff6ffe1a66f6437d522e",
+    "delivery_branch": "codex/operation-entry-repair-20261103",
+    "base_commit": "5718e1839d9e27f3e83361e25a7ba1c14f16350f",
     "candidate_revision": "Git commit containing this manifest",
-    "runtime_bundle_commit": "a1878c7866ab4953567d2dd9b3a7856c53056e69",
+    "runtime_bundle_commit": "Git commit containing this candidate",
     "resource_generator_commit": "ef490a8"
-  },
-  "public_delivery": {
-    "entrypoint": "https://agent.mattok.cn",
-    "execution_target": "target_mlcc_v100",
-    "worker_id": "worker_mlcc_v100_01",
-    "deployment_id": "deployment_mlcc_v100_0_60_3",
-    "deployment_revision": 5,
-    "published": true,
-    "ordinary_two_turn_status": "passed_last_two_create_then_read",
-    "rollback_version": "0.60.2",
-    "localhost_dependency": false,
-    "published_version_at_preparation": "0.60.2",
-    "worker_healthcheck": 1,
-    "worker_active": true,
-    "interrupted_acceptance_runs": 1,
-    "old_conversation_policy": "pins_unchanged_start_new_conversation_for_repair"
   },
   "agent": {
     "name": "mlcc",
@@ -61,35 +45,19 @@
     "installed_UPF_elements": 117,
     "installed_paired_NAO_elements": 83
   },
-  "software_checks": {
-    "initial_job": "768",
-    "initial_status": "37 missing-fixture failures and 13 passes retained",
-    "method_job": "770",
-    "method_status": "42 passed after staging 8 specific input fixtures; no full workspace link",
-    "resource_library_id_and_redaction": "Slurm776_pending_user_waived_release_gate;not_executed_or_passed",
-    "numerical_acceptance_completed_jobs": [
-      "768_partial",
-      "770_42_passed"
-    ],
-    "Bh_regression": "saved_not_executed;actual_private_catalog_and_public_read_corrected",
-    "create_error_control_regression": "21 passed; actual stdio MCP, offline task lifecycle and public-operation routes; no numerical solver or Slurm",
-    "native_create_error_control_regression": "21 passed in actual public MCP2.3.0 interpreter; pure software only",
-    "create_error_public_acceptance": "expected field error; one defined/jobnull task; next turn read; zero scheduler calls",
-    "historical_slurm_776_observation_date": "2026-10-30; not rechecked by this repair"
-  },
   "changes": [
-    "Publish one shared platform task-request schema through MCP and scale descriptions",
-    "Validate request and scientific input once before any input/task staging",
-    "Return anticipated input errors as ToolError with field-level details; keep internal faults private",
-    "Preserve valid CLI/MCP create and existing Slurm lifecycle without retries or submission",
-    "Document create envelope separately from the internal execution envelope"
+    "Back up the actual developer-delivered 0.60.5 source before repairing it",
+    "Expose operation task request and modeling request-file contracts",
+    "Return known operation input errors as MCP ToolError with concrete field diagnostics",
+    "Preserve CLI SystemExit, stderr and original exit code in saved operation results"
   ],
   "evidence": {
-    "current": "docs/task-create-errors-20261102.md",
+    "current": "docs/operation-entry-repair-20261103.md",
     "previous_public_release": "docs/abacus-library-20261030.md",
-    "private_raw": "workspace/reports/rve-create-failure-20261102 (operator workspace, not distributed)",
+    "private_raw": "workspace/reports/operation-entry-repair-20261103 (operator workspace, not distributed)",
     "public_resource_acceptance": "docs/evidence/abacus-resource-status-20261030.json",
-    "public_task_create_acceptance": "docs/evidence/task-create-repair-20261102.json"
+    "public_task_create_acceptance": "docs/evidence/task-create-repair-20261102.json",
+    "operation_entry": "docs/evidence/operation-entry-repair-20261103.json"
   },
   "boundaries": {
     "numerical_execution": "v100 via existing Slurm runner",
@@ -110,6 +78,59 @@
       "variable-cell relaxation",
       "charged response interfaces"
     ],
-    "material_request": "Ca/Na conflict, exact concentration and B-site count still need confirmation; no extra material computation in this release"
+    "material_request": "This repair does not choose or execute user material inputs; jobs880/881 remain unchanged."
+  },
+  "historical_public_delivery_0603": {
+    "entrypoint": "https://agent.mattok.cn",
+    "execution_target": "target_mlcc_v100",
+    "worker_id": "worker_mlcc_v100_01",
+    "deployment_id": "deployment_mlcc_v100_0_60_3",
+    "deployment_revision": 5,
+    "published": true,
+    "ordinary_two_turn_status": "passed_last_two_create_then_read",
+    "rollback_version": "0.60.2",
+    "localhost_dependency": false,
+    "published_version_at_preparation": "0.60.2",
+    "worker_healthcheck": 1,
+    "worker_active": true,
+    "interrupted_acceptance_runs": 1,
+    "old_conversation_policy": "pins_unchanged_start_new_conversation_for_repair"
+  },
+  "public_delivery": {
+    "entrypoint": "https://agent.mattok.cn",
+    "published": false,
+    "published_version_at_preparation": "0.60.5",
+    "candidate_version": "0.60.6",
+    "rollback_version": "0.60.5",
+    "status": "blocked_on_existing_operator_SSH_authentication",
+    "old_conversation_policy": "pins_unchanged_start_new_conversation_for_new_version"
+  },
+  "historical_software_checks": {
+    "initial_job": "768",
+    "initial_status": "37 missing-fixture failures and 13 passes retained",
+    "method_job": "770",
+    "method_status": "42 passed after staging 8 specific input fixtures; no full workspace link",
+    "resource_library_id_and_redaction": "Slurm776_pending_user_waived_release_gate;not_executed_or_passed",
+    "numerical_acceptance_completed_jobs": [
+      "768_partial",
+      "770_42_passed"
+    ],
+    "Bh_regression": "saved_not_executed;actual_private_catalog_and_public_read_corrected",
+    "create_error_control_regression": "21 passed; actual stdio MCP, offline task lifecycle and public-operation routes; no numerical solver or Slurm",
+    "native_create_error_control_regression": "21 passed in actual public MCP2.3.0 interpreter; pure software only",
+    "create_error_public_acceptance": "expected field error; one defined/jobnull task; next turn read; zero scheduler calls",
+    "historical_slurm_776_observation_date": "2026-10-30; not rechecked by this repair"
+  },
+  "software_checks": {
+    "local_distinct_protocol_and_staging_tests": 6,
+    "remote_distinct_protocol_and_staging_tests": 21,
+    "slurm_jobs": [
+      "882_partial_20_passed",
+      "883_failed_case_recheck_passed_harness_path_error",
+      "884_completed_5_executor_cases"
+    ],
+    "candidate_worker_readiness": 1,
+    "mcp_version": "2.3.0",
+    "failed_checks_and_recovery": "docs/evidence/operation-entry-repair-20261103.json"
   }
 }

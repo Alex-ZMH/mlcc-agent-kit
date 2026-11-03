@@ -8,6 +8,8 @@ is invoked by the selected Slurm allocation, never by the public MCP process.
 from __future__ import annotations
 
 import argparse
+from contextlib import redirect_stderr
+import io
 from pathlib import Path, PurePosixPath
 import re
 import shutil
@@ -42,6 +44,24 @@ _RESOURCE_KEYS = frozenset({
     "gres", "gpus", "gpus_per_task", "constraint", "hint", "job_name", "stdout_log",
     "stderr_log",
 })
+_MODEL_INPUT_OPERATIONS = frozenset({"import-model", "derive-supercell", "derive-defect"})
+
+
+class OperationInputError(ValueError):
+    """A caller-supplied operation selection, argument, or task request is invalid."""
+
+
+def operation_task_request_schema() -> dict[str, Any]:
+    """Return the public platform request contract used by operation tasks."""
+
+    return contracts.read_json(PACKAGE_ROOT / "schemas" / "operation-task-request.schema.json")
+
+
+def _operation_input_contract(operation: str) -> dict[str, Any] | None:
+    if operation not in _MODEL_INPUT_OPERATIONS:
+        return None
+    document = contracts.read_json(PACKAGE_ROOT / "schemas" / "model-operation-inputs.json")
+    return document[operation]
 
 
 def _frontmatter(path: Path) -> dict[str, str]:
@@ -204,10 +224,11 @@ def describe_operations(skill_id: str | None = None, operation: str | None = Non
     catalog, _ = _operation_catalog()
     known_skills = {skill["id"] for skill in catalog["skills"]}
     if skill_id is not None and skill_id not in known_skills:
-        raise ValueError(f"Unknown Skill: {skill_id}")
+        raise OperationInputError(f"Unknown Skill: {skill_id}")
     known_operations = {item["name"] for item in catalog["operations"]}
     if operation is not None and operation not in known_operations:
-        raise ValueError(f"Unknown operation: {operation}")
+        raise OperationInputError(f"Unknown operation: {operation}")
+    catalog["task_request_schema"] = operation_task_request_schema()
     if skill_id is not None:
         catalog["skills"] = [skill for skill in catalog["skills"] if skill["id"] == skill_id]
         catalog["operations"] = [
@@ -215,6 +236,9 @@ def describe_operations(skill_id: str | None = None, operation: str | None = Non
         ]
     if operation is not None:
         catalog["operations"] = [item for item in catalog["operations"] if item["name"] == operation]
+        request_contract = _operation_input_contract(operation)
+        if request_contract is not None and catalog["operations"]:
+            catalog["operations"][0]["request_file_contract"] = request_contract
     else:
         catalog["modules"] = [
             {"id": item["id"], "operations": sorted(item.get("operations", {}))}
@@ -257,37 +281,42 @@ def _site_settings(site_path: Path) -> tuple[dict[str, Any], str]:
 
 def _validate_resource_request(value: Any) -> dict[str, Any]:
     if not isinstance(value, dict) or not value:
-        raise ValueError("request.resource_request must be a non-empty object")
+        raise OperationInputError("request.resource_request must be a non-empty object")
     unknown = set(value) - _RESOURCE_KEYS
     if unknown:
-        raise ValueError(f"Unsupported resource fields: {sorted(unknown)}")
+        raise OperationInputError(f"Unsupported resource fields: {sorted(unknown)}")
     for key in ("cpus_per_task", "mem_mib"):
         if type(value.get(key)) is not int or value[key] <= 0:
-            raise ValueError(f"resource_request.{key} must be a positive integer")
+            raise OperationInputError(f"resource_request.{key} must be a positive integer")
     if "nodes" in value and (type(value["nodes"]) is not int or value["nodes"] != 1):
-        raise ValueError("resource_request.nodes must be 1")
+        raise OperationInputError("resource_request.nodes must be 1")
     if "ntasks" in value and (type(value["ntasks"]) is not int or value["ntasks"] != 1):
-        raise ValueError("resource_request.ntasks must be 1")
+        raise OperationInputError("resource_request.ntasks must be 1")
     time = value.get("time")
     if not ((type(time) is int and time == 0) or
             (isinstance(time, str) and _SAFE_RESOURCE_VALUE.fullmatch(time))):
-        raise ValueError("resource_request.time must be 0 or a simple Slurm time value")
+        raise OperationInputError("resource_request.time must be 0 or a simple Slurm time value")
     for key in ("partition", "account", "gres", "gpus", "gpus_per_task", "constraint",
                 "hint", "job_name", "stdout_log", "stderr_log"):
         if key in value and value[key] not in (None, ""):
             if not isinstance(value[key], (str, int)) or not _SAFE_RESOURCE_VALUE.fullmatch(str(value[key])):
-                raise ValueError(f"resource_request.{key} contains unsupported characters")
+                raise OperationInputError(f"resource_request.{key} contains unsupported characters")
             if key in {"stdout_log", "stderr_log"}:
                 path = str(value[key])
                 if path.startswith(("/", "\\")) or ".." in PurePosixPath(path).parts:
-                    raise ValueError(f"resource_request.{key} must stay below the task directory")
+                    raise OperationInputError(f"resource_request.{key} must stay below the task directory")
     return dict(value)
 
 
 def _confined_argument(root: Path, value: Any, field: str) -> str:
     if not isinstance(value, str) or not value or value.startswith(("/", "\\")) or ":" in value:
-        raise ValueError(f"arguments.{field} must be a relative workspace path")
-    return str(contracts.confined(root, value, must_exist=False))
+        raise OperationInputError(f"arguments.{field} must be a relative workspace path")
+    try:
+        return str(contracts.confined(root, value, must_exist=False))
+    except contracts.FrameworkError as exc:
+        raise OperationInputError(
+            f"arguments.{field} rejected ({exc.code}): {exc}"
+        ) from exc
 
 
 def _is_path_action(action: argparse.Action) -> bool:
@@ -297,21 +326,21 @@ def _is_path_action(action: argparse.Action) -> bool:
 def _values_for_action(action: argparse.Action, value: Any, root: Path) -> list[str] | None:
     if isinstance(action, argparse._StoreTrueAction):
         if type(value) is not bool:
-            raise ValueError(f"arguments.{action.dest} must be boolean")
+            raise OperationInputError(f"arguments.{action.dest} must be boolean")
         return [action.option_strings[0]] if value else None
     if isinstance(action, argparse._StoreFalseAction):
         if type(value) is not bool:
-            raise ValueError(f"arguments.{action.dest} must be boolean")
+            raise OperationInputError(f"arguments.{action.dest} must be boolean")
         return [action.option_strings[0]] if not value else None
     values = value if isinstance(value, list) and action.nargs in ("+", "*", 1) else [value]
     if action.nargs in ("+", "*") and not isinstance(value, list):
-        raise ValueError(f"arguments.{action.dest} must be an array")
+        raise OperationInputError(f"arguments.{action.dest} must be an array")
     if action.nargs not in (None, "?", "+", "*") and isinstance(action.nargs, int):
         if not isinstance(value, list) or len(value) != action.nargs:
-            raise ValueError(f"arguments.{action.dest} must contain {action.nargs} values")
+            raise OperationInputError(f"arguments.{action.dest} must contain {action.nargs} values")
         values = value
     if action.nargs == "?" and isinstance(value, list):
-        raise ValueError(f"arguments.{action.dest} must be a scalar")
+        raise OperationInputError(f"arguments.{action.dest} must be a scalar")
     rendered: list[str] = []
     for item in values:
         rendered.append(_confined_argument(root, item, action.dest) if _is_path_action(action) else str(item))
@@ -327,15 +356,15 @@ def _build_argv(
     site_path: Path,
 ) -> list[str]:
     if not isinstance(arguments, Mapping):
-        raise ValueError("arguments must be an object keyed by argparse dest")
+        raise OperationInputError("arguments must be an object keyed by argparse dest")
     actions = [action for action in subparser._actions if action.dest != "help"]
     known = {action.dest for action in actions}
     unknown = set(arguments) - known
     if unknown:
-        raise ValueError(f"Unknown arguments for {operation}: {sorted(unknown)}")
+        raise OperationInputError(f"Unknown arguments for {operation}: {sorted(unknown)}")
     supplied_operator_paths = set(arguments) & _INJECTED_PATH_DESTS
     if supplied_operator_paths:
-        raise ValueError("site arguments are operator-controlled")
+        raise OperationInputError("site arguments are operator-controlled")
     argv = [operation]
     for action in actions:
         if action.dest in _INJECTED_PATH_DESTS:
@@ -343,17 +372,21 @@ def _build_argv(
             rendered = [action.option_strings[0], value]
         elif action.dest not in arguments:
             if action.required:
-                raise ValueError(f"Missing required argument: {action.dest}")
+                raise OperationInputError(f"Missing required argument: {action.dest}")
             continue
         else:
             rendered = _values_for_action(action, arguments[action.dest], root)
             if rendered is None:
                 continue
         argv.extend(rendered)
+    parser_stderr = io.StringIO()
     try:
-        parser.parse_args(argv)
+        with redirect_stderr(parser_stderr):
+            parser.parse_args(argv)
     except SystemExit as exc:
-        raise ValueError(f"Invalid arguments for {operation} (argparse exit {exc.code})") from exc
+        detail = parser_stderr.getvalue().strip()
+        message = detail or f"Invalid arguments for {operation} (argparse exit {exc.code})"
+        raise OperationInputError(message) from exc
     return argv
 
 
@@ -383,21 +416,23 @@ def create_operation_task(
     catalog, subparsers = _operation_catalog()
     operation_rows = {item["name"]: item for item in catalog["operations"]}
     if operation not in operation_rows:
-        raise ValueError(f"Unknown operation: {operation}")
+        raise OperationInputError(f"Unknown operation: {operation}")
     row = operation_rows[operation]
     if row["route"] != "slurm_control":
-        raise ValueError(f"Use the existing route for operation {operation}: {row['route']}")
+        raise OperationInputError(f"Use the existing route for operation {operation}: {row['route']}")
     if not isinstance(request, Mapping):
-        raise ValueError("request must be an object")
+        raise OperationInputError("request must be an object")
     allowed_request = {"schema", "task_id", "resource_request", "study_ref", "required_results"}
     unknown_request = set(request) - allowed_request
     if unknown_request:
-        raise ValueError(f"Unsupported request fields: {sorted(unknown_request)}")
+        raise OperationInputError(f"Unsupported request fields: {sorted(unknown_request)}")
     if request.get("schema") not in (None, "mlcc.operation-task-request.v1"):
-        raise ValueError("Unsupported operation task request schema")
+        raise OperationInputError(
+            "Unsupported operation task request schema; use mlcc.operation-task-request.v1"
+        )
     task_id = request.get("task_id")
     if not isinstance(task_id, str) or not _TASK_ID.fullmatch(task_id):
-        raise ValueError("request.task_id must be a single readable directory name")
+        raise OperationInputError("request.task_id must be a single readable directory name")
     resources = _validate_resource_request(request.get("resource_request"))
     root = Path(workspace).expanduser().resolve()
     site = Path(site_path).expanduser().resolve()
@@ -406,7 +441,7 @@ def create_operation_task(
     site_mapping, remote_python = _site_settings(site)
     task_dir = root / "tasks" / task_id
     if task_dir.exists():
-        raise FileExistsError(f"operation task already exists: {task_id}")
+        raise OperationInputError(f"operation task already exists: {task_id}")
     site_arg = site
     argv = _build_argv(operation, arguments, build_parser(), subparsers[operation], root, site_arg)
     task_dir.mkdir(parents=True)

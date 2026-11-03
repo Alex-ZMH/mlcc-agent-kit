@@ -24,6 +24,19 @@ sys.path.insert(0, str(PACKAGE_ROOT / "src"))
 from mlcc import contracts  # noqa: E402
 
 
+def _exit_code(value: Any) -> int:
+    """Keep CLI/SystemExit statuses representable by a process exit code."""
+
+    if type(value) is int and 0 <= value <= 255:
+        return value
+    return 1
+
+
+def _cli_error(stderr: str, code: int) -> dict[str, Any]:
+    message = stderr.strip() or f"mlcc exited with {code}"
+    return {"type": "CLI_EXIT", "exit_code": code, "message": message}
+
+
 def execute(request_path: str | Path, response_path: str | Path) -> dict[str, Any]:
     request_file = Path(request_path).resolve()
     response_file = Path(response_path).resolve()
@@ -59,6 +72,7 @@ def execute(request_path: str | Path, response_path: str | Path) -> dict[str, An
         "scheduler_job_id": scheduler_job_id,
         "status": "failed",
         "scientific_status": "not_checked",
+        "exit_code": None,
         "output": None,
         "error": None,
     }
@@ -69,15 +83,28 @@ def execute(request_path: str | Path, response_path: str | Path) -> dict[str, An
 
         with redirect_stdout(stdout), redirect_stderr(stderr):
             code = main(argv)
+        code = _exit_code(code)
         text = stdout.getvalue()
         try:
             output: Any = json.loads(text) if text.strip() else None
         except json.JSONDecodeError:
             output = {"stdout": text}
+        result["exit_code"] = code
         result["status"] = "succeeded" if code == 0 else "failed"
         result["output"] = output
         if code != 0:
-            result["error"] = {"type": "CLI_EXIT", "message": f"mlcc exited with {code}"}
+            result["error"] = _cli_error(stderr.getvalue(), code)
+    except SystemExit as exc:
+        # argparse validation exits with SystemExit before returning from main.
+        code = _exit_code(exc.code)
+        result["exit_code"] = code
+        result["status"] = "succeeded" if code == 0 else "failed"
+        result["output"] = {
+            "stdout": stdout.getvalue(),
+            "stderr": stderr.getvalue(),
+        }
+        if code != 0:
+            result["error"] = _cli_error(stderr.getvalue(), code)
     except Exception as exc:
         raised = exc
         result["output"] = {"stdout": stdout.getvalue(), "stderr": stderr.getvalue()}
@@ -102,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
     args = parser.parse_args(argv)
     result = execute(args.request, args.response)
     print(contracts.dumps({"task_id": result["task_id"], "status": result["status"]}), end="")
-    return 0 if result["status"] == "succeeded" else 1
+    return _exit_code(result.get("exit_code"))
 
 
 if __name__ == "__main__":

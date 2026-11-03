@@ -5,6 +5,8 @@ description: 从已选择的晶相构建显式超胞、多元素占位与补偿�
 
 # 显式原子建模
 
+创建建模任务前调用 `mlcc_describe_operations(operation=...)`，同时读取 `task_request_schema` 和 `request_file_contract`。前者是控制任务外壳；后者是 `arguments.request` 指向的科学 JSON 文件格式。导入必须显式提供 `source_path`、`source_reference`、`model_id`、`version`、`material` 和 `phase_requested`，不能用 `source` 代替。数值建模和几何检查仍在 Slurm 内执行。收到具体字段错误后按原输入修正；已有失败任务保留，不重提。
+
 设计方案、澄清输入或解释执行冲突前，先读[当前计算能力边界](../references/calculation-boundaries.md)，再读所选领域的方法说明。边界随当前 Bundle/模块版本更新；超出资源软推荐只提示，不据此改科学输入。遇到冲突说明具体限制及可选简化，不把历史限制当永久规则；已提交任务不自动改参、取消或重提。
 
 公网调用先走[统一操作入口](../references/public-operations.md)；统一入口只路由到本 Skill 已有 CLI/模块实现，不替用户选择晶相、补偿、位点或科学方法。
