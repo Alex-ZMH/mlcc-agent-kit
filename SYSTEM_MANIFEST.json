@@ -2,13 +2,13 @@
   "system": "mlcc",
   "delivery_label": "0.60.6-candidate",
   "bundle_version": "0.60.6",
-  "candidate_status": "software_verified_publication_pending",
+  "candidate_status": "published_ordinary_user_three_turns_verified",
   "source": {
     "repository": "https://github.com/Alex-ZMH/mlcc-agent-kit",
     "delivery_branch": "codex/operation-entry-repair-20261103",
     "base_commit": "5718e1839d9e27f3e83361e25a7ba1c14f16350f",
-    "candidate_revision": "Git commit containing this manifest",
-    "runtime_bundle_commit": "Git commit containing this candidate",
+    "candidate_revision": "3f80877d4d772ce629e5f627c1206000ffb2f502",
+    "runtime_bundle_commit": "3f80877d4d772ce629e5f627c1206000ffb2f502",
     "resource_generator_commit": "ef490a8"
   },
   "agent": {
@@ -98,11 +98,22 @@
   },
   "public_delivery": {
     "entrypoint": "https://agent.mattok.cn",
-    "published": false,
+    "published": true,
+    "enabled": true,
     "published_version_at_preparation": "0.60.5",
     "candidate_version": "0.60.6",
     "rollback_version": "0.60.5",
-    "status": "blocked_on_existing_operator_SSH_authentication",
+    "status": "published_ordinary_user_three_turns_verified",
+    "deployment_id": "deployment_mlcc_v100_0_60_6",
+    "deployment_revision": 8,
+    "worker_id": "worker_mlcc_v100_01",
+    "execution_target": "target_mlcc_v100",
+    "worker_active": true,
+    "production_healthcheck": 1,
+    "database_heartbeat": "2026-11-03T12:59:24.201Z",
+    "ordinary_three_turn_status": "all_completed_same_thread_same_provider_session",
+    "lock_released": true,
+    "old_session_impact": "one execution_failed after restart despite guard rejection; two subsequent deployment_mismatch; preserved, not retried",
     "old_conversation_policy": "pins_unchanged_start_new_conversation_for_new_version"
   },
   "historical_software_checks": {
@@ -130,6 +141,7 @@
       "884_completed_5_executor_cases"
     ],
     "candidate_worker_readiness": 1,
+    "ordinary_public_workbench": "three completed turns; visible missing-field error, defined/jobnull create, next-turn read; 4 MCP calls; 0 scheduler lifecycle calls",
     "mcp_version": "2.3.0",
     "failed_checks_and_recovery": "docs/evidence/operation-entry-repair-20261103.json"
   }

@@ -1,5 +1,14 @@
 # Operation task creation and executor errors · 0.60.6
 
+Published revision 8. Production Worker active/healthcheck1; three consecutive
+ordinary browser turns passed in the same conversation/provider session.
+0.60.5 remains rollback. The production lock was released.
+
+One old-session call failed after a Worker restart was issued despite an
+active-invocation guard rejection. Two later old-pin calls failed with
+deployment_mismatch. Those failures remain separate from the successful
+new-conversation acceptance. No user material task was retried.
+
 The repair is based on the developer-delivered **0.60.5**, backed up before any
 changes at commit `5718e1839d9e27f3e83361e25a7ba1c14f16350f` on
 `codex/developer-0605-backup-20261103`. The earlier local 0.60.3 record did not

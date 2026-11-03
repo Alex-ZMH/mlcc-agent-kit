@@ -2,7 +2,7 @@
   "schema": "mlcc.operation-entry-repair.v1",
   "date": "2026-11-03",
   "version": "0.60.6",
-  "status": "software_verified_publication_pending",
+  "status": "published_and_ordinary_user_three_turns_verified",
   "base_version": "0.60.5",
   "developer_backup_commit": "5718e1839d9e27f3e83361e25a7ba1c14f16350f",
   "original_jobs": {
@@ -42,10 +42,30 @@
     "no_repeat_of_20_passing_tests": true
   },
   "public_activation": {
-    "status": "not_performed",
-    "current_version": "0.60.5",
-    "current_revision": 7,
-    "reason": "production SSH authentication unavailable; awaiting existing management connection"
+    "status": "published",
+    "current_version": "0.60.6",
+    "current_revision": 8,
+    "previous_version": "0.60.5",
+    "previous_revision": 7,
+    "rollback_version": "0.60.5",
+    "deployment_id": "deployment_mlcc_v100_0_60_6",
+    "published": true,
+    "enabled": true,
+    "worker_id": "worker_mlcc_v100_01",
+    "execution_target_id": "target_mlcc_v100",
+    "database_heartbeat": "2026-11-03T12:59:24.201Z",
+    "production_worker_restarted": true,
+    "service_active": true,
+    "production_healthcheck": 1,
+    "observed_at": "2026-11-03T12:59:24.975Z",
+    "lock_owner_checked": true,
+    "lock_released": true,
+    "initial_preflight_active_count": 0,
+    "pre_restart_guard": "rejected_after_new_old_session_invocation_arrived",
+    "restart_issued_despite_guard_rejection": true,
+    "active_count_at_final_snapshot": 1,
+    "site_configuration_changed": false,
+    "credentials_changed": false
   },
   "material_jobs_submitted": 0,
   "private_raw_evidence": "operator workspace/reports/operation-entry-repair-20261103",
@@ -105,8 +125,50 @@
     }
   ],
   "candidate_worker_readiness": 1,
-  "production_worker_restarted": false,
+  "production_worker_restarted": true,
   "original_material_tasks_retried": false,
   "mcp_version": "2.3.0",
-  "initial_sbatch_rejection": "CRLF in verification script; no job created; converted to LF before job882"
+  "initial_sbatch_rejection": "CRLF in verification script; no job created; converted to LF before job882",
+  "source_commit": "3f80877d4d772ce629e5f627c1206000ffb2f502",
+  "public_probe": {
+    "route": "ordinary_user_browser_workbench",
+    "same_thread": true,
+    "same_provider_session": true,
+    "invocation_statuses": [
+      "completed",
+      "completed",
+      "completed"
+    ],
+    "negative_error_visible": "Error executing tool mlcc_create_operation_task: request.task_id must be a single readable directory name",
+    "invalid_task_created": false,
+    "valid_task": {
+      "task_id": "validation-only-operation-0606",
+      "status": "defined",
+      "scheduler_job_id": null,
+      "scientific_status": "not_calculated",
+      "history": null
+    },
+    "next_turn_read": "passed",
+    "tool_calls": [
+      "mlcc_create_operation_task",
+      "mlcc_create_operation_task",
+      "mlcc_list_tasks",
+      "mlcc_list_tasks"
+    ],
+    "scheduler_lifecycle_calls": 0,
+    "material_jobs_submitted": 0
+  },
+  "old_session_impact": {
+    "initial_failure": "execution_failed; restart issued despite active-invocation guard rejection",
+    "subsequent_failures": [
+      "deployment_mismatch",
+      "deployment_mismatch"
+    ],
+    "count": 3,
+    "old_pin": "0.60.5 retained; not retargeted",
+    "automatic_retry": false,
+    "preserved": true,
+    "recovery": "new 0.60.6 conversation; three consecutive validation turns completed"
+  },
+  "credential_discovery_correction": "SSH authentication restored using existing operator access; no credential values distributed."
 }

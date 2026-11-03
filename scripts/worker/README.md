@@ -1,4 +1,4 @@
-# MLCC 0.60.6 candidate
+# MLCC 0.60.6 · published revision 8
 
 This candidate repairs operation-task input errors and missing executor failure
 results on top of developer-delivered 0.60.5. The unmodified developer source
@@ -6,9 +6,22 @@ is backed up at commit `5718e18` on `codex/developer-0605-backup-20261103`.
 Current validation and publication status are in [SYSTEM_MANIFEST.json](../../SYSTEM_MANIFEST.json).
 21 distinct protocol/staging checks and five executor cases passed remotely.
 Slurm 884 completed in seven seconds; the isolated candidate Worker readiness
-check returns 1. The public service remains 0.60.5/revision 7 because the
-existing production SSH authentication is currently unavailable. No production
-activation or Worker restart has been performed.
+check returns 1. Production 0.60.6/revision 8 is now published and enabled;
+the Worker is active, its production healthcheck returns 1, and its heartbeat
+is online. 0.60.5 remains installed for rollback. The immutable Bundle is
+frozen at source commit 3f80877; later commits update evidence outside it.
+
+Three ordinary browser turns completed in the same conversation and provider
+session: a visible missing-task_id error without a task, a valid defined/jobnull
+operation task, then a next-turn read. Four MCP calls occurred, with zero
+scheduler lifecycle calls or material submissions by this acceptance.
+
+Deployment audit: an old-session call arrived after the idle preflight. The
+active-invocation guard rejected proceeding, but a subsequent operator command
+still restarted the Worker. That call ended execution_failed; two later old-pin
+calls ended deployment_mismatch. All three failures are retained without retry
+or pin retargeting. Start a new conversation for 0.60.6. The production lock
+was released after verification.
 
 See [repair details](../../docs/operation-entry-repair-20261103.md). No user material task is submitted
 by the repair; original jobs 880/881 and their payloads are preserved.
