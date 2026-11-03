@@ -95,13 +95,14 @@ def handle(q):
         if pre:
             env=d.probe()
             return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],
-                    'warnings':['SI input and physical result view use explicit scales; kernel and numerical QC remain dimensionless. No material calibration is inferred.'] if context else LIMITS[:1],
-                    'checks':[check('input','passed','Explicit profile and initial data validated'),check('unit_mapping','passed' if context else 'not_applicable','Public units core 1.0.0 -> canonical SI -> explicit scales -> legacy dimensionless input' if context else 'Legacy dimensionless input remains dimensionless'),check('budget','passed',f'cells={cells}; history/work/RT estimates within host limits'),check('environment','passed',str(env))]}
+                    'warnings':(['SI input and physical result view use explicit scales; kernel and numerical QC remain dimensionless. No material calibration is inferred.'] if context else LIMITS[:1])+d.resource_warnings(p,context),
+                    'checks':[check('input','passed','Explicit profile and initial data validated'),check('unit_mapping','passed' if context else 'not_applicable','Public units core 1.0.0 -> canonical SI -> explicit scales -> legacy dimensionless input' if context else 'Legacy dimensionless input remains dimensionless'),check('budget','passed',str(d.resource_report(p,context))+'; advisory only, no mesh/DOF/work/history count cap'),check('environment','passed',str(env))]}
         if not isinstance(q['task_id'],str) or not re.fullmatch('[A-Za-z0-9][A-Za-z0-9_-]{0,95}',q['task_id']):raise ModuleError('INVALID_REQUEST','Invalid task id')
         directory=Path(q['artifact_dir'])
         if not directory.is_absolute() or directory.is_symlink():raise ModuleError('INVALID_REQUEST','Absolute runtime artifact directory required')
         native=d.execute(p,directory,q['task_id'],unit_context=context)
         result=normalize(native,p,directory,q['task_id'],transport=d.config.get('transport'))
+        result['warnings']=d.resource_warnings(p,context)+result['warnings']
         if context:
             from .si_input import si_result
             from .validation import shape

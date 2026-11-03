@@ -37,7 +37,6 @@ class VectorPhaseField:
         for i in range(D+1):
             space,mapping=self.V.sub(i).collapse();self.spaces.append(space);self.maps.append(np.asarray(mapping,np.int32).reshape(-1))
         self.S=self.spaces[0];self.xy=self.S.tabulate_dof_coordinates();self.qcoords=self.xy[:,:D]@self.R
-        if len(self.u.x.array)>25000:raise ValueError('PoC direct LU cap 25000 total DOFs')
         for s in self.spaces:assert np.allclose(s.tabulate_dof_coordinates(),self.xy)
         self.meshid=hashlib.sha256(self.xy.tobytes()+np.array(cells).tobytes()).hexdigest();self.dt=fem.Constant(self.m,.05);self.rate=fem.Constant(self.m,1.);self.time=fem.Constant(self.m,0.);self.E=np.zeros(D);self.t=0.;self.logs=[];self.history=[];self.snapshots=[];self.phis=[];self.attempt=0
         self.phib=fem.Function(self.spaces[D]);self.pbc=[];self.bcs=[];self.external=fem.Constant(self.m,np.zeros(D,dtype=PETSc.ScalarType))

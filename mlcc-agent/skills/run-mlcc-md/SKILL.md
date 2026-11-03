@@ -5,6 +5,8 @@ description: 显式选择已有势或 ABACUS→DeePMD 自训练势，复用陶�
 
 # 同源扩胞与局部界面 MD
 
+设计方案、澄清输入或解释执行冲突前，先读[当前计算能力边界](../references/calculation-boundaries.md)，再读所选领域的方法说明。边界随当前 Bundle/模块版本更新；超出资源软推荐只提示，不据此改科学输入。遇到冲突说明具体限制及可选简化，不把历史限制当永久规则；已提交任务不自动改参、取消或重提。
+
 公网调用先走[统一操作入口](../references/public-operations.md)；统一入口只调用已有 MD CLI/模块 ops 创建控制任务，所有势、协议、站点和科学资格继续由本 Skill 的显式请求决定。
 
 氧空位路径沿 `create-lammps-neb --study --model --final-model --potential --protocol --site --request` 创建既有 TaskRecord，`parse-lammps-neb --task` 保存原生 NEB 图像、端点及 regular/climbing 停止记录；创建不自动提交，数值任务仍经既有 Slurm runner。`vacancy-migration --request --output` 消费显式 `mlcc.vacancy-migration-request.v1`：固定母体/空位模型、母位点与移动原子 ID、父映射、观察范围、capture radius、ambiguity gap 和连续确认帧数均来自请求。`source.kind=md_native` 读取已保存原始轨迹、Prism 映射和时间条件；`source.kind=neb_result` 读取已保存的 `mlcc.lammps-neb-result.v1`，按图像/反应坐标保留，不能作为 MD 时间轨迹。局部最近位点周期像不补 native image flags 或 unwrap；歧义、多占据和未确认换位照实记录，不拟合迁移速率或扩散系数。`deliver-properties --study --vacancy-migration --output` 将完整保存产品接回同一 Study，不重读原始帧、不重算事件。指定路径意图和最小化后的实际占据分别保留；不根据意图宣称发生跳跃。参数与本次最小实际链见 `docs/vacancy-migration-v001.md`。

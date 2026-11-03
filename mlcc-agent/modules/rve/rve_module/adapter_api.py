@@ -38,7 +38,9 @@ def normalize(native,c,op,out,audit,*,transport=None):
     env=native['environment'];require(env['ready'] and env['versions']['dolfinx']=='0.11.0' and env['scalar_type']=='float64' and env['mpi_ranks']==1,'Native environment incompatible','INVALID_SCIENTIFIC_RESULT')
     qc={'numerical':[check(k,'not_applicable' if k=='PBC_pairing' and c['boundary_condition']!='periodic' else 'passed','Migrated numerical protocol; raw errors in diagnostics.json') for k in diag['verification']['checks']]+[check('mesh_geometry','passed','Positive nonempty mesh, region/CAD fraction audit retained'),check('linear_solver','passed','All independent basis loads converged'),check('native_readback','passed','Independent VTU/HDF5 gradients, constitutive law, flux/work, lifting and saved PBC pairs'),check('unit_normalization','passed','Shared core '+audit['core_version']+' catalog '+audit['catalog_version']),check('mesh_convergence','not_checked','Single run; historical selected grid studies not generalized')], 'scientific':[check(k,'not_checked',msg) for k,msg in [('material_calibration','Sources retained; synthetic values not measured calibration'),('statistical_representativity','No representative-volume statistical acceptance'),('device_applicability','No real material/product owner sign-off')]]}
     write_json(Path(out)/'quality.json',qc);write_json(Path(out)/'artifact_hashes.json',hashes)
-    return {'schema_version':'mlcc.adapter-result.v1','execution_status':'succeeded','provenance':provenance(c,env,transport=transport),'results':r,'quality':qc,'errors':[],'warnings':[],'limitations':LIMITATIONS,'artifacts':diagnostics(out)}
+    recommendation=diag['mesh'].get('cell_count_recommendation',{})
+    warnings=([f"Actual mesh cells={r['cells']} exceeds recommended cells={recommendation['recommended_cells']}; advisory only, no cell-count cap was enforced."] if recommendation.get('exceeded') else [])
+    return {'schema_version':'mlcc.adapter-result.v1','execution_status':'succeeded','provenance':provenance(c,env,transport=transport),'results':r,'quality':qc,'errors':[],'warnings':warnings,'limitations':LIMITATIONS,'artifacts':diagnostics(out)}
 
 def handle(q):
     pre=isinstance(q,dict) and q.get('action')=='preflight';out=None;c=None
@@ -48,14 +50,17 @@ def handle(q):
         if pre:require(q['task_id'] is None and q['artifact_dir'] is None,'Preflight cannot create a task','INVALID_REQUEST')
         dep=Deployment.load();estimate=dep.budget(c,d)
         if pre:
-            env=dep.probe();return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITATIONS[:2],'checks':[check('typed_input','passed','Strict quantities, geometry, coverage and SPD; shared UNIT only'),check('budget','passed',f'Planning estimate={estimate}; actual mesh guard before solve'),check('backend','passed',str(env))]}
+            env=dep.probe();return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITATIONS[:2]+dep.budget_warnings(c,d),'checks':[check('typed_input','passed','Strict quantities, geometry, coverage and SPD; shared UNIT only'),check('budget','passed',f"Planning estimate={estimate}; recommended cells={dep.config[f'max_cells_{d}d']}; advisory only, no cell-count cap"),check('backend','passed',str(env))]}
         require(isinstance(q['task_id'],str) and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,95}',q['task_id']) is not None,'Runtime task ID required','INVALID_REQUEST')
         path=Path(q['artifact_dir']);require(path.is_absolute() and path.is_dir() and not path.is_symlink(),'Runtime-owned absolute artifact directory required','INVALID_REQUEST');out=path
         require(path.resolve()==(ROOT.parents[1].parent/'artifacts').resolve(),'Artifact directory must belong to this Bundle runtime task','INVALID_REQUEST')
         require(not (out/'native').exists(),'Native task already started','TASK_ALREADY_STARTED')
         write_json(out/'input.original.json',q['input']);write_json(out/'input.canonical-si.json',c);write_json(out/'unit_normalization.json',audit)
         write_json(out/'sources.json',read_json(ROOT/'SOURCES.json'));write_json(out/'numerical_protocol.json',read_json(ROOT/'protocols'/('validation_protocol.json' if d==2 else 'numerical_protocol.json')))
-        native=dep.execute(c,q['operation'],out,q['task_id']);return normalize(native,c,q['operation'],out,audit,transport=dep.config.get('transport'))
+        native=dep.execute(c,q['operation'],out,q['task_id'])
+        result=normalize(native,c,q['operation'],out,audit,transport=dep.config.get('transport'))
+        result['warnings']=dep.budget_warnings(c,d)+result['warnings']
+        return result
     except Exception as e:
         error={'code':getattr(e,'code','ADAPTER_ERROR'),'message':str(e)}
         if pre:return {'schema_version':'mlcc.adapter-preflight.v1','ready':False,'errors':[error],'warnings':[],'checks':[]}

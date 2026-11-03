@@ -1,4 +1,12 @@
-# RVE 0.1.2：静态线性材料均质化
+# RVE 0.1.5：静态线性材料均质化
+
+0.1.5 进一步取消用最小网格尺寸间接限制细化的旧下界：二维不再要求 h≥0.003，三维不再要求 h≥0.025，统一为有限正 h（原有粗网格上界仍在）。非零晶界/壳层分辨率、几何和数值检查仍执行。细化回归和来源见 `MESH_COUNT_ACCEPTANCE.json`、`MESH_COUNT_SOURCES.json`；0.1.4 零晶界验收继续保留为历史记录。
+
+0.1.4 放宽二维多晶晶界宽度为 `0 <= normalized_gb_width <= 0.08`。零宽度表示不建立晶界相，材料中不得出现 3000；芯、可选壳层及孔隙仍需精确覆盖。非零薄层仍须满足原有网格分辨率检查。生成器和 CAD 区域分配同步支持零晶界，不添加默认材料或改变孔隙定义。
+
+二维和三维网格数量均不再设硬上限。为兼容现有宿主配置，`max_cells_2d` / `max_cells_3d` 和内部请求的 `max_cells` 保留旧字段名，但只表示推荐单元数，正整数不设上界。超过规划推荐或实际推荐只回报 warning，不拒收、不粗化、不自动重试。预检 checks 给出规划估计；实际 `diagnostics.mesh.cell_count_recommendation` 同时记录推荐数、实测数、是否超出和 `enforced=false`。原有超时、单线程、非空网格、质量、材料覆盖、周期边界和求解/回读检查仍生效。历史协议里的单元 cap 是历史验收规模，不是当前执行上限。
+
+准入回归：`python3 -B -m unittest discover -s modules/rve/tests -p test_admission.py -v`（在 mlcc-agent 下）。真实回归必须显式使用已选科学环境：`/path/to/scientific/python -B modules/rve/tests/run_native_regression.py --execute --output /absolute/new/output`；输出目录须不存在，不提交 Slurm。最新验收和来源清单见 `ADMISSION_ACCEPTANCE.json`、`ADMISSION_SOURCES.json`；旧来源冻结件不改写。
 
 Scientific Core V0.1：本模块 0.1.2 显式消费共享数值包 0.1.0，operation/物理模型/专业 schema 不变。部署须携带 Bundle 中的 `scientific_core/`。见 [本次接入与等价验收](SCIENTIFIC_CORE_ACCEPTANCE.md)。
 
@@ -26,7 +34,7 @@ physical_lengths 为 d 个 length 量值；2D必须正方形，3D可长方体。
 
 材料条目为 `{region_tag:"10",representation:"isotropic",scalar:<quantity>,applicability:<text>}` 或 `{region_tag:"10",representation:"tensor",tensor:[[<quantity>]],applicability:<text>}`；scalar/tensor互斥。静电输入是相对εr / 1，导热 W/(m K) 或公共登记非SI表示。张量全 d×d、有限、对称、SPD，负非对角项可以合法。取向元数据不执行本构旋转。所有示例是显式合成数据，非实测材料。
 
-每载荷固定 G=eye(d)：电场1 V/m，热负温度梯度1 K/m，热场参考300 K；未开放任意温度梯度、角度单位或温度工况。2D只算x/y，3D真正x/y/z；不补z。量纲/审计/坐标见 [UNIT_DESIGN.md](UNIT_DESIGN.md)。薄层分辨率和单元上限来自源实现；宿主另有显式预算。错误不会自动换组织/网格/后端。
+每载荷固定 G=eye(d)：电场1 V/m，热负温度梯度1 K/m，热场参考300 K；未开放任意温度梯度、角度单位或温度工况。2D只算x/y，3D真正x/y/z；不补z。量纲/审计/坐标见 [UNIT_DESIGN.md](UNIT_DESIGN.md)。薄层分辨率检查仍来自源实现，网格数量只作推荐。错误不会自动换组织/网格/后端。
 
 ## 本机命令
 

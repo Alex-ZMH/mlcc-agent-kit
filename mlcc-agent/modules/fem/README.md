@@ -1,4 +1,8 @@
-# 二维 MLCC 器件有限元模块 fem 0.4.1
+# 二维 MLCC 器件有限元模块 fem 0.4.3
+
+0.4.3：全部八个操作取消规划与实际网格数量的硬上限，原静电的 50000 与扩展操作的 150000 只作为既有推荐值。为兼容宿主配置保留 `max_cells` 旧字段名，含义为正整数软推荐，不设数量上界；超过推荐只产生 warning，不拒收、不粗化、不自动重试。预检 checks 报告规划估计和推荐数，实际结果的 `diagnostics.cell_count_recommendation` 报告推荐数、实测数、是否超过及 `enforced=false`；建网后即保存同名 JSON，便于求解失败时诊断。原几何、区域、P1 单元、场/功率/热平衡检查、单线程和超时设置不变。
+
+纯软件回归：在 mlcc-agent 下执行 `python3 -B -m unittest discover -s modules/fem/tests -p test_mesh_recommendation.py -v`。真实回归须显式使用科学环境执行 `python -B modules/fem/tests/run_mesh_recommendation_native.py --execute --output /absolute/new/output`，不提交调度作业。当前来源和验收见 `MESH_COUNT_SOURCES.json`、`MESH_COUNT_ACCEPTANCE.json`；旧来源文件继续保持历史冻结含义。
 
 Scientific Core V0.1：本模块 0.4.1 显式消费共享数值包 0.1.0，operation/物理模型/专业 schema 不变。部署须携带 Bundle 中的 `scientific_core/`。见 [本次接入与等价验收](SCIENTIFIC_CORE_ACCEPTANCE.md)。
 
@@ -59,7 +63,7 @@ run排队，worker明确执行一次；status/result/artifact与终态worker不�
 
 公共任务在outputs/tasks/<task_id>/保存输入快照、执行状态、provenance、结果、QC、错误与artifact登记。原生native/含请求/响应/启动参数/环境绑定/日志及任务内缓存；大数组留在VTU/XDMF/HDF5/NPZ。新操作solution/保存完整复场、热场和映射；可选PNG注明二维/纵向放大，不作为科学验收。
 
-[ENVIRONMENT.md](ENVIRONMENT.md)记录现有环境，不安装Windows FEniCS、不移动公共框架到WSL。新v2仅授权新操作最大150000单元/240秒客户端预算；旧v1仍最大50000单元/最长120秒，旧操作拒绝v2。资源预算不是科学准确性阈值。
+[ENVIRONMENT.md](ENVIRONMENT.md)记录现有环境，不安装Windows FEniCS、不移动公共框架到WSL。v2仅供扩展操作，客户端最长240秒；旧操作仍使用v1、客户端最长120秒并拒绝v2。0.4.3起50000/150000仅为示例软推荐，不是单元上限或科学准确性阈值，实际配置由宿主提供。
 
 缺依赖/部署或非法输入明确拒绝；没有mock回退。超时/通信中断返回SCIENTIFIC_STATE_UNKNOWN或公共interrupted，不能保证Linux进程已停止；保留任务且不自动重提。没有取消API、后台调度或科学进程回收。queued期间须固定宿主配置，见[公共增强建议](INTERFACE_PROPOSAL.md)。
 

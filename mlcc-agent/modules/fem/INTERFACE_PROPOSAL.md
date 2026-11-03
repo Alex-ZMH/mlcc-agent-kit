@@ -1,3 +1,7 @@
+## 2026-11-03：网格数量改为软推荐
+
+FEM 0.4.3 保留 interface_version=1.0 和既有八个操作/科学输入/结果 schema。宿主与内部 native 请求继续使用 `max_cells` 名称，但只作推荐，不因估计或实际数量超出而拒收；部署 schema 取消数量上界。规划与实际推荐经已有 warnings/diagnostics 返回。几何、材料、单元类型、数值质量及超时检查保留。无需修改公共生命周期或新建框架。生产启用需发布新 Bundle，已提交任务的旧 payload 不自动替换。
+
 ## 2026-10-21 模块更名同步
 
 用户要求目录由 fea 改为 fem；模块目录、module.json ID、Adapter 路由及模块内当前调用已同步。公共 docs/v1-status.json 和 docs/v1-scope.md 中旧 fea 条目由 main 同步为 fem，本模块未改写公共文件。历史任务不改写；v1 数据/部署 schema 标识和 MLCC_FEA_DEPLOYMENT 保持兼容。

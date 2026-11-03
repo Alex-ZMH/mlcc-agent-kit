@@ -25,18 +25,15 @@
       "properties": {
         "nx": {
           "type": "integer",
-          "minimum": 2,
-          "maximum": 48
+          "minimum": 2
         },
         "ny": {
           "type": "integer",
-          "minimum": 2,
-          "maximum": 12
+          "minimum": 2
         },
         "nz": {
           "type": "integer",
-          "minimum": 2,
-          "maximum": 12
+          "minimum": 2
         }
       },
       "required": [

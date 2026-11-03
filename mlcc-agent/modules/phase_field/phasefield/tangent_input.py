@@ -38,8 +38,6 @@ def validate_reduced(payload):
     for value in path:vector(value,d)
     scalar(p['equilibrium_atol'],positive=True);require(p['equilibrium_atol']<=1e-8,'Frozen strict equilibrium atol <=1e-8 required')
     require(set(p['verification'])=={'finite_difference','analytical'} and all(type(v) is bool for v in p['verification'].values()),'Explicit independent-check selection required')
-    budget=estimate_resources(p)
-    require(budget['dofs']<=3300,'Dense stability eigensolve operational cap: 3300 total DOFs, no automatic coarsening','RESOURCE_LIMIT')
     return p
 def semantics(p):
     result={f'/reference_scales/{k}':{'kind':kind} for k,kind in [('length','length'),('polarization','polarization'),('time','time'),('energy_density','energy_density')]}

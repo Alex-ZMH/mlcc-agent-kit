@@ -93,7 +93,9 @@ def compute(q):
     m=p['mesh'];start=time.perf_counter()
     s=PhaseField(n=m['nx'],ny=m['ny'],nz=m.get('nz'),g=p['g'],epsilon=p['epsilon'],field=p['applied_E'],initial=initial_condition(initial_config(p)))
     cells=s.m.topology.index_map(p['dimension']).size_global
-    if cells>q['max_cells']:raise ValueError('Actual mesh exceeds host resource budget')
+    from .resources import actual_report, actual_warnings
+    advisory=actual_report(p,q['max_cells'],cells,len(s.u.x.array))
+    write_json(out/'mesh_recommendation.json',advisory)
     ig=gradients(s);ip,iphi=s.fields()
     write_json(out/'initial.json',{'input':p,'effective_initial':initial_config(p),'P_gradient_rms':ig,'initial_phi_equilibrated':True})
     write_json(out/'environment.json',env)
@@ -107,7 +109,7 @@ def compute(q):
         raise
     data=s.save(out);gauss=s.gauss(reconstruct=p['output']['rt0']);rb=readback(out,p['dimension'])
     if not rb['passed']:raise ValueError('Native field readback failed')
-    warnings=[]
+    warnings=actual_warnings(advisory)
     if p['output']['images']:
         try:plots(out,data,p['dimension'],s.history)
         except Exception as exc:

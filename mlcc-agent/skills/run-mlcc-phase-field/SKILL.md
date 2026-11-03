@@ -5,6 +5,8 @@ description: 为 MLCC 选择标量或全矢量铁电相场稳态、演化及静�
 
 # MLCC 铁电相场计算
 
+设计方案、澄清输入或解释执行冲突前，先读[当前计算能力边界](../references/calculation-boundaries.md)，再读所选领域的方法说明。边界随当前 Bundle/模块版本更新；超出资源软推荐只提示，不据此改科学输入。遇到冲突说明具体限制及可选简化，不把历史限制当永久规则；已提交任务不自动改参、取消或重提。
+
 公网调用先走[统一操作入口](../references/public-operations.md)；标量、矢量和静态切线 operation 的 describe/create/read 仍复用本模块既有 ops，不自动改初态、尺度、边界或参数。
 
 使用 `module_id=phase_field`，处理限定 LGD 模型的极化、畴演化或静态分支响应。组织均质化选择 RVE，器件几何电容选择 FEM；各模块独立运行。

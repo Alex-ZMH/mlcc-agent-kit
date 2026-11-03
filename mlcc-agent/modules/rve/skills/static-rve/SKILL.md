@@ -15,6 +15,8 @@ description: Prepare and interpret independent 2D/3D static electrostatic or the
 
 normalized_*、jitter、fraction 是无量纲，不能附物理长度单位、不能隐式百分比；grain_count/seed 是非 bool 整数。每种几何只接收确切相关字段，缺材料/尺寸先澄清，不补实验默认值。多晶取向仅元数据，不等于晶体本构旋转。三维 GB/shell 多晶当前拒绝，extrusion 未开放；不能改换组织继续算。
 
+二维多晶允许 `normalized_gb_width=0`，此时没有 3000 晶界材料；有壳时仍需 200+i，有孔时仍需 9000。正晶界宽度允许低于旧下限 0.01，但仍须显式满足薄层分辨率。网格单元数只有软推荐：旧名 max_cells_* 不再作为硬上限；超推荐 warning 不阻断创建或执行，不得据此自动粗化网格、改变组织、缩小 RVE 或减少晶粒。推荐不是精度验收，超时及实际数值/几何失败仍须如实报告。
+
 支持均匀、层状、2D 旋转层/圆/椭圆/核壳/周期多晶、3D 球/椭球/核壳/无GB多晶。角度不开放任意单位，椭圆/椭球当前固定零角度；旋转层法向为原实验固定 (1,1)/sqrt(2)。孔隙只单内部圆/球；热 insulating_cavity 排除孔单元/自然绝热，以完整单胞归一化；explicit 是正系数孔相；静电必须 explicit。所有区域仍需材料记录，绝热孔材料记录为身份审计，不参与导热求解。
 
 周期法是 DOF 等价类 P 消元与常数规范，Gmsh setPeriodic 只配对网格。affine_dirichlet 是独立仿射边界参考。每个宏观载荷固定 eye(d)，电场为 1 V/m，热负温度梯度为 1 K/m、参考 300 K；不是任意可配置工况。网格 MSH 坐标归一化，VTU/XDMF/HDF5/NPZ 坐标 m，映射见 coordinates.json。2D 均质材料量仍 F/m 或 W/(m K)，无虚设深度或 z 分量。

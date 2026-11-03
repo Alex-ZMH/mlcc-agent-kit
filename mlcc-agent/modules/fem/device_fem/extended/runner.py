@@ -1,5 +1,6 @@
 """Single-case WSL orchestration of the reviewed experiment kernels."""
 from pathlib import Path
+from ..common import cell_count_recommendation
 import numpy as np
 import ufl
 from dolfinx import mesh
@@ -111,6 +112,7 @@ def run(payload,out,max_cells):
             'phasor_convention':'dc' if analysis=='electrothermal' and payload['voltage_convention']=='dc' else 'RMS exp(+j omega t)',
             'electrical':e,'thermal':thermal_report(t,t is not None),'mesh_artifact':'artifacts/solution/mesh.msh',
             'diagnostics_artifact':'artifacts/diagnostics.json','field_artifacts':fields,'assumptions':assumptions}
+    diagnostics['cell_count_recommendation']=cell_count_recommendation(cells,max_cells)
     core.write(out/'diagnostics.json',diagnostics)
     warnings=[]
     if payload['outputs']['field_images']:

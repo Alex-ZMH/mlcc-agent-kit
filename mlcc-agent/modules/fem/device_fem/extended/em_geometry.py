@@ -5,6 +5,7 @@ from mpi4py import MPI
 from dolfinx import mesh
 from dolfinx.io import gmsh as gmshio
 from .thermal_core import rectangles,body_height,ncells,write
+from ..common import cell_count_recommendation
 from .em_solver import tags
 
 def build(payload,h,out,bus=20e-6,feed=40e-6,bottom=10e-6,*,max_cells=150000):
@@ -26,7 +27,8 @@ def build(payload,h,out,bus=20e-6,feed=40e-6,bottom=10e-6,*,max_cells=150000):
         gmsh.model.addPhysicalGroup(1,[t for d,t in boundary if d==1],90)
         gmsh.option.setNumber('Mesh.MeshSizeMin',h);gmsh.option.setNumber('Mesh.MeshSizeMax',h);gmsh.model.mesh.generate(2)
         n=sum(len(v) for v in gmsh.model.mesh.getElements(2)[1])
-        if n>max_cells:raise ValueError('Host mesh cell resource bound exceeded')
+        if n<=0:raise ValueError('Nonempty triangle mesh required')
+        write(out/'cell_count_recommendation.json',cell_count_recommendation(n,max_cells))
         gmsh.write(str(out/'mesh.msh'));data=gmshio.model_to_mesh(gmsh.model,MPI.COMM_WORLD,0,gdim=2)
     finally:gmsh.finalize()
     m=data.mesh;regions=np.zeros(ncells(m),np.int32);regions[data.cell_tags.indices]=data.cell_tags.values

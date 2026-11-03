@@ -30,8 +30,7 @@
       "type": "array",
       "items": {
         "type": "integer",
-        "minimum": 1,
-        "maximum": 128
+        "minimum": 1
       },
       "minItems": 2,
       "maxItems": 3

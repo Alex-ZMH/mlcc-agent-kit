@@ -1,0 +1,73 @@
+{
+  "schema_version": "rve.admission-sources.v1",
+  "module_version": "0.1.4",
+  "base_github_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "hash_convention": "SHA256 over LF-normalized file content",
+  "changes": [
+    "Zero-width 2D grain-boundary phase omitted in contract, builder and CAD assignment",
+    "Cell-count deployment fields and native request kept compatible but advisory only",
+    "2D/3D generated cell counts retain validity checks and publish soft recommendations"
+  ],
+  "files": [
+    {
+      "path": "ADMISSION_ACCEPTANCE.json",
+      "sha256_lf": "c7f4070f129c27a5c2e25281f93f850a6c57934fbb492be8ae35bdf8aba729b1"
+    },
+    {
+      "path": "INTERFACE_PROPOSAL.md",
+      "sha256_lf": "de20a89756b4a675042b9abe12beb6b21f6d7de447af83ee01e8e734e20a8504"
+    },
+    {
+      "path": "README.md",
+      "sha256_lf": "3e46ddbd5d9fd482b9fc662e21da6aef8ab05b91e0789d8eedc6f3246506da49"
+    },
+    {
+      "path": "deployment/native.schema.json",
+      "sha256_lf": "5e835e45e147eb8bc724111258e49d60e9614a0a50f23c089e8bcec153a12c5e"
+    },
+    {
+      "path": "module.json",
+      "sha256_lf": "b3976f5a59f45e8720afd716f50e8ab07173d0dec434b21495df0f0180efd6c3"
+    },
+    {
+      "path": "rve_module/adapter_api.py",
+      "sha256_lf": "88d254f5b79fe299e1dc26f8c0ac6b4919610c8695f3f2db1696c004e166ae46"
+    },
+    {
+      "path": "rve_module/contract.py",
+      "sha256_lf": "913ac60ea425e52a1552f7bd79dfd7df6f15de94ef873d4941d28620c5c18e8a"
+    },
+    {
+      "path": "rve_module/deployment.py",
+      "sha256_lf": "6705b5ef724360cf372188d533281b9cbc6abfaae37e79073cc8a80edfdf1304"
+    },
+    {
+      "path": "rve_module/kernel2d/microstructure.py",
+      "sha256_lf": "48699323b5e0620028e9fd4c4bb2110b07a7503eeb27f972492843250344c9f5"
+    },
+    {
+      "path": "rve_module/kernel2d/rve_mesh.py",
+      "sha256_lf": "8bd614998aef9cd335ff0ef66b2b5ce26fdb4842a5e89c64452c02ed4dacbc40"
+    },
+    {
+      "path": "rve_module/kernel3d/rve_mesh.py",
+      "sha256_lf": "4c1cac89b4b82ae041daeefe9671210abb222cb9f40b198f982317f3be52c8f3"
+    },
+    {
+      "path": "rve_module/science.py",
+      "sha256_lf": "1b88e6c14ac14d4116735e8bc20dd2bbb67824378d720a6dbe78c27d772a562b"
+    },
+    {
+      "path": "skills/static-rve/SKILL.md",
+      "sha256_lf": "b51c3d1df690965a10dbd504ff1c18e2874cc13f271b529a4ca309325facfd2a"
+    },
+    {
+      "path": "tests/run_native_regression.py",
+      "sha256_lf": "142b7b11969274fb50e540b5e6595ab18648a90748287861c1ad37190f983151"
+    },
+    {
+      "path": "tests/test_admission.py",
+      "sha256_lf": "21b2e558c449e1a8278fd7a6e8ca330388ab191a4a9934c77189dc31f19245cf"
+    }
+  ]
+}

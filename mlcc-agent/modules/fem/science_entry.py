@@ -10,7 +10,7 @@ _core = run_path(str(Path(__file__).resolve().parents[2] / 'scientific_core/boot
 import traceback
 
 from device_fem import VERSION
-from device_fem.common import ModuleError, digest, dumps, file_hash, read_json, write_json
+from device_fem.common import ModuleError, cell_count_recommendation, digest, dumps, file_hash, read_json, write_json
 from device_fem.validation import validate_input
 
 PACKAGES = ('fenics-dolfinx','fenics-ufl','petsc4py','mpi4py','gmsh','numpy','pyvista','matplotlib')
@@ -45,8 +45,8 @@ def execute(request_path, response_path):
         output = Path(request['artifact_dir']).resolve()
         if not output.is_dir() or Path(request_path).resolve().parent != output/'native' or Path(response_path).resolve().parent != output/'native':
             raise ModuleError('INVALID_REQUEST','Native request/response must share the runtime-owned artifact directory')
-        if type(request['max_cells']) is not int or not 1 <= request['max_cells'] <= (150000 if operation is not None else 50000) or type(request['threads']) is not int or request['threads'] != 1:
-            raise ModuleError('RESOURCE_LIMIT','Native operational limits exceeded')
+        if type(request['max_cells']) is not int or request['max_cells'] < 1 or type(request['threads']) is not int or request['threads'] != 1:
+            raise ModuleError('INVALID_REQUEST','Positive cell-count recommendation and single thread required')
         if request.get('benchmark') not in (None,'parallel_plate'):
             raise ModuleError('INVALID_REQUEST','Unknown harness benchmark')
         os.environ['OMP_NUM_THREADS'] = '1'
@@ -72,6 +72,11 @@ def execute(request_path, response_path):
                                                  benchmark=request.get('benchmark') == 'parallel_plate')
             from device_fem.validation import validate_result
         validate_result(results,payload)
+        advisory = cell_count_recommendation(results['mesh_cells'], request['max_cells'])
+        if diagnostics['cell_count_recommendation'] != advisory:
+            raise ModuleError('INVALID_SCIENTIFIC_RESULT', 'Mesh recommendation evidence disagrees with native result')
+        if advisory['exceeded']:
+            warnings.append(f"Actual mesh cells={advisory['actual_cells']} exceeds recommended cells={advisory['recommended_cells']}; advisory only, no cell-count cap was enforced.")
         write_json(output/'metrics.json',results)
         write_json(output/'scientific_core.json', _core.provenance())
         artifacts = []

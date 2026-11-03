@@ -1,5 +1,7 @@
 # 给main的公共增强建议
 
+2026-11-03 / 0.4.1：所有十个操作取消单元数、每轴网格数及矢量/切线总自由度硬上限；宿主 max_cells/max_work/max_history_bytes 统一为正整数软推荐，避免通过预算估计间接阻断细化。原 Adapter 1.0/native 请求/结果 schema 兼容，推荐通过已有 warnings/checks 和独立 mesh_recommendation.json 产物表达，不需要公共协议改动。实际内核也去掉计数拒收，稠密稳定性算法与科学验收不简化；生产启用须发布新 Bundle，不替换既有任务 payload。
+
 当前无阻塞接入的公共接口缺口。自动发现、schema子集、queued/worker、质量和原生产物、既有AgentHost均可使用，不需修改公共包或中央Bundle。
 
 1. queued快照未冻结宿主部署JSON/环境变量。当前执行保存deployment_sha256和实际argv，提交到worker期间须固定宿主配置。建议main增加部署快照与漂移检查扩展点，兼容旧任务，不让科学输入携带机器路径。

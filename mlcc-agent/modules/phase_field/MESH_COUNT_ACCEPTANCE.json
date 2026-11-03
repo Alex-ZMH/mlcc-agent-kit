@@ -1,0 +1,776 @@
+{
+  "schema_version": "phase_field.mesh-count-acceptance.v1",
+  "date": "2026-11-03",
+  "module_version": "0.4.1",
+  "reference_deployed_bundle": "0.60.4",
+  "reference_deployment_revision": 6,
+  "reference_upstream_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "reference_scope": "Implementation matched the deployed source before this increment; pre-existing local Skill public-entry-link differences were preserved.",
+  "software_tests": {
+    "module_stdlib_passed": 6,
+    "portable": {
+      "run": 47,
+      "passed": 46,
+      "skipped": 1
+    }
+  },
+  "native_scope": "Local WSL existing fenicsx-env; real Adapter/native entry/solver and existing numerical/field readback checks; no Slurm or Zeus submission.",
+  "native_cases": [
+    {
+      "name": "steady",
+      "operation": "steady",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            16,
+            4
+          ],
+          "cells": 128,
+          "dofs": 170
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            48,
+            12
+          ],
+          "cells": 1
+        }
+      },
+      "seconds": 27.75310105599965,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_applicable": 4,
+          "not_checked": 1
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    {
+      "name": "evolve",
+      "operation": "evolve",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            16,
+            4
+          ],
+          "cells": 128,
+          "dofs": 170
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            48,
+            12
+          ],
+          "cells": 1
+        }
+      },
+      "seconds": 22.637853416001235,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 8,
+          "not_applicable": 1,
+          "not_checked": 2
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    {
+      "name": "steady_si",
+      "operation": "steady_si",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            8,
+            4
+          ],
+          "cells": 64,
+          "dofs": 90
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            48,
+            12
+          ],
+          "cells": 1
+        }
+      },
+      "seconds": 25.101559501001248,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 7,
+          "not_applicable": 4,
+          "not_checked": 1
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    {
+      "name": "evolve_si",
+      "operation": "evolve_si",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            8,
+            4
+          ],
+          "cells": 64,
+          "dofs": 90
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            48,
+            12
+          ],
+          "cells": 1
+        }
+      },
+      "seconds": 28.92002175699963,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 9,
+          "not_applicable": 1,
+          "not_checked": 2
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    {
+      "name": "vector_steady",
+      "operation": "vector_steady",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            2,
+            2
+          ],
+          "cells": 8,
+          "dofs": 27
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            25000,
+            25000
+          ],
+          "cells": 1,
+          "dofs": 25000
+        }
+      },
+      "seconds": 19.76390842500041,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 7,
+          "not_applicable": 2,
+          "not_checked": 1
+        },
+        "scientific": {
+          "not_checked": 4
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    {
+      "name": "vector_evolve",
+      "operation": "vector_evolve",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            2,
+            2
+          ],
+          "cells": 8,
+          "dofs": 27
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            25000,
+            25000
+          ],
+          "cells": 1,
+          "dofs": 25000
+        }
+      },
+      "seconds": 21.29451314200014,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 7,
+          "not_applicable": 1,
+          "not_checked": 2
+        },
+        "scientific": {
+          "not_checked": 4
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    {
+      "name": "vector_steady_si",
+      "operation": "vector_steady_si",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            2,
+            2
+          ],
+          "cells": 8,
+          "dofs": 27
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            25000,
+            25000
+          ],
+          "cells": 1,
+          "dofs": 25000
+        }
+      },
+      "seconds": 22.89799673000016,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 8,
+          "not_checked": 1,
+          "not_applicable": 1
+        },
+        "scientific": {
+          "not_checked": 4
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    {
+      "name": "vector_evolve_si",
+      "operation": "vector_evolve_si",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            2,
+            2
+          ],
+          "cells": 8,
+          "dofs": 27
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            25000,
+            25000
+          ],
+          "cells": 1,
+          "dofs": 25000
+        }
+      },
+      "seconds": 27.999494343999686,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 8,
+          "not_checked": 2
+        },
+        "scientific": {
+          "not_checked": 4
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence",
+          "time_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    {
+      "name": "dielectric_tangent",
+      "operation": "dielectric_tangent",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            2,
+            2
+          ],
+          "cells": 8,
+          "dofs": 27
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            128,
+            128
+          ],
+          "cells": 1,
+          "dofs": 3300
+        }
+      },
+      "seconds": 59.97446158799903,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 16,
+          "not_applicable": 1,
+          "not_checked": 1
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "general_multidomain_constitutive",
+          "finite_frequency_or_elasticity"
+        ]
+      }
+    },
+    {
+      "name": "dielectric_tangent_si",
+      "operation": "dielectric_tangent_si",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            2,
+            2
+          ],
+          "cells": 8,
+          "dofs": 27
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            128,
+            128
+          ],
+          "cells": 1,
+          "dofs": 3300
+        }
+      },
+      "seconds": 61.52261199699933,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 17,
+          "not_checked": 1
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "general_multidomain_constitutive",
+          "finite_frequency_or_elasticity"
+        ]
+      }
+    },
+    {
+      "name": "scalar-above-cell-and-axis",
+      "operation": "steady",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            49,
+            64
+          ],
+          "cells": 6272,
+          "dofs": 6500
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells",
+          "axis_cells[0]",
+          "axis_cells[1]"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            48,
+            12
+          ],
+          "cells": 6000
+        }
+      },
+      "seconds": 20.17284329299946,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 5,
+          "not_applicable": 4,
+          "not_checked": 2
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "rt0",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    {
+      "name": "scalar-above-z",
+      "operation": "steady",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            8,
+            8,
+            13
+          ],
+          "cells": 4992,
+          "dofs": 2268
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells",
+          "axis_cells[2]"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            48,
+            12,
+            12
+          ],
+          "cells": 1
+        }
+      },
+      "seconds": 20.538507281999046,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 5,
+          "not_applicable": 4,
+          "not_checked": 2
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "rt0",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "independent_reference",
+          "stationary_stability"
+        ]
+      }
+    },
+    {
+      "name": "vector-above-dof",
+      "operation": "vector_steady",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            92,
+            92
+          ],
+          "cells": 16928,
+          "dofs": 25947
+        },
+        "enforced": false,
+        "exceeded": [
+          "cells",
+          "dofs"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            25000,
+            25000
+          ],
+          "cells": 6000,
+          "dofs": 25000
+        }
+      },
+      "seconds": 28.173258519997034,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 7,
+          "not_applicable": 2,
+          "not_checked": 1
+        },
+        "scientific": {
+          "not_checked": 4
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "stationary_stability",
+          "electroelasticity",
+          "general_multidomain_cycle"
+        ]
+      }
+    },
+    {
+      "name": "tangent-above-dof",
+      "operation": "dielectric_tangent",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            33,
+            33
+          ],
+          "cells": 2178,
+          "dofs": 3468
+        },
+        "enforced": false,
+        "exceeded": [
+          "dofs"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            128,
+            128
+          ],
+          "cells": 6000,
+          "dofs": 3300
+        }
+      },
+      "seconds": 55.08166278800127,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 13,
+          "not_checked": 2,
+          "not_applicable": 1
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "fd_validation",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "general_multidomain_constitutive",
+          "finite_frequency_or_elasticity"
+        ]
+      }
+    },
+    {
+      "name": "tangent-above-axis",
+      "operation": "dielectric_tangent",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual": {
+          "axis_cells": [
+            129,
+            2
+          ],
+          "cells": 516,
+          "dofs": 1170
+        },
+        "enforced": false,
+        "exceeded": [
+          "axis_cells[0]"
+        ],
+        "recommendations": {
+          "axis_cells": [
+            128,
+            128
+          ],
+          "cells": 6000,
+          "dofs": 3300
+        }
+      },
+      "seconds": 50.17894439000156,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 13,
+          "not_checked": 2,
+          "not_applicable": 1
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "fd_validation",
+          "mesh_convergence"
+        ],
+        "scientific": [
+          "material_validity",
+          "general_multidomain_constitutive",
+          "finite_frequency_or_elasticity"
+        ]
+      }
+    }
+  ],
+  "not_checked": [
+    "material calibration",
+    "task-specific mesh/time convergence",
+    "device applicability",
+    "Windows-to-WSL transport execution",
+    "Zeus deployment of this increment",
+    "arbitrarily large inputs or resource exhaustion"
+  ],
+  "submitted_tasks_touched": false,
+  "production_deployment": "not_deployed",
+  "prior_failed_evidence": null,
+  "environment": {
+    "method": "CG1 mixed P/phi, Newton line search, preonly/LU; RT0 MUMPS optional",
+    "python": "/home/zhaoxiang/miniconda3/envs/fenicsx-env/bin/python",
+    "ranks": 1,
+    "ready": true,
+    "versions": {
+      "fenics-dolfinx": "0.11.0",
+      "mpi": "MPICH Version:      5.0.1\nMPICH Release date: Fri Apr 10 09:45:31 AM CDT 2026\nMPICH ABI:          18:1:6\nMPICH Device:       ch4:ucx ofi\nMPICH configure:    --prefix=/home/zhaoxiang/miniconda3/envs/fenicsx-env --disable-doc --disable-dependency-tracking --enable-cxx --enable-fortran --enable-f08 --enable-mpi-abi --with-wrapper-dl-type=none --disable-static --with-device=ch4:ucx,ofi --with-ucx=/home/zhaoxiang/miniconda3/envs/fenicsx-env --with-libfabric=/home/zhaoxiang/miniconda3/envs/fenicsx-env --with-hwloc=/home/zhaoxiang/miniconda3/envs/fenicsx-env --with-yaksa=embedded --with-pm=hydra:gforker\nMPICH CC:           x86_64-conda-linux-gnu-cc -I/home/zhaoxiang/miniconda3/envs/fenicsx-env/include -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -fno-merge-constants -isystem /home/zhaoxiang/miniconda3/envs/fenicsx-env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/bld/rattler-build_mpich_1784230131/work=/usr/local/src/conda/mpich-5.0.1 -fdebug-prefix-map=/home/zhaoxiang/miniconda3/envs/fenicsx-env=/usr/local/src/conda-prefix   -O2\nMPICH CXX:          x86_64-conda-linux-gnu-c++ -I/home/zhaoxiang/miniconda3/envs/fenicsx-env/include -fvisibility-inlines-hidden -fmessage-length=0 -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -fno-merge-constants -isystem /home/zhaoxiang/miniconda3/envs/fenicsx-env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/bld/rattler-build_mpich_1784230131/work=/usr/local/src/conda/mpich-5.0.1 -fdebug-prefix-map=/home/zhaoxiang/miniconda3/envs/fenicsx-env=/usr/local/src/conda-prefix -O2\nMPICH F77:          x86_64-conda-linux-gnu-gfortran -I/home/zhaoxiang/miniconda3/envs/fenicsx-env/include -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -fno-merge-constants -isystem /home/zhaoxiang/miniconda3/envs/fenicsx-env/include -I/home/conda/feedstock_root/build_artifacts/bld/rattler-build_mpich_1784230131/build_env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/bld/rattler-build_mpich_1784230131/work=/usr/local/src/conda/mpich-5.0.1 -fdebug-prefix-map=/home/zhaoxiang/miniconda3/envs/fenicsx-env=/usr/local/src/conda-prefix -O2\nMPICH FC:           x86_64-conda-linux-gnu-gfortran -I/home/zhaoxiang/miniconda3/envs/fenicsx-env/include -march=nocona -mtune=haswell -ftree-vectorize -fPIC -fstack-protector-strong -fno-plt -O2 -ffunction-sections -pipe -fno-merge-constants -isystem /home/zhaoxiang/miniconda3/envs/fenicsx-env/include -I/home/conda/feedstock_root/build_artifacts/bld/rattler-build_mpich_1784230131/build_env/include -fdebug-prefix-map=/home/conda/feedstock_root/build_artifacts/bld/rattler-build_mpich_1784230131/work=/usr/local/src/conda/mpich-5.0.1 -fdebug-prefix-map=/home/zhaoxiang/miniconda3/envs/fenicsx-env=/usr/local/src/conda-prefix -O2\nMPICH features:     threadcomm",
+      "numpy": "2.4.6",
+      "petsc": "3.25.5",
+      "python": "3.11.15",
+      "ufl": "2026.1.0"
+    }
+  }
+}

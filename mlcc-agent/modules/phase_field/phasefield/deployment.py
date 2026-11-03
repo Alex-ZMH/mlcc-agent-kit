@@ -60,7 +60,7 @@ class Deployment:
             if not isinstance(c, dict): raise ValueError('Deployment must be an object')
             if c.get('schema_version') == 'phase_field.deployment.native.v1':
                 required = {'schema_version','transport','python','linux_root','timeout_seconds','threads','max_cells','max_work','max_history_bytes'}
-                _validate_native(c, required, [('timeout_seconds',1,240),('threads',1,1),('max_cells',1,6000),
+                _validate_native(c, required, [('timeout_seconds',1,240),('threads',1,1),('max_cells',1,None),
                                                ('max_work',1,None),('max_history_bytes',1,None)])
                 result = cls(c); result.map(ROOT / 'science_entry.py'); return result
             required = {'schema_version', 'wsl_executable', 'distribution', 'python',
@@ -80,8 +80,8 @@ class Deployment:
                     raise ValueError('Linux paths must be absolute canonical POSIX paths')
             if not Path(c['windows_root']).is_absolute() or not Path(c['windows_root']).is_dir():
                 raise ValueError('Existing absolute Windows mapping root required')
-            for key, low, high in (('timeout_seconds', 1, 240), ('threads', 1, 1), ('max_cells', 1, 6000)):
-                if type(c[key]) is not int or not low <= c[key] <= high:
+            for key, low, high in (('timeout_seconds', 1, 240), ('threads', 1, 1), ('max_cells', 1, None)):
+                if type(c[key]) is not int or c[key] < low or (high is not None and c[key] > high):
                     raise ValueError(f'{key} is outside this release operational limits [{low},{high}]')
             for key in ("max_work", "max_history_bytes"):
                 if type(c[key]) is not int or c[key] <= 0: raise ValueError("Positive integer resource budgets required")
@@ -115,39 +115,18 @@ class Deployment:
         return prefix + ['--exec', self.config['python'], '-B', '-u', self.map(ROOT / 'science_entry.py'), *args]
 
     def check_resources(self, payload, unit_context=None):
-        if payload.get('operation')=='dielectric_tangent':
-            from .tangent_input import estimate_resources as estimate_tangent_resources
-            budget=estimate_tangent_resources(payload)
-            if unit_context:budget['history_bytes']*=2
-            if budget['cells']>self.config['max_cells'] or budget['dofs']>3300:
-                raise ModuleError('RESOURCE_LIMIT','Static dense stability/cell operational budget exceeded')
-            for key in ('work','history_bytes'):
-                if budget[key]>self.config['max_'+key]:raise ModuleError('RESOURCE_LIMIT','Static tangent '+key+' exceeds explicit host budget')
-            return budget
-        if isinstance(payload.get('operation'),str) and payload['operation'].startswith('vector_'):
-            from .vector_input import estimate_resources as estimate_vector_resources
-            budget=estimate_vector_resources(payload)
-            if unit_context:
-                budget['history_bytes']*=2
-                budget['work']*=2
-            if budget['cells']>self.config['max_cells'] or budget['dofs']>25000:
-                raise ModuleError('RESOURCE_LIMIT','Vector mesh/DOF estimate exceeds explicit host or frozen direct-LU limit')
-            for key in ('work','history_bytes'):
-                if budget[key]>self.config['max_'+key]:
-                    raise ModuleError('RESOURCE_LIMIT','Vector '+key+' exceeds explicit host budget; input is never changed')
-            return budget
-        estimate = estimate_resources(payload)["cells"]
-        budget = estimate_resources(payload)
-        if unit_context:
-            # Retain both native reduced data and a complete independent SI view.
-            budget['history_bytes']*=2
-            budget['work']*=2
-        for key in ("work", "history_bytes"):
-            if budget[key] > self.config["max_"+key]:
-                raise ModuleError("RESOURCE_LIMIT", f"{key} estimate exceeds host budget; input is never altered")
-        if estimate > self.config['max_cells']:
-            raise ModuleError('RESOURCE_LIMIT', f'Conservative mesh estimate {estimate} exceeds host budget {self.config["max_cells"]}; refine request/obtain a new resource review')
-        return estimate
+        from .resources import estimate
+        budget = estimate(payload, unit_context)
+        # Preserve the scalar caller's existing return type.
+        return budget if payload['operation'].startswith(('vector_', 'dielectric_tangent')) else budget['cells']
+
+    def resource_report(self, payload, unit_context=None):
+        from .resources import planning_report
+        return planning_report(payload, self.config, unit_context)
+
+    def resource_warnings(self, payload, unit_context=None):
+        from .resources import planning_warnings
+        return planning_warnings(self.resource_report(payload, unit_context))
 
     def probe(self):
         try:

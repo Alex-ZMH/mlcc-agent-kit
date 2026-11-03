@@ -14,7 +14,7 @@ Uniform branch-local responses differ from finite fixed-end wall apparent respon
 
 Existing module vector kernel/physics, shared Core `integral_local`, DG0 interpolation/cell readback and fixed-version bootstrap are consumed. Specialized mixed sensitivity NPZ/VTU/XDMF/HDF5 remains local because Core V0.1 scalar/static export does not represent this data. AD, dense Schur/Hessian analysis and scientific branch workflow remain module-owned, not new common-core APIs. Each task records Core provenance.
 
-Existing explicit WSL/native Linux transport, task identity/hash admission, independent environment, standard-library adapter and artifact contracts are reused. Dense stability analysis is bounded to 3300 total DOFs, matching the reviewed largest tested extent; this is an operational safety cap, not a scientific convergence threshold. Existing host cell/work/output-history budgets also apply. Requests are rejected rather than automatically changing mesh, coefficients or branch path. Deployment timeout and no-retry policy are unchanged.
+Existing explicit WSL/native Linux transport, task identity/hash admission, independent environment, standard-library adapter and artifact contracts are reused. Since module 0.4.1, 3300 total DOFs is advisory, as are the host cell/work/history and per-axis count recommendations. Preflight reports dense single-matrix memory estimates; the algorithm still constructs multiple dense matrices and performs the full eigensolve. Exceeding recommendations neither rejects the request nor skips stability analysis or changes mesh, coefficients or branch path. Deployment timeout, numerical admissibility checks and no-retry policy are unchanged.
 
 ## UNIT
 

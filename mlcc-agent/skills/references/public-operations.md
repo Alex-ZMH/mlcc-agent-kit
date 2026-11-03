@@ -1,5 +1,7 @@
 # MLCC 公网统一操作入口
 
+设计方案或遇到执行冲突时，结合[当前能力边界](calculation-boundaries.md)与所选方法 Skill 解释当前实现范围；目录/schema 不代表全部内核关系条件已通过。网格资源软推荐不阻断，未知/未检查事项如实保留。
+
 Bundle 内所有顶层与模块方法 Skill 共用三个已绑定的操作入口；入口只负责把
 已选 Skill/operation 路由到现有 CLI、模块 ops 和 TaskRecord，不复制科学逻辑。入口支持
 从任务创建到结果读取的既有生命周期；DFT 生产默认使用 ABACUS，只有用户明确要求 VASP

@@ -1,0 +1,152 @@
+{
+  "schema_version": "phase_field.mesh-count-sources.v1",
+  "module_version": "0.4.1",
+  "reference_deployed_bundle": "0.60.4",
+  "upstream_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "hash_convention": "SHA256 over LF-normalized patch-target content; existing deployed public-entry paragraphs are preserved. canonical_sha256_lf is also supplied when a Skill doc paragraph differs from the old local checkout. Historical source manifests remain frozen.",
+  "files": [
+    {
+      "path": "INTERFACE_PROPOSAL.md",
+      "sha256_lf": "62eba2e4b3bf2549260b6115f44e0e1342081e2d7db4c9110d8ce86fbd0fa259"
+    },
+    {
+      "path": "MESH_COUNT_ACCEPTANCE.json",
+      "sha256_lf": "e283d8624ba139004bf79f9a4d44a6a330650a0737d34d9174a7c1673b4fa32e"
+    },
+    {
+      "path": "README.md",
+      "sha256_lf": "c8d67f69bbbf57e5d67c7dcbb4d1df2e5c7dc096643b6b547abcfbfb8d624858"
+    },
+    {
+      "path": "TANGENT_DESIGN.md",
+      "sha256_lf": "ea504d206290484b017d27bc327a82f6b97f7aa91e982e2f66f8a9b2183f6f12"
+    },
+    {
+      "path": "VECTOR_DESIGN.md",
+      "sha256_lf": "153ddac0b1d1e96f6babe68a39505ed36c6e528de42fe5323d92c20e52d2493e"
+    },
+    {
+      "path": "deployment/native.schema.json",
+      "sha256_lf": "3cbffd2d3df51d774bb30e22214b57c4bccf432770ff9eca4763d2378b5496df"
+    },
+    {
+      "path": "module.json",
+      "sha256_lf": "04e1c6724873c851639e285637d38522d98b18811847e7c8731e1aae1d9952de"
+    },
+    {
+      "path": "phasefield/__init__.py",
+      "sha256_lf": "ae849b4bb82057ae35fdd44321171de1268b4d220c0e60adc23fd6c1adb70124"
+    },
+    {
+      "path": "phasefield/adapter_api.py",
+      "sha256_lf": "ffc6e444a29f6e26e5568002855472a90da96c215c6761f15e4faaece256b079"
+    },
+    {
+      "path": "phasefield/deployment.py",
+      "sha256_lf": "38988205e0497cae7c6750181dc67d89117591736fc3bbaaf8b0b619035231d6"
+    },
+    {
+      "path": "phasefield/resources.py",
+      "sha256_lf": "d4fdc8a9e83629682cbfad32b54751b40c261a3e1141c8d32d6fedbe97e3ccdf"
+    },
+    {
+      "path": "phasefield/science.py",
+      "sha256_lf": "e62b3a6679327492ab05a488404e03ed21c5540d4bdf64e698c638bf5bd9eb4f"
+    },
+    {
+      "path": "phasefield/tangent_adapter.py",
+      "sha256_lf": "49784a915215e4057183ab0d5e520075e8440eb8de3f69ae46b8ba933f12968a"
+    },
+    {
+      "path": "phasefield/tangent_input.py",
+      "sha256_lf": "8298ff1ecf0b9a375aecc9e9495d49f1c42446e4020130085ee120f57c54f7a5"
+    },
+    {
+      "path": "phasefield/tangent_science.py",
+      "sha256_lf": "7aedcdcaa015777cea33af053e503aeee538122450c15fbe0c3334ed42b0e107"
+    },
+    {
+      "path": "phasefield/vector/kernel.py",
+      "sha256_lf": "21006ca03af64d6e64b31d30e4ce05cfe8e52ff1d5632373206a9fa79c9970eb"
+    },
+    {
+      "path": "phasefield/vector_adapter.py",
+      "sha256_lf": "2e12d84fdbd6bf1bc4c52c5879a7b206764daa182cbd540755f5d3afd3561481"
+    },
+    {
+      "path": "phasefield/vector_input.py",
+      "sha256_lf": "53ab9fa311164d46e47bf2f71b2c5ecc8b6ac1a6a15b61db087f17b061e8b734"
+    },
+    {
+      "path": "phasefield/vector_science.py",
+      "sha256_lf": "f2722004c4b19d8b0e8e850c171381489128312959d1edd30ce46009ab82356f"
+    },
+    {
+      "path": "protocols/vector-protocol.json",
+      "sha256_lf": "649e53ef55f542fd946e44b8918682ac5ebfcce68868f38e8f9a3ee0cf5bc7d3"
+    },
+    {
+      "path": "schemas/dielectric_tangent.input.schema.json",
+      "sha256_lf": "bffcd3fe1df579b51418079d4cbcb10e855056dd5a448d7a54299149b6de32f0"
+    },
+    {
+      "path": "schemas/dielectric_tangent_si.input.schema.json",
+      "sha256_lf": "a007b7b5282646add17e1dc72c81095be6b4225af43ec2968dec6b8bb7c36ce8"
+    },
+    {
+      "path": "schemas/evolve.input.schema.json",
+      "sha256_lf": "84ed96050f014b232a379ca7afc1a1c3d5194eafcd5274a33659d98e83434478"
+    },
+    {
+      "path": "schemas/evolve_si.input.schema.json",
+      "sha256_lf": "25ef6de1d3cde9212a42fc300c7cdc91931d07271f224efe4d0e3016f86299f5"
+    },
+    {
+      "path": "schemas/steady.input.schema.json",
+      "sha256_lf": "528e5c26c80317d2fabbee28de767247145f02212abf8609fc3a887ba906c926"
+    },
+    {
+      "path": "schemas/steady_si.input.schema.json",
+      "sha256_lf": "0a0a7d0ef008b43adf7ace939dc7bdea5018a0bf6d2da2f26e0ba56e0c9ecf5d"
+    },
+    {
+      "path": "schemas/vector_evolve.input.schema.json",
+      "sha256_lf": "9b7d9ae05214699747226262cf93064085f661a3105de298150346836ff1d906"
+    },
+    {
+      "path": "schemas/vector_evolve_si.input.schema.json",
+      "sha256_lf": "2cb9405e4c8ed15535ee6563a58fe8dc8299002d2f84d62d346f107201652e74"
+    },
+    {
+      "path": "schemas/vector_steady.input.schema.json",
+      "sha256_lf": "5e1dd8dda6d5993da8ee1a3f1b8340326d84b38f222a2a64917b657c4cf0fa0d"
+    },
+    {
+      "path": "schemas/vector_steady_si.input.schema.json",
+      "sha256_lf": "9513e3e355c8ca3f3d3ecd4478e5c0ac53ca51dea0fdb77a150bff879cceb6cd"
+    },
+    {
+      "path": "skills/mlcc-scalar-ferroelectric/SKILL.md",
+      "sha256_lf": "9bca748da6a06ebe128db75a9256270c02c30d9e17b27b24b5224cd64a1fe02a",
+      "canonical_sha256_lf": "a8781fbf8ad25592936072970b92ec99110c5f97ebf8934260d05dc1f4831389"
+    },
+    {
+      "path": "skills/mlcc-tangent-dielectric/SKILL.md",
+      "sha256_lf": "1a79d6a09962b96ee73b909bf1cb9df2128cb467cb31104332811629c1717dda",
+      "canonical_sha256_lf": "42d059a60063acdcd092b2edabd638695fc859db5f45f750d1961ea0ee796d8f"
+    },
+    {
+      "path": "skills/mlcc-vector-ferroelectric/SKILL.md",
+      "sha256_lf": "04275c9122f23547f14fb0cfe683e6c55f907bed95aeb0c2eec7782e1020a5e8",
+      "canonical_sha256_lf": "ed101685498d5de1e899d6b2a41338cc8191dd1393092d472cc0fec7e5849ab9"
+    },
+    {
+      "path": "tests/run_mesh_recommendation_native.py",
+      "sha256_lf": "4b8ae769364b22d3897f665eb7d3dfa278a89f3653cc6aa40e9f1f8cd0c07ce2"
+    },
+    {
+      "path": "tests/test_mesh_recommendation.py",
+      "sha256_lf": "97e6db50e7eb591cbeade9755c841fb7b5fa82b8fec7c872253d5e0af4761c06"
+    }
+  ]
+}

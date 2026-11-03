@@ -63,7 +63,9 @@ def compute(q,core):
         'initial':initial.get('values'),'atol':p['equilibrium_atol']}
     if 'wall_half_length' in p:options['wall_half_length']=p['wall_half_length']
     s=TangentSystem(**options)
-    require(s.base.m.topology.index_map(d).size_global<=q['max_cells'],'Actual mesh exceeds host limit','RESOURCE_LIMIT')
+    from .resources import actual_report, actual_warnings
+    advisory=actual_report(p,q['max_cells'],s.base.m.topology.index_map(d).size_global,len(s.u.x.array))
+    write_json(out/'mesh_recommendation.json',advisory)
     try:
         for bias in p['loading_path']:s.solve(bias)
         response=validate_case(s,out/'equilibrium',fd=p['verification']['finite_difference'],analytical=p['verification']['analytical'])
@@ -94,4 +96,4 @@ def compute(q,core):
     if p['output']['images']:figures(out,result)
     write_json(out/'summary.json',result)
     return {'status':'succeeded','task_id':q['task_id'],'input_sha256':digest(p),'unit_mapping_sha256':digest(context) if context else None,
-            'results':result,'checks':checks,'hashes':{ref:file_hash(out/ref.removeprefix('artifacts/')) for ref in refs}}
+            'results':result,'checks':checks,'warnings':actual_warnings(advisory),'hashes':{ref:file_hash(out/ref.removeprefix('artifacts/')) for ref in refs}}

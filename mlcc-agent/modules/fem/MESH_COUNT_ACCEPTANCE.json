@@ -1,0 +1,463 @@
+{
+  "schema_version": "fem.mesh-count-acceptance.v1",
+  "date": "2026-11-03",
+  "module_version": "0.4.3",
+  "reference_deployed_bundle": "0.60.4",
+  "reference_deployment_revision": 6,
+  "reference_upstream_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "reference_scope": "Implementation matched the deployed source before this increment; pre-existing local Skill public-entry-link differences were preserved.",
+  "software_tests": {
+    "module_stdlib_passed": 5,
+    "portable": {
+      "run": 47,
+      "passed": 46,
+      "skipped": 1
+    }
+  },
+  "native_scope": "Local WSL existing fenicsx-env; real Adapter/native entry/solver and existing numerical/field readback checks; no Slurm or Zeus submission.",
+  "native_cases": [
+    {
+      "name": "electrostatics_2d",
+      "operation": "electrostatics_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual_cells": 7392,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 14.779731243999777,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 5,
+          "not_checked": 6
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "residual_acceptance",
+          "mesh_shape_acceptance",
+          "charge_balance",
+          "capacitance_consistency",
+          "mesh_convergence",
+          "analytic_reference"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electrostatics_2d_quantities",
+      "operation": "electrostatics_2d_quantities",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual_cells": 7392,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 11.153266794999581,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 5,
+          "not_checked": 6
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "residual_acceptance",
+          "mesh_shape_acceptance",
+          "charge_balance",
+          "capacitance_consistency",
+          "mesh_convergence",
+          "analytic_reference"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electrothermal_2d",
+      "operation": "electrothermal_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 1,
+        "actual_cells": 10198,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 24.247697494000022,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electrothermal_2d_quantities",
+      "operation": "electrothermal_2d_quantities",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 1,
+        "actual_cells": 10198,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 21.24556734500038,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "ac_eqs_2d",
+      "operation": "ac_eqs_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 1,
+        "actual_cells": 10198,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 25.382335686999795,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "ac_eqs_2d_quantities",
+      "operation": "ac_eqs_2d_quantities",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 1,
+        "actual_cells": 10198,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 28.632543753999926,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electromagnetic_2d",
+      "operation": "electromagnetic_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 1,
+        "actual_cells": 59414,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 41.23758308200013,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electromagnetic_2d_quantities",
+      "operation": "electromagnetic_2d_quantities",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 1,
+        "actual_cells": 59414,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 37.83631532400068,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electrostatics-above-old-cap",
+      "operation": "electrostatics_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual_cells": 149218,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 50000
+      },
+      "seconds": 18.6845132870003,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 5,
+          "not_checked": 6
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "residual_acceptance",
+          "mesh_shape_acceptance",
+          "charge_balance",
+          "capacitance_consistency",
+          "mesh_convergence",
+          "analytic_reference"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electrothermal-above-old-cap",
+      "operation": "electrothermal_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 150000,
+        "actual_cells": 177260,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 64.46510356999897,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "large-recommendation",
+      "operation": "electrostatics_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual_cells": 7392,
+        "enforced": false,
+        "exceeded": false,
+        "recommended_cells": 2000000
+      },
+      "seconds": 11.98118993800017,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 5,
+          "not_checked": 6
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "residual_acceptance",
+          "mesh_shape_acceptance",
+          "charge_balance",
+          "capacitance_consistency",
+          "mesh_convergence",
+          "analytic_reference"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    },
+    {
+      "name": "electromagnetic-above-old-cap",
+      "operation": "electromagnetic_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "recommended_cells": 150000,
+        "actual_cells": 227638,
+        "exceeded": true,
+        "enforced": false
+      },
+      "seconds": 72.38974939900072,
+      "quality_statuses": {
+        "numerical": {
+          "passed": 6,
+          "not_checked": 4
+        },
+        "scientific": {
+          "not_checked": 3
+        }
+      },
+      "not_checked_checks": {
+        "numerical": [
+          "raw_flux_acceptance",
+          "mesh_convergence",
+          "analytic_reference",
+          "port_model_acceptance"
+        ],
+        "scientific": [
+          "model_applicability",
+          "material_provenance",
+          "independent_device_reference"
+        ]
+      }
+    }
+  ],
+  "not_checked": [
+    "material calibration",
+    "task-specific mesh/time convergence",
+    "device applicability",
+    "Windows-to-WSL transport execution",
+    "Zeus deployment of this increment",
+    "arbitrarily large inputs or resource exhaustion"
+  ],
+  "submitted_tasks_touched": false,
+  "production_deployment": "not_deployed",
+  "prior_failed_evidence": "FEM run01 diagnostics exclusive-write regression retained; corrected before all accepted native cases.",
+  "environment": {
+    "executable": "/home/zhaoxiang/miniconda3/envs/fenicsx-env/bin/python",
+    "python": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]",
+    "ready": true,
+    "scientific_entry_version": "0.4.3",
+    "versions": {
+      "fenics-dolfinx": "0.11.0",
+      "fenics-ufl": "2026.1.0",
+      "gmsh": "4.15.2",
+      "matplotlib": "3.11.2",
+      "mpi4py": "4.1.2",
+      "numpy": "2.4.6",
+      "petsc4py": "3.25.5",
+      "pyvista": "0.48.4"
+    }
+  }
+}

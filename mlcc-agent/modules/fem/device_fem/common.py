@@ -9,6 +9,12 @@ from pathlib import Path, PurePosixPath
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def cell_count_recommendation(actual, recommended):
+    """Legacy max_cells is advisory; mesh validity is checked independently."""
+    return {'recommended_cells': recommended, 'actual_cells': actual,
+            'exceeded': actual > recommended, 'enforced': False}
+
+
 class ModuleError(ValueError):
     def __init__(self, code, message):
         self.code = code

@@ -43,6 +43,7 @@ def spd(value,d):
     return a
 
 def geometry(g,h,d):
+    require(math.isfinite(h) and h>0,'Positive finite normalized target h required','INVALID_GEOMETRY')
     k=g['kind'];base={'kind','physical_lengths','pore_fraction'}
     extra={'homogeneous':set(),'layers':{'normalized_fraction','axis'},'rotated_layers':{'normalized_fraction'},'circle':{'normalized_radius'},'ellipse':{'normalized_radius','normalized_aspect'},'sphere':{'normalized_radius','normalized_center'},'ellipsoid':{'normalized_axes','normalized_center'},'core_shell':{'normalized_radius','normalized_shell'}|({'normalized_center'} if d==3 else set()),'polycrystal':{'grain_count','seed','normalized_gb_width','normalized_shell','jitter'}}
     require(k in extra and set(g)==base|extra[k],'Geometry requires exactly its documented fields, no ignored parameters','INVALID_GEOMETRY')
@@ -57,7 +58,7 @@ def geometry(g,h,d):
     if k=='core_shell':require(g['normalized_shell']>0,'Positive shell required','INVALID_GEOMETRY')
     if k=='polycrystal':
         n=g['grain_count'];require(n in ([4,9,16,25,36] if d==2 else [8,12,16,20,27]),'Unsupported grain count','INVALID_GEOMETRY')
-        if d==2:require(.01<=g['normalized_gb_width']<=.08,'2D GB source bounds .01..08','INVALID_GEOMETRY')
+        if d==2:require(0<=g['normalized_gb_width']<=.08,'2D GB width must be in 0..0.08; zero omits the GB phase','INVALID_GEOMETRY')
         else:require(g['normalized_gb_width']==0 and g['normalized_shell']==0,'3D GB/shell polycrystal is limited history only; not exposed in this release','UNSUPPORTED_GEOMETRY')
     thin=min([g[x] for x in ('normalized_shell','normalized_gb_width') if g.get(x,0)>0],default=1.)
     if k in ('polycrystal','core_shell'):require(h<=thin/(1.5 if d==2 else 1.2),'Under-resolved GB/shell: source target-elements-per-width guard','UNDER_RESOLVED_GEOMETRY')

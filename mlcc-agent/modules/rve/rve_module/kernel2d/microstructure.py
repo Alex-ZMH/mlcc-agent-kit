@@ -69,10 +69,11 @@ class MicrostructureBuilder:
     def voronoi(self):
         c=self.config;N=int(c.get('grains',9));seed=int(c.get('seed',11));gb=float(c.get('gb_width',.025));shell=float(c.get('shell',.025));jitter=float(c.get('jitter',.7))
         if not 4<=N<=36 or int(np.sqrt(N))**2!=N:raise ValueError('grain count must be a square: 4,9,16,25,36')
-        if not .01<=gb<=.08 or not 0<=shell<=.08 or not 0<=jitter<=.85:raise ValueError('limited resolved gb/shell/jitter required')
+        if not 0<=gb<=.08 or not 0<=shell<=.08 or not 0<=jitter<=.85:raise ValueError('resolved gb/shell in 0..0.08 and jitter in 0..0.85 required')
         rng=np.random.default_rng(seed);n=int(np.sqrt(N));seeds=np.array([[(i+.5)/n,(j+.5)/n] for j in range(n) for i in range(n)])+(rng.random((N,2))-.5)*jitter/n
         angles=rng.uniform(0,np.pi,N);images=[(i,p+np.array([x,y])) for x in [-1,0,1] for y in [-1,0,1] for i,p in enumerate(seeds)]
-        self.region(3000,'grain_boundary');totals=np.zeros(N);coreareas=np.zeros(N)
+        if gb:self.region(3000,'grain_boundary')
+        totals=np.zeros(N);coreareas=np.zeros(N)
         for i in range(N):
             self.region(100+i,'core',i,float(angles[i]))
             if shell:self.region(200+i,'shell',i,float(angles[i]))

@@ -110,7 +110,9 @@ def compute(q, core):
     options={'dimension':p['dimension'],'cells':p['cells'],'parameters':p['parameters'],'kind':initial['kind'],
              'field':wave(0).tolist(),'initial':initial.get('values'),'width':initial.get('width_factor',1.)}
     s=BoundedVector(controls,**options)
-    require(s.m.topology.index_map(p['dimension']).size_global<=q['max_cells'],'Actual mesh exceeds host limit','RESOURCE_LIMIT')
+    from .resources import actual_report, actual_warnings
+    advisory=actual_report(p,q['max_cells'],s.m.topology.index_map(p['dimension']).size_global,len(s.u.x.array))
+    write_json(out/'mesh_recommendation.json',advisory)
     write_json(out/'input.solver-dimensionless.json',p);write_json(out/'environment.json',env)
     try:
         if p['field_protocol']['kind']=='stairs':
@@ -148,7 +150,7 @@ def compute(q, core):
         writer=csv.writer(stream);writer.writerow(['time_nd']+['mean_P'+'xyz'[i]+'_nd' for i in range(p['dimension'])]+['E'+'xyz'[i]+'_nd' for i in range(p['dimension'])]+['enthalpy_nd'])
         writer.writerows([[r['t'],*r['mean_P'],*r['E_applied'],r['enthalpy']] for r in history])
     if context:physical_files(out,context,p['dimension'])
-    warnings=[]
+    warnings=actual_warnings(advisory)
     if p['output']['images']:
         try:
             plots(out,p['dimension'])

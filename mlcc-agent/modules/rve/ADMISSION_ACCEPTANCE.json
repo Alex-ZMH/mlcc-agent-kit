@@ -1,0 +1,462 @@
+{
+  "schema_version": "rve.admission-acceptance.v1",
+  "date": "2026-11-03",
+  "module_version": "0.1.4",
+  "reference_bundle_version": "0.60.3",
+  "reference_github_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "reference_check": "RVE implementation files matched this public deployment baseline before modification; existing canonical Skill differed only in its public-entry link",
+  "environment": {
+    "executable": "/home/zhaoxiang/miniconda3/envs/fenicsx-env/bin/python",
+    "mpi_ranks": 1,
+    "pid": 9513,
+    "python": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]",
+    "ready": true,
+    "scalar_type": "float64",
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "versions": {
+      "PETSc": "3.25.5",
+      "dolfinx": "0.11.0",
+      "gmsh": "4.15.2",
+      "h5py": "3.16.0",
+      "numpy": "2.4.6",
+      "pyvista": "0.48.4",
+      "ufl": "2026.1.0"
+    }
+  },
+  "software": {
+    "module_admission_tests": {
+      "passed": 8
+    },
+    "portable_suite": {
+      "run": 47,
+      "passed": 46,
+      "skipped": 1
+    }
+  },
+  "native_cases": [
+    {
+      "name": "zero-gb-shell-pore0",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 9356,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 9356,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 31.527652286999,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "zero-gb-shell-pore2",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 9376,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "9000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 9376,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 34.121922549999,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "zero-gb-shell-pore5",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 9404,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "9000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 9404,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 34.594664031999855,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "zero-gb-no-shell-uniform",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 8958,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 8958,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 31.021677437000108,
+      "uniform_tensor_absolute_error_in_epsilon_r": 1.2434497875801753e-14,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "zero-gb-no-shell-pore2",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 8974,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "9000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 8974,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 29.418141936999746,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "thin-positive-gb",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 70938,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "3000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 70938,
+        "enforced": false,
+        "exceeded": false,
+        "recommended_cells": 90000
+      },
+      "seconds": 43.72898815100052,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "positive-gb-regression",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 9610,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "3000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 9610,
+        "enforced": false,
+        "exceeded": false,
+        "recommended_cells": 90000
+      },
+      "seconds": 27.91618809799911,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "three-dimensional-soft-count",
+      "operation": "homogenize_thermal_3d",
+      "cells": 481,
+      "regions": [
+        "10",
+        "20"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 481,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 31.75048177899953,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "above-old-deployment-cap",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 9356,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 9356,
+        "enforced": false,
+        "exceeded": false,
+        "recommended_cells": 2000000
+      },
+      "seconds": 30.279494943000827,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "stage1-zero-gb-h005",
+      "operation": "homogenize_electrostatics_2d",
+      "cells": 96684,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "9000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 96684,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 90000
+      },
+      "seconds": 54.01867936100098,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "zero-gb-thermal-2d",
+      "operation": "homogenize_thermal_2d",
+      "cells": 9376,
+      "regions": [
+        "100",
+        "101",
+        "102",
+        "103",
+        "104",
+        "105",
+        "106",
+        "107",
+        "108",
+        "200",
+        "201",
+        "202",
+        "203",
+        "204",
+        "205",
+        "206",
+        "207",
+        "208",
+        "9000"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 9376,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 1
+      },
+      "seconds": 27.274506551999366,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    },
+    {
+      "name": "three-dimensional-electrostatic",
+      "operation": "homogenize_electrostatics_3d",
+      "cells": 481,
+      "regions": [
+        "10",
+        "20"
+      ],
+      "mesh_advisory": {
+        "actual_cells": 481,
+        "enforced": false,
+        "exceeded": false,
+        "recommended_cells": 2000000
+      },
+      "seconds": 30.862478393000856,
+      "uniform_tensor_absolute_error_in_epsilon_r": null,
+      "execution": "succeeded",
+      "numerical_checks": "passed",
+      "independent_field_readback": "passed"
+    }
+  ],
+  "stage1": {
+    "original_input_unchanged": true,
+    "normalized_h": 0.005,
+    "gb_width": 0,
+    "shell_normalized": 0.0119047619,
+    "pore_fraction": 0.02,
+    "actual_cells": 96684,
+    "planning_estimate": 160000,
+    "old_90000_recommendation_exceeded_without_blocking": true,
+    "tensor_F_per_m": [
+      [
+        1.2642114970915617e-08,
+        -1.002856039655177e-12
+      ],
+      [
+        -1.002856039652022e-12,
+        1.2641773350786448e-08
+      ]
+    ],
+    "execution": "local verification only; scheduler job 842 untouched"
+  },
+  "not_checked": [
+    "mesh convergence",
+    "statistical representativity",
+    "material calibration",
+    "device applicability",
+    "production Zeus deployment of this patch",
+    "Windows-to-WSL transport execution"
+  ],
+  "changes_outside_rve_module": "none by this task; pre-existing workspace changes retained",
+  "raw_evidence_location": "private local-config/rve-zero-gb-validation/run01 and run02; no credentials in this report"
+}

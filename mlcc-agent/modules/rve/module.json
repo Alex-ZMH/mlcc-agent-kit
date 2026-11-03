@@ -3,7 +3,7 @@
   "id": "rve",
   "title": "RVE / static electrostatic and thermal homogenization",
   "description": "Module-owned 2D/3D periodic P1 kernels, shared UNIT core, explicit WSL or native Linux scientific deployment",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "interface_version": "1.0",
   "kind": "scientific",
   "implementation": "implemented",

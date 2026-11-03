@@ -3,7 +3,7 @@
   "id": "phase_field",
   "title": "铁电相场 / scalar, vector and static tangent tensors",
   "description": "Legacy scalar LGD preserved; additive 2D/3D full-vector stationary/TDGL, bounded voltage waveforms and explicit-scale SI views through shared UNIT; full static AD tangent dielectric tensors with branch/stability rejection and explicit F/m views",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "interface_version": "1.0",
   "kind": "scientific",
   "implementation": "implemented",

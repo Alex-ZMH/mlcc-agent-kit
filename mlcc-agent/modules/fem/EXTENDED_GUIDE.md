@@ -46,9 +46,9 @@ $r = & $FemPython -B -m mlcc run fem electrothermal_2d_quantities --input module
 
 AC/EM分别替换操作及输入为ac_eqs_2d_quantities/ac_eqs-quantities.json、electromagnetic_2d_quantities/electromagnetic-quantities.json。旧SI操作和对应原例子继续可用。包装脚本run-windows.ps1也支持这些Operation，须显式传DeploymentFile。没有自动频扫或后台重试。
 
-extended.example.json使用fem.deployment.v2/profile=device_extended_v1，仍为现有Ubuntu-24.04/fenicsx-env，单rank/单线程，最多150000实际三角形、240秒科学客户端预算；公共操作300秒外层预算。数值来自已审实验的资源包络，不是精度阈值。预检还使用保守面积网格估算；实际Gmsh在装配前检查单元上限。
+extended.example.json使用fem.deployment.v2/profile=device_extended_v1，仍为现有Ubuntu-24.04/fenicsx-env，单rank/单线程，240秒科学客户端预算；公共操作300秒外层预算。0.4.3起max_cells=150000仅为示例软推荐，可由宿主设置更大正整数；预检保守面积估算和实际Gmsh单元数超推荐只提示，不阻断、不自动粗化。原网格有效性与数值质量检查继续执行。
 
-**旧静电及旧多单位操作继续使用deployment/example.json（v1，50000单元、最长120秒）。** v2被旧操作拒绝，避免扩大旧操作预算。共享环境未安装、升级或替换。WSL超时/通信中断保留未知科学进程状态，禁止自动重提交，现有公共取消/原生回收限制不变。
+**原静电及多单位静电操作继续使用deployment/example.json（v1，最长120秒，50000仅为软推荐）。** v2仍被旧操作拒绝。共享环境未安装、升级或替换。WSL超时/通信中断保留未知科学进程状态，禁止自动重提交，现有公共取消/原生回收限制不变。
 
 ## 结果与产物
 

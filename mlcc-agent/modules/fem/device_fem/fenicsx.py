@@ -8,7 +8,7 @@ from time import perf_counter
 import math
 
 from . import EPSILON_0, MODEL
-from .common import ModuleError, write_json
+from .common import ModuleError, cell_count_recommendation, write_json
 from .geometry import BOUNDARIES, build_mlcc, build_plate_benchmark
 from .regions import audit_regions
 
@@ -47,8 +47,9 @@ def run(payload, output, max_cells, *, benchmark=False):
         gmsh.model.mesh.generate(2)
         element_types, tags, _ = gmsh.model.mesh.getElements(2)
         count = sum(map(len, tags))
-        if not 0 < count <= max_cells or set(element_types.tolist()) != {2}:
-            raise ModuleError('RESOURCE_OR_MESH_LIMIT', f'Expected 1..{max_cells} first-order triangles; got {count}')
+        if count <= 0 or set(element_types.tolist()) != {2}:
+            raise ModuleError('RESOURCE_OR_MESH_LIMIT', f'Expected a nonempty mesh of first-order triangles; got {count}')
+        write_json(output/'mesh/cell_count_recommendation.json', cell_count_recommendation(count, max_cells))
         gmsh.write(str(output/'mesh/mesh.msh'))
         data = gmshio.model_to_mesh(gmsh.model, MPI.COMM_WORLD, rank=0, gdim=2)
     finally:
@@ -186,6 +187,7 @@ def run(payload, output, max_cells, *, benchmark=False):
                    'gauss_flux_residual_C':-sum(charges.values())+outer,
                    'capacitance_methods_relative':results['capacitance_methods_relative'],
                    'native_seconds':perf_counter()-start,'geometry_kind':geometry['geometry_kind']}
+    diagnostics['cell_count_recommendation'] = cell_count_recommendation(count, max_cells)
     write_json(output/'diagnostics.json',diagnostics)
     warnings = []
     if payload['outputs']['field_images']:

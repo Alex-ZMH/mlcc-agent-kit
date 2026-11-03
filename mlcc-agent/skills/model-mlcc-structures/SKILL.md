@@ -5,6 +5,8 @@ description: 从已选择的晶相构建显式超胞、多元素占位与补偿�
 
 # 显式原子建模
 
+设计方案、澄清输入或解释执行冲突前，先读[当前计算能力边界](../references/calculation-boundaries.md)，再读所选领域的方法说明。边界随当前 Bundle/模块版本更新；超出资源软推荐只提示，不据此改科学输入。遇到冲突说明具体限制及可选简化，不把历史限制当永久规则；已提交任务不自动改参、取消或重提。
+
 公网调用先走[统一操作入口](../references/public-operations.md)；统一入口只路由到本 Skill 已有 CLI/模块实现，不替用户选择晶相、补偿、位点或科学方法。
 
 `plan-configurations --request <JSON> --models-output <新根目录> --output <集合JSON>`消费`mlcc.composition-configurations-request.v1`：`composition_request`沿用M1计量/子晶格/补偿，`max_configurations`是显式数量上限，每个`configurations`成员给出configuration_id、seed、新Study/reference/child身份。PCG64按稳定排序的允许位点无放回分配，固定补偿位点先保留；保存算法、库版本、seed、候选池和实际位点。不同seed可能重复构型，不重抽或冒称SQS。集合经`deliver-properties --composition`绑定父Study；各子build沿用自身Study交付。

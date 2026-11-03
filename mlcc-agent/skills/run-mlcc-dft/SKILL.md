@@ -5,6 +5,8 @@ description: 以 ABACUS 为 MLCC 默认生产 DFT 引擎，保留用户明确要
 
 # ABACUS 生产 DFT 与 VASP 显式对照
 
+设计方案、澄清输入或解释执行冲突前，先读[当前计算能力边界](../references/calculation-boundaries.md)，再读所选领域的方法说明。边界随当前 Bundle/模块版本更新；超出资源软推荐只提示，不据此改科学输入。遇到冲突说明具体限制及可选简化，不把历史限制当永久规则；已提交任务不自动改参、取消或重提。
+
 公网调用先走[统一操作入口](../references/public-operations.md)；统一入口支持宿主绑定任务的完整生命周期，DFT 方法、引擎和科学资格仍按本 Skill 的显式配置与边界处理。生产默认 `engine=abacus`；只有用户明确指定 VASP 时才使用 `engine=vasp`，不自动 fallback、不跨方法混用原始标签。
 
 创建任务前，先调用 `mlcc_describe_dft_resources(elements?)`：省略 `elements` 时查看运行时周期表摘要，

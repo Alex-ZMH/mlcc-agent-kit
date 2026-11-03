@@ -51,7 +51,7 @@ Gmsh生成带语义标签的三角形网格；P1串行DOLFINx和PETSc直接LU，
 
 ## 使用与证据
 
-[README](README.md) 给出原静电调用；[EXTENDED_GUIDE](EXTENDED_GUIDE.md) 给出新三项输入、运行、单位和端口/热边界。原操作使用v1部署（50000单元/最长120秒），新操作可使用v2扩展部署（150000单元/240秒客户端）；部署资源由宿主绑定，不能由LLM/科学输入指定。超时/通信中断不证明Linux求解已停止，不自动重提交。
+[README](README.md) 给出原静电调用；[EXTENDED_GUIDE](EXTENDED_GUIDE.md) 给出新三项输入、运行、单位和端口/热边界。原操作使用v1部署（最长120秒），扩展操作可使用v2扩展部署（240秒客户端）；0.4.3起原50000/150000单元仅为示例软推荐，规划和实际超出只提示，不阻断。部署资源由宿主绑定，不能由LLM/科学输入指定。超时/通信中断不证明Linux求解已停止，不自动重提交。
 
 结果在outputs/tasks/<task_id>/，Agent对话在outputs/agent/<session_id>/。本轮完整任务表、失败与修复、质量依据及产物见[EXTENDED_ACCEPTANCE](EXTENDED_ACCEPTANCE.md)。历史验证见[原静电验收](ACCEPTANCE.md)、[多单位验收](UNITS_ACCEPTANCE.md)、[静电真实对话](AGENT_E2E_ACCEPTANCE.md)。
 

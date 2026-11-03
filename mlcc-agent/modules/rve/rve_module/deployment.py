@@ -55,14 +55,14 @@ class Deployment:
             if not isinstance(c, dict): raise ValueError('Deployment must be an object')
             if c.get('schema_version') == 'rve.deployment.native.v1':
                 required = {'schema_version','transport','python','linux_root','timeout_seconds','threads','max_cells_2d','max_cells_3d'}
-                _validate_native(c, required, [('timeout_seconds',1,240),('threads',1,1),('max_cells_2d',1,90000),('max_cells_3d',1,180000)])
+                _validate_native(c, required, [('timeout_seconds',1,240),('threads',1,1),('max_cells_2d',1,None),('max_cells_3d',1,None)])
                 dep=cls(c);dep.map(ROOT/'science_entry.py');return dep
             require(set(c)=={'schema_version','wsl_executable','distribution','python','windows_root','linux_root','timeout_seconds','threads','max_cells_2d','max_cells_3d'},'Unexpected deployment keys','INVALID_DEPLOYMENT')
             require(c['schema_version']=='rve.deployment.v1' and os.name=='nt','Windows rve.deployment.v1 required','INVALID_DEPLOYMENT')
             require(Path(c['wsl_executable']).is_absolute() and Path(c['wsl_executable']).is_file() and Path(c['wsl_executable']).name.lower()=='wsl.exe','Absolute existing wsl.exe required','INVALID_DEPLOYMENT')
             require(re.fullmatch(r'[A-Za-z0-9_.-]+',c['distribution']) is not None,'Invalid distro','INVALID_DEPLOYMENT')
             require(PurePosixPath(c['python']).is_absolute() and PurePosixPath(c['linux_root']).is_absolute() and Path(c['windows_root']).is_absolute() and Path(c['windows_root']).is_dir(),'Absolute path mappings required','INVALID_DEPLOYMENT')
-            for key,hi in [('threads',1),('timeout_seconds',240),('max_cells_2d',90000),('max_cells_3d',180000)]:require(type(c[key]) is int and 1<=c[key]<=hi,'Invalid explicit budget '+key,'INVALID_DEPLOYMENT')
+            for key,hi in [('threads',1),('timeout_seconds',240),('max_cells_2d',None),('max_cells_3d',None)]:require(type(c[key]) is int and 1<=c[key] and (hi is None or c[key]<=hi),'Invalid explicit deployment setting '+key,'INVALID_DEPLOYMENT')
             dep=cls(c);dep.map(ROOT/'science_entry.py');return dep
         except ModuleError:raise
         except (OSError,TypeError,ValueError,KeyError) as e:raise ModuleError('INVALID_DEPLOYMENT',str(e)) from e
@@ -80,11 +80,17 @@ class Deployment:
         if cwd is not None:cmd+=['--cd',self.map(cwd)]
         return cmd+['--exec',c['python'],'-I','-B','-u',self.map(ROOT/'science_entry.py'),*args]
     def budget(self,c,d):
-        # Planning guard only. Actual Gmsh count is checked before DOLFINx import/solve.
-        # Unit-box h scaling: 4/h^2 triangles or 12/h^3 tets; not a scientific threshold.
-        estimate=math.ceil((4 if d==2 else 12)/c['normalized_h']**d)
-        require(estimate<=self.config[f'max_cells_{d}d'],f'Planning cells={estimate} exceeds explicit host budget; no remesh/retry','RESOURCE_LIMIT')
-        return estimate
+        # Advisory estimate only; legacy max_cells_* fields are recommendations.
+        # Never change the requested h or reject by estimated/actual cell count.
+        from fractions import Fraction
+        h=c['normalized_h']
+        require(math.isfinite(h) and h>0,'Positive finite target h required','INVALID_INPUT')
+        # Exact ratio avoids float underflow/overflow turning a soft estimate into a blocker.
+        return math.ceil(Fraction(4 if d==2 else 12)/Fraction(h)**d)
+    def budget_warnings(self,c,d):
+        estimate=self.budget(c,d);recommended=self.config[f'max_cells_{d}d']
+        return ([f'Planning estimate={estimate} exceeds recommended cells={recommended}; advisory only, execution is allowed without remeshing.']
+                if estimate>recommended else [])
     def probe(self):
         try:
             r=subprocess.run(self.command('--probe'),capture_output=True,text=True,encoding='utf-8',errors='replace',timeout=7,shell=False)

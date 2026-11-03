@@ -34,8 +34,8 @@ def handle(q):
         p,context=prepare(q['input'],q['operation']);dep=Deployment.load();budget=dep.check_resources(p,context);transport=dep.config.get('transport')
         if pre:
             require(q['task_id'] is None and q['artifact_dir'] is None,'Preflight must not own task files','INVALID_REQUEST');env=dep.probe()
-            return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITS[:3],
-                'checks':[{'id':k,'status':'passed','message':v} for k,v in [('tangent_input','Explicit static bias path and selected independent checks'),('unit_mapping','Shared UNIT and four scales' if context else 'Explicit dimensionless input'),('budget',str(budget)),('backend',str(env))]]}
+            return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITS[:3]+dep.resource_warnings(p,context),
+                'checks':[{'id':k,'status':'passed','message':v} for k,v in [('tangent_input','Explicit static bias path and selected independent checks'),('unit_mapping','Shared UNIT and four scales' if context else 'Explicit dimensionless input'),('budget',str(dep.resource_report(p,context))+'; advisory only'),('backend',str(env))]]}
         require(isinstance(q['task_id'],str) and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,95}',q['task_id']),'Runtime task identity required','INVALID_REQUEST')
         out=Path(q['artifact_dir']);require(out.is_absolute() and out.is_dir() and not out.is_symlink() and out.resolve()==(ROOT.parents[1].parent/'artifacts').resolve(),'Existing Bundle-owned task artifacts required','INVALID_REQUEST')
         require(not (out/'native').exists(),'Scientific task already started','TASK_ALREADY_STARTED');write_json(out/'input.original.json',q['input'])
@@ -74,7 +74,7 @@ def handle(q):
             {'id':'mesh_convergence','status':'not_checked','message':'No point-specific mesh series'}]
         write_json(out/'quality.json',qc)
         return {'schema_version':'mlcc.adapter-result.v1','execution_status':'succeeded','provenance':provenance(p,env,context,transport),
-                'results':result,'quality':qc,'errors':[],'warnings':[],'limitations':LIMITS,'artifacts':artifacts(out)}
+                'results':result,'quality':qc,'errors':[],'warnings':dep.resource_warnings(p,context)+native.get('warnings',[]),'limitations':LIMITS,'artifacts':artifacts(out)}
     except Exception as exc:
         code=getattr(exc,'code','ADAPTER_ERROR');errors=[{'code':code,'message':str(exc)}]
         if pre:return {'schema_version':'mlcc.adapter-preflight.v1','ready':False,'errors':errors,'warnings':[],'checks':[]}

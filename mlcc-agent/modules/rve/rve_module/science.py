@@ -22,7 +22,8 @@ def environment():
 def compute(q):
     require(set(q)=={'schema_version','input','input_sha256','operation','artifact_dir','max_cells','threads'} and q['schema_version']=='rve.science-request.v1','Invalid native envelope')
     c=q['input'];d,p=OPERATIONS[q['operation']];require(digest(c)==q['input_sha256'],'Native input hash mismatch')
-    require(type(q['max_cells']) is int and 1<=q['max_cells']<=(90000 if d==2 else 180000) and type(q['threads']) is int and q['threads']==1,'Explicit bounded single-thread budget required')
+    # max_cells retains its wire name for compatibility; it is advisory only.
+    require(type(q['max_cells']) is int and q['max_cells']>=1 and type(q['threads']) is int and q['threads']==1,'Positive cell-count recommendation and single thread required')
     # Canonical numeric input is never fed back to the raw-unit converter.
     tags=geometry(c['geometry'],c['normalized_h'],d);require(set(c['materials'])==tags,'Native material coverage mismatch')
     for m in c['materials'].values():

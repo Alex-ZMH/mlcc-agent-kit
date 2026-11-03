@@ -1,0 +1,103 @@
+{
+  "schema_version": "fem.mesh-count-sources.v1",
+  "module_version": "0.4.3",
+  "reference_deployed_bundle": "0.60.4",
+  "upstream_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "hash_convention": "SHA256 over LF-normalized patch-target content; existing deployed public-entry paragraphs are preserved. canonical_sha256_lf is also supplied when a Skill doc paragraph differs from the old local checkout. Historical source manifests remain frozen.",
+  "files": [
+    {
+      "path": "CAPABILITIES.md",
+      "sha256_lf": "242329fdf170fa5957faf5b861ecc431f2f3949e19c05f8cb7c22a62a68ba8b8"
+    },
+    {
+      "path": "ENVIRONMENT.md",
+      "sha256_lf": "f0c6c938ae7447303d822946f7121adb2b2235210481d01d2c4674308a11978e"
+    },
+    {
+      "path": "EXTENDED_GUIDE.md",
+      "sha256_lf": "dbf7ea5548fa56272766be9b1ce4e660691ef2e7b35aca70a6153c675ff4b304"
+    },
+    {
+      "path": "INTERFACE_PROPOSAL.md",
+      "sha256_lf": "5e360e31e660b765c5de20f1fed2840007812cc971fc14b4c42c8f02d2318fec"
+    },
+    {
+      "path": "MESH_COUNT_ACCEPTANCE.json",
+      "sha256_lf": "a2b04cb24c071a289b6b0f491cd2cc84dd35821634d8430827a222c174c98fbb"
+    },
+    {
+      "path": "README.md",
+      "sha256_lf": "d258f7953d0db644d72d8b243d840bc786bfd98030c63f6109d44c51dc353b37"
+    },
+    {
+      "path": "deployment/extended.native.schema.json",
+      "sha256_lf": "f615e4e81d52b7a2736372ab69825d466a4c1095d677ffa6e6e304da1e68cec2"
+    },
+    {
+      "path": "deployment/native.schema.json",
+      "sha256_lf": "8374ab9a1fcfbb88e5c27000a2d78f2e152071e7457ade8f19115b0644f43028"
+    },
+    {
+      "path": "device_fem/__init__.py",
+      "sha256_lf": "786cf73fbdba1b77ac2f506744cb0c60927faf31821f317b048023bc3af7d92d"
+    },
+    {
+      "path": "device_fem/adapter_api.py",
+      "sha256_lf": "105a341f8d6b5bf07c0ff848b1986267c06bf85c5e4e76113afdda69e0dfd927"
+    },
+    {
+      "path": "device_fem/common.py",
+      "sha256_lf": "a018442076ff2d567271053cd7b82923501c5cb569c960e17a77ce591442a034"
+    },
+    {
+      "path": "device_fem/deployment.py",
+      "sha256_lf": "125c470a26eb0e8ba97194d184413b3c6435819bcf1a64fcb7797e3b04a89506"
+    },
+    {
+      "path": "device_fem/extended/em_geometry.py",
+      "sha256_lf": "7bf166191ea3e10cc9e4bb74c7905e25b80263cf09b20f48f2dbbf3264eedccd"
+    },
+    {
+      "path": "device_fem/extended/runner.py",
+      "sha256_lf": "eb94f83c5b60294e8015506e8139cb49658874986e473161fac8b6b91d9212aa"
+    },
+    {
+      "path": "device_fem/extended/thermal_core.py",
+      "sha256_lf": "e484df34cefe8142a3bc9eb63d1492e7f0fa8e69c4ebc2b4d976ba2aa3a3660f"
+    },
+    {
+      "path": "device_fem/extended_adapter.py",
+      "sha256_lf": "a30d71c3adacb9d5a636d0f9ca143445fc89ecc5ba5e1970399a913916f2c525"
+    },
+    {
+      "path": "device_fem/fenicsx.py",
+      "sha256_lf": "c5f1d49523c46aa6d6059039924a6724923881d68270813947ae887af33397a6"
+    },
+    {
+      "path": "module.json",
+      "sha256_lf": "4fa53de3c2a451fc6578b84730f2c79364a12bd0a7aff4e0c5fdce2de69d436a"
+    },
+    {
+      "path": "science_entry.py",
+      "sha256_lf": "a658a832718c606dd1f47dcd810d00772a81bb1db54acb05b71f8d2754f98de2"
+    },
+    {
+      "path": "skills/linear-electrostatics/SKILL.md",
+      "sha256_lf": "53a345f4663a7d8a0e59677c958debbf294e00701ec30e253c46a79f7e09b0a9",
+      "canonical_sha256_lf": "732335c4bc60f83fd3dad6af60fb02000352b899d5a23bc112cb28888e841bd3"
+    },
+    {
+      "path": "skills/mlcc-device-coupling/SKILL.md",
+      "sha256_lf": "f8b306217fcd4a5eb927a3054af55351c121d292ff087c5fd3e0052f61d0e9aa",
+      "canonical_sha256_lf": "cd0a96d63439647976ea7ecc6a73329c88d380fccdf12437c0ee3a217a054022"
+    },
+    {
+      "path": "tests/run_mesh_recommendation_native.py",
+      "sha256_lf": "7bfa25d73e095e9fb5bd049f386bb1a7089a03c48c8e8f6365327be1e72859ef"
+    },
+    {
+      "path": "tests/test_mesh_recommendation.py",
+      "sha256_lf": "e6c74ccbc298f4c85aa5ba8615f3ef858da78cebcec75cb888e5f6b8daa003b1"
+    }
+  ]
+}

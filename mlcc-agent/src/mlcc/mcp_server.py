@@ -102,7 +102,7 @@ def build_server(site_path: str | Path, workspace: str | Path) -> MCPServer:
         name="mlcc-agent",
         title="MLCC Slurm runner",
         description="Explicit Slurm task lifecycle for the MLCC project.",
-        version="0.60.3",
+        version="0.60.5",
     )
 
     @server.tool(

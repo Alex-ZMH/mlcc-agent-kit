@@ -1,0 +1,85 @@
+{
+  "schema_version": "rve.mesh-count-acceptance.v1",
+  "date": "2026-11-03",
+  "module_version": "0.1.5",
+  "reference_deployed_bundle": "0.60.4",
+  "reference_deployment_revision": 6,
+  "reference_upstream_commit": "eff2d3dfb9c83ba374f6bd4c1f366e00f646854f",
+  "reference_scope": "Implementation matched the deployed source before this increment; pre-existing local Skill public-entry-link differences were preserved.",
+  "software_tests": {
+    "module_stdlib_passed": 10,
+    "portable": {
+      "run": 47,
+      "passed": 46,
+      "skipped": 1
+    }
+  },
+  "native_scope": "Local WSL existing fenicsx-env; real Adapter/native entry/solver and existing numerical/field readback checks; no Slurm or Zeus submission.",
+  "native_cases": [
+    {
+      "name": "below-old-h-floor-2d",
+      "operation": "homogenize_electrostatics_2d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual_cells": 274890,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 90000
+      },
+      "seconds": 76.82670541199695,
+      "cells": 274890,
+      "native_numerical_checks": "passed",
+      "independent_field_readback": "passed",
+      "uniform_tensor_absolute_error_in_epsilon_r": 2.05657713081564e-11
+    },
+    {
+      "name": "below-old-h-floor-3d",
+      "operation": "homogenize_electrostatics_3d",
+      "execution": "succeeded",
+      "mesh_advisory": {
+        "actual_cells": 310819,
+        "enforced": false,
+        "exceeded": true,
+        "recommended_cells": 180000
+      },
+      "seconds": 125.75144977699892,
+      "cells": 310819,
+      "native_numerical_checks": "passed",
+      "independent_field_readback": "passed",
+      "uniform_tensor_absolute_error_in_epsilon_r": 9.14823772291129e-14
+    }
+  ],
+  "not_checked": [
+    "material calibration",
+    "task-specific mesh/time convergence",
+    "device applicability",
+    "Windows-to-WSL transport execution",
+    "Zeus deployment of this increment",
+    "arbitrarily large inputs or resource exhaustion"
+  ],
+  "submitted_tasks_touched": false,
+  "production_deployment": "not_deployed",
+  "prior_failed_evidence": null,
+  "environment": {
+    "executable": "/home/zhaoxiang/miniconda3/envs/fenicsx-env/bin/python",
+    "mpi_ranks": 1,
+    "pid": 19311,
+    "python": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]",
+    "ready": true,
+    "scalar_type": "float64",
+    "threads": {
+      "MKL_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1"
+    },
+    "versions": {
+      "PETSc": "3.25.5",
+      "dolfinx": "0.11.0",
+      "gmsh": "4.15.2",
+      "h5py": "3.16.0",
+      "numpy": "2.4.6",
+      "pyvista": "0.48.4",
+      "ufl": "2026.1.0"
+    }
+  }
+}

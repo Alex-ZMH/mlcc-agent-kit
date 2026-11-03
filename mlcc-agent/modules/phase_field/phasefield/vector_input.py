@@ -73,8 +73,6 @@ def validate_reduced(payload):
     else: require(typ == 'constant', 'Steady solve requires a constant voltage boundary; use evolve for waveforms')
     if typ == 'stairs': require(ts[-1] < e['end'], 'Each stair must occur before the explicit end time')
     require(math.ceil(e['end']/e['dt']) <= e['max_steps'], 'Requested integration exceeds accepted-step budget', 'RESOURCE_LIMIT')
-    budget = estimate_resources(p)
-    require(budget['dofs'] <= 25000, 'Frozen vector direct-LU DOF cap 25000', 'RESOURCE_LIMIT')
     return p
 
 def estimate_resources(p):

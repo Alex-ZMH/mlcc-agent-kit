@@ -16,6 +16,7 @@ from dolfinx.fem.petsc import LinearProblem, assemble_vector
 from mpi4py import MPI
 from petsc4py import PETSc
 from ..validation import body_height
+from ..common import cell_count_recommendation
 
 EPS0=8.8541878128e-12
 OPTIONS={'ksp_type':'preonly','pc_type':'lu','ksp_error_if_not_converged':True}
@@ -81,7 +82,8 @@ def device_mesh(payload,h,out,*,split_y=None,max_cells=150000):
         gmsh.option.setNumber('Mesh.MeshSizeMin',h);gmsh.option.setNumber('Mesh.MeshSizeMax',h)
         gmsh.model.mesh.generate(2)
         n=sum(len(v) for v in gmsh.model.mesh.getElements(2)[1])
-        if n>max_cells:raise ValueError('Host mesh cell resource bound exceeded')
+        if n<=0:raise ValueError('Nonempty triangle mesh required')
+        write(out/'cell_count_recommendation.json',cell_count_recommendation(n,max_cells))
         gmsh.write(str(out/'mesh.msh'));data=gmshio.model_to_mesh(gmsh.model,MPI.COMM_WORLD,0,gdim=2)
     finally:gmsh.finalize()
     parent,ct=data.mesh,data.cell_tags

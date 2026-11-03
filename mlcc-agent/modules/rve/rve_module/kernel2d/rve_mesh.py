@@ -28,7 +28,7 @@ def boundaries(m,L):
 
 def create(micro,h,root,max_cells=90000):
     root=Path(root);root.mkdir(parents=True,exist_ok=True);write(root/'microstructure.json',micro)
-    if not np.isfinite(h) or not .003<=h<=.2:raise ValueError('normalized h must be .003..0.2')
+    if not np.isfinite(h) or not 0<h<=.2:raise ValueError('normalized h must be positive and <=0.2')
     cfg=micro['config'];thickness=min([cfg[k] for k in ['gb_width','shell'] if cfg.get(k,0)>0],default=1.)
     if micro['config']['kind']=='polycrystal' and h>thickness/1.5:raise ValueError('gb/shell require at least 1.5 target elements across nominal width')
     start=perf_counter();gmsh.initialize(readConfigFiles=False)
@@ -44,12 +44,16 @@ def create(micro,h,root,max_cells=90000):
             tools.append((2,s))
         if tools:
             _,maps=o.fragment([(2,square)],tools);o.synchronize();alltags={t for d,t in maps[0] if d==2}
-            base=3000 if cfg['kind']=='polycrystal' else 10;assignment={t:base for t in alltags}
+            # A zero-width GB is absent. Every face must belong to an explicit
+            # grain/shell/pore; never fill an unassigned face with a fake GB.
+            base=(3000 if '3000' in micro['regions'] else None) if cfg['kind']=='polycrystal' else 10
+            assignment={t:base for t in alltags}
             # Priority is explicit: shell before core, pore last, independent of CAD entity order.
             for shape,group in zip(micro['shapes'],maps[1:]):
                 for d,t in group:
                     if d==2 and t in assignment:assignment[t]=shape['region']
         else:o.synchronize();alltags={square};assignment={square:10}
+        if any(r is None for r in assignment.values()):raise ValueError('Unassigned CAD face in zero-GB Voronoi partition')
         for region in sorted(set(assignment.values())):
             tags=[t for t,r in assignment.items() if r==region];gmsh.model.addPhysicalGroup(2,tags,region);gmsh.model.setPhysicalName(2,region,f'REGION_{region}')
         if set(map(str,assignment.values()))!=set(micro['regions']):raise ValueError('region disappeared during CAD fragmentation')
@@ -71,7 +75,7 @@ def create(micro,h,root,max_cells=90000):
         gmsh.option.setNumber('Mesh.MeshSizeMin',h);gmsh.option.setNumber('Mesh.MeshSizeMax',h);gmsh.option.setNumber('Mesh.RandomFactor',0)
         gmsh.model.mesh.generate(2)
         count=sum(len(v) for v in gmsh.model.mesh.getElements(2)[1])
-        if not 0<count<=min(max_cells,90000):raise ValueError('triangle count exceeds explicit host/source budget')
+        if count<=0:raise ValueError('nonempty triangle mesh required')
         cad={str(r):sum(o.getMass(2,t) for t,rr in assignment.items() if rr==r) for r in set(assignment.values())}
         gmsh.write(str(root/'mesh_normalized.msh'));data=gmshio.model_to_mesh(gmsh.model,MPI.COMM_WORLD,0,gdim=2)
         write(root/'periodic_CAD.json',{'curve_pairs':pairs,'normalized_CAD_area_fractions':cad,'gmsh_h':h})
@@ -90,6 +94,7 @@ def create(micro,h,root,max_cells=90000):
     curved=any(s['kind']=='ellipse' for s in micro['shapes'])
     if max(rel.values())>(.04 if curved else 1e-8):raise ValueError('mesh phase area does not resolve CAD area')
     topo=np.sort(m.geometry.dofmap,axis=1);identity=hashlib.sha256(np.round(m.geometry.x/L,12).tobytes()+topo.tobytes()+labels.tobytes()).hexdigest()
-    diagnostics={'cells':ncells(m),'seconds':perf_counter()-start,'fraction_by_region':fractions,'CAD_fraction_by_region':cad,'area_relative_errors':rel,'min_triangle_quality':float(min(quality)),'min_area_m2':float(min(ar)),'mesh_id':identity,'normalized_h':h}
+    diagnostics={'cells':ncells(m),'seconds':perf_counter()-start,'fraction_by_region':fractions,'CAD_fraction_by_region':cad,'area_relative_errors':rel,'min_triangle_quality':float(min(quality)),'min_area_m2':float(min(ar)),'mesh_id':identity,'normalized_h':h,
+                 'cell_count_recommendation':{'recommended_cells':max_cells,'actual_cells':count,'exceeded':count>max_cells,'enforced':False}}
     write(root/'mesh_metrics.json',diagnostics);np.savez(root/'mesh_identity.npz',coordinates_m=m.geometry.x,triangles=m.geometry.dofmap,regions=labels)
     return RVEMesh(m,labels,ft,micro,diagnostics,root)

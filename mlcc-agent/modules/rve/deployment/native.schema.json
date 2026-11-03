@@ -32,12 +32,12 @@
     "max_cells_2d": {
       "type": "integer",
       "minimum": 1,
-      "maximum": 90000
+      "description": "Legacy field name: advisory recommended triangle count only; exceeding it never blocks execution."
     },
     "max_cells_3d": {
       "type": "integer",
       "minimum": 1,
-      "maximum": 180000
+      "description": "Legacy field name: advisory recommended tetrahedron count only; exceeding it never blocks execution."
     }
   },
   "required": [

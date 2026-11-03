@@ -66,7 +66,7 @@ class Deployment:
                     if not extended or c.get('profile') != 'device_extended_v1':
                         raise ValueError('Extended native deployment is only valid for new device operations')
                 _validate_native(c, required, [('timeout_seconds',1,240 if expanded else 120),
-                                               ('threads',1,1),('max_cells',1,150000 if expanded else 50000)])
+                                               ('threads',1,1),('max_cells',1,None)])
                 result = cls(c); result.map(ROOT / 'science_entry.py'); return result
             required = {'schema_version', 'wsl_executable', 'distribution', 'python',
                         'windows_root', 'linux_root', 'timeout_seconds', 'threads', 'max_cells'}
@@ -90,8 +90,8 @@ class Deployment:
                     raise ValueError('Linux paths must be absolute canonical POSIX paths')
             if not Path(c['windows_root']).is_absolute() or not Path(c['windows_root']).is_dir():
                 raise ValueError('Existing absolute Windows mapping root required')
-            for key, low, high in (('timeout_seconds', 1, 240 if expanded else 120), ('threads', 1, 1), ('max_cells', 1, 150000 if expanded else 50000)):
-                if type(c[key]) is not int or not low <= c[key] <= high:
+            for key, low, high in (('timeout_seconds', 1, 240 if expanded else 120), ('threads', 1, 1), ('max_cells', 1, None)):
+                if type(c[key]) is not int or c[key] < low or (high is not None and c[key] > high):
                     raise ValueError(f'{key} is outside this release operational limits [{low},{high}]')
             result = cls(c)
             result.map(ROOT / 'science_entry.py')
@@ -130,9 +130,13 @@ class Deployment:
             p=payload['geometry']; port=payload['port']; H=body_height(payload)
             ratio=(p['body_length_m']+2*port['bus_width_m'])*(H+port['feed_air_m']+port['bottom_air_m'])/(p['body_length_m']*H)
             estimate=math.ceil(estimate*ratio)
-        if estimate > self.config['max_cells']:
-            raise ModuleError('RESOURCE_LIMIT', f'Conservative mesh estimate {estimate} exceeds host budget {self.config["max_cells"]}; refine request/obtain a new resource review')
         return estimate
+
+    def resource_warnings(self, payload):
+        estimate = self.check_resources(payload)
+        recommended = self.config['max_cells']
+        return ([f'Planning estimate={estimate} exceeds recommended cells={recommended}; advisory only, execution is allowed without remeshing.']
+                if estimate > recommended else [])
 
     def probe(self):
         try:

@@ -5,6 +5,8 @@ description: 根据明确给定的线性 RLC、漏电及源/负载参数运行 n
 
 # MLCC 电路响应计算
 
+设计方案、澄清输入或解释执行冲突前，先读[当前计算能力边界](../references/calculation-boundaries.md)，再读所选领域的方法说明。边界随当前 Bundle/模块版本更新；超出资源软推荐只提示，不据此改科学输入。遇到冲突说明具体限制及可选简化，不把历史限制当永久规则；已提交任务不自动改参、取消或重提。
+
 公网调用先走[统一操作入口](../references/public-operations.md)；四个 SPICE operation 的 describe/create/read 仍复用本模块既有 ops，不自动从材料、FEM 或其他尺度猜测 RLC 参数。
 
 使用 `module_id=spice`，处理给定电路参数的频响或单脉冲问题。根据器件几何求场或提取响应时选择 FEM；本入口不自动从其他尺度抽取 C/ESR/ESL。

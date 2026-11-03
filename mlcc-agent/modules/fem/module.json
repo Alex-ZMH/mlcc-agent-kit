@@ -3,7 +3,7 @@
   "id": "fem",
   "title": "FEM / 器件层",
   "description": "显式部署Adapter调用WSL或native Linux：二维静电、单向稳态电热、AC-EQS与规定闭合端口Maxwell；科学适用性逐项验收",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "interface_version": "1.0",
   "kind": "scientific",
   "implementation": "implemented",

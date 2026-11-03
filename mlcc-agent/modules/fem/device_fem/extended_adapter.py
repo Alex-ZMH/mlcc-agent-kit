@@ -98,14 +98,16 @@ def handle(request):
         deployment=Deployment.load(extended=True); estimate=deployment.check_resources(payload)
         if preflight:
             env=deployment.probe()
-            return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITATIONS,
-                    'checks':[check('scientific_input','passed','Scientific input/physical constraints and shared-core unit normalization validated.'),check('resource_budget','passed',f'Estimate={estimate}; actual mesh capped at {deployment.config["max_cells"]}'),check('backend_environment','passed','DOLFINx '+env['versions']['fenics-dolfinx'])]}
+            return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITATIONS+deployment.resource_warnings(payload),
+                    'checks':[check('scientific_input','passed','Scientific input/physical constraints and shared-core unit normalization validated.'),check('resource_budget','passed',f'Planning estimate={estimate}; recommended cells={deployment.config["max_cells"]}; advisory only, no cell-count cap'),check('backend_environment','passed','DOLFINx '+env['versions']['fenics-dolfinx'])]}
         if not isinstance(request['task_id'],str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,95}',request['task_id']):raise ModuleError('INVALID_REQUEST','Runtime-owned task required')
         directory=Path(request['artifact_dir'])
         if not directory.is_absolute() or directory.is_symlink() or not directory.is_dir():raise ModuleError('INVALID_REQUEST','Runtime-owned existing artifact directory required')
         write_json(directory/'input.original.json',request['input']);write_json(directory/'input.canonical-si.json',payload);write_json(directory/'unit_normalization.json',audit)
         native=deployment.execute(payload,directory,request['task_id'],operation=kernel_operation)
-        return normalize(native,payload,directory,deployment)
+        result=normalize(native,payload,directory,deployment)
+        result['warnings']=deployment.resource_warnings(payload)+result['warnings']
+        return result
     except Exception as exc:
         code=getattr(exc,'code','ADAPTER_ERROR')
         if preflight:return {'schema_version':'mlcc.adapter-preflight.v1','ready':False,'errors':[{'code':code,'message':str(exc)}],'warnings':[],'checks':[]}

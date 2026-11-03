@@ -7,6 +7,8 @@ description: Prepare and interpret the fem electrostatics_2d operation for a par
 
 公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
 
+FEM 0.4.3 起网格数量只作软推荐，旧配置名 `max_cells` 不再作为硬上限。超推荐 warning 不阻断执行，不得据此自动粗化网格、减少有效间隙或改变几何。几何、材料、单元/场与数值证据检查及超时限制仍生效。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-fem/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 用于 `fem/electrostatics_2d`。固定入口是本模块 `adapter.py`，由公共 TaskRecord/SiteRunner 在 Slurm 分配中调用；科学建模、网格、求解、导出在宿主显式绑定的 native Linux 环境运行。宿主可读的方法说明不等于已连接的 LLM/自动工具服务。

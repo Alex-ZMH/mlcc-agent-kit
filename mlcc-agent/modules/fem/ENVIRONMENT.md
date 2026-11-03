@@ -23,6 +23,6 @@ env变量MLCC_FEA_DEPLOYMENT由宿主启动环境或run-windows.ps1传入；文�
 
 新增device_fem/extended/科学代码仍只在同一既有WSL环境导入，复用已有NumPy/UFL/DOLFINx/Gmsh/PETSc、PyVista/Matplotlib及XDMF/HDF5导出支持。未安装或升级任何包。AC/EM双实数P1块使用已有MUMPS；原静电直接LU保持原设置。
 
-新v2部署见deployment/extended.example.json：schema_version=fem.deployment.v2、profile=device_extended_v1，最多150000实际三角形、240秒客户端、单线程；仅新电热/AC/EM入口接受。旧静电和多单位静电继续v1的50000/120秒限制并拒绝v2，避免静默扩大旧范围。原科学协议兼容新增可选operation字段；原请求缺该字段仍执行原静电，公共Adapter协议不变。扩展运行前再次拒绝非实数PETSc或MPI非单rank环境。
+新v2部署见deployment/extended.example.json：schema_version=fem.deployment.v2、profile=device_extended_v1，240秒客户端、单线程；仅扩展电热/AC/EM入口接受。旧静电和多单位静电继续v1、最长120秒并拒绝v2。0.4.3起两种部署的max_cells均为正整数软推荐，150000/50000示例值和更大配置均不形成规划或实际网格数量上限。原科学协议兼容可选operation字段；原请求缺该字段仍执行原静电，公共Adapter协议不变。扩展运行前再次拒绝非实数PETSc或MPI非单rank环境。
 
 日志/缓存仍在每task/native，原始数据与单位审计独立登记。新导出包含VTU/XDMF/HDF5/NPZ，PNG是可选展示。当前Windows未装PyYAML，skill-creator的独立quick_validate因前置条件缺失not_checked；模块标准库元数据/链接检查可运行，未为此安装依赖。

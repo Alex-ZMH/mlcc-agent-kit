@@ -7,6 +7,8 @@ description: Prepare and interpret MLCC phase_field steady/evolve or explicit-sc
 
 公网调用统一见[公网操作入口](../../../../skills/references/public-operations.md)；本文件只补充方法 schema、单位和结果解释。
 
+0.4.1起单元数、每轴网格数及宿主工作量/历史体积估计均为软推荐，超出仅提示，不自动粗化或变更科学输入。随机谱的解析条件、网格有效性、求解及独立回读继续检查；请以当前部署的模块版本和预检返回为准。
+
 本文件是按需读取的方法细节；创建、提交、查询和读取以[顶层运行Skill](../../../../skills/run-mlcc-phase-field/SKILL.md)及[公共生命周期](../../../../skills/references/task-lifecycle.md)为准。专业输入/schema、物理定义与检查仍由本模块维护。
 
 本 Skill 仅适用于下述四个旧标量操作。新增全矢量 `vector_*` 操作使用独立的 [矢量方法](../mlcc-vector-ferroelectric/SKILL.md)，不得把标量边界、RT0、固定系数或壁宽语义套用到矢量输入。

@@ -1,4 +1,8 @@
-# phase_field 0.4.0：标量、全矢量与静态切线介电张量
+# phase_field 0.4.1：标量、全矢量与静态切线介电张量
+
+0.4.1：十个操作的单元总数、每轴网格划分数、矢量 25000 / 切线 3300 总自由度均取消硬上限。旧 `max_cells`、`max_work`、`max_history_bytes` 保留正整数配置名，但只作软推荐，避免工作量/输出估计间接阻断细网格；预检和结果显式告知超推荐项，不自动粗化或改变输入。切线仍执行完整稠密稳定性分析，预检给出单矩阵内存估计，额外矩阵及工作区还需更多内存；不因超推荐跳过稳定性或输出假通过。网格/场有效性、畴壁分辨率、物理模型、收敛、加载与时间控制、单rank/单线程、超时和独立回读继续执行。
+
+新验收与来源见 `MESH_COUNT_ACCEPTANCE.json`、`MESH_COUNT_SOURCES.json`；旧验收/来源保留历史含义。纯软件检查：`python3 -B -m unittest discover -s modules/phase_field/tests -p test_mesh_recommendation.py -v`。真实回归显式执行 `python -B modules/phase_field/tests/run_mesh_recommendation_native.py --execute --output /absolute/new/output`，不提交调度作业。
 
 新增 **dielectric_tangent / dielectric_tangent_si**：二维完整 2×2、三维完整 3×3 的静态 ∂⟨D⟩/∂Ē，UFL AD + 完整耦合 Jacobian + 多右端线性灵敏度；含背景/极化贡献、冻结极化对照、局部约束稳定性、独立原生回读及可选新 FD/分支回算。旧八个操作和其输入 schema 保留。SI 为明确四尺度下的绝对 **F/m** 张量，不自动称为相对 εr；未稳定/近奇异态不输出有效张量。见 [张量设计](TANGENT_DESIGN.md)、[张量方法](skills/mlcc-tangent-dielectric/SKILL.md)、[本轮验证](../../docs/verification/phase-tangent-2026-10-27/README.md)。当前源码以 `TANGENT_SOURCES.json` 为准，旧索引保留原日期。
 
@@ -67,7 +71,7 @@ $q = & $PhasePython -B -m mlcc run phase_field evolve --input modules/phase_fiel
 
 run只排队；worker推进一次；status/result/artifact与终态worker都不求解。路径、解释器、资源由宿主[部署样例](deployment/example.json)决定，不进入科学输入，不依赖fem私有状态。未配置/后端不可用即拒绝，无mock回退。Codex沙箱的WSL访问可能需正常工具审批，不迁移公共框架、不安装Windows FEniCS或升级共享环境。超时/通信中断不证明Linux求解已停止，保留任务与日志，禁止未核实自动重提交。
 
-样例环境Ubuntu-24.04、既有fenicsx-env、1线程；最多6000单元、4,000,000单元加权工作量、64MiB未压缩两场历史估计，科学客户端180秒、公共Adapter240秒。工作量计入最坏缩步试次数，RT另加8倍单元权重。发布输入界限nx≤48、ny/nz≤12、modes≤8。它们是保守操作预算，不是性能或精度保证，超限拒绝，不自动粗化。来源最大已测规模不是本部署承诺。
+样例环境Ubuntu-24.04、既有fenicsx-env、1线程；科学客户端180秒、公共Adapter240秒。0.4.1起6000单元、4,000,000单元加权工作量、64MiB未压缩两场历史估计及每轴nx=48、ny/nz=12都仅作软推荐，不因超出拒收。工作量计入最坏缩步试次数，RT另加8倍单元权重。modes≤8仍限定随机初态谱模型，空间网格必须解析所选谱；不自动粗化。推荐值不保证性能或精度。
 
 产物都在artifact_dir：fields.xdmf与关联fields.h5必须一起保留；fields.npz保存完整2D/3D网格、P/phi/E、全部接受态P/phi历史；initial_fields.npz、history.csv/json、nonlinear.json、metadata/initial/environment/diagnostics/metrics/quality.json；可选flux_reconstruction.npz。native保存请求/响应、实际argv、部署hash和日志，任务内编译缓存不登记为公开科学产物。2D有P/phi/E及时间曲线，3D为标明位置的切片或单元中心层，另有真实体数据与读回。绘图失败单独warning，大数组不塞入LLM摘要。
 

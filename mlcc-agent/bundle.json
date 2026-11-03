@@ -2,7 +2,7 @@
   "schemaVersion": "matterai.bundle.v2",
   "name": "mlcc-agent",
   "title": "MLCC 多尺度计算能力包",
-  "version": "0.60.3",
+  "version": "0.60.5",
   "description": "MLCC 多尺度计算能力包：原子建模、DFT、MD、铁电相场、RVE、器件FEM与电路SPICE独立运行；共用可追溯任务与SSH/Slurm，性质与科学资格由各领域保留。",
   "agent": {
     "name": "mlcc",
@@ -46,7 +46,10 @@
         "mlcc_cancel_calculation",
         "mlcc_collect_calculation"
       ],
-      "requiredEnv": ["MLCC_SITE_CONFIG", "MLCC_WORKSPACE_ROOT"],
+      "requiredEnv": [
+        "MLCC_SITE_CONFIG",
+        "MLCC_WORKSPACE_ROOT"
+      ],
       "permissions": {
         "filesystem": "workspace-write",
         "network": true

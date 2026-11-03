@@ -42,11 +42,11 @@ def handle(q):
         dep=Deployment.load();budget=dep.check_resources(p,context)
         if pre:
             env=dep.probe()
-            return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITS[:2],
+            return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],'warnings':LIMITS[:2]+dep.resource_warnings(p,context),
                     'checks':[{'id':i,'status':'passed','message':m} for i,m in [
                         ('vector_input','Explicit dimension-matched vectors, coefficients, BC and waveform'),
                         ('unit_mapping','Unique shared UNIT and explicit scales' if context else 'Explicit dimensionless input'),
-                        ('budget',str(budget)),('backend',str(env))]]}
+                        ('budget',str(dep.resource_report(p,context))+'; advisory only'),('backend',str(env))]]}
         require(isinstance(q['task_id'],str) and re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,95}',q['task_id']), 'Runtime task ID required','INVALID_REQUEST')
         out=Path(q['artifact_dir'])
         require(out.is_absolute() and out.is_dir() and not out.is_symlink() and out.resolve()==(ROOT.parents[1].parent/'artifacts').resolve(),'Existing Bundle-owned task artifact directory required','INVALID_REQUEST')
@@ -84,7 +84,7 @@ def handle(q):
         write_json(out/'quality.json',qc)
         return {'schema_version':'mlcc.adapter-result.v1','execution_status':'succeeded',
                 'provenance':provenance(p,read_json(out/'environment.json'),context,dep.config.get('transport')),
-                'results':result,'quality':qc,'errors':[],'warnings':native.get('warnings',[]),'limitations':LIMITS,'artifacts':artifacts(out)}
+                'results':result,'quality':qc,'errors':[],'warnings':dep.resource_warnings(p,context)+native.get('warnings',[]),'limitations':LIMITS,'artifacts':artifacts(out)}
     except Exception as exc:
         code=getattr(exc,'code','ADAPTER_ERROR');errors=[{'code':code,'message':str(exc)}]
         if pre:return {'schema_version':'mlcc.adapter-preflight.v1','ready':False,'errors':errors,'warnings':[],'checks':[]}

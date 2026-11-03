@@ -147,9 +147,9 @@ def handle(request):
         if preflight:
             env = deployment.probe()
             return {'schema_version':'mlcc.adapter-preflight.v1','ready':True,'errors':[],
-                    'warnings':['Idealized 2D electrostatics only; scientific applicability remains not_checked.'],
+                    'warnings':['Idealized 2D electrostatics only; scientific applicability remains not_checked.']+deployment.resource_warnings(payload),
                     'checks':[check('scientific_input','passed','Validated SI geometry/material/potentials/depth; shared core '+unit_audit['core_version']+' normalized explicit quantities.' if unit_audit else 'Explicit SI geometry/material/potentials/depth are valid.'),
-                              check('resource_budget','passed',f'Planning estimate={estimate}, host max_cells={deployment.config["max_cells"]}; actual mesh is checked again.'),
+                              check('resource_budget','passed',f'Planning estimate={estimate}, recommended cells={deployment.config["max_cells"]}; advisory only, no cell-count cap.'),
                               check('backend_environment','passed',f'DOLFINx {env["versions"]["fenics-dolfinx"]}; deployment_sha256={deployment.fingerprint}') ]}
         import re
         if not isinstance(request['task_id'],str) or not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,95}',request['task_id']):
@@ -163,6 +163,7 @@ def handle(request):
             write_json(directory/'unit_normalization.json',unit_audit)
         native = deployment.execute(payload,directory,request['task_id'])
         result = normalize(native,payload,directory,deployment)
+        result['warnings'] = deployment.resource_warnings(payload) + result['warnings']
         if unit_audit is not None:
             result['provenance']['conditions']['input_normalization'] = {
                 'core_version':unit_audit['core_version'],

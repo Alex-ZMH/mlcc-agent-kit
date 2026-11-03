@@ -59,7 +59,7 @@ def periodic_facet_audit(m,ft,L):
 
 def create(micro,h,root,max_cells=180000):
     root=Path(root);root.mkdir(parents=True,exist_ok=True);write(root/'microstructure.json',micro)
-    if not np.isfinite(h) or not .025<=h<=.4:raise ValueError('normalized target h limited .025..0.4')
+    if not np.isfinite(h) or not 0<h<=.4:raise ValueError('normalized target h must be positive and <=0.4')
     c=micro['config'];thin=min([c[k] for k in ['shell','gb_width'] if c.get(k,0)>0],default=1.)
     if h>thin/1.2:raise ValueError('shell/GB target resolution needs >=1.2 elements per nominal width; refine convergence separately')
     start=perf_counter();gmsh.initialize(readConfigFiles=False)
@@ -127,7 +127,7 @@ def create(micro,h,root,max_cells=180000):
         for tag,surf in sides.items():gmsh.model.addPhysicalGroup(2,surf,tag)
         gmsh.option.setNumber('Mesh.MeshSizeMin',h);gmsh.option.setNumber('Mesh.MeshSizeMax',h);gmsh.option.setNumber('Mesh.RandomFactor',1e-9);gmsh.option.setNumber('Mesh.RandomSeed',42);gmsh.model.mesh.generate(3)
         count=sum(len(v) for v in gmsh.model.mesh.getElements(3)[1])
-        if not 0<count<=min(max_cells,180000):raise ValueError('tetrahedron count exceeds explicit host/source budget')
+        if count<=0:raise ValueError('nonempty tetrahedral mesh required')
         cad={str(tag):sum(o.getMass(3,v) for v,r in assignment.items() if r==tag) for tag in set(assignment.values())}
         gmsh.write(str(root/'mesh_normalized.msh'));data=gmshio.model_to_mesh(gmsh.model,MPI.COMM_WORLD,0,gdim=3)
         write(root/'periodic_CAD.json',{'surface_pairs':pairs,'CAD_volume_fractions':cad,'h_normalized':h})
@@ -142,6 +142,7 @@ def create(micro,h,root,max_cells=180000):
     write(root/'preliminary_volume_audit.json',{'fraction_by_region':fractions,'CAD_fraction_by_region':cad,'volume_relative_errors':errors,'min_quality':float(min(quality)),'min_volume':float(min(V)),'cells':ncells(m)})
     if min(V)<=0 or min(quality)<1e-5 or abs(sum(fractions.values())-1)>1e-8 or max(errors.values())>(.12 if curved else 1e-7):raise ValueError('tetrahedra/coverage/CAD volume audit failed')
     faceaudit=periodic_facet_audit(m,ft,L);identity=hashlib.sha256(np.round(m.geometry.x/L,11).tobytes()+cells.tobytes()+labels.tobytes()).hexdigest()
-    diag={'cells':ncells(m),'dimension':m.topology.dim,'cell_vertices':cells.shape[1],'seconds':perf_counter()-start,'fraction_by_region':fractions,'CAD_fraction_by_region':cad,'volume_relative_errors':errors,'min_volume_m3':float(min(V)),'min_tet_quality':float(min(quality)),'periodic_faces':faceaudit,'mesh_id':identity,'normalized_h':h}
+    diag={'cells':ncells(m),'dimension':m.topology.dim,'cell_vertices':cells.shape[1],'seconds':perf_counter()-start,'fraction_by_region':fractions,'CAD_fraction_by_region':cad,'volume_relative_errors':errors,'min_volume_m3':float(min(V)),'min_tet_quality':float(min(quality)),'periodic_faces':faceaudit,'mesh_id':identity,'normalized_h':h,
+          'cell_count_recommendation':{'recommended_cells':max_cells,'actual_cells':count,'exceeded':count>max_cells,'enforced':False}}
     write(root/'mesh_metrics.json',diag);np.savez(root/'mesh_identity.npz',coordinates_m=m.geometry.x,tetrahedra=cells,regions=labels)
     return RVEMesh(m,labels,ft,micro,diag,root)

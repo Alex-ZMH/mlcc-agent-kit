@@ -142,7 +142,8 @@
     },
     "normalized_h": {
       "type": "number",
-      "minimum": 0.025,
+      "minimum": 0,
+      "description": "Strictly positive finite target h, checked by the module geometry contract; no artificial refinement floor.",
       "maximum": 0.4
     },
     "materials": {
